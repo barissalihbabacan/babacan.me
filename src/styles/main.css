@@ -13,6 +13,12 @@
 
   body {
     background-color: #0b1326;
+    background-image:
+      radial-gradient(at 12% 18%, rgba(37, 99, 235, 0.22) 0px, transparent 48%),
+      radial-gradient(at 88% 12%, rgba(0, 166, 224, 0.18) 0px, transparent 42%),
+      radial-gradient(at 78% 82%, rgba(188, 72, 0, 0.16) 0px, transparent 46%),
+      radial-gradient(at 8% 88%, rgba(123, 208, 255, 0.12) 0px, transparent 42%);
+    background-attachment: fixed;
     color: #dae2fd;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -45,9 +51,9 @@
 @layer components {
   .glass-card,
   .glass-panel {
-    background: rgba(30, 41, 59, 0.4);
+    background: rgba(30, 41, 59, 0.45);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .hero-pattern {
@@ -64,6 +70,38 @@
   .filter-btn.active {
     color: #b4c5ff;
     border-bottom: 2px solid #b4c5ff;
+  }
+
+  /* Decorative blurred color orbs for hero / section backgrounds */
+  .aurora-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.45;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Card with a gradient accent strip along the top edge */
+  .accent-card {
+    position: relative;
+    background: rgba(30, 41, 59, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+    transition: border-color 300ms, transform 300ms, box-shadow 300ms;
+  }
+
+  .accent-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary-container), var(--color-secondary-container), var(--color-tertiary-container));
+  }
+
+  .accent-card:hover {
+    transform: translateY(-4px);
   }
 }
 
@@ -85,6 +123,56 @@
   color: var(--color-primary);
   font-weight: 700;
   border-bottom-color: var(--color-primary);
+}
+
+/* Cool gradient text: primary blue -> sky cyan */
+@utility text-gradient {
+  background-image: linear-gradient(120deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Warm gradient text: peach -> coral */
+@utility text-gradient-warm {
+  background-image: linear-gradient(120deg, var(--color-tertiary) 0%, #ff8a5c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Tri-tone gradient text: blue -> cyan -> peach */
+@utility text-gradient-aurora {
+  background-image: linear-gradient(120deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-tertiary) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Solid gradient fill button (blue -> cyan) */
+@utility btn-gradient {
+  background-image: linear-gradient(120deg, var(--color-primary-container), var(--color-secondary-container));
+  color: #ffffff;
+  transition: box-shadow 300ms, transform 150ms;
+  &:hover {
+    box-shadow: 0 8px 30px -8px rgba(0, 166, 224, 0.55);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Colored hover glows */
+@utility glow-primary {
+  box-shadow: 0 0 50px -12px rgba(37, 99, 235, 0.55);
+}
+
+@utility glow-secondary {
+  box-shadow: 0 0 50px -12px rgba(0, 166, 224, 0.55);
+}
+
+@utility glow-tertiary {
+  box-shadow: 0 0 50px -12px rgba(188, 72, 0, 0.55);
 }
 
 @theme {

@@ -12,9 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-  <script type="module" crossorigin src="/assets/projects-CRYHgikt.js"></script>
+  <script type="module" crossorigin src="/assets/projects-BEJPQ5Nu.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-Dezn_h7o.js">
-  <link rel="stylesheet" crossorigin href="/assets/main-BU5wk-Tf.css">
+  <link rel="stylesheet" crossorigin href="/assets/main-BEoIuN2J.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                 <a class="nav-link" href="/#writing">Writing</a>
                 <a class="nav-link" href="/contact.html">Contact</a>
                 <button
-                    class="bg-primary-container text-on-primary-container px-6 py-2 font-label-mono text-label-mono uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all">
+                    class="btn-gradient px-6 py-2 font-label-mono text-label-mono uppercase tracking-widest rounded-lg">
                     Download CV
                 </button>
             </div>
@@ -39,17 +39,21 @@
             </button>
         </div>
     </nav>
-    <main class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+    <main class="relative pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop overflow-hidden">
+        <!-- Decorative aurora orbs -->
+        <div class="aurora-blob w-[420px] h-[420px] bg-primary-container -top-10 -right-24 opacity-35"></div>
+        <div class="aurora-blob w-[360px] h-[360px] bg-tertiary-container top-1/2 -left-32 opacity-25"></div>
         <!-- Hero Section -->
-        <section class="mb-24">
-            <h1 class="font-display-lg text-display-lg mb-4 text-on-surface">Selected Works.</h1>
+        <section class="mb-24 relative z-10">
+            <span class="font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-3 block">Portfolio</span>
+            <h1 class="font-display-lg text-display-lg mb-4"><span class="text-gradient-aurora">Selected Works.</span></h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
                 A gallery of technical implementations spanning high-availability infrastructure, complex data
                 visualizations, and high-fidelity product engineering.
             </p>
         </section>
         <!-- Filter System -->
-        <div class="flex flex-wrap items-center gap-gutter mb-16 border-b border-outline-variant pb-4">
+        <div class="relative z-10 flex flex-wrap items-center gap-gutter mb-16 border-b border-outline-variant pb-4">
             <button class="filter-btn active font-label-mono text-label-mono uppercase tracking-widest pb-4"
                 data-filter="all">All Projects</button>
             <button
@@ -63,7 +67,7 @@
                 data-filter="Infrastructure">Infrastructure</button>
         </div>
         <!-- Section 1: Enterprise Architecture -->
-        <div class="mb-section-gap transition-all duration-700 ease-out opacity-100 translate-y-0"
+        <div class="relative z-10 mb-section-gap transition-all duration-700 ease-out opacity-100 translate-y-0"
             id="enterprise-section">
             <div class="flex items-center gap-4 mb-8">
                 <span class="material-symbols-outlined text-primary">architecture</span>
@@ -71,21 +75,21 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
                 <!-- Project Card 1 -->
-                <div class="glass-card group p-unit flex flex-col hover:border-primary/30 transition-all duration-300 overflow-hidden"
+                <div class="accent-card group rounded-xl flex flex-col hover:border-primary/40 hover:glow-primary"
                     data-category="Infrastructure">
-                    <div class="relative h-64 overflow-hidden mb-6 bg-surface-container">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                            data-alt="Technical architectural diagram"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhy0Ro7UH1AObRrLYVQW-uYPcqzBqx7QprnR0DnmvWLeRuC29GOzZtVTN_2QBmxJeNRedYFPDZI9Ow0jrTW1eQlLf_4HYNL8GFdBLMmDm1t0ShmUWZgrThVXwybWaZgcs-U689tuYX-SAZj4ybLthG5PP19B0hLePSu_-1_NYqzBqHdXpweYt_1WkZqemDVIhILy8IRLo2roZ1_tQcQZzWG-GjknXGpN6wAljnCjYRCButffhnDno5u51WsKhDaUn36LFDu4nF5oyS" />
+                    <div class="relative h-64 overflow-hidden bg-surface-container">
+                        <img class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                            alt="Zero-trust service mesh architecture"
+                            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&amp;fit=crop&amp;w=900&amp;q=80" />
                         <div
-                            class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            class="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent">
                         </div>
                     </div>
-                    <div class="p-6">
+                    <div class="p-8">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="font-headline-md text-headline-md text-on-surface">Global Mesh Core</h3>
                             <span
-                                class="font-label-mono text-label-mono text-primary bg-primary/10 px-3 py-1">Infrastructure</span>
+                                class="font-label-mono text-xs text-primary bg-primary/10 px-3 py-1 rounded-full border border-primary/20">Infrastructure</span>
                         </div>
                         <p class="font-body-md text-body-md text-on-surface-variant mb-6">
                             Zero-trust service mesh architecture for a Tier-1 financial institution, handling 500k+
@@ -93,30 +97,30 @@
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="font-label-mono text-xs bg-surface-variant px-2 py-1 text-on-surface-variant">Kubernetes</span>
+                                class="font-label-mono text-xs bg-primary/10 px-3 py-1 rounded-full text-primary border border-primary/20">Kubernetes</span>
                             <span
-                                class="font-label-mono text-xs bg-surface-variant px-2 py-1 text-on-surface-variant">Istio</span>
+                                class="font-label-mono text-xs bg-primary/10 px-3 py-1 rounded-full text-primary border border-primary/20">Istio</span>
                             <span
-                                class="font-label-mono text-xs bg-surface-variant px-2 py-1 text-on-surface-variant">gRPC</span>
+                                class="font-label-mono text-xs bg-primary/10 px-3 py-1 rounded-full text-primary border border-primary/20">gRPC</span>
                         </div>
                     </div>
                 </div>
                 <!-- Project Card 2 -->
-                <div class="glass-card group p-unit flex flex-col hover:border-primary/30 transition-all duration-300 overflow-hidden"
+                <div class="accent-card group rounded-xl flex flex-col hover:border-secondary/40 hover:glow-secondary"
                     data-category="Backend">
-                    <div class="relative h-64 overflow-hidden mb-6 bg-surface-container">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                            data-alt="Technical data pipeline"
-                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZUUxs2n7jZDhhPAvLl-Kf4vGTkQAcgah-R2wmwYSIfAhRQJIsADxZCo8tL4mvwJZ5BzkMME-j5259IaJF-x6nEUfzoBzS6ja8DgQ6mfY3Fl_HnvC40P6syPb5Mn2p-gacfsKj22sj6hr1lKCnCJDVDVWaEQJbcQ5oNF08EnkKLKw6pkAvsF3kBrjWXBgK9_TmMiLCKvGDW8EHglx9zljBcpIrbyjJEsUk-_QtLvmKnJatIwj7sEpOL-aO4cEE5dCZHfFMfgJA053M" />
+                    <div class="relative h-64 overflow-hidden bg-surface-container">
+                        <img class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                            alt="Distributed event-streaming data pipeline"
+                            src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?auto=format&amp;fit=crop&amp;w=900&amp;q=80" />
                         <div
-                            class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity">
+                            class="absolute inset-0 bg-gradient-to-t from-surface via-surface/20 to-transparent">
                         </div>
                     </div>
-                    <div class="p-6">
+                    <div class="p-8">
                         <div class="flex justify-between items-start mb-4">
                             <h3 class="font-headline-md text-headline-md text-on-surface">Nexus Pipeline</h3>
                             <span
-                                class="font-label-mono text-label-mono text-primary bg-primary/10 px-3 py-1">Backend</span>
+                                class="font-label-mono text-xs text-secondary bg-secondary/10 px-3 py-1 rounded-full border border-secondary/20">Backend</span>
                         </div>
                         <p class="font-body-md text-body-md text-on-surface-variant mb-6">
                             Distributed event-streaming platform processing multi-terabyte datasets for predictive
@@ -124,36 +128,36 @@
                         </p>
                         <div class="flex flex-wrap gap-2">
                             <span
-                                class="font-label-mono text-xs bg-surface-variant px-2 py-1 text-on-surface-variant">Kafka</span>
+                                class="font-label-mono text-xs bg-secondary/10 px-3 py-1 rounded-full text-secondary border border-secondary/20">Kafka</span>
                             <span
-                                class="font-label-mono text-xs bg-surface-variant px-2 py-1 text-on-surface-variant">Go</span>
+                                class="font-label-mono text-xs bg-secondary/10 px-3 py-1 rounded-full text-secondary border border-secondary/20">Go</span>
                             <span
-                                class="font-label-mono text-xs bg-surface-variant px-2 py-1 text-on-surface-variant">PostgreSQL</span>
+                                class="font-label-mono text-xs bg-secondary/10 px-3 py-1 rounded-full text-secondary border border-secondary/20">PostgreSQL</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Section 2: Writing & Publications -->
-        <div class="mb-section-gap transition-all duration-700 ease-out opacity-100 translate-y-0" id="writing-section">
+        <div class="relative z-10 mb-section-gap transition-all duration-700 ease-out opacity-100 translate-y-0" id="writing-section">
             <div class="flex items-center gap-4 mb-8">
-                <span class="material-symbols-outlined text-primary">menu_book</span>
-                <h2 class="font-headline-md text-headline-md">Writing &amp; Publications</h2>
+                <span class="material-symbols-outlined text-tertiary">menu_book</span>
+                <h2 class="font-headline-md text-headline-md">Writing &amp; <span class="text-gradient-warm">Publications</span></h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
                 <div
-                    class="md:col-span-3 glass-card group p-8 flex flex-col md:flex-row gap-8 hover:border-primary/30 transition-all duration-300">
-                    <div class="w-full md:w-1/3 h-80 bg-surface-container relative overflow-hidden rounded-sm">
-                        <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
-                            data-alt="Book cover: The Sins of the Fathers"
-                            src="https://lh3.googleusercontent.com/aida/AP1WRLs5ff6bdo4FITAciPJOTAQ2qcvm4-Yq-1Cnf7UPx7HC_CAY0WaYyOemdUhk3f6DoCsj-Hbkk2sl92iKAjvgc1lQjpJMMr5qptOD3qhxMQmK5rEQ2tGYe6oXfjnd3z5c05XLDS_fuVuanDtj6tzLEi03CAipZ2wewFn2bum26iW11MhzfNDKzkT3a4Ju7KfKms7ABX-FyLt7rV08mGef37mc9vpN6u3LqbAWhYY2RalnBAHAuQFght0CUae-" />
+                    class="md:col-span-3 accent-card group rounded-xl p-8 flex flex-col md:flex-row gap-8 hover:border-tertiary/40 hover:glow-tertiary">
+                    <div class="w-full md:w-1/3 h-80 bg-surface-container relative overflow-hidden rounded-lg">
+                        <img class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                            alt="The Sins of the Fathers — atmospheric book imagery"
+                            src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&amp;fit=crop&amp;w=700&amp;q=80" />
                         <div
-                            class="absolute top-4 right-4 bg-primary text-on-primary px-3 py-1 font-label-mono text-xs uppercase tracking-widest">
+                            class="absolute top-4 right-4 bg-gradient-to-r from-tertiary to-error text-on-tertiary px-3 py-1 font-label-mono text-xs font-bold uppercase tracking-widest rounded-full">
                             In Progress</div>
                     </div>
                     <div class="flex-1 flex flex-col justify-center">
                         <div>
-                            <span class="font-label-mono text-primary mb-2 block uppercase tracking-widest">An Anatomy
+                            <span class="font-label-mono text-tertiary mb-2 block uppercase tracking-widest">An Anatomy
                                 of Power and Revenge</span>
                             <h3 class="font-display-lg text-headline-md md:text-display-lg mb-4 text-on-surface">The
                                 Sins of the Fathers</h3>
@@ -165,15 +169,15 @@
                             </p>
                             <div class="flex flex-wrap gap-4">
                                 <div class="flex items-center gap-2 text-on-surface-variant">
-                                    <span class="material-symbols-outlined text-primary">check_circle</span>
+                                    <span class="material-symbols-outlined text-tertiary">check_circle</span>
                                     <span class="font-label-mono text-sm">Psychological Depth</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-on-surface-variant">
-                                    <span class="material-symbols-outlined text-primary">check_circle</span>
+                                    <span class="material-symbols-outlined text-tertiary">check_circle</span>
                                     <span class="font-label-mono text-sm">Modern Power Philosophy</span>
                                 </div>
                                 <div class="flex items-center gap-2 text-on-surface-variant">
-                                    <span class="material-symbols-outlined text-primary">check_circle</span>
+                                    <span class="material-symbols-outlined text-tertiary">check_circle</span>
                                     <span class="font-label-mono text-sm">The Human Factor</span>
                                 </div>
                             </div>
@@ -183,32 +187,32 @@
             </div>
         </div>
         <!-- Section 3: Open Source -->
-        <div class="mb-section-gap transition-all duration-700 ease-out opacity-100 translate-y-0"
+        <div class="relative z-10 mb-section-gap transition-all duration-700 ease-out opacity-100 translate-y-0"
             id="opensource-section">
             <div class="flex items-center gap-4 mb-8">
-                <span class="material-symbols-outlined text-primary">terminal</span>
-                <h2 class="font-headline-md text-headline-md">Open Source</h2>
+                <span class="material-symbols-outlined text-secondary">terminal</span>
+                <h2 class="font-headline-md text-headline-md">Open <span class="text-gradient">Source</span></h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
                 <!-- Stats Grid -->
                 <div class="md:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-gutter mb-8">
-                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center">
-                        <span class="font-display-lg text-primary mb-2">1.2k+</span>
+                    <div class="accent-card p-6 rounded-xl flex flex-col items-center justify-center text-center hover:glow-primary hover:border-primary/40">
+                        <span class="font-display-lg text-gradient mb-2">1.2k+</span>
                         <span
                             class="font-label-mono text-on-surface-variant uppercase tracking-widest text-xs">Contributions</span>
                     </div>
-                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center">
-                        <span class="font-display-lg text-primary mb-2">24</span>
+                    <div class="accent-card p-6 rounded-xl flex flex-col items-center justify-center text-center hover:glow-secondary hover:border-secondary/40">
+                        <span class="font-display-lg text-gradient mb-2">24</span>
                         <span
                             class="font-label-mono text-on-surface-variant uppercase tracking-widest text-xs">Repositories</span>
                     </div>
-                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center">
-                        <span class="font-display-lg text-primary mb-2">842</span>
+                    <div class="accent-card p-6 rounded-xl flex flex-col items-center justify-center text-center hover:glow-tertiary hover:border-tertiary/40">
+                        <span class="font-display-lg text-gradient-warm mb-2">842</span>
                         <span class="font-label-mono text-on-surface-variant uppercase tracking-widest text-xs">Total
                             Stars</span>
                     </div>
-                    <div class="glass-card p-6 flex flex-col items-center justify-center text-center">
-                        <span class="font-display-lg text-primary mb-2">15</span>
+                    <div class="accent-card p-6 rounded-xl flex flex-col items-center justify-center text-center hover:glow-tertiary hover:border-tertiary/40">
+                        <span class="font-display-lg text-gradient-warm mb-2">15</span>
                         <span class="font-label-mono text-on-surface-variant uppercase tracking-widest text-xs">Pull
                             Requests</span>
                     </div>
@@ -321,15 +325,15 @@
     <footer class="w-full py-section-gap bg-surface-container-lowest border-t border-outline-variant/20">
         <div
             class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-8">
-            <div class="font-headline-md text-headline-md text-on-surface tracking-tighter">
+            <div class="font-headline-md text-headline-md text-gradient font-bold">
                 babacan.me
             </div>
             <div class="flex gap-8 font-label-mono text-label-mono">
                 <a class="text-on-surface-variant hover:text-primary transition-colors"
                     href="https://github.com/barissalihbabacan">GitHub</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors"
+                <a class="text-on-surface-variant hover:text-secondary transition-colors"
                     href="https://linkedin.com/in/barissalihbabacan">LinkedIn</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Stack Overflow</a>
+                <a class="text-on-surface-variant hover:text-tertiary transition-colors" href="#">Stack Overflow</a>
                 <a class="text-on-surface-variant hover:text-primary transition-colors" href="/contact.html">Contact</a>
             </div>
             <div class="font-label-mono text-label-mono text-on-surface-variant text-center md:text-right">
