@@ -1,53 +1,53 @@
 ---
-name: Technical Precision
+name: Anthracite Violet
 colors:
-  surface: '#0b1326'
-  surface-dim: '#0b1326'
-  surface-bright: '#31394d'
-  surface-container-lowest: '#060e20'
-  surface-container-low: '#131b2e'
-  surface-container: '#171f33'
-  surface-container-high: '#222a3d'
-  surface-container-highest: '#2d3449'
-  on-surface: '#dae2fd'
-  on-surface-variant: '#c3c6d7'
-  inverse-surface: '#dae2fd'
-  inverse-on-surface: '#283044'
-  outline: '#8d90a0'
-  outline-variant: '#434655'
-  surface-tint: '#b4c5ff'
-  primary: '#b4c5ff'
-  on-primary: '#002a78'
-  primary-container: '#2563eb'
-  on-primary-container: '#eeefff'
-  inverse-primary: '#0053db'
-  secondary: '#7bd0ff'
-  on-secondary: '#00354a'
-  secondary-container: '#00a6e0'
-  on-secondary-container: '#00374d'
-  tertiary: '#ffb596'
-  on-tertiary: '#581e00'
-  tertiary-container: '#bc4800'
-  on-tertiary-container: '#ffede6'
-  error: '#ffb4ab'
-  on-error: '#690005'
-  error-container: '#93000a'
-  on-error-container: '#ffdad6'
-  primary-fixed: '#dbe1ff'
-  primary-fixed-dim: '#b4c5ff'
-  on-primary-fixed: '#00174b'
-  on-primary-fixed-variant: '#003ea8'
-  secondary-fixed: '#c4e7ff'
-  secondary-fixed-dim: '#7bd0ff'
-  on-secondary-fixed: '#001e2c'
-  on-secondary-fixed-variant: '#004c69'
-  tertiary-fixed: '#ffdbcd'
-  tertiary-fixed-dim: '#ffb596'
-  on-tertiary-fixed: '#360f00'
-  on-tertiary-fixed-variant: '#7d2d00'
-  background: '#0b1326'
-  on-background: '#dae2fd'
-  surface-variant: '#2d3449'
+  surface: '#0e0b14'
+  surface-dim: '#0b0912'
+  surface-bright: '#2a2438'
+  surface-container-lowest: '#080610'
+  surface-container-low: '#130f1c'
+  surface-container: '#16121f'
+  surface-container-high: '#1e1a2b'
+  surface-container-highest: '#252035'
+  on-surface: '#ede9fe'
+  on-surface-variant: '#9084a8'
+  inverse-surface: '#ede9fe'
+  inverse-on-surface: '#1e1a2b'
+  outline: '#6b5f80'
+  outline-variant: '#2d2445'
+  surface-tint: '#a78bfa'
+  primary: '#a78bfa'
+  on-primary: '#1a0b2e'
+  primary-container: '#7c3aed'
+  on-primary-container: '#f5f3ff'
+  inverse-primary: '#6d28d9'
+  secondary: '#c4b5fd'
+  on-secondary: '#160826'
+  secondary-container: '#8b5cf6'
+  on-secondary-container: '#1e0f36'
+  tertiary: '#818cf8'
+  on-tertiary: '#0f0b2a'
+  tertiary-container: '#4f46e5'
+  on-tertiary-container: '#eef2ff'
+  error: '#f87171'
+  on-error: '#7f1d1d'
+  error-container: '#7f1d1d'
+  on-error-container: '#fecaca'
+  primary-fixed: '#ede9fe'
+  primary-fixed-dim: '#c4b5fd'
+  on-primary-fixed: '#160826'
+  on-primary-fixed-variant: '#5b21b6'
+  secondary-fixed: '#f5f3ff'
+  secondary-fixed-dim: '#ddd6fe'
+  on-secondary-fixed: '#160826'
+  on-secondary-fixed-variant: '#4c1d95'
+  tertiary-fixed: '#e0e7ff'
+  tertiary-fixed-dim: '#818cf8'
+  on-tertiary-fixed: '#0b0820'
+  on-tertiary-fixed-variant: '#3730a3'
+  background: '#0b0912'
+  on-background: '#ede9fe'
+  surface-variant: '#252035'
 typography:
   display-lg:
     fontFamily: Inter
@@ -103,57 +103,60 @@ spacing:
 
 ## Brand & Style
 
-The design system is engineered for a high-end engineering portfolio, projecting an image of absolute technical competence, reliability, and modern architectural thinking. The target audience includes executive leadership (CTOs, VPs of Engineering) and technical recruiters who value clarity over decoration.
+The design system is engineered for a high-end engineering portfolio, projecting technical competence, reliability, and architectural depth. The target audience includes CTOs, VPs of Engineering, and technical recruiters who value clarity over decoration.
 
-The aesthetic blends **Minimalism** with **Glassmorphism**, emphasizing structural integrity through crisp borders and calculated whitespace. The emotional response should be one of "quiet confidence"—a digital environment that feels as optimized and high-performance as the code it showcases. Visual interest is generated through subtle geometric patterns and high-contrast typography rather than illustrative elements.
+The aesthetic is **Editorial Minimalism** with deep anthracite-purple tones — structural integrity through thin border lines, ghost section numbers, and high-contrast monospaced typography. Visual interest is generated through tonal layering within the violet family rather than illustrative elements. The emotional response should be "quiet confidence" anchored in dark, premium atmosphere.
 
 ## Colors
 
-The palette is rooted in deep, technical tones to reduce eye strain and provide a premium "IDE-inspired" atmosphere.
+The palette is built around a single chromatic family: violet-anthracite. All surfaces carry a subtle purple undertone, preventing the "generic dark mode" feel while maintaining readability.
 
-- **Primary (#2563EB):** An energetic blue used for critical actions, active states, and focus indicators. It represents logic and precision.
-- **Secondary (#38BDF8):** A lighter sky blue used for syntax highlighting metaphors, accents, and data visualization.
-- **Background (#0F172A):** A deep slate that serves as the foundation for all views.
-- **Surface (#1E293B):** Used for cards and containers to create structural hierarchy.
-- **Contrast Text (#F8FAFC):** High-contrast white/slate-50 ensures maximum legibility for long-form technical documentation and project descriptions.
+- **Primary (`#A78BFA`):** Violet-400. Used for active states, links, and focus indicators. Soft enough to not overpower on dark surfaces.
+- **Primary Container (`#7C3AED`):** Violet-600. Used for solid buttons and filled interactive elements.
+- **Secondary (`#C4B5FD`):** Violet-300. Lighter accent for secondary labels and data highlights.
+- **Tertiary (`#818CF8`):** Indigo-400. Cool counterpoint to the warmer violet, used for third-tier accents and open-source contribution cards.
+- **Background (`#0B0912`):** Near-black with a violet undertone. The atmospheric base.
+- **Surface (`#0E0B14`):** Slightly raised from background — used for the main content canvas.
+- **Surface Container (`#16121F` → `#252035`):** Tonal stepping for cards, modals, and layered panels.
+- **On-Surface (`#EDE9FE`):** Lavender-tinted white. High-contrast, slightly warmer than pure white — reduces eye fatigue on dark backgrounds.
+- **On-Surface Variant (`#9084A8`):** Muted violet-grey. Used for secondary text, labels, and metadata.
+- **Outline Variant (`#2D2445`):** Dark purple. Border color for cards and dividers — visible but not distracting.
 
 ## Typography
 
-This design system utilizes **Inter** for all primary communication to maintain a clean, systematic feel. **JetBrains Mono** (or a similar high-quality monospaced font) is introduced for labels, metadata, and code snippets to reinforce the "Senior Developer" persona.
+**Inter** for all primary communication — clean, systematic, neutral. **JetBrains Mono** for labels, metadata, section numbers, and code snippets to reinforce the engineering persona.
 
-Headlines should use tighter letter-spacing and bold weights to anchor the page. Body text maintains a generous line height (1.6) to ensure technical case studies remain readable. For mobile devices, display sizes are aggressively scaled down to maintain visual balance without causing excessive text wrapping.
+Headlines use tight letter-spacing and bold weights. Body text maintains 1.6 line height for readability. Monospaced labels are set in uppercase with wide tracking for the "terminal aesthetic."
 
 ## Layout & Spacing
 
-The layout follows a **Fixed Grid** approach for desktop to maintain the "engineered" look, centering content within a 1200px max-width container. 
+Fixed 1200px max-width container. 8px linear spacing scale.
 
-- **Grid:** 12-column system for desktop, 4-column for mobile.
-- **Rhythm:** An 8px linear scale governs all padding and margins. 
-- **Sectioning:** Large vertical gaps (120px+) separate major portfolio sections (Experience, Projects, Philosophy) to give the content "room to breathe," reflecting a high-end gallery aesthetic.
-- **Reflow:** On tablet, gutters reduce to 16px. On mobile, margins are kept tight (20px) to maximize horizontal space for code blocks.
+- **Desktop margins:** 40px
+- **Mobile margins:** 20px
+- **Section gaps:** ~10vh (viewport-relative) for consistent breathing room across screen sizes
+- **Hero headline:** `clamp(48px, 8.5vw, 128px)` — scales fluidly
+- **Ghost numbers:** `22vw`, `opacity: 0.05`, positioned top-right of each section
 
 ## Elevation & Depth
 
-Hierarchy is established through **Tonal Layering** and **Glassmorphism** rather than traditional heavy shadows.
+Hierarchy through **Tonal Layering** — no heavy shadows.
 
-1.  **Base (0F172A):** The main canvas.
-2.  **Raised (1E293B):** Standard card surfaces with a subtle 1px border (#334155).
-3.  **Overlay (Glass):** Sticky navbars and modal elements use a semi-transparent blur (`backdrop-filter: blur(12px)`) with a low-opacity white border (0.05 opacity) to create a sense of advanced UI technology.
-4.  **Interactive:** Hover states on cards should slightly brighten the background color or primary border, rather than increasing shadow depth, maintaining a flat, architectural feel.
+1. **Base (`#0B0912`):** Main canvas, body background.
+2. **Surface (`#0E0B14`):** Section backgrounds.
+3. **Container (`#16121F`):** Cards, stat blocks, contribution cards.
+4. **Raised (`#252035`):** Hovered cards, modals, surface-container-highest.
+5. **Overlay (Glass):** Nav and modal backdrops use `backdrop-filter: blur` with `bg-surface/90` for a frosted-glass layer.
 
 ## Shapes
 
-The design system utilizes **Soft (0.25rem)** roundedness to maintain a professional and precise edge. 
+Minimal rounding — `0.125rem` default — to maintain the architectural, grid-aligned feel. Tags and chips use the same sharp corners. No pill shapes except the availability badge pulse dot.
 
-- **Standard Elements:** Buttons, inputs, and small widgets use `0.25rem` (4px) radii.
-- **Large Containers:** Project cards and feature sections use `0.5rem` (8px). 
-- **Exceptions:** Technical tags or "status" chips may use a full pill-shape (999px) to contrast against the otherwise rectangular, grid-aligned layout.
+## Key Components
 
-## Components
-
-- **Sticky Navbar:** A minimalist, high-blur glass container. Logo on the left, monospaced nav links on the right. Height is fixed at 64px.
-- **Project Cards:** Feature a subtle 1px border and a slight scale-up transform (1.02x) on hover. Include "Tech Stack" chips using the `label-mono` type style.
-- **Expertise Chips:** Small, slate-colored badges with primary-colored icons or accents.
-- **Functional Forms:** Inputs use the `surface` color (#1E293B) with a 1px border that transitions to the `primary` blue on focus. Use monospaced labels for a "terminal" aesthetic.
-- **Primary Button:** Solid primary blue with high-contrast white text. No gradients. Crisp, square-ish corners.
-- **Code Blocks:** Deep black backgrounds (#000000) with syntax highlighting using the `secondary` color and high-contrast accents.
+- **Nav:** 64px fixed, `bg-surface/92 backdrop-blur-sm`, bottom border `outline-variant/15`. Logo left, mono nav links right.
+- **Project Cards:** `border border-outline-variant/20`, hover lifts `translateY(-2px)` with color border (primary/secondary/tertiary per card). Click opens a detail modal overlay.
+- **Section Ghost Numbers:** `22vw`, `rgba(167,139,250,0.05)`, absolute top-right. Non-interactive.
+- **GitHub Contribution Chart:** `ghchart.rshah.org/a78bfa/{username}` — matches primary violet.
+- **Modal Overlay:** `bg-surface/90 backdrop-blur-md`, max-w-2xl panel, closes on backdrop click or Escape.
+- **Contact Links:** 3-column grid of bordered link cards. No form.
