@@ -67,6 +67,26 @@
   }
 }
 
+@utility nav-link {
+  font-family: var(--font-family-label-mono);
+  font-size: var(--font-size-label-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  color: var(--color-on-surface-variant);
+  transition: color 300ms;
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+@utility nav-link-active {
+  color: var(--color-primary);
+  font-weight: 700;
+  border-bottom-color: var(--color-primary);
+}
+
 @theme {
   --color-on-tertiary-fixed-variant: #7d2d00;
   --color-surface-dim: #0b1326;
