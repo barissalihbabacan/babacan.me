@@ -58,7 +58,7 @@ function icon(name, size = 14) {
 
 function buildRepoCard(repo) {
   const card = el('a',
-    'border border-outline-variant/20 p-6 hover:border-primary/30 transition-colors group block',
+    'border border-primary/30 p-6 hover:border-primary/30 transition-colors group block',
     { href: repo.html_url, target: '_blank', rel: 'noopener' });
 
   // Top row: label + external icon
@@ -108,14 +108,14 @@ const GITHUB_ORGS = {
 
 // Language colour palette (subset of GitHub's colours)
 const LANG_COLORS = {
-  JavaScript: '#f1e05a', TypeScript: '#3178c6', Python: '#3572A5',
-  Go: '#00ADD8', Dart: '#00B4AB', 'C++': '#f34b7d', C: '#555555',
-  CSS: '#563d7c', HTML: '#e34c26', Shell: '#89e051', Ruby: '#701516',
-  Rust: '#dea584', Java: '#b07219', Kotlin: '#A97BFF', Swift: '#F05138',
+  JavaScript: '#5eead4', TypeScript: '#2dd4bf', Python: '#14b8a6',
+  Go: '#67e8f9', Dart: '#06b6d4', 'C++': '#0d9488', C: '#0f766e',
+  CSS: '#99f6e4', HTML: '#a7f3d0', Shell: '#6ee7b7', Ruby: '#34d399',
+  Rust: '#2dd4bf', Java: '#0891b2', Kotlin: '#22d3ee', Swift: '#5eead4',
 };
 
 function langColor(name) {
-  return LANG_COLORS[name] ?? '#8d90a0';
+  return LANG_COLORS[name] ?? '#4fd1c5';
 }
 
 function setGridMsg(text) {
@@ -144,7 +144,7 @@ function renderRepoGrid(repos) {
 function activateTab(tab) {
   document.querySelectorAll('.repo-tab-btn').forEach(btn => {
     const isActive = btn.dataset.tab === tab;
-    btn.style.background = isActive ? 'rgba(167,139,250,0.08)' : '';
+    btn.style.background = isActive ? 'rgba(20,184,166,0.08)' : '';
     btn.className = isActive
       ? 'repo-tab-btn font-label-mono text-[9px] uppercase tracking-widest px-3 py-1.5 border border-primary/40 text-primary transition-colors'
       : 'repo-tab-btn font-label-mono text-[9px] uppercase tracking-widest px-3 py-1.5 border border-outline-variant/20 text-on-surface-variant/40 hover:border-primary/30 hover:text-primary/60 transition-colors';
@@ -177,90 +177,130 @@ document.querySelectorAll('.repo-tab-btn').forEach(btn => {
   btn.addEventListener('click', () => activateTab(btn.dataset.tab));
 });
 
+const CACHE_KEY_USER = 'github_user_data';
+const CACHE_KEY_REPOS = 'github_repos_data';
+const CACHE_KEY_TIME = 'github_cache_timestamp';
+const CACHE_DURATION = 60 * 60 * 1000; // 1 Hour
+
+function populateGitHubData(user, repos) {
+  const totalStars = repos.reduce((s, r) => s + (r.stargazers_count ?? 0), 0);
+  const totalForks = repos.reduce((s, r) => s + (r.forks_count ?? 0), 0);
+
+  const setText = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  };
+
+  const TOTAL_REPOS = (user.public_repos ?? 0) + (user.total_private_repos ?? 3);
+  setText('hero-repos', TOTAL_REPOS);
+  setText('hero-stars', totalStars > 0 ? totalStars : '—');
+  setText('gh-stat-repos', TOTAL_REPOS);
+  setText('gh-stat-stars', totalStars);
+  setText('gh-stat-forks', totalForks);
+  setText('gh-stat-followers', user.followers ?? '—');
+
+  // ── Language distribution bars ───────────────────────────────────────
+  const langCount = {};
+  repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language] ?? 0) + 1; });
+
+  const langSorted = Object.entries(langCount).sort((a, b) => b[1] - a[1]).slice(0, 8);
+  const maxCount = langSorted[0]?.[1] ?? 1;
+
+  const langBars = document.getElementById('lang-bars');
+  if (langBars && langSorted.length > 0) {
+    langBars.replaceChildren(...langSorted.map(([lang, count]) => {
+      const row = document.createElement('div');
+      row.className = 'flex items-center gap-3';
+
+      const label = document.createElement('span');
+      label.className = 'font-label-mono text-[10px] text-on-surface-variant/60 w-20 flex-shrink-0';
+      label.textContent = lang;
+
+      const track = document.createElement('div');
+      track.className = 'flex-1 h-1.5 bg-outline-variant/15 overflow-hidden';
+
+      const fill = document.createElement('div');
+      fill.className = 'h-full transition-all duration-700';
+      fill.style.width = `${Math.round((count / maxCount) * 100)}%`;
+      fill.style.backgroundColor = langColor(lang);
+
+      const cnt = document.createElement('span');
+      cnt.className = 'font-label-mono text-[10px] text-on-surface-variant/40 w-8 text-right flex-shrink-0';
+      cnt.textContent = count;
+
+      track.appendChild(fill);
+      row.append(label, track, cnt);
+      return row;
+    }));
+  }
+
+  // ── Repo cards (top 6 by stars) ──────────────────────────────────────
+  repoCache.personal = repos;
+  renderRepoGrid(repos);
+}
+
 async function loadGitHub() {
+  const cachedUser = localStorage.getItem(CACHE_KEY_USER);
+  const cachedRepos = localStorage.getItem(CACHE_KEY_REPOS);
+  const cachedTime = localStorage.getItem(CACHE_KEY_TIME);
+  const now = Date.now();
+
+  // If cache is fresh, load it immediately
+  if (cachedUser && cachedRepos && cachedTime && (now - cachedTime < CACHE_DURATION)) {
+    try {
+      const user = JSON.parse(cachedUser);
+      const repos = JSON.parse(cachedRepos);
+      populateGitHubData(user, repos);
+      return;
+    } catch (e) {
+      console.error('Error parsing cached GitHub data:', e);
+    }
+  }
+
   try {
     const [userRes, reposRes] = await Promise.all([
       fetch(`https://api.github.com/users/${GITHUB_USER}`),
       fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=stars&per_page=30`),
     ]);
 
-    if (userRes.status === 403 || reposRes.status === 403) {
+    if (userRes.status === 403 || reposRes.status === 403 || !userRes.ok || !reposRes.ok) {
+      // Fallback to stale cache if API fails (e.g. rate limit)
+      if (cachedUser && cachedRepos) {
+        console.warn('GitHub API failed or rate-limited. Loading stale cache.');
+        populateGitHubData(JSON.parse(cachedUser), JSON.parse(cachedRepos));
+        return;
+      }
       setGridMsg('GitHub API rate limit reached — try again later.');
-      return;
-    }
-
-    if (!userRes.ok || !reposRes.ok) {
-      setGridMsg('Could not load repositories.');
       return;
     }
 
     const user = await userRes.json();
     const repos = await reposRes.json();
     if (!Array.isArray(repos)) {
+      if (cachedUser && cachedRepos) {
+        populateGitHubData(JSON.parse(cachedUser), JSON.parse(cachedRepos));
+        return;
+      }
       setGridMsg('Could not load repositories.');
       return;
     }
 
-    // ── Aggregate stats ──────────────────────────────────────────────────
-    const totalStars = repos.reduce((s, r) => s + (r.stargazers_count ?? 0), 0);
-    const totalForks = repos.reduce((s, r) => s + (r.forks_count ?? 0), 0);
+    // Save to cache
+    localStorage.setItem(CACHE_KEY_USER, JSON.stringify(user));
+    localStorage.setItem(CACHE_KEY_REPOS, JSON.stringify(repos));
+    localStorage.setItem(CACHE_KEY_TIME, String(now));
 
-    const setText = (id, val) => {
-      const el = document.getElementById(id);
-      if (el) el.textContent = val;
-    };
+    populateGitHubData(user, repos);
 
-    const TOTAL_REPOS = (user.public_repos ?? 0) + (user.total_private_repos ?? 3);
-    setText('hero-repos', TOTAL_REPOS);
-    setText('hero-stars', totalStars > 0 ? totalStars : '—');
-    setText('gh-stat-repos', TOTAL_REPOS);
-    setText('gh-stat-stars', totalStars);
-    setText('gh-stat-forks', totalForks);
-    setText('gh-stat-followers', user.followers ?? '—');
-
-    // ── Language distribution bars ───────────────────────────────────────
-    const langCount = {};
-    repos.forEach(r => { if (r.language) langCount[r.language] = (langCount[r.language] ?? 0) + 1; });
-
-    const langSorted = Object.entries(langCount).sort((a, b) => b[1] - a[1]).slice(0, 8);
-    const maxCount = langSorted[0]?.[1] ?? 1;
-
-    const langBars = document.getElementById('lang-bars');
-    if (langBars && langSorted.length > 0) {
-      langBars.replaceChildren(...langSorted.map(([lang, count]) => {
-        const row = document.createElement('div');
-        row.className = 'flex items-center gap-3';
-
-        const label = document.createElement('span');
-        label.className = 'font-label-mono text-[10px] text-on-surface-variant/60 w-20 flex-shrink-0';
-        label.textContent = lang;
-
-        const track = document.createElement('div');
-        track.className = 'flex-1 h-1.5 bg-outline-variant/15 overflow-hidden';
-
-        const fill = document.createElement('div');
-        fill.className = 'h-full transition-all duration-700';
-        fill.style.width = `${Math.round((count / maxCount) * 100)}%`;
-        fill.style.backgroundColor = langColor(lang);
-
-        const cnt = document.createElement('span');
-        cnt.className = 'font-label-mono text-[10px] text-on-surface-variant/40 w-8 text-right flex-shrink-0';
-        cnt.textContent = count;
-
-        track.appendChild(fill);
-        row.append(label, track, cnt);
-        return row;
-      }));
+  } catch (err) {
+    console.warn('Error fetching GitHub API, loading stale cache:', err);
+    if (cachedUser && cachedRepos) {
+      populateGitHubData(JSON.parse(cachedUser), JSON.parse(cachedRepos));
+    } else {
+      setGridMsg('Could not connect to GitHub API.');
+      const langBarsEl = document.getElementById('lang-bars');
+      if (langBarsEl) langBarsEl.replaceChildren();
     }
-
-    // ── Repo cards (top 6 by stars) ──────────────────────────────────────
-    repoCache.personal = repos;
-    renderRepoGrid(repos);
-
-  } catch {
-    setGridMsg('Could not connect to GitHub API.');
-    const langBarsEl = document.getElementById('lang-bars');
-    if (langBarsEl) langBarsEl.replaceChildren();
   }
 }
 
@@ -277,7 +317,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-primary/20 border border-primary/30 text-primary',
     year: '2026–',
     role: 'Architect & Lead Developer',
-    cardGradient: 'linear-gradient(135deg, #2d1458 0%, #1a0b2e 50%, #0e0b14 100%)',
+    cardGradient: 'linear-gradient(135deg, #0f3635 0%, #081e21 50%, #0a1214 100%)',
     description: 'Local-first, peer-to-peer version control & sync system for the Apple ecosystem. Powered by a Rust core and a native SwiftUI layer, Osmos aims to eliminate cloud dependency — giving creators total data sovereignty through a secure, offline-first architecture.',
     highlights: [
       'Rust core for performance and memory safety',
@@ -295,7 +335,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
     year: 'Active',
     role: 'CTO · Project Manager · Lead Developer',
-    cardGradient: 'linear-gradient(135deg, #0f1240 0%, #130e3a 50%, #0e0b14 100%)',
+    cardGradient: 'linear-gradient(135deg, #0b3a42 0%, #072228 50%, #0a1214 100%)',
     description: 'Mobile application built under the Garage.ist umbrella. Serving as CTO, Project Manager, and Lead Developer — orchestrating the full development lifecycle and App Store launches for both iOS and Android.',
     highlights: [
       'Built under Garage.ist umbrella',
@@ -314,7 +354,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-tertiary/20 border border-tertiary/30 text-tertiary',
     year: 'Active',
     role: 'Engineer',
-    cardGradient: 'linear-gradient(135deg, #0a1a1d 0%, #081418 50%, #0e0b14 100%)',
+    cardGradient: 'linear-gradient(135deg, #062f33 0%, #031c20 50%, #0a1214 100%)',
     description: 'Engineered a real-world RFID access control system securing a public institution. Integrated C++ (Arduino) firmware with a Python/PHP/MySQL backend via serial communications — end-to-end hardware–software integration in a live environment.',
     highlights: [
       'Securing a real public institution in production',
@@ -333,7 +373,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
     year: 'Garage.ist',
     role: 'Lead Developer',
-    cardGradient: 'linear-gradient(135deg, #1a0a28 0%, #120820 50%, #0e0b14 100%)',
+    cardGradient: 'linear-gradient(135deg, #0d382f 0%, #06201b 50%, #0a1214 100%)',
     description: 'TV remote control application that operates over a local network. Built at Garage.ist as Lead Developer — designed the control protocol, architected core systems, and managed all technical operations end-to-end.',
     highlights: [
       'Network-based TV control protocol design',
@@ -351,7 +391,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-primary/20 border border-primary/30 text-primary',
     year: '2023',
     role: 'Developer',
-    cardGradient: 'linear-gradient(135deg, #12102a 0%, #0e0e22 50%, #0e0b14 100%)',
+    cardGradient: 'linear-gradient(135deg, #0d353a 0%, #051d20 50%, #0a1214 100%)',
     description: 'Built a multi-branch IT Resource Management System. Migrated a monolithic PHP codebase to Node.js/NoSQL. Implemented barcode generation pipelines and role-based access control across branches.',
     highlights: [
       'Multi-branch support across locations',
