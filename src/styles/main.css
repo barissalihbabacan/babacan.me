@@ -14,13 +14,21 @@
   body {
     background-color: #0b0912;
     background-image:
-      radial-gradient(at 15% 20%, rgba(139, 92, 246, 0.11) 0px, transparent 52%),
-      radial-gradient(at 85% 10%, rgba(167, 139, 250, 0.07) 0px, transparent 44%),
+      radial-gradient(
+        at 15% 20%,
+        rgba(139, 92, 246, 0.11) 0px,
+        transparent 52%
+      ),
+      radial-gradient(
+        at 85% 10%,
+        rgba(167, 139, 250, 0.07) 0px,
+        transparent 44%
+      ),
       radial-gradient(at 72% 80%, rgba(79, 70, 229, 0.08) 0px, transparent 48%),
       radial-gradient(at 5% 85%, rgba(196, 181, 253, 0.05) 0px, transparent 42%);
     background-attachment: fixed;
     color: #ede9fe;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
@@ -44,7 +52,11 @@
   }
 
   .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-variation-settings:
+      "FILL" 0,
+      "wght" 400,
+      "GRAD" 0,
+      "opsz" 24;
   }
 }
 
@@ -57,19 +69,23 @@
   }
 
   .hero-pattern {
-    background-image: radial-gradient(circle at 2px 2px, rgba(167, 139, 250, 0.06) 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 2px 2px,
+      rgba(167, 139, 250, 0.06) 1px,
+      transparent 0
+    );
     background-size: 40px 40px;
   }
 
   .input-focus-effect:focus {
     outline: none;
-    border-color: #A78BFA;
-    box-shadow: 0 0 0 1px #A78BFA;
+    border-color: #a78bfa;
+    box-shadow: 0 0 0 1px #a78bfa;
   }
 
   .filter-btn.active {
-    color: #A78BFA;
-    border-bottom: 2px solid #A78BFA;
+    color: #a78bfa;
+    border-bottom: 2px solid #a78bfa;
   }
 
   .aurora-blob {
@@ -87,7 +103,10 @@
     backdrop-filter: blur(12px);
     border: 1px solid rgba(139, 92, 246, 0.12);
     overflow: hidden;
-    transition: border-color 300ms, transform 300ms, box-shadow 300ms;
+    transition:
+      border-color 300ms,
+      transform 300ms,
+      box-shadow 300ms;
   }
 
   .accent-card::before {
@@ -95,7 +114,12 @@
     position: absolute;
     inset: 0 0 auto 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-primary-container), var(--color-secondary-container), var(--color-tertiary-container));
+    background: linear-gradient(
+      90deg,
+      var(--color-primary-container),
+      var(--color-secondary-container),
+      var(--color-tertiary-container)
+    );
   }
 
   .accent-card:hover {
@@ -124,30 +148,49 @@
 }
 
 @utility text-gradient {
-  background-image: linear-gradient(120deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background-image: linear-gradient(
+    120deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 @utility text-gradient-warm {
-  background-image: linear-gradient(120deg, var(--color-tertiary) 0%, #818cf8 100%);
+  background-image: linear-gradient(
+    120deg,
+    var(--color-tertiary) 0%,
+    #818cf8 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 @utility text-gradient-aurora {
-  background-image: linear-gradient(120deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-tertiary) 100%);
+  background-image: linear-gradient(
+    120deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 50%,
+    var(--color-tertiary) 100%
+  );
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 @utility btn-gradient {
-  background-image: linear-gradient(120deg, var(--color-primary-container), var(--color-secondary-container));
+  background-image: linear-gradient(
+    120deg,
+    var(--color-primary-container),
+    var(--color-secondary-container)
+  );
   color: #ffffff;
-  transition: box-shadow 300ms, transform 150ms;
+  transition:
+    box-shadow 300ms,
+    transform 150ms;
   &:hover {
     box-shadow: 0 8px 30px -8px rgba(139, 92, 246, 0.55);
   }
@@ -170,65 +213,65 @@
 
 @theme {
   /* ── Primary: Violet ───────────────────────────────────────────────────── */
-  --color-primary: #A78BFA;
-  --color-primary-container: #7C3AED;
-  --color-primary-fixed: #EDE9FE;
-  --color-primary-fixed-dim: #C4B5FD;
-  --color-on-primary: #1A0B2E;
-  --color-on-primary-container: #F5F3FF;
+  --color-primary: #a78bfa;
+  --color-primary-container: #7c3aed;
+  --color-primary-fixed: #ede9fe;
+  --color-primary-fixed-dim: #c4b5fd;
+  --color-on-primary: #1a0b2e;
+  --color-on-primary-container: #f5f3ff;
   --color-on-primary-fixed: #160826;
-  --color-on-primary-fixed-variant: #5B21B6;
-  --color-inverse-primary: #6D28D9;
-  --color-surface-tint: #A78BFA;
+  --color-on-primary-fixed-variant: #5b21b6;
+  --color-inverse-primary: #6d28d9;
+  --color-surface-tint: #a78bfa;
 
   /* ── Secondary: Soft Violet ────────────────────────────────────────────── */
-  --color-secondary: #C4B5FD;
-  --color-secondary-container: #8B5CF6;
-  --color-secondary-fixed: #F5F3FF;
-  --color-secondary-fixed-dim: #DDD6FE;
+  --color-secondary: #c4b5fd;
+  --color-secondary-container: #8b5cf6;
+  --color-secondary-fixed: #f5f3ff;
+  --color-secondary-fixed-dim: #ddd6fe;
   --color-on-secondary: #160826;
-  --color-on-secondary-container: #1E0F36;
+  --color-on-secondary-container: #1e0f36;
   --color-on-secondary-fixed: #160826;
-  --color-on-secondary-fixed-variant: #4C1D95;
+  --color-on-secondary-fixed-variant: #4c1d95;
 
   /* ── Tertiary: Indigo ──────────────────────────────────────────────────── */
-  --color-tertiary: #818CF8;
-  --color-tertiary-container: #4F46E5;
-  --color-tertiary-fixed: #E0E7FF;
-  --color-tertiary-fixed-dim: #818CF8;
-  --color-on-tertiary: #0F0B2A;
-  --color-on-tertiary-container: #EEF2FF;
-  --color-on-tertiary-fixed: #0B0820;
-  --color-on-tertiary-fixed-variant: #3730A3;
+  --color-tertiary: #818cf8;
+  --color-tertiary-container: #4f46e5;
+  --color-tertiary-fixed: #e0e7ff;
+  --color-tertiary-fixed-dim: #818cf8;
+  --color-on-tertiary: #0f0b2a;
+  --color-on-tertiary-container: #eef2ff;
+  --color-on-tertiary-fixed: #0b0820;
+  --color-on-tertiary-fixed-variant: #3730a3;
 
   /* ── Surface: Anthracite-Purple ────────────────────────────────────────── */
-  --color-surface: #0E0B14;
-  --color-surface-dim: #0B0912;
-  --color-surface-bright: #2A2438;
-  --color-surface-container: #16121F;
-  --color-surface-container-low: #130F1C;
-  --color-surface-container-high: #1E1A2B;
+  --color-surface: #0e0b14;
+  --color-surface-dim: #0b0912;
+  --color-surface-bright: #2a2438;
+  --color-surface-container: #16121f;
+  --color-surface-container-low: #130f1c;
+  --color-surface-container-high: #1e1a2b;
   --color-surface-container-highest: #252035;
   --color-surface-container-lowest: #080610;
   --color-surface-variant: #252035;
-  --color-background: #0B0912;
+  --color-background: #0b0912;
 
   /* ── On-Surface: Lavender-White ────────────────────────────────────────── */
-  --color-on-surface: #EDE9FE;
-  --color-on-surface-variant: #9084A8;
-  --color-on-background: #EDE9FE;
-  --color-inverse-surface: #EDE9FE;
-  --color-inverse-on-surface: #1E1A2B;
+  --color-on-surface: #ede9fe;
+  --color-on-surface-variant: #9084a8;
+  --color-on-background: #ede9fe;
+  --color-inverse-surface: #ede9fe;
+  --color-inverse-on-surface: #1e1a2b;
 
   /* ── Outline ───────────────────────────────────────────────────────────── */
-  --color-outline: #6B5F80;
-  --color-outline-variant: #2D2445;
+  --color-outline: #6b5f80;
+  --color-outline-variant: #2d2445;
 
   /* ── Error ─────────────────────────────────────────────────────────────── */
-  --color-error: #F87171;
-  --color-error-container: #7F1D1D;
-  --color-on-error: #7F1D1D;
-  --color-on-error-container: #FECACA;
+  --color-error: #f87171;
+  --color-error-container: #7f1d1d;
+  --color-on-error: #7f1d1d;
+  --color-on-error-container: #fecaca;
 
   /* ── Spacing & Layout ──────────────────────────────────────────────────── */
   --radius-DEFAULT: 0.125rem;
@@ -236,11 +279,11 @@
   --radius-xl: 0.5rem;
   --radius-full: 0.75rem;
 
-  --spacing-margin-mobile: 20px;
-  --spacing-margin-desktop: 40px;
+  --spacing-margin-mobile: 12px;
+  --spacing-margin-desktop: 20px;
   --spacing-section-gap: 120px;
   --spacing-gutter: 24px;
-  --spacing-container-max: 1200px;
+  --spacing-container-max: 1530px;
   --spacing-unit: 8px;
 
   /* ── Typography ────────────────────────────────────────────────────────── */

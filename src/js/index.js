@@ -210,9 +210,10 @@ async function loadGitHub() {
       if (el) el.textContent = val;
     };
 
-    setText('hero-repos', user.public_repos ?? '—');
+    const TOTAL_REPOS = (user.public_repos ?? 0) + (user.total_private_repos ?? 3);
+    setText('hero-repos', TOTAL_REPOS);
     setText('hero-stars', totalStars > 0 ? totalStars : '—');
-    setText('gh-stat-repos', user.public_repos ?? '—');
+    setText('gh-stat-repos', TOTAL_REPOS);
     setText('gh-stat-stars', totalStars);
     setText('gh-stat-forks', totalForks);
     setText('gh-stat-followers', user.followers ?? '—');
