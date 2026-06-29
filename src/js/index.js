@@ -164,7 +164,9 @@ function activateTab(tab) {
   }
 
   setGridMsg('Loading org repositories…');
-  fetch(`https://api.github.com/orgs/${orgSlug}/repos?sort=stars&per_page=30`)
+  const token = import.meta.env.VITE_GITHUB_TOKEN || localStorage.getItem('github_token');
+  const headers = token ? { Authorization: `token ${token}` } : {};
+  fetch(`https://api.github.com/orgs/${orgSlug}/repos?sort=stars&per_page=30`, { headers })
     .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(repos => {
       repoCache[tab] = Array.isArray(repos) ? repos : [];
@@ -240,6 +242,28 @@ function populateGitHubData(user, repos) {
 }
 
 async function loadGitHub() {
+  // 1. Try loading static build data
+  try {
+    const res = await fetch('/github-data.json');
+    if (res.ok) {
+      const staticData = await res.json();
+      console.log('Loaded GitHub data from static build cache, generated at:', new Date(staticData.timestamp));
+
+      // Save orgs repos to cache
+      if (staticData.orgs) {
+        Object.keys(staticData.orgs).forEach(key => {
+          repoCache[key] = staticData.orgs[key];
+        });
+      }
+
+      populateGitHubData(staticData.user, staticData.repos);
+      return;
+    }
+  } catch (e) {
+    console.log('Static build data not found, falling back to live API.');
+  }
+
+  // 2. Live API fallback
   const cachedUser = localStorage.getItem(CACHE_KEY_USER);
   const cachedRepos = localStorage.getItem(CACHE_KEY_REPOS);
   const cachedTime = localStorage.getItem(CACHE_KEY_TIME);
@@ -258,9 +282,11 @@ async function loadGitHub() {
   }
 
   try {
+    const token = import.meta.env.VITE_GITHUB_TOKEN || localStorage.getItem('github_token');
+    const headers = token ? { Authorization: `token ${token}` } : {};
     const [userRes, reposRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${GITHUB_USER}`),
-      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=stars&per_page=30`),
+      fetch(`https://api.github.com/users/${GITHUB_USER}`, { headers }),
+      fetch(`https://api.github.com/users/${GITHUB_USER}/repos?sort=stars&per_page=30`, { headers }),
     ]);
 
     if (userRes.status === 403 || reposRes.status === 403 || !userRes.ok || !reposRes.ok) {

@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - main
+  schedule:
+    - cron: '0 0 * * 0' # Runs every Sunday at 00:00 UTC
 
 jobs:
   build-and-deploy:
@@ -24,6 +26,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy to Firebase (live)
         if: github.event_name == 'push'
