@@ -126,7 +126,7 @@
         position: absolute;
         font-size: 22vw;
         font-weight: 800;
-        color: rgba(94, 234, 212, 0.05);
+        color: var(--color-ghost-number);
         line-height: 1;
         pointer-events: none;
         z-index: 0;
@@ -374,7 +374,7 @@
       <!-- ─── EXPERIENCE ───────────────────────────────────────────────────── -->
       <section
         id="experience"
-        class="relative min-h-[70vh] border-t border-primary/30 py-[10vh] overflow-hidden"
+        class="scroll-reveal relative min-h-[70vh] border-t border-primary/30 py-[10vh] overflow-hidden"
       >
         <div class="section-ghost-number">01</div>
         <div
@@ -398,7 +398,7 @@
           <!-- Horizontal expertise rows -->
           <div class="divide-y divide-primary/30">
             <div
-              class="group py-[3vh] grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default"
+              class="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default"
             >
               <div class="flex items-baseline gap-3">
                 <span
@@ -433,7 +433,7 @@
             </div>
 
             <div
-              class="group py-[3vh] grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default"
+              class="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default"
             >
               <div class="flex items-baseline gap-3">
                 <span
@@ -468,7 +468,7 @@
             </div>
 
             <div
-              class="group py-[3vh] grid grid-cols-1 md:grid-cols-[1fr_2fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default"
+              class="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default"
             >
               <div class="flex items-baseline gap-3">
                 <span
@@ -785,7 +785,7 @@
       <!-- ─── PROJECTS ─────────────────────────────────────────────────────── -->
       <section
         id="projects"
-        class="relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
+        class="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
       >
         <div class="section-ghost-number">02</div>
         <div
@@ -808,40 +808,436 @@
             >
               Selected Work
             </h2>
+          </div>
 
-            <!-- Filter tabs -->
-            <div class="flex gap-6 border-b border-primary/30 pb-2 self-end">
-              <button
-                class="filter-btn active font-label-mono text-[10px] uppercase tracking-widest pb-2 transition-colors"
-                data-filter="all"
+          <!-- Work Sub-heading -->
+          <div class="mb-8 border-b border-primary/20 pb-2">
+            <h3 class="font-label-mono text-[10px] uppercase tracking-widest text-primary">Work</h3>
+          </div>
+
+          <!-- Work Project grid -->
+          <div
+            class="flex flex-wrap justify-start gap-6 mb-[6vh]"
+            id="work-projects-grid"
+          >
+            <!-- SORTIFY -->
+            <div
+              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
+              data-category="Frontend"
+              data-project="sortify"
+            >
+              <div
+                class="relative overflow-hidden"
+                style="
+                  height: 20vh;
+                  min-height: 140px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
+                  );
+                "
               >
-                All
-              </button>
-              <button
-                class="filter-btn text-on-surface-variant font-label-mono text-[10px] uppercase tracking-widest pb-2 hover:text-primary transition-colors"
-                data-filter="Backend"
+                <div class="card-dot-grid"></div>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
+                ></div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
+                    >Garage.ist</span
+                  >
+                </div>
+              </div>
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
+                    >Mobile · Full-Stack</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50"
+                    >Active</span
+                  >
+                </div>
+                <h3
+                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
+                >
+                  Sortify
+                </h3>
+                <p
+                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
+                >
+                  A Garage.ist project. CTO, Project Manager & Lead Developer —
+                  full development lifecycle and App Store launches for iOS &
+                  Android.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >SwiftUI</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Node.js</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >TypeScript</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- +TV -->
+            <div
+              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
+              data-category="Frontend"
+              data-project="plus-tv"
+            >
+              <div
+                class="relative overflow-hidden"
+                style="
+                  height: 20vh;
+                  min-height: 140px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
+                  );
+                "
               >
-                Backend
-              </button>
-              <button
-                class="filter-btn text-on-surface-variant font-label-mono text-[10px] uppercase tracking-widest pb-2 hover:text-primary transition-colors"
-                data-filter="Frontend"
+                <div class="card-dot-grid"></div>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
+                ></div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
+                    >Garage.ist</span
+                  >
+                </div>
+              </div>
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
+                    >Mobile · Full-Stack</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50"
+                    >Garage.ist</span
+                  >
+                </div>
+                <h3
+                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
+                >
+                  +TV
+                </h3>
+                <p
+                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
+                >
+                  TV remote control application that operates over a local
+                  network. Built at Garage.ist as Lead Developer — architected
+                  the control protocol and all core systems.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Garage.ist</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Lead Dev</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- GAYRIMENKULDUNYASI -->
+            <div
+              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
+              data-category="Frontend"
+              data-project="gayrimenkuldunyasi"
+            >
+              <div
+                class="relative overflow-hidden"
+                style="
+                  height: 20vh;
+                  min-height: 140px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
+                  );
+                "
               >
-                Frontend
-              </button>
-              <button
-                class="filter-btn text-on-surface-variant font-label-mono text-[10px] uppercase tracking-widest pb-2 hover:text-primary transition-colors"
-                data-filter="Infrastructure"
+                <div class="card-dot-grid"></div>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
+                ></div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
+                    >Garage.ist</span
+                  >
+                </div>
+              </div>
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
+                    >Web · Full-Stack</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50"
+                    >2026</span
+                  >
+                </div>
+                <h3
+                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
+                >
+                  Gayrimenkul Dünyası
+                </h3>
+                <p
+                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
+                >
+                  News and analysis platform for the real estate sector. Designed to collect, categorize, and present up-to-date market listings, industry insights, and news updates under a single unified dashboard.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Next.js</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Firebase</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- PLAY.SORTIFY -->
+            <div
+              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
+              data-category="Frontend"
+              data-project="playsortify"
+            >
+              <div
+                class="relative overflow-hidden"
+                style="
+                  height: 20vh;
+                  min-height: 140px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
+                  );
+                "
               >
-                Infra
-              </button>
+                <div class="card-dot-grid"></div>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
+                ></div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
+                    >Garage.ist</span
+                  >
+                </div>
+              </div>
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
+                    >Web · Frontend</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50"
+                    >2026</span
+                  >
+                </div>
+                <h3
+                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
+                >
+                  Sortify Web
+                </h3>
+                <p
+                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
+                >
+                  Web port of the official Sortify iOS game. Built using React, TypeScript, and Vite to deliver a seamless browser-based gaming experience for kids, parents, and teachers, hosted on Firebase Hosting.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >React</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Vite</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >TypeScript</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- SPORSAYFASI -->
+            <div
+              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
+              data-category="Frontend"
+              data-project="sporsayfasi"
+            >
+              <div
+                class="relative overflow-hidden"
+                style="
+                  height: 20vh;
+                  min-height: 140px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
+                  );
+                "
+              >
+                <div class="card-dot-grid"></div>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
+                ></div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
+                    >Garage.ist</span
+                  >
+                </div>
+              </div>
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
+                    >Web · Full-Stack</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50"
+                    >2026</span
+                  >
+                </div>
+                <h3
+                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
+                >
+                  Spor Sayfası
+                </h3>
+                <p
+                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
+                >
+                  A modern, high-performance sports news and content aggregation platform. Built with a custom news engine delivering real-time statistics and updates.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Next.js</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >TypeScript</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Firebase</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- WORLDCLOCK -->
+            <div
+              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
+              data-category="Frontend"
+              data-project="worldclock"
+            >
+              <div
+                class="relative overflow-hidden"
+                style="
+                  height: 20vh;
+                  min-height: 140px;
+                  background: linear-gradient(
+                    135deg,
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
+                  );
+                "
+              >
+                <div class="card-dot-grid"></div>
+                <div
+                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
+                ></div>
+                <div class="absolute top-4 left-4">
+                  <span
+                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
+                    >Garage.ist</span
+                  >
+                </div>
+              </div>
+              <div class="p-8">
+                <div class="flex justify-between items-center mb-4">
+                  <span
+                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
+                    >Web · Frontend</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50"
+                    >2026</span
+                  >
+                </div>
+                <h3
+                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
+                >
+                  World Clock
+                </h3>
+                <p
+                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
+                >
+                  Interactive global clock and 3D globe visualization platform. Features daylight terminators, local time tracking, timezone conversion controls, and localized summaries.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >JavaScript</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >D3.js</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
+                    >Vite</span
+                  >
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Project grid -->
+          <!-- Personal Sub-heading -->
+          <div class="mb-8 border-b border-primary/20 pb-2">
+            <h3 class="font-label-mono text-[10px] uppercase tracking-widest text-primary">Personal</h3>
+          </div>
+
+          <!-- Personal Project grid -->
           <div
-            class="flex flex-wrap justify-center gap-6 mb-[8vh]"
-            id="projects-grid"
+            class="flex flex-wrap justify-start gap-6 mb-[8vh]"
+            id="personal-projects-grid"
           >
             <!-- OSMOS -->
             <div
@@ -852,13 +1248,13 @@
               <div
                 class="relative overflow-hidden"
                 style="
-                  height: 28vh;
-                  min-height: 180px;
+                  height: 20vh;
+                  min-height: 140px;
                   background: linear-gradient(
                     135deg,
-                    #0f3635 0%,
-                    #081e21 45%,
-                    #0a1214 100%
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
                   );
                 "
               >
@@ -914,76 +1310,6 @@
               </div>
             </div>
 
-            <!-- SORTIFY -->
-            <div
-              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
-              data-category="Frontend"
-              data-project="sortify"
-            >
-              <div
-                class="relative overflow-hidden"
-                style="
-                  height: 28vh;
-                  min-height: 180px;
-                  background: linear-gradient(
-                    135deg,
-                    #0b3a42 0%,
-                    #072228 45%,
-                    #0a1214 100%
-                  );
-                "
-              >
-                <div class="card-dot-grid"></div>
-                <div
-                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
-                ></div>
-                <div class="absolute top-4 left-4">
-                  <span
-                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
-                    >Garage.ist</span
-                  >
-                </div>
-              </div>
-              <div class="p-8">
-                <div class="flex justify-between items-center mb-4">
-                  <span
-                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
-                    >Mobile · Full-Stack</span
-                  >
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50"
-                    >Active</span
-                  >
-                </div>
-                <h3
-                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
-                >
-                  Sortify
-                </h3>
-                <p
-                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
-                >
-                  A Garage.ist project. CTO, Project Manager & Lead Developer —
-                  full development lifecycle and App Store launches for iOS &
-                  Android.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
-                    >SwiftUI</span
-                  >
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
-                    >Node.js</span
-                  >
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
-                    >TypeScript</span
-                  >
-                </div>
-              </div>
-            </div>
-
             <!-- Q-PASS -->
             <div
               class="project-card border border-primary/30 hover:border-tertiary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
@@ -993,13 +1319,13 @@
               <div
                 class="relative overflow-hidden"
                 style="
-                  height: 28vh;
-                  min-height: 180px;
+                  height: 20vh;
+                  min-height: 140px;
                   background: linear-gradient(
                     135deg,
-                    #062f33 0%,
-                    #031c20 45%,
-                    #0a1214 100%
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
                   );
                 "
               >
@@ -1054,72 +1380,6 @@
               </div>
             </div>
 
-            <!-- +TV -->
-            <div
-              class="project-card border border-primary/30 hover:border-secondary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
-              data-category="Frontend"
-              data-project="plus-tv"
-            >
-              <div
-                class="relative overflow-hidden"
-                style="
-                  height: 28vh;
-                  min-height: 180px;
-                  background: linear-gradient(
-                    135deg,
-                    #0d382f 0%,
-                    #06201b 45%,
-                    #0a1214 100%
-                  );
-                "
-              >
-                <div class="card-dot-grid"></div>
-                <div
-                  class="absolute inset-0 bg-linear-to-t from-surface/60 to-transparent"
-                ></div>
-                <div class="absolute top-4 left-4">
-                  <span
-                    class="font-label-mono text-[9px] bg-secondary/20 border border-secondary/30 text-secondary px-2 py-0.5 uppercase tracking-widest"
-                    >Garage.ist</span
-                  >
-                </div>
-              </div>
-              <div class="p-8">
-                <div class="flex justify-between items-center mb-4">
-                  <span
-                    class="font-label-mono text-[9px] text-secondary uppercase tracking-widest border border-secondary/20 px-2 py-0.5"
-                    >Mobile · Full-Stack</span
-                  >
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50"
-                    >Garage.ist</span
-                  >
-                </div>
-                <h3
-                  class="font-semibold text-lg text-on-surface mb-3 group-hover:text-secondary transition-colors"
-                >
-                  +TV
-                </h3>
-                <p
-                  class="font-body-md text-on-surface-variant text-sm mb-5 leading-relaxed"
-                >
-                  TV remote control application that operates over a local
-                  network. Built at Garage.ist as Lead Developer — architected
-                  the control protocol and all core systems.
-                </p>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
-                    >Garage.ist</span
-                  >
-                  <span
-                    class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5"
-                    >Lead Dev</span
-                  >
-                </div>
-              </div>
-            </div>
-
             <!-- IT-RMS -->
             <div
               class="project-card border border-primary/30 hover:border-primary/40 group cursor-pointer w-full md:w-[calc((100%-3rem)/3)]"
@@ -1129,13 +1389,13 @@
               <div
                 class="relative overflow-hidden"
                 style="
-                  height: 28vh;
-                  min-height: 180px;
+                  height: 20vh;
+                  min-height: 140px;
                   background: linear-gradient(
                     135deg,
-                    #0d353a 0%,
-                    #051d20 45%,
-                    #0a1214 100%
+                    var(--color-surface-bright) 0%,
+                    var(--color-surface-container) 50%,
+                    var(--color-surface-container-lowest) 100%
                   );
                 "
               >
@@ -1522,9 +1782,8 @@
                 <p
                   class="font-body-md text-xs text-on-surface-variant/60 mb-4 leading-relaxed"
                 >
-                  Multi-agent AI software team framework. Contributed agent
-                  definitions, skill modules, and hook configurations across the
-                  138-agent, 295-skill ecosystem.
+                  Multi-agent AI software team framework. Contributed the
+                  Turkish translation to the repository.
                 </p>
                 <div class="flex flex-wrap gap-2">
                   <span
@@ -1537,11 +1796,65 @@
                   >
                 </div>
               </div>
+
+              <!-- graphify -->
+              <div
+                class="border border-primary/30 p-6 hover:border-tertiary/30 transition-colors group"
+              >
+                <div class="flex items-start justify-between mb-3">
+                  <span
+                    class="font-label-mono text-[9px] text-primary uppercase tracking-widest border border-primary/20 px-2 py-0.5"
+                    >safishamsi</span
+                  >
+                  <a
+                    href="https://github.com/safishamsi/graphify"
+                    target="_blank"
+                    rel="noopener"
+                    class="text-on-surface-variant/30 group-hover:text-tertiary transition-colors"
+                  >
+                    <span
+                      class="material-symbols-outlined"
+                      style="font-size: 14px"
+                      >open_in_new</span
+                    >
+                  </a>
+                </div>
+                <h4
+                  class="font-semibold text-on-surface mb-1 group-hover:text-tertiary transition-colors"
+                >
+                  graphify
+                </h4>
+                <p
+                  class="font-label-mono text-[9px] text-on-surface-variant/40 mb-3"
+                >
+                  safishamsi / graphify
+                </p>
+                <p
+                  class="font-body-md text-xs text-on-surface-variant/60 mb-4 leading-relaxed"
+                >
+                  Convert project files, documentation, and media into a
+                  queryable knowledge graph. Contributed the Turkish translation
+                  to the repository.
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/40 border border-primary/30 px-2 py-0.5"
+                    >AI Skills</span
+                  >
+                  <span
+                    class="font-label-mono text-[9px] text-on-surface-variant/40 border border-primary/30 px-2 py-0.5"
+                    >Python</span
+                  >
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- ── Contributions ──────────────────────────────────────────── -->
-          <div class="border-t border-primary/30 pt-[6vh]" id="opensource">
+          <div
+            class="scroll-reveal border-t border-primary/30 pt-[6vh]"
+            id="opensource"
+          >
             <div class="flex items-center gap-4 mb-[4vh]">
               <span
                 class="material-symbols-outlined text-on-surface-variant/40"
@@ -1646,11 +1959,11 @@
                 </a>
               </div>
               <img
-                src="https://ghchart.rshah.org/2dd4bf/barissalihbabacan"
+                src="https://ghchart.rshah.org/52525b/barissalihbabacan"
                 alt="GitHub contribution chart for barissalihbabacan"
                 class="w-full min-w-[600px]"
                 style="
-                  filter: invert(1) hue-rotate(180deg) saturate(0.9);
+                  filter: invert(1);
                   opacity: 0.85;
                 "
                 loading="lazy"
@@ -1683,7 +1996,7 @@
               <button
                 data-tab="personal"
                 class="repo-tab-btn font-label-mono text-[9px] uppercase tracking-widest px-3 py-1.5 border border-primary/40 text-primary transition-colors"
-                style="background: rgba(20, 184, 166, 0.08)"
+                style="background: rgba(255, 255, 255, 0.08)"
               >
                 Personal
               </button>
@@ -1723,7 +2036,7 @@
       <!-- ─── WRITING ───────────────────────────────────────────────────────── -->
       <section
         id="writing"
-        class="relative min-h-[60vh] border-t border-primary/30 py-[10vh] overflow-hidden"
+        class="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
       >
         <div class="section-ghost-number">03</div>
         <div
@@ -1759,10 +2072,10 @@
                   style="
                     background: linear-gradient(
                       160deg,
-                      #051c1c 0%,
-                      #0c2e2d 30%,
-                      #0d1e22 60%,
-                      #0a1214 100%
+                      var(--color-surface-bright) 0%,
+                      var(--color-surface-container-high) 30%,
+                      var(--color-surface-container) 60%,
+                      var(--color-surface-container-lowest) 100%
                     );
                   "
                 ></div>
@@ -1781,11 +2094,11 @@
                 >
                   <div
                     class="w-6 h-px mb-6"
-                    style="background: rgba(45, 212, 191, 0.5)"
+                    style="background: rgba(255, 255, 255, 0.3)"
                   ></div>
                   <div
                     class="font-label-mono uppercase tracking-[0.25em] mb-3"
-                    style="font-size: 9px; color: rgba(45, 212, 191, 0.7)"
+                    style="font-size: 9px; color: rgba(255, 255, 255, 0.6)"
                   >
                     The Sins of
                   </div>
@@ -1793,7 +2106,7 @@
                     class="font-bold leading-tight"
                     style="
                       font-size: clamp(20px, 2.8vw, 28px);
-                      color: #e0fdf4;
+                      color: #ffffff;
                       letter-spacing: -0.02em;
                     "
                   >
@@ -1801,13 +2114,13 @@
                   </div>
                   <div
                     class="w-10 h-px my-5"
-                    style="background: rgba(45, 212, 191, 0.3)"
+                    style="background: rgba(255, 255, 255, 0.2)"
                   ></div>
                   <div
                     class="font-label-mono uppercase tracking-[0.2em]"
                     style="
                       font-size: 8px;
-                      color: rgba(45, 212, 191, 0.5);
+                      color: rgba(255, 255, 255, 0.4);
                       line-height: 1.8;
                     "
                   >
@@ -1815,7 +2128,7 @@
                   </div>
                   <div
                     class="absolute bottom-7 font-label-mono uppercase tracking-widest"
-                    style="font-size: 8px; color: rgba(224, 253, 244, 0.25)"
+                    style="font-size: 8px; color: rgba(255, 255, 255, 0.2)"
                   >
                     Barış Salih Babacan
                   </div>
@@ -2054,7 +2367,7 @@
       <!-- ─── CONTACT ───────────────────────────────────────────────────────── -->
       <section
         id="contact"
-        class="relative min-h-[80vh] border-t border-primary/30 py-[10vh] overflow-hidden"
+        class="scroll-reveal relative min-h-[80vh] border-t border-primary/30 py-[10vh] overflow-hidden"
       >
         <div class="section-ghost-number">04</div>
         <div
@@ -2280,7 +2593,7 @@
             style="
               height: 30vh;
               min-height: 180px;
-              background: linear-gradient(135deg, #0f3635, #081e21, #0a1214);
+              background: linear-gradient(135deg, var(--color-surface-bright), var(--color-surface-container), var(--color-surface-container-lowest));
             "
           >
             <div class="card-dot-grid"></div>

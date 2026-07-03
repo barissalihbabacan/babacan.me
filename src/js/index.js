@@ -21,24 +21,6 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-// ── Project filter ────────────────────────────────────────────────────────────
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => {
-      b.classList.remove('active', 'text-primary');
-      b.classList.add('text-on-surface-variant');
-    });
-    btn.classList.add('active', 'text-primary');
-    btn.classList.remove('text-on-surface-variant');
-
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('#projects-grid [data-category]').forEach(card => {
-      const matches = filter === 'all' || card.dataset.category === filter;
-      card.style.display = matches ? '' : 'none';
-      card.style.opacity = matches ? '1' : '0';
-    });
-  });
-});
 
 // ── GitHub API ────────────────────────────────────────────────────────────────
 
@@ -108,14 +90,14 @@ const GITHUB_ORGS = {
 
 // Language colour palette (subset of GitHub's colours)
 const LANG_COLORS = {
-  JavaScript: '#5eead4', TypeScript: '#2dd4bf', Python: '#14b8a6',
-  Go: '#67e8f9', Dart: '#06b6d4', 'C++': '#0d9488', C: '#0f766e',
-  CSS: '#99f6e4', HTML: '#a7f3d0', Shell: '#6ee7b7', Ruby: '#34d399',
-  Rust: '#2dd4bf', Java: '#0891b2', Kotlin: '#22d3ee', Swift: '#5eead4',
+  JavaScript: '#a1a1aa', TypeScript: '#e4e4e7', Python: '#71717a',
+  Go: '#d4d4d8', Dart: '#a1a1aa', 'C++': '#71717a', C: '#52525b',
+  CSS: '#a1a1aa', HTML: '#e4e4e7', Shell: '#d4d4d8', Ruby: '#71717a',
+  Rust: '#ffffff', Java: '#71717a', Kotlin: '#a1a1aa', Swift: '#ffffff',
 };
 
 function langColor(name) {
-  return LANG_COLORS[name] ?? '#4fd1c5';
+  return LANG_COLORS[name] ?? '#a1a1aa';
 }
 
 function setGridMsg(text) {
@@ -144,7 +126,7 @@ function renderRepoGrid(repos) {
 function activateTab(tab) {
   document.querySelectorAll('.repo-tab-btn').forEach(btn => {
     const isActive = btn.dataset.tab === tab;
-    btn.style.background = isActive ? 'rgba(20,184,166,0.08)' : '';
+    btn.style.background = isActive ? 'var(--color-tab-active-bg)' : '';
     btn.className = isActive
       ? 'repo-tab-btn font-label-mono text-[9px] uppercase tracking-widest px-3 py-1.5 border border-primary/40 text-primary transition-colors'
       : 'repo-tab-btn font-label-mono text-[9px] uppercase tracking-widest px-3 py-1.5 border border-outline-variant/20 text-on-surface-variant/40 hover:border-primary/30 hover:text-primary/60 transition-colors';
@@ -343,7 +325,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-primary/20 border border-primary/30 text-primary',
     year: '2026–',
     role: 'Architect & Lead Developer',
-    cardGradient: 'linear-gradient(135deg, #0f3635 0%, #081e21 50%, #0a1214 100%)',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
     description: 'Local-first, peer-to-peer version control & sync system for the Apple ecosystem. Powered by a Rust core and a native SwiftUI layer, Osmos aims to eliminate cloud dependency — giving creators total data sovereignty through a secure, offline-first architecture.',
     highlights: [
       'Rust core for performance and memory safety',
@@ -361,7 +343,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
     year: 'Active',
     role: 'CTO · Project Manager · Lead Developer',
-    cardGradient: 'linear-gradient(135deg, #0b3a42 0%, #072228 50%, #0a1214 100%)',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
     description: 'Mobile application built under the Garage.ist umbrella. Serving as CTO, Project Manager, and Lead Developer — orchestrating the full development lifecycle and App Store launches for both iOS and Android.',
     highlights: [
       'Built under Garage.ist umbrella',
@@ -380,7 +362,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-tertiary/20 border border-tertiary/30 text-tertiary',
     year: 'Active',
     role: 'Engineer',
-    cardGradient: 'linear-gradient(135deg, #062f33 0%, #031c20 50%, #0a1214 100%)',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
     description: 'Engineered a real-world RFID access control system securing a public institution. Integrated C++ (Arduino) firmware with a Python/PHP/MySQL backend via serial communications — end-to-end hardware–software integration in a live environment.',
     highlights: [
       'Securing a real public institution in production',
@@ -399,7 +381,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
     year: 'Garage.ist',
     role: 'Lead Developer',
-    cardGradient: 'linear-gradient(135deg, #0d382f 0%, #06201b 50%, #0a1214 100%)',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
     description: 'TV remote control application that operates over a local network. Built at Garage.ist as Lead Developer — designed the control protocol, architected core systems, and managed all technical operations end-to-end.',
     highlights: [
       'Network-based TV control protocol design',
@@ -417,7 +399,7 @@ const PROJECT_DATA = {
     statusColor: 'bg-primary/20 border border-primary/30 text-primary',
     year: '2023',
     role: 'Developer',
-    cardGradient: 'linear-gradient(135deg, #0d353a 0%, #051d20 50%, #0a1214 100%)',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
     description: 'Built a multi-branch IT Resource Management System. Migrated a monolithic PHP codebase to Node.js/NoSQL. Implemented barcode generation pipelines and role-based access control across branches.',
     highlights: [
       'Multi-branch support across locations',
@@ -426,6 +408,78 @@ const PROJECT_DATA = {
       'Role-based access control (RBAC)',
     ],
     tech: ['Node.js', 'NoSQL', 'RBAC', 'Barcode', 'PHP'],
+  },
+  gayrimenkuldunyasi: {
+    title: 'Gayrimenkul Dünyası',
+    category: 'Web · Full-Stack',
+    categoryColor: 'text-secondary border-secondary/20',
+    status: 'Active',
+    statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
+    year: '2026',
+    role: 'Architect & Lead Developer',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
+    description: 'Real estate news and analysis aggregator built with Next.js and TypeScript. Implements an automated data scraping pipeline using Playwright Stealth to gather listing summaries and articles from Hepsiemlak, with a fallback Google News RSS XML parser synchronizing to Cloud Firestore.',
+    highlights: [
+      'Next.js (App Router) & TypeScript codebase',
+      'Automated web scraper powered by Playwright Stealth',
+      'Google News XML RSS parser fallback pipeline',
+      'Daily transaction quota budget system in Firestore',
+    ],
+    tech: ['Next.js', 'Playwright Stealth', 'Firestore', 'TypeScript', 'XML Parser'],
+  },
+  playsortify: {
+    title: 'Sortify Web',
+    category: 'Web · Frontend',
+    categoryColor: 'text-secondary border-secondary/20',
+    status: 'Active',
+    statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
+    year: '2026',
+    role: 'Lead Developer',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
+    description: "Web port of the official Sortify iOS game. Built using React, TypeScript, and Vite to deliver a seamless browser-based gaming experience for kids, parents, and teachers, hosted on Firebase Hosting.",
+    highlights: [
+      'React + Vite development & bundle environments',
+      'TypeScript codebase for game state and logic',
+      'Fully responsive canvas-based gameplay in browser',
+      'Hosted on Firebase Hosting infrastructure',
+    ],
+    tech: ['React', 'Vite', 'TypeScript', 'Firebase'],
+  },
+  sporsayfasi: {
+    title: 'Spor Sayfası',
+    category: 'Web · Full-Stack',
+    categoryColor: 'text-secondary border-secondary/20',
+    status: 'Active',
+    statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
+    year: '2026',
+    role: 'Architect & Lead Developer',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
+    description: 'A modern, high-performance sports news aggregator built on Next.js. Schedules periodic crawling jobs using Node-Cron, using Axios and Cheerio to parse and normalize sports content from multiple sources, storing them locally in SQLite.',
+    highlights: [
+      'Next.js App Router server-side rendering',
+      'HTML scraping and RSS CDATA parsing via Axios & Cheerio',
+      'Scheduled background crawling tasks with Node-Cron',
+      'Local relational database storage using better-sqlite3',
+    ],
+    tech: ['Next.js', 'Cheerio', 'SQLite', 'Node-Cron', 'TypeScript'],
+  },
+  worldclock: {
+    title: 'World Clock',
+    category: 'Web · Frontend',
+    categoryColor: 'text-secondary border-secondary/20',
+    status: 'Launched',
+    statusColor: 'bg-secondary/20 border border-secondary/30 text-secondary',
+    year: '2026',
+    role: 'Lead Developer',
+    cardGradient: 'linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)',
+    description: 'Interactive global timezone portal built with React and D3.js. Features a custom 3D vector globe with live daylight terminators, a timezone converter with meeting overlap slots, a localized Wikipedia card, and multi-language support.',
+    highlights: [
+      'Interactive 3D D3.js Globe & TopoJSON mapping',
+      'Timezone meeting planner slider & overlap calculator',
+      'Wikipedia API integration for automated city summaries',
+      '5-language i18n support with localized search indexing',
+    ],
+    tech: ['React', 'D3.js', 'Vite', 'TopoJSON', 'i18n', 'Wikipedia API'],
   },
 };
 
@@ -494,3 +548,6 @@ modalBackdrop?.addEventListener('click', closeModal);
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeModal();
 });
+
+// Force dark mode
+document.documentElement.classList.add('dark');
