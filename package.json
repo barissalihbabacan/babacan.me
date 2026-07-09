@@ -23,8 +23,14 @@
   "homepage": "https://github.com/barissalihbabacan/portfolio-site#readme",
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.11",
-    "@tailwindcss/vite": "^4.3.0",
-    "tailwindcss": "^4.3.0",
+    "@tailwindcss/vite": "^4.3.2",
+    "@vitejs/plugin-react": "^6.0.3",
+    "tailwindcss": "^4.3.2",
     "vite": "^8.0.16"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-github-calendar": "^5.0.6"
   }
 }

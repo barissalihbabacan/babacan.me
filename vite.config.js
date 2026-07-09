@@ -1,27 +1,12 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
-import fs from "fs";
 import tailwindcss from "@tailwindcss/vite";
-
-function getHtmlEntries(dir) {
-  const entries = {};
-  for (const file of fs.readdirSync(dir)) {
-    if (file.endsWith(".html")) {
-      const name = file.replace(".html", "");
-      entries[name === "index" ? "main" : name] = resolve(dir, file);
-    }
-  }
-  return entries;
-}
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
-  plugins: [tailwindcss()],
+  plugins: [react(), tailwindcss()],
   root: "src",
   build: {
     outDir: "../public",
     emptyOutDir: true,
-    rollupOptions: {
-      input: getHtmlEntries(resolve(__dirname, "src")),
-    },
   },
 });
