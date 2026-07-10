@@ -17,5 +17,11 @@ export default defineConfig({
   build: {
     outDir: "../public",
     emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: "src/index.html",
+        notfound: "src/404.html",
+      },
+    },
   },
 });

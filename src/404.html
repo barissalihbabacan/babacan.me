@@ -5,7 +5,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>404 — Page Not Found | babacan.me</title>
-    <link rel="stylesheet" href="/styles/main.css" />
+    <script type="module">
+      import "/styles/main.css";
+    </script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
       rel="stylesheet"
@@ -30,10 +32,10 @@
           >babacan.me</a
         >
         <div class="hidden md:flex items-center gap-gutter">
-          <a class="nav-link" href="/#services">Experience</a>
-          <a class="nav-link" href="/projects.html">Projects</a>
+          <a class="nav-link" href="/#experience">Experience</a>
+          <a class="nav-link" href="/#projects">Projects</a>
           <a class="nav-link" href="/#writing">Writing</a>
-          <a class="nav-link" href="/contact.html">Contact</a>
+          <a class="nav-link" href="/#contact">Contact</a>
         </div>
         <button class="md:hidden text-on-surface">
           <span class="material-symbols-outlined">menu</span>
@@ -78,7 +80,7 @@
           </a>
           <a
             class="border border-tertiary/50 text-tertiary px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-tertiary/10 transition-all"
-            href="/contact.html"
+            href="/#contact"
           >
             Contact
           </a>
@@ -108,9 +110,7 @@
           <a class="text-on-surface-variant hover:text-tertiary transition-colors" href="#"
             >Stack Overflow</a
           >
-          <a
-            class="text-on-surface-variant hover:text-primary transition-colors"
-            href="/contact.html"
+          <a class="text-on-surface-variant hover:text-primary transition-colors" href="/#contact"
             >Contact</a
           >
         </div>
