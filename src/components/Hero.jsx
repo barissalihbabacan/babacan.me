@@ -43,20 +43,6 @@ export default function Hero() {
           >
             {t("hero.getInTouch")}
           </a>
-          <a
-            href={
-              lang === "tr"
-                ? "/cv/Baris_Salih_Babacan_CV_TR.pdf"
-                : "/cv/Baris_Salih_Babacan_CV_EN.pdf"
-            }
-            download
-            className="border border-primary/30 text-primary px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-2"
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
-              download
-            </span>
-            {t("hero.downloadCV") || "Download CV"}
-          </a>
         </div>
 
         {/* Stats bar */}

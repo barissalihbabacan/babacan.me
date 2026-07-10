@@ -30,6 +30,20 @@ export default function Navbar() {
           <button className="nav-link" onClick={toggleLanguage}>
             {lang === "tr" ? "EN" : "TR"}
           </button>
+          <a
+            href={
+              lang === "tr"
+                ? "/cv/Baris_Salih_Babacan_CV_TR.pdf"
+                : "/cv/Baris_Salih_Babacan_CV_EN.pdf"
+            }
+            download
+            className="bg-primary text-surface px-4 py-1.5 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-1.5 ml-2"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+              download
+            </span>
+            {t("hero.downloadCV") || "CV"}
+          </a>
         </div>
         <button
           className="md:hidden text-on-surface"
@@ -50,6 +64,21 @@ export default function Navbar() {
           >
             {lang === "tr" ? "EN" : "TR"}
           </button>
+          <a
+            href={
+              lang === "tr"
+                ? "/cv/Baris_Salih_Babacan_CV_TR.pdf"
+                : "/cv/Baris_Salih_Babacan_CV_EN.pdf"
+            }
+            download
+            className="flex items-center gap-2 bg-primary text-surface px-4 py-2 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/85 transition-colors w-fit"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+              download
+            </span>
+            {t("hero.downloadCV") || "CV"}
+          </a>
           <a
             className="block font-label-mono text-label-mono text-on-surface-variant hover:text-primary uppercase tracking-widest py-2"
             href="#experience"
