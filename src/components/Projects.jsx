@@ -40,7 +40,7 @@ function ProjectCard({ projectKey, onClick, lang }) {
         {data.tech.slice(0, 3).map((tech) => (
           <span
             key={tech}
-            className="font-label-mono text-[9px] text-on-surface-variant/50 border border-outline-variant/20 px-2 py-0.5"
+            className="font-label-mono text-[9px] text-on-surface-variant/80 border border-outline-variant/60 px-2 py-0.5"
           >
             {tech}
           </span>
@@ -222,7 +222,7 @@ export default function Projects() {
                   {selData.tech.map((t) => (
                     <span
                       key={t}
-                      className="font-label-mono text-[9px] text-on-surface-variant/50 border border-outline-variant/20 px-2 py-0.5"
+                      className="font-label-mono text-[9px] text-on-surface-variant/80 border border-outline-variant/60 px-2 py-0.5"
                     >
                       {t}
                     </span>
