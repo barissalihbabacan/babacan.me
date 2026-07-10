@@ -248,7 +248,7 @@ export const i18nData = {
   },
   seo: {
     title: {
-      en: "Baris Salih Babacan | Software Engineer",
+      en: "Barış Salih Babacan | Software Engineer",
       tr: "Barış Salih Babacan | Yazılım Mühendisi",
     },
     description: {
