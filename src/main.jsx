@@ -4,13 +4,17 @@ import App from "./App.jsx";
 import "./styles/main.css";
 import { LanguageProvider } from "./contexts/LanguageContext.jsx";
 
+import { HelmetProvider } from "react-helmet-async";
+
 // Enforce dark mode as required
 document.documentElement.classList.add("dark");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <LanguageProvider>
-      <App />
-    </LanguageProvider>
+    <HelmetProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 );

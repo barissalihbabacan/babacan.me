@@ -246,4 +246,14 @@ export const i18nData = {
       tr: "Seçili mimari danışmanlık ve anlatı tasarımı rollerine açığım.",
     },
   },
+  seo: {
+    title: {
+      en: "Baris Salih Babacan | Software Engineer",
+      tr: "Barış Salih Babacan | Yazılım Mühendisi",
+    },
+    description: {
+      en: "Software Engineer & Systems Architect based in Istanbul. Specializing in autonomous systems, P2P architectures, and immersive narratives.",
+      tr: "İstanbul merkezli Yazılım Mühendisi & Sistem Mimarı. Otonom sistemler, P2P mimarileri ve sürükleyici kurgular üzerine uzmanlaşmıştır.",
+    },
+  },
 };
