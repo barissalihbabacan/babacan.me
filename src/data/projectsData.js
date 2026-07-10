@@ -93,8 +93,8 @@ export const PROJECT_DATA = {
     categoryColor: "text-tertiary border-tertiary/20",
     status: { en: "Active Production", tr: "Aktif Üretim" },
     statusColor: "bg-tertiary/20 border border-tertiary/30 text-tertiary",
-    year: { en: "Active", tr: "Aktif" },
-    role: { en: "Engineer", tr: "Mühendis" },
+    year: { en: "High School", tr: "Lise" },
+    role: { en: "Personal Project", tr: "Kişisel Proje" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Engineered a real-world RFID access control system securing a public institution. Integrated C++ (Arduino) firmware with a Python/PHP/MySQL backend via serial communications — end-to-end hardware–software integration in a live environment.",
@@ -153,8 +153,8 @@ export const PROJECT_DATA = {
     categoryColor: "text-primary border-primary/20",
     status: { en: "Deployed", tr: "Yayında" },
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
-    year: { en: "2023", tr: "2023" },
-    role: { en: "Developer", tr: "Geliştirici" },
+    year: { en: "High School", tr: "Lise" },
+    role: { en: "Personal Project", tr: "Kişisel Proje" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Built a multi-branch IT Resource Management System. Migrated a monolithic PHP codebase to Node.js/NoSQL. Implemented barcode generation pipelines and role-based access control across branches.",
@@ -211,7 +211,7 @@ export const PROJECT_DATA = {
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
-    year: { en: "2026", tr: "2026" },
+    year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Lead Developer", tr: "Baş Geliştirici" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
@@ -240,7 +240,7 @@ export const PROJECT_DATA = {
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
-    year: { en: "2026", tr: "2026" },
+    year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Architect & Lead Developer", tr: "Mimar & Baş Geliştirici" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
@@ -269,7 +269,7 @@ export const PROJECT_DATA = {
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
-    year: { en: "2026", tr: "2026" },
+    year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Lead Developer", tr: "Baş Geliştirici" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
