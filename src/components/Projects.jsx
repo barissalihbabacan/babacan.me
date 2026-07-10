@@ -182,7 +182,7 @@ export default function Projects() {
                   {selData.category[lang] || selData.category}
                 </span>
                 <span className="font-label-mono text-[10px] text-on-surface-variant">
-                  {selData.year}
+                  {selData.year[lang] || selData.year}
                 </span>
               </div>
 
