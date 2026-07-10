@@ -59,8 +59,8 @@ export const PROJECT_DATA = {
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
-    year: { en: "2026", tr: "2026" },
-    role: { en: "Architect & Lead Developer", tr: "Mimar & Baş Geliştirici" },
+    year: { en: "Garage.ist", tr: "Garage.ist" },
+    role: { en: "CTO & Mentor", tr: "CTO & Mentör" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Real estate news and analysis aggregator built with Next.js and TypeScript. Implements an automated data scraping pipeline using Playwright Stealth to gather listing summaries and articles from Hepsiemlak, with a fallback Google News RSS XML parser synchronizing to Cloud Firestore.",
@@ -181,7 +181,7 @@ export const PROJECT_DATA = {
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Architect & Lead Developer", tr: "Mimar & Baş Geliştirici" },
+    role: { en: "CTO & Mentor", tr: "CTO & Mentör" },
     cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "A modern, high-performance sports news aggregator built on Next.js. Schedules periodic crawling jobs using Node-Cron, using Axios and Cheerio to parse and normalize sports content from multiple sources, storing them locally in SQLite.",

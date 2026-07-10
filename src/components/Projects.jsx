@@ -107,8 +107,9 @@ export default function Projects() {
                 onClick={setSelectedProject}
                 lang={lang}
               />
-              <ProjectCard projectKey="qpass" onClick={setSelectedProject} lang={lang} />
-              <ProjectCard projectKey="itrms" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="playsortify" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="sporsayfasi" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="worldclock" onClick={setSelectedProject} lang={lang} />
             </div>
           </div>
 
@@ -122,9 +123,8 @@ export default function Projects() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <ProjectCard projectKey="mythos" onClick={setSelectedProject} lang={lang} />
               <ProjectCard projectKey="osmos" onClick={setSelectedProject} lang={lang} />
-              <ProjectCard projectKey="playsortify" onClick={setSelectedProject} lang={lang} />
-              <ProjectCard projectKey="sporsayfasi" onClick={setSelectedProject} lang={lang} />
-              <ProjectCard projectKey="worldclock" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="qpass" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="itrms" onClick={setSelectedProject} lang={lang} />
             </div>
           </div>
         </div>
