@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-16">
@@ -42,6 +42,20 @@ export default function Hero() {
             className="border border-on-surface-variant/30 text-on-surface-variant px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
           >
             {t("hero.getInTouch")}
+          </a>
+          <a
+            href={
+              lang === "tr"
+                ? "/cv/Baris_Salih_Babacan_CV_TR.pdf"
+                : "/cv/Baris_Salih_Babacan_CV_EN.pdf"
+            }
+            download
+            className="border border-primary/30 text-primary px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-2"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
+              download
+            </span>
+            {t("hero.downloadCV") || "Download CV"}
           </a>
         </div>
 

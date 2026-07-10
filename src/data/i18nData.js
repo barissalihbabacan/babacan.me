@@ -32,6 +32,7 @@ export const i18nData = {
       tr: 'Çalışmaları Gör <span class="material-symbols-outlined" style="font-size: 18px">arrow_forward</span>',
     },
     getInTouch: { en: "Get in Touch", tr: "İletişime Geçin" },
+    downloadCV: { en: "Download CV", tr: "Özgeçmiş İndir" },
   },
   experience: {
     sectionLabel: { en: "01 / Core Expertise", tr: "01 / Temel Uzmanlık" },
