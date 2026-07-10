@@ -48,16 +48,17 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Graphic */}
-          <div className="hidden lg:flex justify-center items-center relative w-full opacity-80 pointer-events-none">
-            <div className="relative w-full aspect-square max-w-[600px]">
+          {/* Right Graphic / Photo */}
+          <div className="hidden lg:flex justify-center items-center relative w-full opacity-90 pointer-events-none">
+            <div className="relative w-full aspect-square max-w-[500px]">
               <img
-                src="/images/hero-graphic.png"
-                alt="System Architecture Visual"
-                className="w-full h-full object-cover mix-blend-lighten"
+                src="/images/profile.png"
+                alt="Barış Salih Babacan"
+                className="w-full h-full object-cover mix-blend-screen"
                 style={{
-                  maskImage: "radial-gradient(circle at center, black 30%, transparent 70%)",
-                  WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 70%)",
+                  maskImage: "radial-gradient(circle at center, black 40%, transparent 70%)",
+                  WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 70%)",
+                  filter: "contrast(1.2) brightness(0.9)",
                 }}
               />
             </div>
