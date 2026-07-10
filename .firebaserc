@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "babacan-sites"
-  }
+  },
+  "targets": {
+    "babacan-sites": {
+      "hosting": {
+        "babacan-me": [
+          "babacan-me"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
