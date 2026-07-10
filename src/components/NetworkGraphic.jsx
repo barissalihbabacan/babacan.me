@@ -2,15 +2,15 @@ import React from "react";
 
 export default function NetworkGraphic() {
   const nodes = [
-    { id: 1, cx: 250, cy: 250, r: 16, color: "var(--color-primary)", delay: "0s" },
-    { id: 2, cx: 150, cy: 150, r: 12, color: "rgba(255, 255, 255, 0.8)", delay: "0.5s" },
-    { id: 3, cx: 380, cy: 120, r: 10, color: "rgba(255, 255, 255, 0.6)", delay: "1s" },
-    { id: 4, cx: 400, cy: 350, r: 14, color: "var(--color-primary)", delay: "1.5s" },
-    { id: 5, cx: 120, cy: 380, r: 9, color: "rgba(255, 255, 255, 0.7)", delay: "0.8s" },
-    { id: 6, cx: 200, cy: 60, r: 6, color: "rgba(255, 255, 255, 0.5)", delay: "0.3s" },
-    { id: 7, cx: 450, cy: 220, r: 8, color: "rgba(255, 255, 255, 0.9)", delay: "1.2s" },
-    { id: 8, cx: 280, cy: 420, r: 11, color: "rgba(255, 255, 255, 0.6)", delay: "0.7s" },
-    { id: 9, cx: 60, cy: 250, r: 10, color: "var(--color-primary)", delay: "1.1s" },
+    { id: 1, cx: 250, cy: 250, r: 16, color: "var(--color-primary)", delay: "0s", z: 40 },
+    { id: 2, cx: 150, cy: 150, r: 12, color: "rgba(255, 255, 255, 0.8)", delay: "-2s", z: 20 },
+    { id: 3, cx: 380, cy: 120, r: 10, color: "rgba(255, 255, 255, 0.6)", delay: "-4s", z: 30 },
+    { id: 4, cx: 400, cy: 350, r: 14, color: "var(--color-primary)", delay: "-1s", z: 50 },
+    { id: 5, cx: 120, cy: 380, r: 9, color: "rgba(255, 255, 255, 0.7)", delay: "-3s", z: 15 },
+    { id: 6, cx: 200, cy: 60, r: 6, color: "rgba(255, 255, 255, 0.5)", delay: "-5s", z: 10 },
+    { id: 7, cx: 450, cy: 220, r: 8, color: "rgba(255, 255, 255, 0.9)", delay: "-2.5s", z: 25 },
+    { id: 8, cx: 280, cy: 420, r: 11, color: "rgba(255, 255, 255, 0.6)", delay: "-1.5s", z: 35 },
+    { id: 9, cx: 60, cy: 250, r: 10, color: "var(--color-primary)", delay: "-0.5s", z: 45 },
   ];
 
   const connections = [
@@ -30,12 +30,16 @@ export default function NetworkGraphic() {
   ];
 
   return (
-    <div className="relative w-full aspect-square max-w-[500px]">
+    <div className="relative w-full aspect-square max-w-[500px] flex items-center justify-center overflow-hidden">
       <style>
         {`
-          @keyframes floatNode {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+          @keyframes rotatePlane {
+            0% { transform: perspective(1000px) rotateX(60deg) rotateZ(0deg); }
+            100% { transform: perspective(1000px) rotateX(60deg) rotateZ(360deg); }
+          }
+          @keyframes floatZ {
+            0%, 100% { transform: translateZ(0px); }
+            50% { transform: translateZ(30px); }
           }
           @keyframes pulseGlow {
             0%, 100% { opacity: 0.3; filter: drop-shadow(0 0 4px var(--color-primary)); }
@@ -45,8 +49,14 @@ export default function NetworkGraphic() {
             0% { stroke-dashoffset: 100; }
             100% { stroke-dashoffset: 0; }
           }
+          .scene-3d {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: rotatePlane 40s linear infinite;
+          }
           .node-animate {
-            animation: floatNode 6s ease-in-out infinite;
+            transform-style: preserve-3d;
           }
           .line-base {
             stroke: rgba(255, 255, 255, 0.1);
@@ -56,75 +66,127 @@ export default function NetworkGraphic() {
             stroke: var(--color-primary);
             stroke-width: 1.5;
             stroke-dasharray: 6 12;
-            animation: dataFlow 3s linear infinite;
-            opacity: 0.6;
+            animation: dataFlow 2s linear infinite;
+            opacity: 0.8;
           }
         `}
       </style>
-      <svg
-        viewBox="0 0 500 500"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full"
-        style={{
-          maskImage: "radial-gradient(circle at center, black 40%, transparent 80%)",
-          WebkitMaskImage: "radial-gradient(circle at center, black 40%, transparent 80%)",
-        }}
-      >
-        {/* Core background glow */}
-        <circle
-          cx="250"
-          cy="250"
-          r="150"
-          fill="var(--color-primary)"
-          opacity="0.05"
-          filter="blur(40px)"
-        />
 
-        {/* Connections */}
-        <g>
-          {connections.map(([startId, endId], idx) => {
-            const start = nodes.find((n) => n.id === startId);
-            const end = nodes.find((n) => n.id === endId);
-            return (
-              <g key={`conn-${idx}`}>
-                <line x1={start.cx} y1={start.cy} x2={end.cx} y2={end.cy} className="line-base" />
-                <line
-                  x1={start.cx}
-                  y1={start.cy}
-                  x2={end.cx}
-                  y2={end.cy}
-                  className="line-flow"
-                  style={{ animationDelay: `${idx * 0.2}s` }}
-                />
-              </g>
-            );
-          })}
-        </g>
+      <div className="scene-3d absolute inset-0">
+        <svg
+          viewBox="0 0 500 500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full"
+          style={{ overflow: "visible" }}
+        >
+          <defs>
+            <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="var(--color-primary)" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="var(--color-primary)" stopOpacity="0" />
+            </radialGradient>
+          </defs>
 
-        {/* Nodes */}
-        {nodes.map((n) => (
-          <g
-            key={`node-${n.id}`}
-            className="node-animate"
-            style={{ animationDelay: n.delay, transformOrigin: `${n.cx}px ${n.cy}px` }}
-          >
-            {n.color === "var(--color-primary)" && (
-              <circle
-                cx={n.cx}
-                cy={n.cy}
-                r={n.r * 1.5}
-                fill="none"
-                stroke={n.color}
-                strokeWidth="1"
-                className="opacity-50"
-                style={{ animation: "pulseGlow 4s ease-in-out infinite", animationDelay: n.delay }}
+          {/* Grid base */}
+          <g opacity="0.2">
+            {[...Array(11)].map((_, i) => (
+              <line
+                key={`grid-h-${i}`}
+                x1="0"
+                y1={i * 50}
+                x2="500"
+                y2={i * 50}
+                stroke="var(--color-primary)"
+                strokeWidth="0.5"
               />
-            )}
-            <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.color} />
+            ))}
+            {[...Array(11)].map((_, i) => (
+              <line
+                key={`grid-v-${i}`}
+                x1={i * 50}
+                y1="0"
+                x2={i * 50}
+                y2="500"
+                stroke="var(--color-primary)"
+                strokeWidth="0.5"
+              />
+            ))}
           </g>
-        ))}
-      </svg>
+
+          {/* Base shadow glow */}
+          <circle cx="250" cy="250" r="200" fill="url(#glow)" />
+
+          {/* Connections */}
+          <g>
+            {connections.map(([startId, endId], idx) => {
+              const start = nodes.find((n) => n.id === startId);
+              const end = nodes.find((n) => n.id === endId);
+              return (
+                <g key={`conn-${idx}`}>
+                  <line x1={start.cx} y1={start.cy} x2={end.cx} y2={end.cy} className="line-base" />
+                  <line
+                    x1={start.cx}
+                    y1={start.cy}
+                    x2={end.cx}
+                    y2={end.cy}
+                    className="line-flow"
+                    style={{ animationDelay: `${idx * 0.2}s` }}
+                  />
+                </g>
+              );
+            })}
+          </g>
+
+          {/* Nodes popping out in 3D */}
+          {nodes.map((n) => (
+            <g
+              key={`node-${n.id}`}
+              className="node-animate"
+              style={{
+                transform: `translateZ(${n.z}px)`,
+                animation: `floatZ 4s ease-in-out infinite`,
+                animationDelay: n.delay,
+              }}
+            >
+              {/* Dropline to grid */}
+              <line
+                x1={n.cx}
+                y1={n.cy}
+                x2={n.cx}
+                y2={n.cy}
+                stroke="rgba(255,255,255,0.2)"
+                strokeWidth="1"
+                strokeDasharray="2 2"
+                style={{ transform: `translateZ(-${n.z}px)` }}
+              />
+
+              {n.color === "var(--color-primary)" && (
+                <circle
+                  cx={n.cx}
+                  cy={n.cy}
+                  r={n.r * 1.5}
+                  fill="none"
+                  stroke={n.color}
+                  strokeWidth="1"
+                  style={{
+                    animation: "pulseGlow 3s ease-in-out infinite",
+                    animationDelay: n.delay,
+                  }}
+                />
+              )}
+              <circle cx={n.cx} cy={n.cy} r={n.r} fill={n.color} />
+            </g>
+          ))}
+        </svg>
+      </div>
+
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at center, transparent 30%, var(--color-surface) 70%)",
+        }}
+      ></div>
     </div>
   );
 }
