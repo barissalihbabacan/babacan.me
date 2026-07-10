@@ -37,7 +37,7 @@ export default function Navbar() {
                 : "/cv/Baris_Salih_Babacan_CV_EN.pdf"
             }
             download
-            className="bg-primary text-surface px-4 py-1.5 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-1.5 ml-2"
+            className="bg-primary text-surface px-4 py-1.5 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-1.5"
           >
             <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
               download
