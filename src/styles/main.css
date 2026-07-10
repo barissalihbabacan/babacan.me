@@ -322,8 +322,6 @@
   font-size: var(--font-size-label-mono);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
   color: var(--color-on-surface-variant);
   transition: color 300ms;
   &:hover {
@@ -334,7 +332,6 @@
 @utility nav-link-active {
   color: var(--color-primary);
   font-weight: 700;
-  border-bottom-color: var(--color-primary);
 }
 
 @utility text-gradient {
