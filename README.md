@@ -6,24 +6,23 @@ Live: **[babacan.me](https://babacan.me)**
 
 ## Stack
 
-- **Vite** — build tooling, MPA entry resolution
+- **Vite** — ultra-fast build tooling and HMR
+- **React 18** — component-based UI architecture
 - **Tailwind CSS v4** — `@theme {}` token system, no config file
-- **Vanilla JS (ES6+)** — zero framework overhead
 - **Firebase Hosting** — CDN, SPA rewrites, immutable asset caching
-- **GitHub Actions** — CI/CD on push to `main`, PR preview channels
+- **GitHub Actions** — CI/CD on push to `main`, PR preview channels (Node 24)
 
 ## Structure
 
 ```
 src/
-  index.html        # Main SPA (anchor navigation)
+  index.html        # Main SPA entry
+  App.jsx           # Root application component
+  components/       # Modular React components (Hero, Projects, Navbar, etc.)
+  contexts/         # React Context providers (LanguageContext)
   styles/
     main.css        # Tailwind v4 + design tokens
-  js/
-    index.js        # GitHub API, project modals, repo toggle
-  public/
-    robots.txt
-    sitemap.xml
+  public/           # Static assets (CV, images, icons)
 public/             # Build output (git-ignored in dev)
 ```
 
@@ -31,8 +30,8 @@ public/             # Build output (git-ignored in dev)
 
 ```bash
 npm install
-npm run dev       # http://localhost:5173
-npm run build     # production build → public/
+npm run dev       # Starts local server at http://localhost:5173
+npm run build     # Production build → public/
 ```
 
 ## Deploy
