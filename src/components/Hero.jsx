@@ -7,46 +7,65 @@ export default function Hero() {
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-16">
       <div className="max-w-container-max mx-auto px-margin-desktop w-full py-[8vh]">
-        {/* Label */}
-        <div className="flex items-center gap-4 mb-[4vh]">
-          <div className="h-px w-12 bg-primary shrink-0"></div>
-          <span className="font-label-mono text-[11px] text-primary uppercase tracking-widest">
-            {t("hero.roles")}
-          </span>
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-12 lg:gap-8 items-center">
+          <div className="flex flex-col justify-center">
+            {/* Label */}
+            <div className="flex items-center gap-4 mb-[4vh]">
+              <div className="h-px w-12 bg-primary shrink-0"></div>
+              <span className="font-label-mono text-[11px] text-primary uppercase tracking-widest">
+                {t("hero.roles")}
+              </span>
+            </div>
 
-        {/* Headline */}
-        <h1
-          className="text-on-surface font-bold leading-[0.88] mb-[4vh] tracking-tight"
-          style={{ fontSize: "clamp(48px, 8.5vw, 128px)" }}
-          dangerouslySetInnerHTML={{ __html: t("hero.title") }}
-        ></h1>
+            {/* Headline */}
+            <h1
+              className="text-on-surface font-bold leading-[0.88] mb-[4vh] tracking-tight"
+              style={{ fontSize: "clamp(48px, 8.5vw, 128px)" }}
+              dangerouslySetInnerHTML={{ __html: t("hero.title") }}
+            ></h1>
 
-        {/* Tagline */}
-        <p
-          className="font-body-lg text-on-surface-variant mb-[5vh]"
-          style={{ maxWidth: "min(560px, 50vw)" }}
-          dangerouslySetInnerHTML={{ __html: t("hero.subtitle") }}
-        ></p>
+            {/* Tagline */}
+            <p
+              className="font-body-lg text-on-surface-variant mb-[5vh]"
+              style={{ maxWidth: "min(560px, 50vw)" }}
+              dangerouslySetInnerHTML={{ __html: t("hero.subtitle") }}
+            ></p>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-4 mb-[8vh]">
-          <a
-            href="#projects"
-            className="bg-primary text-surface px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
-          >
-            <span dangerouslySetInnerHTML={{ __html: t("hero.viewWork") }} />
-          </a>
-          <a
-            href="#contact"
-            className="border border-on-surface-variant/30 text-on-surface-variant px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
-          >
-            {t("hero.getInTouch")}
-          </a>
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 mb-[8vh] lg:mb-0">
+              <a
+                href="#projects"
+                className="bg-primary text-surface px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
+              >
+                <span dangerouslySetInnerHTML={{ __html: t("hero.viewWork") }} />
+              </a>
+              <a
+                href="#contact"
+                className="border border-on-surface-variant/30 text-on-surface-variant px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
+              >
+                {t("hero.getInTouch")}
+              </a>
+            </div>
+          </div>
+
+          {/* Right Graphic */}
+          <div className="hidden lg:flex justify-center items-center relative w-full opacity-80 pointer-events-none">
+            <div className="relative w-full aspect-square max-w-[600px]">
+              <img
+                src="/images/hero-graphic.png"
+                alt="System Architecture Visual"
+                className="w-full h-full object-cover mix-blend-lighten"
+                style={{
+                  maskImage: "radial-gradient(circle at center, black 30%, transparent 70%)",
+                  WebkitMaskImage: "radial-gradient(circle at center, black 30%, transparent 70%)",
+                }}
+              />
+            </div>
+          </div>
         </div>
 
         {/* Stats bar */}
-        <div className="border-t border-primary/30 pt-[4vh] grid grid-cols-2 md:grid-cols-4 gap-5 max-w-2xl">
+        <div className="border-t border-primary/30 pt-[4vh] mt-[8vh] lg:mt-[10vh] grid grid-cols-2 md:grid-cols-4 gap-5 max-w-2xl relative z-10">
           <div>
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat1_val")}
