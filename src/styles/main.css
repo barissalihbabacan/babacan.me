@@ -2,50 +2,50 @@
 
 @theme {
   /* Kingsman Gold / Brass */
-  --color-primary-val: #C5A059;
-  --color-primary-container-val: #3A2D18;
-  --color-primary-fixed-val: #E5CBA3;
-  --color-primary-fixed-dim-val: #C5A059;
+  --color-primary-val: #c5a059;
+  --color-primary-container-val: #3a2d18;
+  --color-primary-fixed-val: #e5cba3;
+  --color-primary-fixed-dim-val: #c5a059;
   --color-on-primary-val: #111214;
-  --color-on-primary-container-val: #E5CBA3;
-  
-  /* Monochromatic: All accents use the same Gold */
-  --color-secondary-val: #C5A059;
-  --color-secondary-container-val: #3A2D18;
-  --color-secondary-fixed-val: #E5CBA3;
-  --color-secondary-fixed-dim-val: #C5A059;
-  --color-on-secondary-val: #111214;
-  --color-on-secondary-container-val: #E5CBA3;
+  --color-on-primary-container-val: #e5cba3;
 
-  --color-tertiary-val: #C5A059;
-  --color-tertiary-container-val: #3A2D18;
+  /* Monochromatic: All accents use the same Gold */
+  --color-secondary-val: #c5a059;
+  --color-secondary-container-val: #3a2d18;
+  --color-secondary-fixed-val: #e5cba3;
+  --color-secondary-fixed-dim-val: #c5a059;
+  --color-on-secondary-val: #111214;
+  --color-on-secondary-container-val: #e5cba3;
+
+  --color-tertiary-val: #c5a059;
+  --color-tertiary-container-val: #3a2d18;
 
   /* Surface & Background: Bespoke Charcoal Suit */
-  --color-surface-val: #181A1C; 
+  --color-surface-val: #181a1c;
   --color-surface-dim-val: #141517;
   --color-surface-bright-val: #222428;
-  --color-surface-container-val: #1B1D20;
+  --color-surface-container-val: #1b1d20;
   --color-surface-container-low-val: #151618;
   --color-surface-container-high-val: #202225;
-  --color-surface-container-highest-val: #26282D;
-  --color-surface-container-lowest-val: #0D0E10;
+  --color-surface-container-highest-val: #26282d;
+  --color-surface-container-lowest-val: #0d0e10;
   --color-surface-variant-val: #222428;
   --color-background-val: #111214;
 
   /* Text Colors: Crisp White Shirt */
-  --color-on-surface-val: #F1F3F5;
-  --color-on-surface-variant-val: #A0A5AB;
-  --color-on-background-val: #F1F3F5;
-  --color-inverse-surface-val: #F1F3F5;
+  --color-on-surface-val: #f1f3f5;
+  --color-on-surface-variant-val: #a0a5ab;
+  --color-on-background-val: #f1f3f5;
+  --color-inverse-surface-val: #f1f3f5;
   --color-inverse-on-surface-val: #111214;
 
-  --color-outline-val: #33373D;
-  --color-outline-variant-val: #26282D;
-  
+  --color-outline-val: #33373d;
+  --color-outline-variant-val: #26282d;
+
   /* Subtle organic overlays */
   --bg-image-gradient: radial-gradient(at 50% 0%, rgba(197, 160, 89, 0.05) 0px, transparent 60%);
   --color-scrollbar-track: #111214;
-  --color-scrollbar-thumb: #33373D;
+  --color-scrollbar-thumb: #33373d;
   --color-card-hover-bg: rgba(34, 36, 40, 0.6);
   --color-card-hover-shadow: rgba(0, 0, 0, 0.4);
   --color-glow-primary: rgba(197, 160, 89, 0.15);
@@ -338,22 +338,14 @@
 }
 
 @utility text-gradient {
-  background-image: linear-gradient(
-    120deg,
-    var(--color-primary) 0%,
-    var(--color-secondary) 100%
-  );
+  background-image: linear-gradient(120deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
 }
 
 @utility text-gradient-warm {
-  background-image: linear-gradient(
-    120deg,
-    var(--color-tertiary) 0%,
-    var(--color-secondary) 100%
-  );
+  background-image: linear-gradient(120deg, var(--color-tertiary) 0%, var(--color-secondary) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;

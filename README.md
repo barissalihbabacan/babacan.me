@@ -38,6 +38,7 @@ npm run build     # production build → public/
 ## Deploy
 
 Pushing to `main` triggers the GitHub Actions workflow which:
+
 1. Runs `npm ci && npm run build`
 2. Deploys `public/` to Firebase Hosting (live channel)
 

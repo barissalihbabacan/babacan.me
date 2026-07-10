@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useLanguage } from '../contexts/LanguageContext';
-import { PROJECT_DATA } from '../data/projectsData';
+import React, { useState, useEffect } from "react";
+import { useLanguage } from "../contexts/LanguageContext";
+import { PROJECT_DATA } from "../data/projectsData";
 
-function ProjectCard({ projectKey, onClick }) {
+function ProjectCard({ projectKey, onClick, lang }) {
   const data = PROJECT_DATA[projectKey];
   if (!data) return null;
+
+  const category = data.category[lang] || data.category;
+  const title = data.title[lang] || data.title;
+  const description = data.description[lang] || data.description;
 
   return (
     <div
@@ -14,22 +18,30 @@ function ProjectCard({ projectKey, onClick }) {
       <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[50px] group-hover:bg-primary/10 transition-colors pointer-events-none"></div>
 
       <div className="flex items-center justify-between mb-4">
-        <span className={`font-label-mono text-[9px] uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}>
-          {data.category}
+        <span
+          className={`font-label-mono text-[9px] uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
+        >
+          {category}
         </span>
-        <span className="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors" style={{ fontSize: '18px' }}>
+        <span
+          className="material-symbols-outlined text-primary/40 group-hover:text-primary transition-colors"
+          style={{ fontSize: "18px" }}
+        >
           arrow_outward
         </span>
       </div>
 
-      <h3 className="text-on-surface font-bold text-xl mb-2">{data.title}</h3>
+      <h3 className="text-on-surface font-bold text-xl mb-2">{title}</h3>
       <p className="font-body-sm text-on-surface-variant text-sm mb-6 flex-1">
-        {data.description.substring(0, 100)}...
+        {description.substring(0, 100)}...
       </p>
 
       <div className="pt-4 border-t border-primary/20 flex flex-wrap gap-2 mt-auto relative z-10">
-        {data.tech.slice(0, 3).map(tech => (
-          <span key={tech} className="font-label-mono text-[9px] text-on-surface-variant/50 border border-outline-variant/20 px-2 py-0.5">
+        {data.tech.slice(0, 3).map((tech) => (
+          <span
+            key={tech}
+            className="font-label-mono text-[9px] text-on-surface-variant/50 border border-outline-variant/20 px-2 py-0.5"
+          >
             {tech}
           </span>
         ))}
@@ -39,40 +51,43 @@ function ProjectCard({ projectKey, onClick }) {
 }
 
 export default function Projects() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     if (selectedProject) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [selectedProject]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         setSelectedProject(null);
       }
     };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   const selData = selectedProject ? PROJECT_DATA[selectedProject] : null;
 
   return (
     <>
-      <section id="projects" className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden">
+      <section
+        id="projects"
+        className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
+      >
         <div className="section-ghost-number">02</div>
         <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
           <div className="flex items-center gap-4 mb-[5vh]">
             <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
-              {t('projects.sectionLabel')}
+              {t("projects.sectionLabel")}
             </span>
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
@@ -80,32 +95,36 @@ export default function Projects() {
           <div className="mb-16">
             <div className="flex items-center gap-4 mb-8">
               <h3 className="font-label-mono text-sm text-on-surface tracking-widest uppercase">
-                {t('projects.garageTitle')}
+                {t("projects.garageTitle")}
               </h3>
               <div className="h-px flex-1 bg-primary/20"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <ProjectCard projectKey="sortify" onClick={setSelectedProject} />
-              <ProjectCard projectKey="plus-tv" onClick={setSelectedProject} />
-              <ProjectCard projectKey="gayrimenkuldunyasi" onClick={setSelectedProject} />
-              <ProjectCard projectKey="qpass" onClick={setSelectedProject} />
-              <ProjectCard projectKey="itrms" onClick={setSelectedProject} />
+              <ProjectCard projectKey="sortify" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="plus-tv" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard
+                projectKey="gayrimenkuldunyasi"
+                onClick={setSelectedProject}
+                lang={lang}
+              />
+              <ProjectCard projectKey="qpass" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="itrms" onClick={setSelectedProject} lang={lang} />
             </div>
           </div>
 
           <div>
             <div className="flex items-center gap-4 mb-8">
               <h3 className="font-label-mono text-sm text-on-surface tracking-widest uppercase">
-                {t('projects.personalTitle')}
+                {t("projects.personalTitle")}
               </h3>
               <div className="h-px flex-1 bg-primary/20"></div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <ProjectCard projectKey="mythos" onClick={setSelectedProject} />
-              <ProjectCard projectKey="osmos" onClick={setSelectedProject} />
-              <ProjectCard projectKey="playsortify" onClick={setSelectedProject} />
-              <ProjectCard projectKey="sporsayfasi" onClick={setSelectedProject} />
-              <ProjectCard projectKey="worldclock" onClick={setSelectedProject} />
+              <ProjectCard projectKey="mythos" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="osmos" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="playsortify" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="sporsayfasi" onClick={setSelectedProject} lang={lang} />
+              <ProjectCard projectKey="worldclock" onClick={setSelectedProject} lang={lang} />
             </div>
           </div>
         </div>
@@ -114,50 +133,80 @@ export default function Projects() {
       {/* Modal */}
       {selectedProject && selData && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-          <div 
-            className="absolute inset-0 bg-surface/90 backdrop-blur-sm transition-opacity" 
+          <div
+            className="absolute inset-0 bg-surface/90 backdrop-blur-sm transition-opacity"
             onClick={() => setSelectedProject(null)}
           ></div>
           <div className="relative w-full max-w-4xl bg-surface border border-primary/30 shadow-2xl flex flex-col md:flex-row overflow-hidden max-h-[90vh]">
-            <button 
+            <button
               className="absolute top-4 right-4 z-10 text-on-surface/50 hover:text-on-surface bg-surface/50 rounded-full p-1 backdrop-blur-md transition-colors"
               onClick={() => setSelectedProject(null)}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>close</span>
+              <span className="material-symbols-outlined" style={{ fontSize: "24px" }}>
+                close
+              </span>
             </button>
 
-            <div className="w-full md:w-2/5 min-h-[240px] md:min-h-full relative flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-primary/20" style={{ background: selData.cardGradient }}>
-              <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-              <div className={`absolute top-4 left-4 font-label-mono text-[9px] px-2 py-0.5 uppercase tracking-widest ${selData.statusColor}`}>
-                {selData.status}
+            <div
+              className="w-full md:w-2/5 min-h-[240px] md:min-h-full relative flex items-center justify-center p-8 border-b md:border-b-0 md:border-r border-primary/20"
+              style={{ background: selData.cardGradient }}
+            >
+              <div
+                className="absolute inset-0 opacity-20"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)",
+                  backgroundSize: "24px 24px",
+                }}
+              ></div>
+              <div
+                className={`absolute top-4 left-4 font-label-mono text-[9px] px-2 py-0.5 uppercase tracking-widest ${selData.statusColor}`}
+              >
+                {selData.status[lang] || selData.status}
               </div>
               <div className="relative z-10 text-center">
-                <span className="material-symbols-outlined text-white/80" style={{ fontSize: '64px' }}>deployed_code</span>
+                <span
+                  className="material-symbols-outlined text-white/80"
+                  style={{ fontSize: "64px" }}
+                >
+                  deployed_code
+                </span>
               </div>
             </div>
 
             <div className="w-full md:w-3/5 p-6 md:p-10 overflow-y-auto">
               <div className="flex items-center gap-3 mb-4">
-                <span className={`font-label-mono text-[9px] uppercase tracking-widest border px-2 py-0.5 ${selData.categoryColor}`}>
-                  {selData.category}
+                <span
+                  className={`font-label-mono text-[9px] uppercase tracking-widest border px-2 py-0.5 ${selData.categoryColor}`}
+                >
+                  {selData.category[lang] || selData.category}
                 </span>
-                <span className="font-label-mono text-[10px] text-on-surface-variant">{selData.year}</span>
+                <span className="font-label-mono text-[10px] text-on-surface-variant">
+                  {selData.year}
+                </span>
               </div>
 
-              <h2 className="text-3xl font-bold text-on-surface mb-2">{selData.title}</h2>
+              <h2 className="text-3xl font-bold text-on-surface mb-2">
+                {selData.title[lang] || selData.title}
+              </h2>
               <div className="font-label-mono text-xs text-primary mb-6 uppercase tracking-widest">
-                {selData.role}
+                {selData.role[lang] || selData.role}
               </div>
 
               <p className="font-body-md text-on-surface-variant leading-relaxed mb-8">
-                {selData.description}
+                {selData.description[lang] || selData.description}
               </p>
 
               <div className="mb-8">
-                <h4 className="font-label-mono text-[10px] text-on-surface uppercase tracking-widest mb-4">Key Highlights</h4>
+                <h4 className="font-label-mono text-[10px] text-on-surface uppercase tracking-widest mb-4">
+                  {t("projects.highlights") || "Key Highlights"}
+                </h4>
                 <ul className="space-y-2">
-                  {selData.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-3 text-xs text-on-surface-variant/70">
+                  {(selData.highlights[lang] || selData.highlights).map((h, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-xs text-on-surface-variant/70"
+                    >
                       <span className="text-primary mt-0.5 flex-shrink-0">—</span>
                       <span>{h}</span>
                     </li>
@@ -166,10 +215,15 @@ export default function Projects() {
               </div>
 
               <div>
-                <h4 className="font-label-mono text-[10px] text-on-surface uppercase tracking-widest mb-4">Technologies & Stack</h4>
+                <h4 className="font-label-mono text-[10px] text-on-surface uppercase tracking-widest mb-4">
+                  {t("projects.techStack") || "Technologies & Stack"}
+                </h4>
                 <div className="flex flex-wrap gap-2">
-                  {selData.tech.map(t => (
-                    <span key={t} className="font-label-mono text-[9px] text-on-surface-variant/50 border border-outline-variant/20 px-2 py-0.5">
+                  {selData.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="font-label-mono text-[9px] text-on-surface-variant/50 border border-outline-variant/20 px-2 py-0.5"
+                    >
                       {t}
                     </span>
                   ))}
