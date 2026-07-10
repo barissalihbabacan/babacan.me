@@ -34,11 +34,16 @@ function DodecahedronNetwork({ isDesktop }) {
     return { nodes: vertices.map((v) => v.toArray()), edges: edgeList };
   }, []);
 
-  // Idle rotation
+  const time = useRef(0);
+
+  // Idle rotation (smooth random directions)
   useFrame((state, delta) => {
     if (group.current) {
-      group.current.rotation.y += delta * 0.15;
-      group.current.rotation.x += delta * 0.1;
+      time.current += delta;
+      const t = time.current;
+      group.current.rotation.x = t * 0.1 + Math.sin(t * 0.3) * 0.5;
+      group.current.rotation.y = t * 0.15 + Math.cos(t * 0.2) * 0.5;
+      group.current.rotation.z = Math.sin(t * 0.1) * 0.5;
     }
   });
 
@@ -46,23 +51,24 @@ function DodecahedronNetwork({ isDesktop }) {
 
   return (
     <>
-      <group ref={group}>
+      {/* Moderately enlarged and moved slightly down */}
+      <group ref={group} scale={1.1} position={[0, 0, 0]}>
         {/* Draw the connection lines between pentagon vertices */}
         {edges.map((points, i) => (
           <Line
             key={`edge-${i}`}
             points={points}
             color={primaryColor}
-            lineWidth={1.5}
+            lineWidth={2}
             transparent
-            opacity={0.4}
+            opacity={0.5}
           />
         ))}
 
         {/* Draw the nodes (data points) at the vertices */}
         {nodes.map((pos, i) => (
           <Sphere key={`node-${i}`} args={[0.15, 16, 16]} position={pos}>
-            <meshBasicMaterial color={primaryColor} transparent opacity={0.8} />
+            <meshBasicMaterial color={primaryColor} transparent opacity={0.9} />
           </Sphere>
         ))}
 
@@ -94,13 +100,6 @@ export default function NetworkGraphic() {
         <fog attach="fog" args={["#000000", 6, 15]} />
         <DodecahedronNetwork isDesktop={isDesktop} />
       </Canvas>
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at center, transparent 40%, var(--color-surface) 75%)",
-        }}
-      ></div>
     </div>
   );
 }
