@@ -32,7 +32,7 @@ const repoTranslations = {
 
 export default function GithubActivity() {
   const { t, lang } = useLanguage();
-  const { stats, languages, loading: statsLoading, error: statsError } = useGithubStats();
+  const { stats, languages, loading: statsLoading } = useGithubStats();
   const [repoType, setRepoType] = useState("personal");
   const { repos, loading: reposLoading, error } = useGithubRepos(repoType);
 

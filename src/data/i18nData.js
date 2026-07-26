@@ -7,8 +7,8 @@ export const i18nData = {
   },
   hero: {
     roles: {
-      en: "Software Engineer · Systems Architect · Narrative Designer",
-      tr: "Yazılım Mühendisi · Sistem Mimarı · Anlatı Tasarımcısı",
+      en: "Software Developer · Systems Builder · Narrative Designer",
+      tr: "Yazılım Geliştirici · Sistem Tasarımcısı · Anlatı Tasarımcısı",
     },
     title: {
       en: 'Architecting Systems &amp;<br />\n            <span class="text-on-surface-variant font-normal italic">Narratives.</span>',
@@ -70,6 +70,7 @@ export const i18nData = {
     personalTitle: { en: "Personal", tr: "Kişisel" },
     highlights: { en: "Key Highlights", tr: "Öne Çıkan Özellikler" },
     techStack: { en: "Technologies & Stack", tr: "Kullanılan Teknolojiler" },
+    visitLive: { en: "Garage.ist / Live", tr: "Garage.ist / Canlı" },
     sortify: {
       title: { en: "Sortify", tr: "Sortify" },
       desc: {
@@ -132,7 +133,7 @@ export const i18nData = {
       },
     },
     writersIde: {
-      title: { en: "Mythos IDE", tr: "Mythos IDE" },
+      title: { en: "Mythos", tr: "Mythos" },
       desc: {
         en: "A specialized local-first development environment built specifically for authors and narrative designers.",
         tr: "Yazarlar ve anlatı tasarımcıları için özel olarak oluşturulmuş, yerel-öncelikli bir geliştirme ortamı.",
@@ -249,12 +250,12 @@ export const i18nData = {
   },
   seo: {
     title: {
-      en: "Barış Salih Babacan | Software Engineer",
-      tr: "Barış Salih Babacan | Yazılım Mühendisi",
+      en: "Barış Salih Babacan | Software Developer",
+      tr: "Barış Salih Babacan | Yazılım Geliştirici",
     },
     description: {
-      en: "Software Engineer & Systems Architect based in Istanbul. Specializing in autonomous systems, P2P architectures, and immersive narratives.",
-      tr: "İstanbul merkezli Yazılım Mühendisi & Sistem Mimarı. Otonom sistemler, P2P mimarileri ve sürükleyici kurgular üzerine uzmanlaşmıştır.",
+      en: "Software Developer & Systems Builder based in Istanbul. Specializing in autonomous systems, P2P architectures, and immersive narratives.",
+      tr: "İstanbul merkezli Yazılım Geliştirici & Sistem Tasarımcısı. Otonom sistemler, P2P mimarileri ve sürükleyici kurgular üzerine çalışır.",
     },
   },
 };

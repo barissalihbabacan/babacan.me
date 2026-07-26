@@ -1,6 +1,6 @@
 export const PROJECT_DATA = {
   mythos: {
-    title: { en: "Mythos IDE", tr: "Mythos IDE" },
+    title: { en: "Mythos", tr: "Mythos" },
     category: { en: "App · Tooling", tr: "Uygulama · Araçlar" },
     categoryColor: "text-primary border-primary/20",
     status: { en: "In Development", tr: "Geliştirme Aşamasında" },
@@ -23,6 +23,7 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["Tauri", "TypeScript", "AI/MCP"],
+    githubUrl: "https://github.com/barissalihbabacan",
   },
   osmos: {
     title: { en: "Osmos", tr: "Osmos" },
@@ -52,6 +53,7 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["Rust", "SwiftUI", "P2P", "CRDTs", "Local-First"],
+    githubUrl: "https://github.com/Osmos-App",
   },
   gayrimenkuldunyasi: {
     title: { en: "Gayrimenkul Dünyası", tr: "Gayrimenkul Dünyası" },
@@ -81,6 +83,8 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["Next.js", "Playwright Stealth", "Firestore", "TypeScript", "XML Parser"],
+    liveUrl:
+      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   sortify: {
     title: { en: "Sortify", tr: "Sortify" },
@@ -115,6 +119,8 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["SwiftUI", "Node.js", "TypeScript"],
+    liveUrl:
+      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   "plus-tv": {
     title: { en: "+TV", tr: "+TV" },
@@ -144,6 +150,8 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["Lead Dev", "Garage.ist"],
+    liveUrl:
+      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   playsortify: {
     title: { en: "Sortify Web", tr: "Sortify Web" },
@@ -173,6 +181,8 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["React", "Vite", "TypeScript", "Firebase"],
+    liveUrl:
+      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   sporsayfasi: {
     title: { en: "Spor Sayfası", tr: "Spor Sayfası" },
@@ -202,6 +212,8 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["Next.js", "Cheerio", "SQLite", "Node-Cron", "TypeScript"],
+    liveUrl:
+      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   worldclock: {
     title: { en: "World Clock", tr: "World Clock" },
@@ -231,6 +243,8 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["React", "D3.js", "Vite", "TopoJSON", "i18n", "Wikipedia API"],
+    liveUrl:
+      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   qpass: {
     title: { en: "Q-PASS", tr: "Q-PASS" },
@@ -262,6 +276,7 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["C++ / Arduino", "Python", "PHP", "MySQL", "RFID", "Serial"],
+    githubUrl: "https://github.com/barissalihbabacan/Q-PASS-RFID-Access-Control",
   },
   itrms: {
     title: { en: "IT-RMS", tr: "IT-RMS" },
@@ -291,5 +306,6 @@ export const PROJECT_DATA = {
       ],
     },
     tech: ["Node.js", "NoSQL", "RBAC", "Barcode", "PHP"],
+    githubUrl: "https://github.com/barissalihbabacan/IT-Department-Resource-Management-System",
   },
 };

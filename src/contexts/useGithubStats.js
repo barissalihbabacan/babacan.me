@@ -10,7 +10,7 @@ async function fetchWithCache(url, cacheKey) {
       if (Date.now() - timestamp < CACHE_TTL) {
         return data;
       }
-    } catch (e) {
+    } catch {
       // Ignore parse errors
     }
   }
@@ -32,7 +32,7 @@ async function fetchWithCache(url, cacheKey) {
           const { data } = JSON.parse(cached);
           console.warn("GitHub API rate limit exceeded. Using stale cache for", url);
           return data;
-        } catch (e) {}
+        } catch {}
       }
     }
     throw new Error(`GitHub API error: ${res.status}`);
@@ -88,7 +88,7 @@ export const useGithubStats = () => {
         setLoading(false);
       }
     };
-    fetchStats();
+    void fetchStats();
   }, []);
 
   return { stats, languages, loading, error };
@@ -132,7 +132,7 @@ export const useGithubRepos = (type) => {
         setLoading(false);
       }
     };
-    fetchRepos();
+    void fetchRepos();
   }, [type]);
 
   return { repos, loading, error };

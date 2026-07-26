@@ -56,4 +56,4 @@ async function fetchGitHubData() {
   }
 }
 
-fetchGitHubData();
+void fetchGitHubData();

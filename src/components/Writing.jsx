@@ -135,7 +135,7 @@ export default function Writing() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href="https://thesinsofthefathers.com/"
+                href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
                 rel="noopener"
                 className="border border-tertiary/40 text-tertiary px-6 py-3 font-label-mono text-label-mono uppercase tracking-widest hover:bg-tertiary/5 transition-all flex items-center gap-2"
@@ -182,7 +182,7 @@ export default function Writing() {
                 {t("writing.ecosystem.node1.desc")}
               </p>
               <a
-                href="https://thesinsofthefathers.com/"
+                href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
                 rel="noopener"
                 className="font-label-mono text-[9px] text-tertiary/60 hover:text-tertiary transition-colors flex items-center gap-1"
@@ -218,7 +218,7 @@ export default function Writing() {
                 </span>
               </div>
               <a
-                href="https://blog.thesinsofthefathers.com"
+                href="https://blog.thesinsofthefathers.com?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
                 rel="noopener"
                 className="font-label-mono text-[9px] text-secondary/60 hover:text-secondary transition-colors flex items-center gap-1"
@@ -246,7 +246,7 @@ export default function Writing() {
                 {t("writing.ecosystem.node3.desc")}
               </p>
               <a
-                href="https://shop.thesinsofthefathers.com/"
+                href="https://shop.thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
                 rel="noopener"
                 className="font-label-mono text-[9px] text-primary/60 hover:text-primary transition-colors flex items-center gap-1"

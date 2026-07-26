@@ -35,7 +35,7 @@ Otonom sistemler, yerel-öncelikli (P2P) mimariler ve yüksek performanslı web/
 - **Osmos (P2P / Local-First)** | _Rust, SwiftUI, CRDTs_
   Apple ekosistemi için eşler arası (peer-to-peer) sürüm kontrol ve senkronizasyon sistemi. Yüksek performanslı **Rust çekirdeği** ve yerel **SwiftUI** katmanı ile inşa edilerek bulut bağımlılığı tamamen ortadan kaldırılmış, güvenli ve çevrimdışı-öncelikli bir veri mimarisi kurulmuştur.
 
-- **Mythos IDE** | _Tauri, TypeScript, AI/MCP_
+- **Mythos** | _Tauri, TypeScript, AI/MCP_
   Anlatı tasarımcıları için Tauri ve TypeScript kullanarak yerel-öncelikli özel bir geliştirme ortamı (IDE) inşa ettim. Gelişmiş yapay zeka orkestrasyonunu (AI/MCP) IDE içine entegre ettim.
 
 - **Gayrimenkul Dünyası** | _Next.js, Playwright Stealth, Firestore_

@@ -3,7 +3,7 @@ import { useLanguage } from "../contexts/LanguageContext";
 import NetworkGraphic from "./NetworkGraphic";
 
 export default function Hero() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-16">

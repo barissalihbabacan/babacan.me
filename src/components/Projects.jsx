@@ -229,6 +229,37 @@ export default function Projects() {
                   ))}
                 </div>
               </div>
+
+              {(selData.githubUrl || selData.liveUrl) && (
+                <div className="mt-8 pt-6 border-t border-primary/20 flex flex-wrap gap-3">
+                  {selData.liveUrl && (
+                    <a
+                      href={selData.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-primary text-surface px-4 py-2 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/85 transition-all"
+                    >
+                      <span>{t("projects.visitLive") || "Garage.ist / Live"}</span>
+                      <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+                        open_in_new
+                      </span>
+                    </a>
+                  )}
+                  {selData.githubUrl && (
+                    <a
+                      href={`${selData.githubUrl}${selData.githubUrl.includes("?") ? "&" : "?"}utm_source=babacan.me&utm_medium=portfolio&utm_campaign=project_view`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 border border-primary/30 text-on-surface px-4 py-2 font-label-mono text-[10px] uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
+                    >
+                      <span>{t("github.viewOnGithub") || "View Repository"}</span>
+                      <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+                        open_in_new
+                      </span>
+                    </a>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>

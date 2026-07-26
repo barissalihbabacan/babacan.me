@@ -1,6 +1,6 @@
 # babacan.me
 
-Personal portfolio of Barış Salih Babacan — Software Engineer & Systems Architect.
+Personal portfolio of Barış Salih Babacan — Software Developer & Systems Builder.
 
 Live: **[babacan.me](https://babacan.me)**
 

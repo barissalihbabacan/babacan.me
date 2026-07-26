@@ -1,6 +1,7 @@
 import { defineConfig, lazyPlugins } from "vite-plus";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import path from "path";
 
 export default defineConfig({
   staged: {
@@ -19,8 +20,8 @@ export default defineConfig({
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: "src/index.html",
-        notfound: "src/404.html",
+        main: path.resolve(__dirname, "src/index.html"),
+        notfound: path.resolve(__dirname, "src/404.html"),
       },
     },
   },

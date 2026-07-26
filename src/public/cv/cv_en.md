@@ -35,7 +35,7 @@ Innovative Software Engineer and Systems Architect specializing in autonomous sy
 - **Osmos (P2P / Local-First)** | _Rust, SwiftUI, CRDTs_
   Architected a peer-to-peer version control and sync system for the Apple ecosystem. Built with a high-performance **Rust core** and a native **SwiftUI layer**, completely eliminating cloud dependency for secure, offline-first data sovereignty.
 
-- **Mythos IDE** | _Tauri, TypeScript, AI/MCP_
+- **Mythos** | _Tauri, TypeScript, AI/MCP_
   Created a specialized, local-first development environment for narrative designers. Engineered scalable storytelling hierarchies and integrated advanced AI orchestration directly into the IDE.
 
 - **Gayrimenkul Dünyası** | _Next.js, Playwright Stealth, Firestore_
