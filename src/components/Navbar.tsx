@@ -31,6 +31,17 @@ export default function Navbar() {
             {lang === "tr" ? "EN" : "TR"}
           </button>
           <a
+            href="https://tech.babacan.me"
+            target="_blank"
+            rel="noopener"
+            className="border border-primary/40 text-primary px-2 py-1.5 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-1.5"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+              open_in_new
+            </span>
+            {t("nav.techBlog")}
+          </a>
+          <a
             href={
               lang === "tr"
                 ? "/cv/Baris_Salih_Babacan_CV_TR.pdf"
@@ -78,6 +89,18 @@ export default function Navbar() {
               download
             </span>
             {t("hero.downloadCV") || "CV"}
+          </a>
+          <a
+            href="https://tech.babacan.me"
+            target="_blank"
+            rel="noopener"
+            className="flex items-center gap-2 border border-primary/40 text-primary px-2 py-2 font-label-mono text-[10px] uppercase tracking-widest hover:bg-primary/10 transition-colors w-fit"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+              open_in_new
+            </span>
+            {t("nav.techBlog")}
           </a>
           <a
             className="block font-label-mono text-label-mono text-on-surface-variant hover:text-primary uppercase tracking-widest py-2"

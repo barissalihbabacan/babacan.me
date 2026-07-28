@@ -12,6 +12,7 @@ export const i18nData: I18nNode = {
     projects: { en: "Projects", tr: "Projeler" },
     writing: { en: "Writing", tr: "Yazılar" },
     contact: { en: "Contact", tr: "İletişim" },
+    techBlog: { en: "Tech Blog", tr: "Teknoloji Blogu" },
   },
   hero: {
     roles: {
