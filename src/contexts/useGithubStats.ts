@@ -1,25 +1,32 @@
+/// <reference types="vite/client" />
 import { useState, useEffect } from "react";
 
 const CACHE_TTL = 1000 * 60 * 60 * 2; // 2 hours
 
-async function fetchWithCache(url, cacheKey) {
+interface CacheEntry<T> {
+  data: T;
+  timestamp: number;
+}
+
+async function fetchWithCache<T>(url: string, cacheKey: string): Promise<T> {
   const cached = localStorage.getItem(cacheKey);
   if (cached) {
     try {
-      const { data, timestamp } = JSON.parse(cached);
-      if (Date.now() - timestamp < CACHE_TTL) {
-        return data;
+      const parsed = JSON.parse(cached) as CacheEntry<T>;
+      if (Date.now() - parsed.timestamp < CACHE_TTL) {
+        return parsed.data;
       }
     } catch {
       // Ignore parse errors
     }
   }
 
-  const headers = {};
-  const token = import.meta.env.VITE_GITHUB_TOKEN || localStorage.getItem("GITHUB_TOKEN");
+  const headers: Record<string, string> = {};
+  const token =
+    import.meta.env.VITE_GITHUB_TOKEN || (localStorage.getItem("GITHUB_TOKEN") ?? undefined);
   console.log("GitHub Token loaded:", token ? "YES (hidden)" : "NO");
   if (token) {
-    headers.Authorization = `Bearer ${token}`;
+    headers["Authorization"] = `Bearer ${token}`;
   }
 
   const res = await fetch(url, { headers });
@@ -29,35 +36,59 @@ async function fetchWithCache(url, cacheKey) {
     if (res.status === 403 || res.status === 429) {
       if (cached) {
         try {
-          const { data } = JSON.parse(cached);
+          const stale = JSON.parse(cached) as CacheEntry<T>;
           console.warn("GitHub API rate limit exceeded. Using stale cache for", url);
-          return data;
-        } catch {}
+          return stale.data;
+        } catch {
+          // fall through
+        }
       }
     }
     throw new Error(`GitHub API error: ${res.status}`);
   }
 
-  const data = await res.json();
-  localStorage.setItem(cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
+  const data = (await res.json()) as T;
+  const entry: CacheEntry<T> = { data, timestamp: Date.now() };
+  localStorage.setItem(cacheKey, JSON.stringify(entry));
   return data;
 }
 
+interface GithubUser {
+  followers: number;
+}
+
+interface GithubRepo {
+  id: number;
+  name: string;
+  html_url: string;
+  description: string | null;
+  language: string | null;
+  stargazers_count: number;
+  forks_count: number;
+}
+
+interface GithubStats {
+  followers: number;
+  repos: number;
+  stars: number;
+  forks: number;
+}
+
 export const useGithubStats = () => {
-  const [stats, setStats] = useState({ followers: 0, repos: 0, stars: 0, forks: 0 });
-  const [languages, setLanguages] = useState({});
+  const [stats, setStats] = useState<GithubStats>({ followers: 0, repos: 0, stars: 0, forks: 0 });
+  const [languages, setLanguages] = useState<Record<string, number>>({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchStats = async () => {
       const username = "barissalihbabacan";
       try {
-        const userData = await fetchWithCache(
+        const userData = await fetchWithCache<GithubUser>(
           `https://api.github.com/users/${username}`,
           `gh_user_${username}`,
         );
-        const reposData = await fetchWithCache(
+        const reposData = await fetchWithCache<GithubRepo[]>(
           `https://api.github.com/users/${username}/repos?per_page=100`,
           `gh_repos_full_${username}`,
         );
@@ -73,7 +104,7 @@ export const useGithubStats = () => {
             forks,
           });
 
-          const langs = {};
+          const langs: Record<string, number> = {};
           reposData.forEach((repo) => {
             if (repo.language) {
               langs[repo.language] = (langs[repo.language] || 0) + 1;
@@ -83,7 +114,7 @@ export const useGithubStats = () => {
         }
       } catch (err) {
         console.error("Error fetching GitHub stats:", err);
-        setError(err.message);
+        setError(err instanceof Error ? err.message : String(err));
       } finally {
         setLoading(false);
       }
@@ -94,8 +125,10 @@ export const useGithubStats = () => {
   return { stats, languages, loading, error };
 };
 
-export const useGithubRepos = (type) => {
-  const [repos, setRepos] = useState([]);
+type RepoType = "personal" | "org-sins" | "org-osmos";
+
+export const useGithubRepos = (type: RepoType) => {
+  const [repos, setRepos] = useState<GithubRepo[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -119,14 +152,14 @@ export const useGithubRepos = (type) => {
       }
 
       try {
-        const data = await fetchWithCache(url, `gh_repos_${type}`);
+        const data = await fetchWithCache<GithubRepo[]>(url, `gh_repos_${type}`);
         if (Array.isArray(data)) {
           setRepos(data.slice(0, 6));
         } else {
           setRepos([]);
         }
-      } catch (error) {
-        console.error("Error fetching repos:", error);
+      } catch (fetchError) {
+        console.error("Error fetching repos:", fetchError);
         setError(true);
       } finally {
         setLoading(false);
@@ -137,3 +170,5 @@ export const useGithubRepos = (type) => {
 
   return { repos, loading, error };
 };
+
+export type { GithubRepo, GithubStats, RepoType };

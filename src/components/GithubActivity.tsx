@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { GitHubCalendar } from "react-github-calendar";
-import { useGithubStats, useGithubRepos } from "../contexts/useGithubStats";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useGithubStats, useGithubRepos, type RepoType } from "../contexts/useGithubStats.ts";
+import { useLanguage } from "../contexts/LanguageContext.tsx";
 
-const repoTranslations = {
+type Lang = "en" | "tr";
+
+const repoTranslations: Record<string, Record<Lang, string>> = {
   hive: {
     en: "Multi-Agent Harness for Production AI",
     tr: "Üretim odaklı yapay zeka için çoklu ajan (multi-agent) altyapısı.",
@@ -33,11 +35,11 @@ const repoTranslations = {
 export default function GithubActivity() {
   const { t, lang } = useLanguage();
   const { stats, languages, loading: statsLoading } = useGithubStats();
-  const [repoType, setRepoType] = useState("personal");
+  const [repoType, setRepoType] = useState<RepoType>("personal");
   const { repos, loading: reposLoading, error } = useGithubRepos(repoType);
 
   const langEntries = Object.entries(languages).sort((a, b) => b[1] - a[1]);
-  const totalLangs = langEntries.reduce((acc, [_, count]) => acc + count, 0);
+  const totalLangs = langEntries.reduce((acc, [, count]) => acc + count, 0);
 
   return (
     <section
@@ -162,7 +164,7 @@ export default function GithubActivity() {
                         "rgba(197, 160, 89, 1)",
                       ],
                     }}
-                    hideTotalCount={false}
+                    showTotalCount={true}
                     labels={{
                       totalCount: t("github.calendarTotal"),
                       legend: {
@@ -193,12 +195,12 @@ export default function GithubActivity() {
                 <div className="text-on-surface-variant text-sm">Loading...</div>
               ) : langEntries.length > 0 ? (
                 <div className="space-y-3">
-                  {langEntries.slice(0, 5).map(([lang, count]) => {
+                  {langEntries.slice(0, 5).map(([langName, count]) => {
                     const pct = Math.round((count / totalLangs) * 100);
                     return (
-                      <div key={lang}>
+                      <div key={langName}>
                         <div className="flex justify-between font-label-mono text-[10px] mb-1">
-                          <span className="text-on-surface uppercase">{lang}</span>
+                          <span className="text-on-surface uppercase">{langName}</span>
                           <span className="text-primary">{pct}%</span>
                         </div>
                         <div className="h-1 bg-surface-container/50 w-full overflow-hidden">
@@ -268,7 +270,7 @@ export default function GithubActivity() {
                       </div>
                       <p className="text-xs text-on-surface-variant/70 mb-4 line-clamp-2 min-h-[2rem]">
                         {repoTranslations[repo.name]
-                          ? repoTranslations[repo.name][lang] || repo.description
+                          ? repoTranslations[repo.name][lang as Lang] || repo.description
                           : repo.description || t("github.noDescription")}
                       </p>
                       <div className="flex items-center gap-4 font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest">

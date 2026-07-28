@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import GithubActivity from "./components/GithubActivity";
-import Writing from "./components/Writing";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import { useLanguage } from "./contexts/LanguageContext";
+import Navbar from "./components/Navbar.tsx";
+import Hero from "./components/Hero.tsx";
+import Experience from "./components/Experience.tsx";
+import Projects from "./components/Projects.tsx";
+import GithubActivity from "./components/GithubActivity.tsx";
+import Writing from "./components/Writing.tsx";
+import Contact from "./components/Contact.tsx";
+import Footer from "./components/Footer.tsx";
+import { useLanguage } from "./contexts/LanguageContext.tsx";
 import { Helmet } from "react-helmet-async";
 
 export default function App() {

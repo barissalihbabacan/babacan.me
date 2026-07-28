@@ -1,4 +1,37 @@
-export const PROJECT_DATA = {
+export interface LocalizedText {
+  en: string;
+  tr: string;
+}
+
+export interface ProjectData {
+  title: LocalizedText;
+  category: LocalizedText;
+  categoryColor: string;
+  status: LocalizedText;
+  statusColor: string;
+  year: LocalizedText;
+  role: LocalizedText;
+  cardGradient: string;
+  description: LocalizedText;
+  highlights: { en: string[]; tr: string[] };
+  tech: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+}
+
+export type ProjectKey =
+  | "mythos"
+  | "osmos"
+  | "gayrimenkuldunyasi"
+  | "sortify"
+  | "plus-tv"
+  | "playsortify"
+  | "sporsayfasi"
+  | "worldclock"
+  | "qpass"
+  | "itrms";
+
+export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   mythos: {
     title: { en: "Mythos", tr: "Mythos" },
     category: { en: "App · Tooling", tr: "Uygulama · Araçlar" },

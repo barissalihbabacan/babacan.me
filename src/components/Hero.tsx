@@ -1,6 +1,6 @@
 import React from "react";
-import { useLanguage } from "../contexts/LanguageContext";
-import NetworkGraphic from "./NetworkGraphic";
+import { useLanguage } from "../contexts/LanguageContext.tsx";
+import NetworkGraphic from "./NetworkGraphic.tsx";
 
 export default function Hero() {
   const { t } = useLanguage();

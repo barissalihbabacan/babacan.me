@@ -1,20 +1,37 @@
-import React, { useRef, useMemo, useState, useEffect, Component } from "react";
+import React, {
+  useRef,
+  useMemo,
+  useState,
+  useEffect,
+  Component,
+  type ErrorInfo,
+  type ReactNode,
+} from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Line, Sphere } from "@react-three/drei";
 import * as THREE from "three";
 
-// Class ErrorBoundary to catch WebGL Context Creation errors
-class WebGLBoundary extends Component {
-  constructor(props) {
+// Error boundary to catch WebGL Context Creation errors
+interface WebGLBoundaryProps {
+  fallback: ReactNode;
+  children: ReactNode;
+}
+
+interface WebGLBoundaryState {
+  hasError: boolean;
+}
+
+class WebGLBoundary extends Component<WebGLBoundaryProps, WebGLBoundaryState> {
+  constructor(props: WebGLBoundaryProps) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError() {
+  static getDerivedStateFromError(): WebGLBoundaryState {
     return { hasError: true };
   }
 
-  componentDidCatch(error, errorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.warn(
       "WebGL context could not be created or failed. Falling back to SVG graphic.",
       error,
@@ -30,7 +47,7 @@ class WebGLBoundary extends Component {
   }
 }
 
-function checkWebGLSupport() {
+function checkWebGLSupport(): boolean {
   if (typeof window === "undefined") return false;
   try {
     const canvas = document.createElement("canvas");
@@ -78,13 +95,17 @@ function FallbackGraphic() {
   );
 }
 
-function DodecahedronNetwork({ isDesktop }) {
-  const group = useRef();
+interface DodecahedronNetworkProps {
+  isDesktop: boolean;
+}
+
+function DodecahedronNetwork({ isDesktop }: DodecahedronNetworkProps) {
+  const group = useRef<THREE.Group>(null);
 
   const { nodes, edges } = useMemo(() => {
     const geometry = new THREE.DodecahedronGeometry(3.5, 0);
     const positionAttribute = geometry.getAttribute("position");
-    const vertices = [];
+    const vertices: THREE.Vector3[] = [];
 
     for (let i = 0; i < positionAttribute.count; i++) {
       const v = new THREE.Vector3().fromBufferAttribute(positionAttribute, i);
@@ -93,7 +114,7 @@ function DodecahedronNetwork({ isDesktop }) {
       }
     }
 
-    const edgeList = [];
+    const edgeList: [THREE.Vector3Tuple, THREE.Vector3Tuple][] = [];
     const edgesGeometry = new THREE.EdgesGeometry(geometry);
     const edgesPos = edgesGeometry.getAttribute("position");
 
@@ -108,7 +129,7 @@ function DodecahedronNetwork({ isDesktop }) {
 
   const time = useRef(0);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (group.current) {
       time.current += delta;
       const t = time.current;

@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useLanguage } from "../contexts/LanguageContext";
-import { PROJECT_DATA } from "../data/projectsData";
+import { useLanguage } from "../contexts/LanguageContext.tsx";
+import { PROJECT_DATA, type ProjectKey } from "../data/projectsData.ts";
 
-function ProjectCard({ projectKey, onClick, lang }) {
+interface ProjectCardProps {
+  projectKey: ProjectKey;
+  onClick: (key: ProjectKey) => void;
+  lang: string;
+}
+
+function ProjectCard({ projectKey, onClick, lang }: ProjectCardProps) {
   const data = PROJECT_DATA[projectKey];
   if (!data) return null;
 
-  const category = data.category[lang] || data.category;
-  const title = data.title[lang] || data.title;
-  const description = data.description[lang] || data.description;
+  const category = data.category[lang as "en" | "tr"] ?? data.category.en;
+  const title = data.title[lang as "en" | "tr"] ?? data.title.en;
+  const description = data.description[lang as "en" | "tr"] ?? data.description.en;
 
   return (
     <div
@@ -52,7 +58,7 @@ function ProjectCard({ projectKey, onClick, lang }) {
 
 export default function Projects() {
   const { t, lang } = useLanguage();
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<ProjectKey | null>(null);
 
   useEffect(() => {
     if (selectedProject) {
@@ -66,7 +72,7 @@ export default function Projects() {
   }, [selectedProject]);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setSelectedProject(null);
       }
@@ -162,7 +168,7 @@ export default function Projects() {
               <div
                 className={`absolute top-4 left-4 font-label-mono text-[9px] px-2 py-0.5 uppercase tracking-widest ${selData.statusColor}`}
               >
-                {selData.status[lang] || selData.status}
+                {selData.status[lang as "en" | "tr"] ?? selData.status.en}
               </div>
               <div className="relative z-10 text-center">
                 <span
@@ -179,22 +185,22 @@ export default function Projects() {
                 <span
                   className={`font-label-mono text-[9px] uppercase tracking-widest border px-2 py-0.5 ${selData.categoryColor}`}
                 >
-                  {selData.category[lang] || selData.category}
+                  {selData.category[lang as "en" | "tr"] ?? selData.category.en}
                 </span>
                 <span className="font-label-mono text-[10px] text-on-surface-variant">
-                  {selData.year[lang] || selData.year}
+                  {selData.year[lang as "en" | "tr"] ?? selData.year.en}
                 </span>
               </div>
 
               <h2 className="text-3xl font-bold text-on-surface mb-2">
-                {selData.title[lang] || selData.title}
+                {selData.title[lang as "en" | "tr"] ?? selData.title.en}
               </h2>
               <div className="font-label-mono text-xs text-primary mb-6 uppercase tracking-widest">
-                {selData.role[lang] || selData.role}
+                {selData.role[lang as "en" | "tr"] ?? selData.role.en}
               </div>
 
               <p className="font-body-md text-on-surface-variant leading-relaxed mb-8">
-                {selData.description[lang] || selData.description}
+                {selData.description[lang as "en" | "tr"] ?? selData.description.en}
               </p>
 
               <div className="mb-8">
@@ -202,15 +208,17 @@ export default function Projects() {
                   {t("projects.highlights") || "Key Highlights"}
                 </h4>
                 <ul className="space-y-2">
-                  {(selData.highlights[lang] || selData.highlights).map((h, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-xs text-on-surface-variant/70"
-                    >
-                      <span className="text-primary mt-0.5 flex-shrink-0">—</span>
-                      <span>{h}</span>
-                    </li>
-                  ))}
+                  {(selData.highlights[lang as "en" | "tr"] ?? selData.highlights.en).map(
+                    (h, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-xs text-on-surface-variant/70"
+                      >
+                        <span className="text-primary mt-0.5 flex-shrink-0">—</span>
+                        <span>{h}</span>
+                      </li>
+                    ),
+                  )}
                 </ul>
               </div>
 
@@ -219,12 +227,12 @@ export default function Projects() {
                   {t("projects.techStack") || "Technologies & Stack"}
                 </h4>
                 <div className="flex flex-wrap gap-2">
-                  {selData.tech.map((t) => (
+                  {selData.tech.map((tech) => (
                     <span
-                      key={t}
+                      key={tech}
                       className="font-label-mono text-[9px] text-on-surface-variant/80 border border-outline-variant/60 px-2 py-0.5"
                     >
-                      {t}
+                      {tech}
                     </span>
                   ))}
                 </div>

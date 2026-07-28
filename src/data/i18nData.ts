@@ -1,4 +1,12 @@
-export const i18nData = {
+type Lang = "en" | "tr";
+
+type I18nLeaf = { en: string; tr: string };
+
+type I18nNode = {
+  [key: string]: I18nLeaf | I18nNode;
+};
+
+export const i18nData: I18nNode = {
   nav: {
     experience: { en: "Experience", tr: "Deneyim" },
     projects: { en: "Projects", tr: "Projeler" },
@@ -12,7 +20,7 @@ export const i18nData = {
     },
     title: {
       en: 'Architecting Systems &amp;<br />\n            <span class="text-on-surface-variant font-normal italic">Narratives.</span>',
-      tr: 'Sistem & Anlatı<br />\n            <span class="text-on-surface-variant font-normal italic">Mimarı.</span>',
+      tr: 'Sistem &amp; Anlatı<br />\n            <span class="text-on-surface-variant font-normal italic">Mimarı.</span>',
     },
     subtitle: {
       en: "Based in Istanbul. Building autonomous systems, P2P architectures, and immersive narratives.<br><br>Currently CTO at Garage.ist and working on a novel.",
@@ -245,7 +253,7 @@ export const i18nData = {
     connect: { en: "Let's connect.", tr: "İletişime Geçin." },
     desc: {
       en: "Open to select architectural consulting and narrative design roles.",
-      tr: "Seçili mimari danışmanlık ve anlatı tasarımı rollerine açığım.",
+      tr: "Seçili mimari danışmanlık ve anlatı tasarımı rolllerine açığım.",
     },
   },
   seo: {
@@ -259,3 +267,5 @@ export const i18nData = {
     },
   },
 };
+
+export type { Lang, I18nLeaf, I18nNode };
