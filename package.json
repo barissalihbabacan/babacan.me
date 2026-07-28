@@ -1,17 +1,17 @@
 {
-  "name": "portfolio-site",
+  "name": "babacan.me",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/barissalihbabacan/portfolio-site#readme",
+  "homepage": "https://github.com/barissalihbabacan/babacan.me#readme",
   "bugs": {
-    "url": "https://github.com/barissalihbabacan/portfolio-site/issues"
+    "url": "https://github.com/barissalihbabacan/babacan.me/issues"
   },
   "license": "ISC",
   "author": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/barissalihbabacan/portfolio-site.git"
+    "url": "git+https://github.com/barissalihbabacan/babacan.me.git"
   },
   "type": "module",
   "main": "index.js",
