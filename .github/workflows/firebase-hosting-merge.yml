@@ -18,6 +18,8 @@ jobs:
         with:
           node-version: "24.x"
           cache: "npm"
+      - name: Upgrade npm
+        run: npm install -g npm@12
       - name: Install and Build
         run: npm ci && npm run build
         env:
