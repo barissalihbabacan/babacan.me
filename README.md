@@ -134,6 +134,6 @@ npm run preview  # Previews production bundle locally
 
 ## 📄 License
 
-Distributed under the **ISC License**. See [`LICENSE`](./LICENSE) for details.
+Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
 
 Developed with precision by **[Barış Salih Babacan](https://github.com/barissalihbabacan)**.
