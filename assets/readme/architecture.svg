@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="arch-title arch-desc">
+  <title id="arch-title">babacan.me — System Architecture &amp; Deployment Pipeline</title>
+  <desc id="arch-desc">Flow diagram showing React 19 + TypeScript source built via Vite+ and deployed to Firebase Hosting through GitHub Actions CI/CD.</desc>
+
+  <rect width="1200" height="260" rx="10" fill="#151618" stroke="#33373d" stroke-width="1.5"/>
+
+  <!-- Step 1: Source & Dev Engine -->
+  <g transform="translate(40, 45)">
+    <rect width="240" height="170" rx="8" fill="#1b1d20" stroke="#33373d" stroke-width="1"/>
+    <rect width="240" height="28" rx="8" fill="#202225"/>
+    <text x="120" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#c5a059">01. SOURCE &amp; TOOLCHAIN</text>
+    
+    <text x="20" y="58" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#f1f3f5">React 19 + TypeScript</text>
+    <text x="20" y="78" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· Strict TS mode</text>
+    <text x="20" y="96" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· TailWind CSS v4</text>
+    <text x="20" y="114" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· Three.js WebGL</text>
+
+    <rect x="20" y="132" width="200" height="24" rx="4" fill="#3a2d18" stroke="#c5a059" stroke-width="0.8"/>
+    <text x="120" y="148" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#e5cba3">Vite+ (vp dev / vp build)</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(300, 120)">
+    <path d="M 0 10 L 35 10" stroke="#c5a059" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="35,5 45,10 35,15" fill="#c5a059"/>
+  </g>
+
+  <!-- Step 2: Quality & Validation -->
+  <g transform="translate(365, 45)">
+    <rect width="240" height="170" rx="8" fill="#1b1d20" stroke="#33373d" stroke-width="1"/>
+    <rect width="240" height="28" rx="8" fill="#202225"/>
+    <text x="120" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#f1f3f5">02. QUALITY &amp; LINTING</text>
+    
+    <text x="20" y="58" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#f1f3f5">OxLint &amp; Formatting</text>
+    <text x="20" y="78" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· vp check &amp; vp test</text>
+    <text x="20" y="96" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· Fast Oxlint checks</text>
+    <text x="20" y="114" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· Rolldown bundling</text>
+
+    <rect x="20" y="132" width="200" height="24" rx="4" fill="#26282d" stroke="#33373d" stroke-width="0.8"/>
+    <text x="120" y="148" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#f1f3f5">Production Assets</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(625, 120)">
+    <path d="M 0 10 L 35 10" stroke="#c5a059" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="35,5 45,10 35,15" fill="#c5a059"/>
+  </g>
+
+  <!-- Step 3: CI/CD Pipeline -->
+  <g transform="translate(690, 45)">
+    <rect width="240" height="170" rx="8" fill="#1b1d20" stroke="#33373d" stroke-width="1"/>
+    <rect width="240" height="28" rx="8" fill="#202225"/>
+    <text x="120" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#c5a059">03. GITHUB ACTIONS</text>
+    
+    <text x="20" y="58" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#f1f3f5">Automated Workflows</text>
+    <text x="20" y="78" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· Node 24 runtime</text>
+    <text x="20" y="96" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· PR preview channels</text>
+    <text x="20" y="114" font-family="'JetBrains Mono', monospace" font-size="11" fill="#a0a5ab">· Main branch deploy</text>
+
+    <rect x="20" y="132" width="200" height="24" rx="4" fill="#3a2d18" stroke="#c5a059" stroke-width="0.8"/>
+    <text x="120" y="148" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#e5cba3">GitHub Actions CI</text>
+  </g>
+
+  <!-- Arrow 3 -->
+  <g transform="translate(950, 120)">
+    <path d="M 0 10 L 35 10" stroke="#c5a059" stroke-width="2" stroke-dasharray="3 3"/>
+    <polygon points="35,5 45,10 35,15" fill="#c5a059"/>
+  </g>
+
+  <!-- Step 4: Edge CDN / Firebase -->
+  <g transform="translate(1015, 45)">
+    <rect width="145" height="170" rx="8" fill="#1b1d20" stroke="#33373d" stroke-width="1"/>
+    <rect width="145" height="28" rx="8" fill="#202225"/>
+    <text x="72" y="18" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600" fill="#f1f3f5">04. HOSTING</text>
+    
+    <text x="12" y="58" font-family="-apple-system, sans-serif" font-size="12" font-weight="600" fill="#f1f3f5">Firebase CDN</text>
+    <text x="12" y="78" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0a5ab">· Global Edge</text>
+    <text x="12" y="94" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0a5ab">· SPA Rewrites</text>
+    <text x="12" y="110" font-family="'JetBrains Mono', monospace" font-size="10" fill="#a0a5ab">· SSL &amp; Cache</text>
+
+    <rect x="12" y="132" width="121" height="24" rx="4" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="0.8"/>
+    <text x="72" y="148" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#10b981">babacan.me</text>
+  </g>
+</svg>
