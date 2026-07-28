@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://babacan.me"><img src="https://img.shields.io/badge/Production-babacan.me-c5a059?style=for-the-badge&logo=googlechrome&logoColor=111214" alt="Production URL"></a>
-  <a href="https://github.com/barissalihbabacan/babacan.me/actions"><img src="https://img.shields.io/github/actions/workflow/status/barissalihbabacan/babacan.me/firebase-hosting-merge.yml?branch=main&style=for-the-badge&label=CI%2FCD&color=10b981" alt="Build Status"></a>
+  <a href="https://github.com/barissalihbabacan/babacan.me/actions"><img src="https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-10b981?style=for-the-badge&logo=githubactions&logoColor=ffffff" alt="Build Status"></a>
   <a href="https://viteplus.dev"><img src="https://img.shields.io/badge/Toolchain-Vite%2B%20(vp)-3a2d18?style=for-the-badge&logo=vite&logoColor=e5cba3" alt="Vite+ Toolchain"></a>
   <a href="https://react.dev"><img src="https://img.shields.io/badge/React-19.2-1b1d20?style=for-the-badge&logo=react&logoColor=61dafb" alt="React 19"></a>
   <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-6.0-1b1d20?style=for-the-badge&logo=typescript&logoColor=3178c6" alt="TypeScript"></a>
