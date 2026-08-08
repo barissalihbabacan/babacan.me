@@ -1,7 +1,6 @@
-import React, { createContext, useState, useEffect, useContext, type ReactNode } from "react";
+import React, { createContext, useContext, type ReactNode } from "react";
 import { i18nData, type I18nNode } from "../data/i18nData";
-
-type Lang = "en" | "tr";
+import { useAppRouter, type Lang } from "./RouterContext";
 
 interface LanguageContextValue {
   lang: Lang;
@@ -12,30 +11,26 @@ interface LanguageContextValue {
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>("en");
-
-  useEffect(() => {
-    const userLang = navigator.language;
-    const isTR = userLang.startsWith("tr");
-    const storedLang = localStorage.getItem("site-lang") as Lang | null;
-    const initialLang: Lang = storedLang ?? (isTR ? "tr" : "en");
-    setLang(initialLang);
-    document.documentElement.lang = initialLang;
-  }, []);
+  const { lang, setLang } = useAppRouter();
 
   const toggleLanguage = () => {
     const newLang: Lang = lang === "tr" ? "en" : "tr";
     setLang(newLang);
-    localStorage.setItem("site-lang", newLang);
-    document.documentElement.lang = newLang;
   };
 
   const t = (path: string): string => {
     const keys = path.split(".");
     let result: I18nNode | string = i18nData;
     for (const key of keys) {
-      if (typeof result === "object" && result !== null && key in result) {
-        result = result[key] as I18nNode | string;
+      if (typeof result === "object" && result !== null) {
+        const matchingKey = Object.keys(result).find(
+          (k) => k === key || k.toLowerCase() === key.toLowerCase(),
+        );
+        if (matchingKey) {
+          result = (result as Record<string, unknown>)[matchingKey] as I18nNode | string;
+        } else {
+          return path;
+        }
       } else {
         return path;
       }

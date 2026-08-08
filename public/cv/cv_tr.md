@@ -15,7 +15,7 @@ Otonom sistemler, yerel-öncelikli (P2P) mimariler ve yüksek performanslı web/
 
 - **Diller:** TypeScript, JavaScript, Rust, C++, Python, PHP, SQL
 - **Önyüz & Mobil:** React, Next.js, SwiftUI, Vite, D3.js, TailwindCSS
-- **Arka Uç & Sistemler:** Node.js, Firebase (Firestore, Functions), SQLite, NoSQL, Tauri, CRDTs (P2P Sync)
+- **Arka Uç & Sistemler:** Node.js, Firebase (Firestore, Functions), SQLite, NoSQL, Tauri, Go
 - **Araçlar & DevOps:** Git, Playwright (Stealth), Docker, WireShark, Postman, Figma
 
 ### İŞ DENEYİMİ
@@ -32,20 +32,23 @@ Otonom sistemler, yerel-öncelikli (P2P) mimariler ve yüksek performanslı web/
 
 ### SEÇİLMİŞ PROJELER VE MİMARİLER
 
-- **Osmos (P2P / Local-First)** | _Rust, SwiftUI, CRDTs_
-  Apple ekosistemi için eşler arası (peer-to-peer) sürüm kontrol ve senkronizasyon sistemi. Yüksek performanslı **Rust çekirdeği** ve yerel **SwiftUI** katmanı ile inşa edilerek bulut bağımlılığı tamamen ortadan kaldırılmış, güvenli ve çevrimdışı-öncelikli bir veri mimarisi kurulmuştur.
+- **Osmos (Yerel-Öncelikli Sürüm Kontrolü)** | _Rust, Tauri, React, TypeScript_
+  Bellek güvenli **Rust çekirdeği** (BLAKE3 ile içerik-adresli depolama ve Unix-socket daemon API'si) ve erken aşamadaki bir **Tauri/React** masaüstü istemcisinden oluşan yerel-öncelikli bir sürüm kontrol motorunu kurdum ve mimarladım. mDNS/QUIC üzerinden eşler arası senkronizasyon tasarım ve geliştirme aşamasında.
 
-- **Mythos** | _Tauri, TypeScript, AI/MCP_
-  Anlatı tasarımcıları için Tauri ve TypeScript kullanarak yerel-öncelikli özel bir geliştirme ortamı (IDE) inşa ettim. Gelişmiş yapay zeka orkestrasyonunu (AI/MCP) IDE içine entegre ettim.
+- **Mythos** | _Tauri, Rust, TypeScript_
+  Romancılar için yerel-öncelikli bir yazar IDE'si kurdum: taslakları diskte Markdown+YAML olarak modelleyen ve stdio üzerinden JSON-RPC protokolü sunan bağımsız bir Rust motoru (`mythoside-core`) ile bu motoru sidecar süreç olarak çalıştıran bir Tauri/React masaüstü istemcisi.
+
+- **Chorus** | _Go, React, Git_
+  Her konu ve mesajı geleneksel bir veritabanı yerine değişmez bir Git commit'i olarak saklayan, kullanıcı hesapları yerine konuya özgü geçici kimlikler kullanan açık kaynaklı bir anonim tartışma motorunun geliştirilmesine katkıda bulundum.
 
 - **Gayrimenkul Dünyası** | _Next.js, Playwright Stealth, Firestore_
   Playwright Stealth kullanarak karmaşık bir otomatik web kazıma (scraping) boru hattı geliştirdim. Yedek sistem olarak Google News XML ayrıştırıcısını entegre ederek verileri Firestore üzerinde günlük işlem bütçeleriyle senkronize ettim.
 
 - **Q-PASS Geçiş Kontrol Sistemi** | _C++, Python, PHP, MySQL, Arduino_
-  Bir kamu kurumu için uçtan uca canlı bir donanım-yazılım entegrasyonu kurdum. Seri iletişim üzerinden C++ (Arduino) ürün yazılımı ile Python/PHP web arka ucunu haberleştirdim, rol tabanlı erişim ve 21 farklı güvenlik koşulu tanımladım.
+  Bir kamu kurumu için özel tasarım 3D baskı RFID okuyucu üniteleriyle uçtan uca canlı bir donanım-yazılım entegrasyonu kurdum. Seri iletişim üzerinden C++ (Arduino) ürün yazılımı ile Python/PHP web arka ucunu haberleştirerek gerçek zamanlı kantin girişi ve yemek takibi sağladım.
 
-- **IT-RMS (Kaynak Yönetim Sistemi)** | _Node.js, NoSQL, PHP_
-  Monolitik bir PHP uygulamasını ölçeklenebilir Node.js ve NoSQL mimarisine taşıyarak modernize ettim. Otomatik barkod oluşturma altyapısını ve çok şubeli rol tabanlı yetkilendirmeyi (RBAC) sisteme entegre ettim.
+- **IT-RMS (Kaynak Yönetim Sistemi)** | _PHP, MySQL_
+  Bir eğitim kurumu için PHP/MySQL üzerinde çok şubeli BT varlık ve kaynak yönetim sistemi geliştirdim; otomatik barkod üretimi ve rol tabanlı erişim kontrolü içerir. Üretim kullanımının ardından şu an arşivlenmiş durumda.
 
 ### EĞİTİM
 

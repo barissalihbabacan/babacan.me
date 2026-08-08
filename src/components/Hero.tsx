@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useLanguage } from "../contexts/LanguageContext.tsx";
-import NetworkGraphic from "./NetworkGraphic.tsx";
+
+const NetworkGraphic = lazy(() => import("./NetworkGraphic.tsx"));
 
 export default function Hero() {
   const { t } = useLanguage();
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   return (
     <section id="hero" className="relative min-h-screen flex flex-col justify-center pt-16">
@@ -51,7 +60,11 @@ export default function Hero() {
 
           {/* Right Graphic / Photo */}
           <div className="hidden lg:flex justify-center items-center relative w-full opacity-90 pointer-events-none">
-            <NetworkGraphic />
+            {isDesktop ? (
+              <Suspense fallback={null}>
+                <NetworkGraphic />
+              </Suspense>
+            ) : null}
           </div>
         </div>
 
@@ -93,14 +106,27 @@ export default function Hero() {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface/55">
-        <span className="font-label-mono text-[9px] uppercase tracking-[0.2em]">
+      <a
+        href="#experience"
+        aria-label={t("hero.scroll")}
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
+      >
+        <span className="font-label-mono text-[9px] uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
           {t("hero.scroll")}
         </span>
-        <div className="w-[1px] h-12 bg-primary/20 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1/2 bg-primary animate-pulse"></div>
+        {/* Animated capsule mouse pill */}
+        <div className="w-[18px] h-[30px] rounded-full border border-primary/40 flex justify-center p-1 group-hover:border-primary transition-colors">
+          <div className="w-1 h-2 rounded-full bg-primary animate-scroll-drop"></div>
         </div>
-      </div>
+        {/* Bouncing down chevron icon */}
+        <svg
+          className="w-4 h-4 fill-current text-primary/80 group-hover:text-primary animate-bounce shrink-0"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+        </svg>
+      </a>
     </section>
   );
 }

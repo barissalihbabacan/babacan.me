@@ -1,0 +1,75 @@
+# Barış Salih Babacan — Systems Architect & CTO
+
+> Official technical portfolio and knowledge platform of Barış Salih Babacan, Systems Architect & CTO at Garage.ist. Specializing in distributed P2P systems, local-first / offline-first architectures, content-addressable storage, and psychological fiction.
+
+## Core Profile
+- **Role**: CTO @ Garage.ist · Systems Architect · Author
+- **Location**: Istanbul, Turkey
+- **Email**: barissalih@babacan.me
+- **Website**: https://babacan.me
+- **GitHub**: https://github.com/barissalihbabacan
+- **LinkedIn**: https://linkedin.com/in/barissalihbabacan
+
+## Primary Technical Focus & Philosophy
+- **Distributed P2P Systems**: Designing decentralized P2P networks with content-addressable storage (CAS) and identity verification models.
+- **Offline-First & Local-First Architectures**: Building resilient systems where user data persists locally on-device using SQLite, Mongoose, or native Git storage, synchronizing state peer-to-peer.
+- **Geographic & Spatial Math**: Building interactive 3D/2D orthographic map projections with solar terminator calculations.
+
+## Notable Open-Source & Personal Projects
+
+### Osmos
+- **Description**: Next-Generation Local-First Database & P2P Sync Engine.
+- **Role**: Founder & Lead Architect
+- **Tech**: Rust · Tauri · SQLite · Libp2p · TypeScript
+- **URL**: https://github.com/Osmos-App/osmos
+
+### Mythos
+- **Description**: High-Performance Desktop IDE & System Workbench.
+- **Role**: Lead Architect
+- **Tech**: Rust · WebAssembly · React 19 · Vite
+- **URL**: https://github.com/Mythos-IDE/mythos
+
+### Chorus
+- **Description**: Anonymous Discussion Engine Built on Native Git Storage.
+- **Role**: Founding Engineer
+- **Tech**: Go 1.22+ · React 19 · Vite · TanStack Query
+- **URL**: https://github.com/barissalihbabacan/chorus
+
+### IT-RMS (IT Resource Management System)
+- **Description**: Production Lab & Device Hardware Asset Management System.
+- **Role**: Lead Architect & Developer (2024–2026)
+- **Tech**: Node.js · Express.js · MongoDB (Mongoose) · Passport.js · QRCode
+- **URL**: https://github.com/barissalihbabacan/IT-Department-Resource-Management-System
+
+### World Clock
+- **Description**: Interactive Geographic Timezone & Solar Terminator Projection.
+- **Role**: Lead Developer @ Garage.ist
+- **Tech**: React 18 · D3.js · TopoJSON · Vite SSG / Prerender
+- **URL**: https://worldclock.info
+
+### Q-PASS
+- **Description**: IoT RFID Campus Access Control & Verification Hardware System.
+- **Role**: Systems Engineer
+- **Tech**: Arduino (C++) · Python Serial Bridge · PHP 8 · MySQL
+- **URL**: https://github.com/barissalihbabacan/Q-PASS-RFID-Access-Control
+
+## Commercial Projects @ Garage.ist
+
+### Sortify & Sortify Web
+- **Description**: Real-Time Visual Media Sorting & Asset Management Solution.
+- **Role**: Backend & Infrastructure Lead @ Garage.ist
+
+### Gayrimenkul Dünyası & +TV & Spor Sayfası
+- **Description**: Enterprise real estate, video streaming, and automated sports news publishing platforms.
+- **Role**: Backend Integration & Firebase Cloud Infrastructure @ Garage.ist
+
+## Publications & Literary Works
+
+### Babaların Günahları (The Sins of the Fathers)
+- **Format**: Novel (Psychological Fiction / Drama)
+- **Status**: Under Publication Review (Yayın Değerlendirmesinde — Submitted for Everest First Novel Award)
+- **Summary**: A three-generation family saga stretching from the haunted streets of Scotland to the soulless towers of Los Angeles. Tracing ancestral sins, moral responsibility, and man's reckoning with his own conscience.
+- **Official Site**: https://thesinsofthefathers.com
+
+## Optional & Further Reading
+- [Full LLM Document](https://babacan.me/llms-full.txt): Extended technical overview and details.

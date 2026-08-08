@@ -1,85 +1,129 @@
-type Lang = "en" | "tr";
-
-type I18nLeaf = { en: string; tr: string };
-
-type I18nNode = {
-  [key: string]: I18nLeaf | I18nNode;
-};
+export interface I18nNode {
+  [key: string]: I18nNode | { en: string; tr: string };
+}
 
 export const i18nData: I18nNode = {
   nav: {
     experience: { en: "Experience", tr: "Deneyim" },
     projects: { en: "Projects", tr: "Projeler" },
-    writing: { en: "Writing", tr: "Yazılar" },
+    writing: { en: "Publications", tr: "Yayınlar" },
     contact: { en: "Contact", tr: "İletişim" },
-    techBlog: { en: "Tech Blog", tr: "Teknoloji Blogu" },
+    techBlog: { en: "Technical Blog", tr: "Teknik Blog" },
+  },
+  seo: {
+    title: {
+      en: "Barış Salih Babacan | Systems Architect & CTO",
+      tr: "Barış Salih Babacan | Sistem Mimarı & CTO",
+    },
+    description: {
+      en: "Barış Salih Babacan | Systems Architect & CTO based in Istanbul. Specializing in distributed P2P systems, offline-first architectures, and interactive digital experiences.",
+      tr: "Barış Salih Babacan | İstanbul merkezli Sistem Mimarı & CTO. Dağıtık P2P sistemleri, çevrimdışı-öncelikli mimariler ve etkileşimli dijital deneyimler geliştirir.",
+    },
   },
   hero: {
     roles: {
-      en: "Software Developer · Systems Builder · Narrative Designer",
-      tr: "Yazılım Geliştirici · Sistem Tasarımcısı · Anlatı Tasarımcısı",
+      en: "CTO @ Garage.ist · Systems Architect",
+      tr: "Garage.ist CTO'su · Sistem Mimarı",
     },
     title: {
-      en: 'Architecting Systems &amp;<br />\n            <span class="text-on-surface-variant font-normal italic">Narratives.</span>',
-      tr: 'Sistem &amp; Anlatı<br />\n            <span class="text-on-surface-variant font-normal italic">Mimarı.</span>',
+      en: 'Barış Salih<br /><em className="text-on-surface-variant font-normal not-italic">Babacan</em>',
+      tr: 'Barış Salih<br /><em className="text-on-surface-variant font-normal not-italic">Babacan</em>',
     },
     subtitle: {
-      en: "Based in Istanbul. Building autonomous systems, P2P architectures, and immersive narratives.<br><br>Currently CTO at Garage.ist and working on a novel.",
-      tr: "İstanbul'da yaşıyorum. Otonom sistemler, P2P mimarileri ve sürükleyici anlatılar inşa ediyorum.<br><br>Şu anda Garage.ist'te CTO olarak görev yapıyor ve bir roman üzerinde çalışıyorum.",
+      en: "Systems Architect & CTO. Building distributed P2P systems, resilient offline-first architectures, and interactive digital experiences.",
+      tr: "Sistem Mimarı & CTO. Dağıtık P2P sistemleri, çevrimdışı-öncelikli mimariler ve etkileşimli dijital deneyimler geliştiriyorum.",
     },
-    stat1_val: { en: "14+", tr: "14+" },
-    stat1_lbl: { en: "Years in Tech", tr: "Yıldır Teknolojiyle İç İçe" },
-    stat2_val: { en: "CTO", tr: "CTO" },
-    stat2_lbl: { en: "& Lead Developer", tr: "& Baş Geliştirici" },
-    stat3_val: { en: "Author", tr: "Yazar" },
-    stat3_lbl: { en: "& Narrative Designer", tr: "& Anlatı Tasarımcısı" },
-    stat4_val: { en: "OSS", tr: "Açık Kaynak" },
-    stat4_lbl: { en: "Active Contributor", tr: "Aktif Katılımcı" },
-    scroll: { en: "Scroll", tr: "Aşağı Kaydır" },
     viewWork: {
-      en: 'View Work <span class="material-symbols-outlined" style="font-size: 18px">arrow_forward</span>',
-      tr: 'Çalışmaları Gör <span class="material-symbols-outlined" style="font-size: 18px">arrow_forward</span>',
+      en: "Explore Work →",
+      tr: "Çalışmaları İncele →",
     },
-    getInTouch: { en: "Get in Touch", tr: "İletişime Geçin" },
-    downloadCV: { en: "Download CV", tr: "Özgeçmiş İndir" },
+    getInTouch: {
+      en: "Contact",
+      tr: "İletişim",
+    },
+    stat1_val: { en: "5+", tr: "5+" },
+    stat1_lbl: { en: "YEARS EXP.", tr: "YIL DENEYİM" },
+    stat2_val: { en: "10+", tr: "10+" },
+    stat2_lbl: { en: "PROJECTS", tr: "PROJE" },
+    stat3_val: { en: "100%", tr: "%100" },
+    stat3_lbl: { en: "OFFLINE-FIRST", tr: "ÇEVRİMDİŞİ-ÖNCELİKLİ" },
+    stat4_val: { en: "P2P", tr: "P2P" },
+    stat4_lbl: { en: "ARCHITECTURE", tr: "MİMARİ" },
+    badge: {
+      en: "Available for technical consulting & advisory",
+      tr: "Teknik danışmanlık & mentörlük için uygun",
+    },
+    titlePrefix: { en: "Systems Architect &", tr: "Sistem Mimarı &" },
+    titleSuffix: { en: "Developer", tr: "Geliştirici" },
+    subTitle: {
+      en: "CTO @ Garage.ist. Building resilient, offline-first P2P systems, high-throughput backend pipelines, and interactive digital narrative experiences.",
+      tr: "Garage.ist CTO'su. Dayanıklı, çevrimdışı-öncelikli P2P sistemler, yüksek verimli arka uç veri hatları ve etkileşimli dijital anlatı deneyimleri geliştiriyorum.",
+    },
+    downloadCV: { en: "Download CV", tr: "CV İndir" },
+    exploreProjects: { en: "Explore Systems", tr: "Sistemleri İncele" },
+    scroll: { en: "SCROLL", tr: "KAYDIR" },
   },
   experience: {
-    sectionLabel: { en: "01 / Core Expertise", tr: "01 / Temel Uzmanlık" },
-    title: { en: "What I Build", tr: "Neler Geliştiriyorum" },
-    item1_title: { en: "Full-Stack Development", tr: "Full-Stack Geliştirme" },
+    sectionLabel: { en: "01 / Experience", tr: "01 / Deneyim" },
+    title: { en: "Engineering & Leadership", tr: "Mühendislik & Liderlik" },
+    techStackTitle: { en: "TECHNICAL CAPABILITIES", tr: "TEKNİK YETKİNLİKLER" },
+    item1_title: {
+      en: "Technical Leadership & CTO",
+      tr: "Teknik Liderlik & CTO",
+    },
     item1_desc: {
-      en: "High-performance React and TypeScript ecosystems built for web excellence. Node.js backends designed for resilience and throughput.",
-      tr: "Web mükemmelliği için oluşturulmuş yüksek performanslı React ve TypeScript ekosistemleri. Dayanıklılık ve yüksek verim için tasarlanmış Node.js arka uçları.",
+      en: "Orchestrating system architecture, technology stack selection, and product engineering teams at Garage.ist.",
+      tr: "Garage.ist bünyesinde sistem mimarisi, teknoloji yığını seçimi ve ürün mühendisliği ekiplerini yönetiyorum.",
     },
-    item2_title: { en: "Systems Architecture", tr: "Sistem Mimarisi" },
+    item2_title: {
+      en: "Systems Programming & Rust",
+      tr: "Sistem Programlama & Rust",
+    },
     item2_desc: {
-      en: "Rust, Go, and C++ for bare-metal performance and distributed systems. From custom network protocols to hardware interfacing.",
-      tr: "Donanım düzeyinde performans ve dağıtık sistemler için Rust, Go ve C++. Özel ağ protokollerinden donanım arayüzlerine kadar.",
+      en: "Building memory-safe, low-latency, and high-performance native engines using Rust, Go, and C++.",
+      tr: "Rust, Go ve C++ kullanarak bellek güvenli, düşük gecikmeli ve yüksek performanslı çekirdek motorlar geliştiriyorum.",
     },
-    item3_title: { en: "Decentralized & P2P", tr: "Merkeziyetsiz & P2P" },
+    item3_title: {
+      en: "Local-First & P2P Protocols",
+      tr: "Çevrimdışı-Öncelikli & P2P Protokolleri",
+    },
     item3_desc: {
-      en: "Building local-first sync systems and conflict-free replicated data types (CRDTs) for offline-capable, serverless architectures.",
-      tr: "Çevrimdışı çalışabilen, sunucusuz mimariler için yerel-öncelikli senkronizasyon sistemleri ve çakışmasız kopyalanan veri tipleri (CRDT'ler) geliştirme.",
+      en: "Designing conflict-free data structures (CRDTs) and local network synchronization algorithms for data sovereignty.",
+      tr: "Veri egemenliği için çakışmasız veri yapıları (CRDT'ler) ve yerel ağ senkronizasyon algoritmaları tasarlıyorum.",
     },
-    item4_title: { en: "Narrative Design", tr: "Anlatı Tasarımı" },
+    item4_title: {
+      en: "Narrative & Systems Design",
+      tr: "Anlatı & Sistem Tasarımı",
+    },
     item4_desc: {
-      en: "Crafting immersive storytelling ecosystems, blending system mechanics with world-building in interactive and written media.",
-      tr: "Etkileşimli ve yazılı medyada sistem mekaniklerini dünya inşasıyla harmanlayarak sürükleyici hikaye anlatımı ekosistemleri hazırlama.",
+      en: "Architecting interactive worldbuilding tools, storytelling engines, and complex world logic.",
+      tr: "Etkileşimli dünya inşası araçları, hikaye anlatım motorları ve karmaşık kurgusal dünya mantıkları tasarlıyorum.",
     },
     tags: {
       localFirst: { en: "Local-First", tr: "Yerel-Öncelikli" },
       worldbuilding: { en: "Worldbuilding", tr: "Dünya İnşası" },
-      lore: { en: "Lore", tr: "Evren / Kurgu" },
+      lore: { en: "Lore & Narrative", tr: "Anlatı" },
       systemsDesign: { en: "Systems Design", tr: "Sistem Tasarımı" },
+    },
+    garage: {
+      role: { en: "CTO & Lead Developer", tr: "CTO & Baş Geliştirici" },
+      period: { en: "Present", tr: "Halen" },
+      desc: {
+        en: "Leading overall technical direction, software architecture, and product development across all mobile, web, and internal projects at Garage.ist.",
+        tr: "Garage.ist bünyesindeki tüm mobil, web ve dahili projelerin genel teknik yönünü, yazılım mimarisini ve ürün geliştirmesini yönetiyorum.",
+      },
     },
   },
   projects: {
-    sectionLabel: { en: "02 / Selected Works", tr: "02 / Seçilmiş İşler" },
-    garageTitle: { en: "Garage.ist & Professional", tr: "Garage.ist & Profesyonel" },
-    personalTitle: { en: "Personal", tr: "Kişisel" },
+    sectionLabel: { en: "02 / Projects", tr: "02 / Projeler" },
+    title: { en: "Selected Works", tr: "Seçilmiş Çalışmalar" },
+    garageTitle: { en: "GARAGE.IST PROJECTS", tr: "GARAGE.IST PROJELERİ" },
+    personalTitle: { en: "PERSONAL & OPEN SOURCE", tr: "KİŞİSEL & AÇIK KAYNAK" },
+    viewProject: { en: "View Details", tr: "Detayları Gör" },
+    close: { en: "Close", tr: "Kapat" },
     highlights: { en: "Key Highlights", tr: "Öne Çıkan Özellikler" },
     techStack: { en: "Technologies & Stack", tr: "Kullanılan Teknolojiler" },
-    visitLive: { en: "Garage.ist / Live", tr: "Garage.ist / Canlı" },
+    visitLive: { en: "Visit Live", tr: "Canlı Siteyi Gör" },
     sortify: {
       title: { en: "Sortify", tr: "Sortify" },
       desc: {
@@ -123,12 +167,12 @@ export const i18nData: I18nNode = {
     },
     osmos: {
       desc: {
-        en: "Local-first, peer-to-peer version control & sync system for the Apple ecosystem. Powered by a Rust core and a native SwiftUI layer, Osmos aims to eliminate cloud dependency — giving creators total data sovereignty through a secure, offline-first architecture.",
-        tr: "Apple ekosistemi için yerel-öncelikli, eşler arası sürüm kontrol ve senkronizasyon sistemi. Rust çekirdeği ve yerel SwiftUI katmanı ile güçlendirilen Osmos, bulut bağımlılığını ortadan kaldırmayı amaçlar — güvenli, çevrimdışı öncelikli mimari aracılığıyla içerik oluşturuculara tam veri egemenliği verir.",
+        en: "Local-first version control engine with a Rust core (osmos-core, osmos-daemon), content-addressable storage, and an early Tauri/React desktop client.",
+        tr: "Bellek güvenli Rust çekirdeği (osmos-core, osmos-daemon), içerik-adresli depolama ve erken aşamadaki Tauri/React masaüstü istemcisine sahip yerel-öncelikli sürüm kontrol motoru.",
       },
       bullets: {
-        en: "<li>Rust core for performance and memory safety</li><li>Native SwiftUI interface for macOS & iOS</li><li>Zero cloud dependency — fully offline-first</li><li>Peer-to-peer sync over local network</li>",
-        tr: "<li>Performans ve bellek güvenliği için Rust çekirdeği</li><li>macOS ve iOS için yerel SwiftUI arayüzü</li><li>Sıfır bulut bağımlılığı — tamamen çevrimdışı-öncelikli</li><li>Yerel ağ üzerinden eşler arası senkronizasyon</li>",
+        en: "<li>Rust core across <code>osmos-core</code>, <code>osmos-daemon</code>, and <code>osmos-transport</code></li><li>Content-addressable storage with BLAKE3 + SQLite metadata</li><li>Early-stage Tauri 2 + React 19 desktop client</li><li>Working local versioning, branching & merging (P2P sync on roadmap)</li>",
+        tr: "<li><code>osmos-core</code>, <code>osmos-daemon</code> ve <code>osmos-transport</code> Rust crate yapısı</li><li>BLAKE3 + SQLite metadata ile içerik-adresli depolama</li><li>Erken aşamadaki Tauri 2 + React 19 masaüstü istemcisi</li><li>Çalışan yerel sürümleme, dallanma ve birleştirme (P2P yol haritasında)</li>",
       },
     },
     sins: {
@@ -144,16 +188,16 @@ export const i18nData: I18nNode = {
     writersIde: {
       title: { en: "Mythos", tr: "Mythos" },
       desc: {
-        en: "A specialized local-first development environment built specifically for authors and narrative designers.",
-        tr: "Yazarlar ve anlatı tasarımcıları için özel olarak oluşturulmuş, yerel-öncelikli bir geliştirme ortamı.",
+        en: "Local-first narrative development environment built specifically for novelists developing multi-book, relational fiction worlds.",
+        tr: "Çok kitaplı ve ilişkisel kurgu dünyaları geliştiren romancılar için yerel-öncelikli anlatı geliştirme ortamı.",
       },
       bullets: {
-        en: "<li>Enforces a strict Series &rarr; Books &rarr; Chapters hierarchy for scalable storytelling.</li><li>Features dedicated World Builder templates and integrated AI orchestration.</li>",
-        tr: "<li>Ölçeklenebilir hikaye anlatımı için katı bir Seri &rarr; Kitap &rarr; Bölüm hiyerarşisi uygular.</li><li>Özel Dünya İnşası şablonları ve entegre yapay zeka orkestrasyonu içerir.</li>",
+        en: "<li>Enforces a strict Series &rarr; Book &rarr; Chapter &rarr; Scene hierarchy for scalable storytelling.</li><li>Rust engine and Tauri/React client communicate over stdio — local-first by construction.</li>",
+        tr: "<li>Ölçeklenebilir hikaye anlatımı için katı bir Seri &rarr; Kitap &rarr; Bölüm &rarr; Sahne hiyerarşisi uygular.</li><li>Rust motoru ve Tauri/React istemcisi stdio üzerinden konuşur — yapısal olarak yerel-öncelikli.</li>",
       },
       tags: {
-        en: '<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Tauri</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">TypeScript</span>',
-        tr: '<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Tauri</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">TypeScript</span>',
+        en: '<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Tauri</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Rust</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">TypeScript</span>',
+        tr: '<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Tauri</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Rust</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">TypeScript</span>',
       },
     },
   },
@@ -182,91 +226,39 @@ export const i18nData: I18nNode = {
     calendarMore: { en: "More", tr: "Çok" },
   },
   writing: {
-    sectionLabel: { en: "03 / Writing", tr: "03 / Yazılar" },
+    sectionLabel: { en: "04 / Publications", tr: "04 / Yayınlar" },
     title: { en: "Publications", tr: "Yayınlar" },
     book: {
       genre: { en: "Psychological Fiction / Drama", tr: "Psikolojik Kurgu / Drama" },
       desc: {
-        en: "An anatomy of a three-generation curse stretching from the haunted streets of Scotland to the soulless towers of Los Angeles. A Dostoevskian psychological family saga exploring the inevitable repetition of bloodlines and the questioning of virtue as a modern weakness.",
-        tr: "İskoçya'nın tekinsiz sokaklarından Los Angeles'ın ruhsuz kulelerine uzanan üç nesillik bir lanetin anatomisi. Kan bağlarının kaçınılmaz tekrarını ve erdemin modern bir zayıflık olarak sorgulanmasını inceleyen, Dostoyevski tarzı psikolojik bir aile destanı.",
+        en: "A three-generation family saga stretching from the haunted streets of Scotland to the soulless towers of Los Angeles. A psychological family epic tracing ancestral sins, moral responsibility, and man's reckoning with his own conscience.",
+        tr: "İskoçya'nın tekinsiz sokaklarından Los Angeles'ın ruhsuz kulelerine uzanan üç nesillik bir aile hikâyesi. Babadan oğula aktarılan günahların, ahlaki sorumluluğun ve insanın kendi vicdanıyla hesaplaşmasının izini süren psikolojik bir aile destanı.",
       },
       bullet1: {
-        en: "The burden of ancestral legacy and moral culpability",
+        en: "The burden of ancestral legacy and moral responsibility",
         tr: "Atasal mirasın yükü ve ahlaki sorumluluk",
       },
       bullet2: {
-        en: "Conscience as an inescapable labyrinth of the soul",
-        tr: "Ruhun kaçınılmaz bir labirenti olarak vicdan",
+        en: "Conscience portrayed as a spiritual labyrinth",
+        tr: "Vicdanın ruhsal bir labirent olarak işlenmesi",
       },
       bullet3: {
-        en: "Existential despair versus the possibility of spiritual rebirth",
-        tr: "Varoluşsal umutsuzluğa karşı ruhsal yeniden doğuş olasılığı",
+        en: "The possibility of spiritual rebirth against existential despair",
+        tr: "Varoluşsal umutsuzluğa karşı yeniden doğuş ihtimali",
       },
       officialSite: { en: "Official Site", tr: "Resmi Site" },
-      status: { en: "Novel · In Progress", tr: "Roman · Yazımı Devam Ediyor" },
-    },
-    ecosystem: {
-      title: { en: "Digital Ecosystem — Three Nodes", tr: "Dijital Ekosistem — Üç Düğüm" },
-      node1: {
-        tag: { en: "Node 01", tr: "Düğüm 01" },
-        name: { en: "The Fortress", tr: "Kale" },
-        role: { en: "Core Experience", tr: "Temel Deneyim" },
-        desc: {
-          en: "Main site. Vanilla JS (ES6+), Tailwind, Firebase Functions on GCP. GSAP & Lenis rendering, Howler.js audio, Mapbox GL, D3.js visual webs. Cloudflare secured, Playwright E2E, Sentry, GitHub Actions CI/CD.",
-          tr: "Ana site. Vanilla JS (ES6+), Tailwind, GCP üzerinde Firebase Functions. GSAP & Lenis görüntü oluşturma, Howler.js sesleri, Mapbox GL, D3.js görsel ağlar. Cloudflare korumalı, Playwright E2E, Sentry, GitHub Actions CI/CD.",
-        },
-      },
-      node2: {
-        tag: { en: "Node 02", tr: "Düğüm 02" },
-        name: { en: "The Archives", tr: "Arşivler" },
-        role: { en: "Lore & Blog", tr: "Kurgu & Blog" },
-        desc: {
-          en: "SSR + Headless CMS stack. Astro v5 + Sanity.io. 100% Core Web Vitals score. Partytown optimized for third-party scripts.",
-          tr: "SSR + Headless CMS yığını. Astro v5 + Sanity.io. %100 Core Web Vitals skoru. Üçüncü taraf komut dosyaları için Partytown optimizasyonu.",
-        },
-      },
-      node3: {
-        tag: { en: "Node 03", tr: "Düğüm 03" },
-        name: { en: "Supply Depot", tr: "Tedarik Deposu" },
-        role: { en: "E-Commerce Storefront", tr: "E-Ticaret Vitrini" },
-        desc: {
-          en: "Fourthwall infrastructure with custom domain mapping. Specialized merchandise ecosystem for the saga's universe.",
-          tr: "Özel alan adı haritalamalı Fourthwall altyapısı. Destan evreni için özel ürün ekosistemi.",
-        },
-      },
+      visitSite: { en: "Visit Official Site", tr: "Resmi Siteyi Ziyaret Et" },
+      status: { en: "Novel · Under Publication Review", tr: "Roman · Yayın Değerlendirmesinde" },
     },
   },
   contact: {
-    sectionLabel: { en: "04 / Contact", tr: "04 / İletişim" },
-    title: { en: "Get in Touch.", tr: "İletişime Geçin." },
+    sectionLabel: { en: "05 / Contact", tr: "05 / İletişim" },
+    title: { en: "Let's Connect", tr: "İletişime Geçin" },
     desc: {
-      en: "Open to interesting conversations — collaboration proposals, open source discussions, or anything worth talking about.",
+      en: "Open for compelling conversations — collaboration opportunities, open source discussions, or anything worth discussing.",
       tr: "İlgi çekici sohbetlere açığım — işbirliği teklifleri, açık kaynak tartışmaları veya konuşmaya değer herhangi bir şey.",
     },
-    location: { en: "Location", tr: "Konum" },
+    location: { en: "LOCATION", tr: "KONUM" },
     locationValue: { en: "Istanbul, Turkey", tr: "İstanbul, Türkiye" },
-    availability: {
-      en: "Limited Availability — Open to Inquiries",
-      tr: "Sınırlı Uygunluk — Görüşmelere Açık",
-    },
-  },
-  footer: {
-    connect: { en: "Let's connect.", tr: "İletişime Geçin." },
-    desc: {
-      en: "Open to select architectural consulting and narrative design roles.",
-      tr: "Seçili mimari danışmanlık ve anlatı tasarımı rolllerine açığım.",
-    },
-  },
-  seo: {
-    title: {
-      en: "Barış Salih Babacan | Software Developer",
-      tr: "Barış Salih Babacan | Yazılım Geliştirici",
-    },
-    description: {
-      en: "Software Developer & Systems Builder based in Istanbul. Specializing in autonomous systems, P2P architectures, and immersive narratives.",
-      tr: "İstanbul merkezli Yazılım Geliştirici & Sistem Tasarımcısı. Otonom sistemler, P2P mimarileri ve sürükleyici kurgular üzerine çalışır.",
-    },
   },
 };
-
-export type { Lang, I18nLeaf, I18nNode };

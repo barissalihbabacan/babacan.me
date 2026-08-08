@@ -2,13 +2,15 @@ import React from "react";
 import { useLanguage } from "../contexts/LanguageContext.tsx";
 
 export default function Writing() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const isTr = lang === "tr";
+
   return (
     <section
       id="writing"
       className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
     >
-      <div className="section-ghost-number">03</div>
+      <div className="section-ghost-number">04</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[5vh]">
           <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
@@ -59,7 +61,7 @@ export default function Writing() {
                   className="font-label-mono uppercase tracking-[0.25em] mb-3"
                   style={{ fontSize: "9px", color: "rgba(255, 255, 255, 0.6)" }}
                 >
-                  The Sins of
+                  {isTr ? "Babaların" : "The Sins of"}
                 </div>
                 <div
                   className="font-bold leading-tight"
@@ -69,7 +71,7 @@ export default function Writing() {
                     letterSpacing: "-0.02em",
                   }}
                 >
-                  the Fathers
+                  {isTr ? "Günahları" : "the Fathers"}
                 </div>
                 <div
                   className="w-10 h-px my-5"
@@ -106,9 +108,19 @@ export default function Writing() {
               className="text-on-surface font-bold leading-[1.05]"
               style={{ fontSize: "clamp(28px, 3.5vw, 48px)" }}
             >
-              The Sins of
-              <br />
-              <em className="text-on-surface-variant font-normal not-italic">the Fathers</em>
+              {isTr ? (
+                <>
+                  Babaların
+                  <br />
+                  <em className="text-on-surface-variant font-normal not-italic">Günahları</em>
+                </>
+              ) : (
+                <>
+                  The Sins of
+                  <br />
+                  <em className="text-on-surface-variant font-normal not-italic">the Fathers</em>
+                </>
+              )}
             </h3>
 
             <p
@@ -137,124 +149,20 @@ export default function Writing() {
               <a
                 href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
-                rel="noopener"
-                className="border border-tertiary/40 text-tertiary px-6 py-3 font-label-mono text-label-mono uppercase tracking-widest hover:bg-tertiary/5 transition-all flex items-center gap-2"
+                rel="noopener noreferrer"
+                className="bg-primary text-surface px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
               >
-                {t("writing.book.officialSite")}
-                <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
-                  open_in_new
+                <span>
+                  {t("writing.book.visitSite") ||
+                    (isTr ? "Resmi Siteyi Ziyaret Et" : "Visit Official Site")}
                 </span>
-              </a>
-              <a
-                href="https://discord.gg/sJYY7uXZkB"
-                target="_blank"
-                rel="noopener"
-                className="border border-primary/30 text-on-surface-variant px-6 py-3 font-label-mono text-label-mono uppercase tracking-widest hover:border-tertiary/40 hover:text-tertiary transition-all flex items-center gap-2"
-              >
-                Discord
-                <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
-                  forum
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/*  Three-node digital ecosystem  */}
-        <div className="mt-[6vh] pt-[5vh] border-t border-primary/30">
-          <h3 className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-6">
-            {t("writing.ecosystem.title")}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="border border-primary/30 p-6 hover:border-tertiary/30 transition-colors">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-label-mono text-[9px] text-tertiary border border-tertiary/25 px-2 py-0.5 uppercase">
-                  {t("writing.ecosystem.node1.tag")}
-                </span>
-                <span className="font-label-mono text-[9px] text-on-surface-variant/40">
-                  {t("writing.ecosystem.node1.name")}
-                </span>
-              </div>
-              <h4 className="font-semibold text-sm text-on-surface mb-3">
-                {t("writing.ecosystem.node1.role")}
-              </h4>
-              <p className="font-body-md text-xs text-on-surface-variant/60 mb-4 leading-relaxed">
-                {t("writing.ecosystem.node1.desc")}
-              </p>
-              <a
-                href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
-                target="_blank"
-                rel="noopener"
-                className="font-label-mono text-[9px] text-tertiary/60 hover:text-tertiary transition-colors flex items-center gap-1"
-              >
-                thesinsofthefathers.com
-                <span className="material-symbols-outlined" style={{ fontSize: "12px" }}>
-                  open_in_new
-                </span>
-              </a>
-            </div>
-
-            <div className="border border-primary/30 p-6 hover:border-secondary/30 transition-colors">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-label-mono text-[9px] text-secondary border border-secondary/25 px-2 py-0.5 uppercase">
-                  {t("writing.ecosystem.node2.tag")}
-                </span>
-                <span className="font-label-mono text-[9px] text-on-surface-variant/40">
-                  {t("writing.ecosystem.node2.name")}
-                </span>
-              </div>
-              <h4 className="font-semibold text-sm text-on-surface mb-3">
-                {t("writing.ecosystem.node2.role")}
-              </h4>
-              <p className="font-body-md text-xs text-on-surface-variant/60 mb-4 leading-relaxed">
-                {t("writing.ecosystem.node2.desc")}
-              </p>
-              <div className="flex flex-wrap gap-2 mb-4">
-                <span className="font-label-mono text-[9px] text-on-surface-variant/40 border border-primary/30 px-2 py-0.5">
-                  Astro v5
-                </span>
-                <span className="font-label-mono text-[9px] text-on-surface-variant/40 border border-primary/30 px-2 py-0.5">
-                  Sanity.io
-                </span>
-              </div>
-              <a
-                href="https://blog.thesinsofthefathers.com?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
-                target="_blank"
-                rel="noopener"
-                className="font-label-mono text-[9px] text-secondary/60 hover:text-secondary transition-colors flex items-center gap-1"
-              >
-                blog.thesinsofthefathers.com
-                <span className="material-symbols-outlined" style={{ fontSize: "12px" }}>
-                  open_in_new
-                </span>
-              </a>
-            </div>
-
-            <div className="border border-primary/30 p-6 hover:border-primary/30 transition-colors">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="font-label-mono text-[9px] text-primary border border-primary/25 px-2 py-0.5 uppercase">
-                  {t("writing.ecosystem.node3.tag")}
-                </span>
-                <span className="font-label-mono text-[9px] text-on-surface-variant/40">
-                  {t("writing.ecosystem.node3.name")}
-                </span>
-              </div>
-              <h4 className="font-semibold text-sm text-on-surface mb-3">
-                {t("writing.ecosystem.node3.role")}
-              </h4>
-              <p className="font-body-md text-xs text-on-surface-variant/60 mb-4 leading-relaxed">
-                {t("writing.ecosystem.node3.desc")}
-              </p>
-              <a
-                href="https://shop.thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
-                target="_blank"
-                rel="noopener"
-                className="font-label-mono text-[9px] text-primary/60 hover:text-primary transition-colors flex items-center gap-1"
-              >
-                shop.thesinsofthefathers.com
-                <span className="material-symbols-outlined" style={{ fontSize: "12px" }}>
-                  open_in_new
-                </span>
+                <svg
+                  className="w-3.5 h-3.5 fill-current shrink-0"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
+                </svg>
               </a>
             </div>
           </div>

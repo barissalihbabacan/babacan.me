@@ -60,39 +60,8 @@ function checkWebGLSupport(): boolean {
   }
 }
 
-function FallbackGraphic() {
-  return (
-    <div className="w-full h-full flex items-center justify-center p-8">
-      <svg
-        viewBox="0 0 200 200"
-        className="w-full h-full text-primary/60 animate-[spin_60s_linear_infinite]"
-        style={{ maxWidth: "320px", maxHeight: "320px" }}
-      >
-        <g stroke="currentColor" strokeWidth="1" fill="none" opacity="0.6">
-          <polygon points="100,20 155,40 180,95 155,150 100,170 45,150 20,95 45,40" />
-          <polygon points="100,45 140,60 155,100 140,140 100,150 60,140 45,100 60,60" />
-          <line x1="100" y1="20" x2="100" y2="45" />
-          <line x1="155" y1="40" x2="140" y2="60" />
-          <line x1="180" y1="95" x2="155" y2="100" />
-          <line x1="155" y1="150" x2="140" y2="140" />
-          <line x1="100" y1="170" x2="100" y2="150" />
-          <line x1="45" y1="150" x2="60" y2="140" />
-          <line x1="20" y1="95" x2="45" y2="100" />
-          <line x1="45" y1="40" x2="60" y2="60" />
-        </g>
-        <g fill="currentColor" opacity="0.8">
-          <circle cx="100" cy="20" r="3" />
-          <circle cx="155" cy="40" r="3" />
-          <circle cx="180" cy="95" r="3" />
-          <circle cx="155" cy="150" r="3" />
-          <circle cx="100" cy="170" r="3" />
-          <circle cx="45" cy="150" r="3" />
-          <circle cx="20" cy="95" r="3" />
-          <circle cx="45" cy="40" r="3" />
-        </g>
-      </svg>
-    </div>
-  );
+export function FallbackGraphic() {
+  return null;
 }
 
 interface DodecahedronNetworkProps {
@@ -183,28 +152,26 @@ export default function NetworkGraphic() {
     return () => window.removeEventListener("resize", checkDesktop);
   }, []);
 
+  if (!webGLAvailable) return null;
+
   return (
-    <div className="relative w-full aspect-square max-w-[500px] flex items-center justify-center cursor-grab active:cursor-grabbing">
-      {webGLAvailable ? (
-        <WebGLBoundary fallback={<FallbackGraphic />}>
-          <Canvas
-            camera={{ position: [0, 0, 9], fov: 60 }}
-            className="w-full h-full"
-            onCreated={({ gl }) => {
-              // Ensure gl doesn't crash on loss
-              gl.domElement.addEventListener("webglcontextlost", (e) => {
-                e.preventDefault();
-                setWebGLAvailable(false);
-              });
-            }}
-          >
-            <fog attach="fog" args={["#000000", 6, 15]} />
-            <DodecahedronNetwork isDesktop={isDesktop} />
-          </Canvas>
-        </WebGLBoundary>
-      ) : (
-        <FallbackGraphic />
-      )}
+    <div className="relative w-full aspect-square max-w-125 flex items-center justify-center cursor-grab active:cursor-grabbing">
+      <WebGLBoundary fallback={null}>
+        <Canvas
+          camera={{ position: [0, 0, 9], fov: 60 }}
+          className="w-full h-full"
+          onCreated={({ gl }) => {
+            // Ensure gl doesn't crash on loss
+            gl.domElement.addEventListener("webglcontextlost", (e) => {
+              e.preventDefault();
+              setWebGLAvailable(false);
+            });
+          }}
+        >
+          <fog attach="fog" args={["#000000", 6, 15]} />
+          <DodecahedronNetwork isDesktop={isDesktop} />
+        </Canvas>
+      </WebGLBoundary>
     </div>
   );
 }
