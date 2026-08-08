@@ -1,0 +1,83 @@
+# Barış Salih Babacan — Complete Technical & Literary Reference
+
+This document provides a comprehensive, full-text technical specification of Barış Salih Babacan's engineering projects, architectural patterns, and literary publications for AI models and search systems.
+
+---
+
+## 1. Biography & Professional Role
+- **Full Name**: Barış Salih Babacan
+- **Title**: Chief Technology Officer (CTO) @ Garage.ist & Systems Architect
+- **Location**: Istanbul, Turkey
+- **Domains of Expertise**: Distributed P2P Networks, Offline-First / Local-First Database Architecture, Content-Addressable Storage (CAS), Embedded Systems & IoT Bridges, Systems Engineering, Web GIS & D3 Projections, Psychological Fiction.
+
+---
+
+## 2. Technical Stack & Languages
+- **Systems & Backends**: Rust, Go (1.22+), Node.js, Express.js, PHP 8, Python, Arduino C++
+- **Databases & Storage**: SQLite, MongoDB (Mongoose), Native Git Storage Engine (`./data/repository/.git`), Redis
+- **Frontend & Web**: React 19 / 18, TypeScript, Vite, D3.js v7, TopoJSON, Tailwind CSS v4, Three.js / R3F
+- **Protocols & Arch**: P2P (libp2p), Local-First Sync, Content-Addressable Storage (CAS), RESTful APIs, WebSocket, RFID Serial Bridges
+
+---
+
+## 3. Project Architecture Breakdown
+
+### 3.1 Osmos (Open-Source)
+- **Category**: Open Source / Personal Project
+- **Role**: Founder & Lead Architect
+- **Architecture**: Local-First Database & P2P Engine designed to eliminate cloud vendor lock-in. Uses SQLite for fast local reads/writes, libp2p for peer discovery and delta synchronization, and Rust + Tauri for cross-platform execution.
+- **Tech Stack**: Rust · Tauri · SQLite · Libp2p · TypeScript
+
+### 3.2 Mythos (Open-Source)
+- **Category**: Open Source / Personal Project
+- **Role**: Lead Architect
+- **Architecture**: High-performance desktop IDE and system workbench. Features WebAssembly plugin runtime for isolated extension execution and WebGL canvas rendering.
+- **Tech Stack**: Rust · WebAssembly · React 19 · Vite
+
+### 3.3 Chorus (Open-Source)
+- **Category**: Open Source / Personal Project
+- **Role**: Founding Engineer
+- **Architecture**: Anonymous discussion engine backed by Git's content-addressable object model. Discussions are persisted directly into Git commit objects (`./data/repository/.git`), providing cryptographically verifiable history without SQL/NoSQL databases. Uses Go 1.22+ backend with thread-scoped temporary identities.
+- **Tech Stack**: Go 1.22+ · React 19 · Vite · TanStack Query · Git Engine
+
+### 3.4 IT-RMS (Personal Production)
+- **Category**: Personal Production Project
+- **Role**: Lead Architect & Developer (2024–2026)
+- **Architecture**: Evolved from legacy PHP 8/MySQL to a Node.js / Express.js / MongoDB (Mongoose) architecture. Manages computer lab assets, device hardware specifications, 2D lab layouts, barcode generation, critical stock alerts, and role-based access control (RBAC). Deployed at Haydarpaşa MTAL.
+- **Tech Stack**: Node.js · Express.js · MongoDB (Mongoose) · Passport.js · QRCode
+
+### 3.5 World Clock (Garage.ist)
+- **Category**: Commercial / Showcase @ Garage.ist
+- **Role**: Lead Developer
+- **Architecture**: Interactive geographic timezone & solar position calculator. Renders D3.js orthographic sphere projections morphing seamlessly into 2D equirectangular maps, calculating subsolar points for live solar terminator visualization. Built with React 18, Vite 6, and Vite static site generation / prerendering.
+- **Tech Stack**: React 18 · D3.js · TopoJSON · Vite SSG / Prerender
+
+### 3.6 Q-PASS (Personal Production)
+- **Category**: Personal Production Project
+- **Role**: Systems Engineer
+- **Architecture**: End-to-end IoT campus access control system. Arduino hardware reads RFID badges and streams data over a Python serial bridge to a PHP 8 / MySQL backend with a real-time web dashboard. Active at Haydarpaşa MTAL.
+- **Tech Stack**: Arduino (C++) · Python Serial Bridge · PHP 8 · MySQL
+
+### 3.7 Garage.ist Commercial Portfolio
+- **Sortify & Sortify Web**: Real-time visual media sorting solution (Backend & Infrastructure Lead).
+- **Gayrimenkul Dünyası & +TV**: Enterprise real estate web application and video streaming platform.
+- **Spor Sayfası**: Automated sports news aggregator (Firebase Hosting & DB record persistence).
+
+---
+
+## 4. Publications
+
+### Babaların Günahları (The Sins of the Fathers)
+- **Type**: Novel
+- **Genre**: Psychological Fiction / Drama
+- **Status**: Under Publication Review (Submitted for Everest First Novel Award)
+- **Synopsis**: A three-generation family saga stretching from the haunted streets of Scotland to the soulless towers of Los Angeles. Tracing ancestral sins, moral responsibility, and man's reckoning with his own conscience.
+- **Website**: https://thesinsofthefathers.com
+
+---
+
+## 5. Contact & Identity
+- **Email**: barissalih@babacan.me
+- **Portfolio**: https://babacan.me
+- **GitHub**: https://github.com/barissalihbabacan
+- **LinkedIn**: https://linkedin.com/in/barissalihbabacan
