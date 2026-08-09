@@ -1,6 +1,6 @@
 # Barış Salih Babacan
 
-**Software Engineer & Systems Architect**
+**Systems Architect & CTO**
 
 📍 Istanbul, Turkey | 📞 +90 543 897 5759 | ✉️ barissalih@babacan.me
 🔗 linkedin.com/in/barissalihbabacan | 🐙 github.com/barissalihbabacan | 🌐 babacan.me
@@ -9,7 +9,7 @@
 
 ### PROFESSIONAL SUMMARY
 
-Innovative Software Engineer and Systems Architect specializing in autonomous systems, local-first (P2P) architectures, and high-performance web/mobile applications. Proven track record of owning the full software development lifecycle—from conceptualizing system architectures to deploying production-ready platforms. Adept at integrating complex hardware-software systems and migrating legacy codebases to modern, scalable ecosystems.
+Innovative Systems Architect & CTO specializing in autonomous systems, local-first (P2P) architectures, and high-performance web/mobile applications. Proven track record of owning the full software development lifecycle—from conceptualizing system architectures to deploying production-ready platforms. Adept at integrating complex hardware-software systems and migrating legacy codebases to modern, scalable ecosystems.
 
 ### CORE COMPETENCIES
 

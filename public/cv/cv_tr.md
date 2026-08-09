@@ -1,6 +1,6 @@
 # Barış Salih Babacan
 
-**Software Engineer & Systems Architect**
+**Sistem Mimarı & CTO**
 
 📍 Istanbul, Turkey | 📞 +90 543 897 5759 | ✉️ barissalih@babacan.me
 🔗 linkedin.com/in/barissalihbabacan | 🐙 github.com/barissalihbabacan | 🌐 babacan.me
@@ -9,7 +9,7 @@
 
 ### PROFESYONEL ÖZET
 
-Otonom sistemler, yerel-öncelikli (P2P) mimariler ve yüksek performanslı web/mobil uygulamalar geliştiren Yazılım Mühendisi ve Sistem Mimarı. Sistem mimarisi tasarımından canlı ortam dağıtımlarına kadar tüm yazılım geliştirme yaşam döngüsünü (SDLC) yönetme konusunda tecrübeli. Karmaşık donanım-yazılım entegrasyonları kurma ve eski sistemleri modern, ölçeklenebilir altyapılara taşıma konusunda yetkin.
+Otonom sistemler, yerel-öncelikli (P2P) mimariler ve yüksek performanslı web/mobil uygulamalar geliştiren Sistem Mimarı & CTO. Sistem mimarisi tasarımından canlı ortam dağıtımlarına kadar tüm yazılım geliştirme yaşam döngüsünü (SDLC) yönetme konusunda tecrübeli. Karmaşık donanım-yazılım entegrasyonları kurma ve eski sistemleri modern, ölçeklenebilir altyapılara taşıma konusunda yetkin.
 
 ### TEMEL YETKİNLİKLER
 
