@@ -76,7 +76,7 @@ export default function CustomGithubCalendar({
         // ignore cache parse errors
       }
 
-      // 1. Try local github-data.json built at deploy time
+      // Try local github-data.json built at deploy time
       try {
         const ghRes = await fetch("/github-data.json");
         if (ghRes.ok) {
@@ -90,34 +90,6 @@ export default function CustomGithubCalendar({
         }
       } catch {
         // ignore static file fetch error
-      }
-
-      // 2. Try CORS-friendly GitHub Contributions API endpoint
-      try {
-        const apiRes = await fetch(
-          `https://github-contributions-api.johannchopin.fr/v5/${username}`,
-        );
-        if (apiRes.ok) {
-          const apiData = await apiRes.json();
-          if (Array.isArray(apiData?.contributions)) {
-            const parsedDays: ContributionDay[] = apiData.contributions.map((item: any) => ({
-              date: item.date,
-              level: item.count > 4 ? 4 : item.count > 2 ? 3 : item.count > 0 ? 1 : 0,
-            }));
-            const total =
-              apiData.totalContributions ||
-              apiData.contributions.reduce((acc: number, item: any) => acc + item.count, 0);
-            setDays(parsedDays);
-            setTotalContributions(total);
-            localStorage.setItem(
-              `${CACHE_KEY}_${username}`,
-              JSON.stringify({ data: parsedDays, total, timestamp: Date.now() }),
-            );
-            return;
-          }
-        }
-      } catch {
-        // ignore external API fetch error
       }
 
       generateFallbackData();

@@ -3,9 +3,17 @@ import path from "path";
 
 const GITHUB_USER = "barissalihbabacan";
 const token = process.env.VITE_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
-const headers = token ? { Authorization: `token ${token}` } : {};
+const headers = token
+  ? { Authorization: `token ${token}`, "User-Agent": "babacan.me-build-script" }
+  : { "User-Agent": "babacan.me-build-script" };
 
 async function fetchGitHubData() {
+  const outputDir = path.resolve("public");
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+  const targetFile = path.join(outputDir, "github-data.json");
+
   try {
     console.log("Fetching GitHub user data...");
     const userRes = await fetch(`https://api.github.com/users/${GITHUB_USER}`, { headers });
@@ -37,7 +45,9 @@ async function fetchGitHubData() {
     console.log("Fetching GitHub contribution calendar...");
     let contributions = { days: [], total: 0 };
     try {
-      const contribRes = await fetch(`https://github.com/users/${GITHUB_USER}/contributions`);
+      const contribRes = await fetch(`https://github.com/users/${GITHUB_USER}/contributions`, {
+        headers,
+      });
       if (contribRes.ok) {
         const html = await contribRes.text();
         const dayMatches = [...html.matchAll(/data-date="([^"]+)".*?data-level="(\d+)"/g)];
@@ -64,15 +74,14 @@ async function fetchGitHubData() {
       timestamp: Date.now(),
     };
 
-    const outputDir = path.resolve("public");
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir, { recursive: true });
-    }
-    fs.writeFileSync(path.join(outputDir, "github-data.json"), JSON.stringify(data, null, 2));
+    fs.writeFileSync(targetFile, JSON.stringify(data, null, 2));
     console.log("Successfully saved GitHub data to public/github-data.json");
   } catch (err) {
-    console.error("Failed to fetch GitHub data:", err);
-    process.exit(1);
+    console.warn("GitHub API rate limit or network warning:", err.message);
+    if (!fs.existsSync(targetFile)) {
+      fs.writeFileSync(targetFile, JSON.stringify({ timestamp: Date.now() }, null, 2));
+    }
+    console.log("Preserved public/github-data.json for build continuity.");
   }
 }
 
