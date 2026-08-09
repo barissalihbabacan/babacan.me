@@ -24,7 +24,7 @@
   <text x="100" y="380" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="72" fill="#F1F3F5" letter-spacing="-1">Barış Salih Babacan</text>
   
   <!-- Subtitle -->
-  <text x="100" y="460" font-family="'JetBrains Mono', monospace, system-ui" font-weight="500" font-size="32" fill="#C5A059" letter-spacing="4">SOFTWARE ENGINEER · SYSTEMS ARCHITECT</text>
+  <text x="100" y="460" font-family="'JetBrains Mono', monospace, system-ui" font-weight="500" font-size="32" fill="#C5A059" letter-spacing="4">SYSTEMS ARCHITECT &amp; CTO.</text>
 
   <!-- Decorative line -->
   <line x1="100" y1="520" x2="1100" y2="520" stroke="#C5A059" stroke-width="1" opacity="0.3" />
