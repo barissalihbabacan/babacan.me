@@ -132,8 +132,20 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
         className="w-full max-w-2xl bg-surface border border-primary/40 shadow-2xl overflow-hidden accent-card"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Search Input Bar */}
-        <div className="flex items-center gap-3 px-4 py-3.5 border-b border-primary/20 bg-surface-container/20">
+        {/* Search Input Bar with WebMCP Declarative Form Annotations */}
+        <form
+          toolname="search-documentation"
+          tooldescription="Search engineering documentation, Architecture Decision Records (ADR), P2P/CRDT systems notes, and projects on babacan.me"
+          toolautosubmit="true"
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (results[selectedIndex]) {
+              navigate(results[selectedIndex].url);
+              onClose();
+            }
+          }}
+          className="flex items-center gap-3 px-4 py-3.5 border-b border-primary/20 bg-surface-container/20 w-full"
+        >
           <span
             className="material-symbols-outlined text-primary"
             style={{ fontSize: "20px" }}
@@ -142,7 +154,9 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
             search
           </span>
           <input
+            name="query"
             type="text"
+            toolparamdescription="Search query or keyword (e.g. Rust, P2P, CRDT, Osmos, ADR)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={
@@ -153,10 +167,13 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
             className="w-full bg-transparent font-label-mono text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none"
             autoFocus
           />
+          <button type="submit" className="sr-only">
+            {isTr ? "Ara" : "Search"}
+          </button>
           <kbd className="font-label-mono text-[10px] text-primary border border-primary/30 px-2 py-0.5 rounded bg-surface">
             ESC
           </kbd>
-        </div>
+        </form>
 
         {/* Results List */}
         <div className="max-h-[60vh] overflow-y-auto p-2 space-y-1">

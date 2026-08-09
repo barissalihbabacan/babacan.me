@@ -23,6 +23,8 @@ import NowPage from "./pages/NowPage.tsx";
 import UsesPage from "./pages/UsesPage.tsx";
 import ProjectsDirectoryPage from "./pages/ProjectsDirectoryPage.tsx";
 
+import { initWebMCP } from "./utils/webmcp.ts";
+
 export default function App() {
   const { lang, t } = useLanguage();
   const { route, currentPath } = useAppRouter();
@@ -30,6 +32,7 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
+    initWebMCP();
   }, [currentPath]);
 
   const baseUrl = "https://babacan.me";

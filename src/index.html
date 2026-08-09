@@ -55,6 +55,7 @@
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.github.com" />
 
     <!-- Google Fonts with font-display: swap -->
     <link
@@ -64,7 +65,7 @@
 
     <!-- Material Symbols -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0..1,0&display=swap"
       rel="stylesheet"
     />
 
@@ -79,7 +80,7 @@
     </style>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZWNVJ5Y87G"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YJJS8RBN8E"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -87,7 +88,59 @@
       }
       gtag("js", new Date());
 
-      gtag("config", "G-ZWNVJ5Y87G");
+      gtag("config", "G-YJJS8RBN8E");
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://babacan.me/#person",
+            "name": "Barış Salih Babacan",
+            "alternateName": ["Barış Babacan", "Barissalih Babacan"],
+            "jobTitle": "Systems Architect & Chief Technology Officer",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "Garage.ist",
+              "url": "https://garage.ist"
+            },
+            "url": "https://babacan.me",
+            "sameAs": [
+              "https://github.com/barissalihbabacan",
+              "https://linkedin.com/in/barissalihbabacan",
+              "https://github.com/Osmos-App",
+              "https://github.com/Mythos-IDE",
+              "https://github.com/joinchorus",
+              "https://thesinsofthefathers.com"
+            ],
+            "knowsAbout": [
+              "Distributed P2P Systems",
+              "Offline-First Software Architecture",
+              "Systems Architecture",
+              "Rust Systems Programming",
+              "Go (Golang)",
+              "React 19 & TypeScript",
+              "Content-Addressable Storage (CAS)",
+              "Node.js & MongoDB",
+              "D3.js Geographic Projections"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://babacan.me/#website",
+            "url": "https://babacan.me",
+            "name": "Barış Salih Babacan — Systems Architect & CTO",
+            "description": "Official portfolio and technical architecture platform of Barış Salih Babacan, CTO at Garage.ist and Systems Architect.",
+            "inLanguage": ["en", "tr"],
+            "publisher": {
+              "@id": "https://babacan.me/#person"
+            }
+          }
+        ]
+      }
     </script>
   </head>
   <body>
