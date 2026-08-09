@@ -15,7 +15,6 @@ import { Helmet } from "react-helmet-async";
 import ProjectDetailPage from "./pages/ProjectDetailPage.tsx";
 import ArchitecturePage from "./pages/ArchitecturePage.tsx";
 import DesignSystemPage from "./pages/DesignSystemPage.tsx";
-import EngineeringPage from "./pages/EngineeringPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
 import NowPage from "./pages/NowPage.tsx";
 import UsesPage from "./pages/UsesPage.tsx";
@@ -151,7 +150,6 @@ export default function App() {
         {route.type === "projects_index" && <ProjectsDirectoryPage />}
         {route.type === "architecture" && <ArchitecturePage />}
         {route.type === "design_system" && <DesignSystemPage />}
-        {route.type === "engineering" && <EngineeringPage />}
         {route.type === "about" && <AboutPage />}
         {route.type === "now" && <NowPage />}
         {route.type === "uses" && <UsesPage />}

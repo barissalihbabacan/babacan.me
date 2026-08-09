@@ -32,15 +32,6 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
         : "Local-first data sovereignty, distributed systems, Rust core engines, and P2P sync.",
     },
     {
-      id: "page-engineering",
-      title: isTr ? "Mühendislik Günlüğü & Postmortems" : "Engineering Notes & Postmortems",
-      category: isTr ? "Engineering" : "Engineering",
-      url: `/${lang}/${isTr ? "muhendislik" : "engineering"}`,
-      snippet: isTr
-        ? "Sistem tasarımı günlükleri, postmortems ve mimari analizler."
-        : "Architecture decision records, postmortems, and system design research.",
-    },
-    {
       id: "page-about",
       title: isTr ? "Hakkımda ve Araştırma Kaydı (ORCID)" : "About & Research Credentials",
       category: isTr ? "About" : "About",
