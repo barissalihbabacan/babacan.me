@@ -34,6 +34,25 @@ async function fetchGitHubData() {
     );
     const osmosRepos = osmosRes.ok ? await osmosRes.json() : [];
 
+    console.log("Fetching GitHub contribution calendar...");
+    let contributions = { days: [], total: 0 };
+    try {
+      const contribRes = await fetch(`https://github.com/users/${GITHUB_USER}/contributions`);
+      if (contribRes.ok) {
+        const html = await contribRes.text();
+        const dayMatches = [...html.matchAll(/data-date="([^"]+)".*?data-level="(\d+)"/g)];
+        const days = dayMatches.map((m) => ({ date: m[1], level: parseInt(m[2], 10) || 0 }));
+
+        const totalMatch = html.match(/([\d,]+)\s+contributions/i);
+        const total = totalMatch
+          ? parseInt(totalMatch[1].replace(/,/g, ""), 10)
+          : days.reduce((acc, d) => acc + (d.level > 0 ? d.level * 2 : 0), 0);
+        contributions = { days, total };
+      }
+    } catch (cErr) {
+      console.warn("Contribution fetch note:", cErr);
+    }
+
     const data = {
       user,
       repos,
@@ -41,12 +60,13 @@ async function fetchGitHubData() {
         "org-sins": sinsRepos,
         "org-osmos": osmosRepos,
       },
+      contributions,
       timestamp: Date.now(),
     };
 
     const outputDir = path.resolve("public");
     if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir);
+      fs.mkdirSync(outputDir, { recursive: true });
     }
     fs.writeFileSync(path.join(outputDir, "github-data.json"), JSON.stringify(data, null, 2));
     console.log("Successfully saved GitHub data to public/github-data.json");
