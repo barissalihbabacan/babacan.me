@@ -8,10 +8,20 @@ export default function Hero() {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
+    let timer: ReturnType<typeof setTimeout>;
+    const checkDesktop = () => {
+      if (window.innerWidth >= 1024) {
+        timer = setTimeout(() => setIsDesktop(true), 150);
+      } else {
+        setIsDesktop(false);
+      }
+    };
     checkDesktop();
     window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", checkDesktop);
+    };
   }, []);
 
   return (

@@ -82,6 +82,38 @@ export const useGithubStats = () => {
 
   useEffect(() => {
     const fetchStats = async () => {
+      // 1. Try local prebuilt github-data.json
+      try {
+        const ghRes = await fetch("/github-data.json");
+        if (ghRes.ok) {
+          const ghData = await ghRes.json();
+          if (ghData?.user && Array.isArray(ghData?.repos) && ghData.repos.length > 0) {
+            const reposData: GithubRepo[] = ghData.repos;
+            const stars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
+            const forks = reposData.reduce((acc, repo) => acc + (repo.forks_count || 0), 0);
+
+            setStats({
+              followers: ghData.user.followers || 0,
+              repos: reposData.length,
+              stars,
+              forks,
+            });
+
+            const langs: Record<string, number> = {};
+            reposData.forEach((repo) => {
+              if (repo.language) {
+                langs[repo.language] = (langs[repo.language] || 0) + 1;
+              }
+            });
+            setLanguages(langs);
+            setLoading(false);
+            return;
+          }
+        }
+      } catch {
+        // fallback to direct API
+      }
+
       const username = "barissalihbabacan";
       try {
         const userData = await fetchWithCache<GithubUser>(
