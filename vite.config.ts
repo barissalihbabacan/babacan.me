@@ -23,13 +23,6 @@ export default defineConfig({
         main: path.resolve(__dirname, "src/index.html"),
         notfound: path.resolve(__dirname, "src/404.html"),
       },
-      output: {
-        manualChunks(id) {
-          if (id.includes("three") || id.includes("@react-three")) {
-            return "three-vendor";
-          }
-        },
-      },
     },
   },
 });
