@@ -8,19 +8,25 @@ export default function Hero() {
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
     let timer: ReturnType<typeof setTimeout>;
-    const checkDesktop = () => {
-      if (window.innerWidth >= 1024) {
+
+    const updateDesktop = (matches: boolean) => {
+      if (matches) {
         timer = setTimeout(() => setIsDesktop(true), 150);
       } else {
         setIsDesktop(false);
       }
     };
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
+
+    updateDesktop(mq.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => updateDesktop(e.matches);
+    mq.addEventListener("change", handleChange);
+
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("resize", checkDesktop);
+      mq.removeEventListener("change", handleChange);
     };
   }, []);
 

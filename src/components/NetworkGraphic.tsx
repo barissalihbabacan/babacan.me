@@ -146,10 +146,11 @@ export default function NetworkGraphic() {
 
   useEffect(() => {
     setWebGLAvailable(checkWebGLSupport());
-    const checkDesktop = () => setIsDesktop(window.innerWidth > 1024);
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
+    const mq = window.matchMedia("(min-width: 1025px)");
+    setIsDesktop(mq.matches);
+    const handleChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener("change", handleChange);
+    return () => mq.removeEventListener("change", handleChange);
   }, []);
 
   if (!webGLAvailable) return null;
