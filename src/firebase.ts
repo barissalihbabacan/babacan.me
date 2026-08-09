@@ -15,6 +15,22 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = typeof window !== "undefined" ? getAnalytics(app) : null;
+let analytics: ReturnType<typeof getAnalytics> | null = null;
+
+if (typeof window !== "undefined") {
+  const initAnalytics = () => {
+    try {
+      analytics = getAnalytics(app);
+    } catch {
+      // Ignore initialization errors
+    }
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(initAnalytics, { timeout: 3000 });
+  } else {
+    setTimeout(initAnalytics, 2500);
+  }
+}
 
 export { app, analytics };
