@@ -102,30 +102,6 @@
       }
     </style>
 
-    <!-- Lazy Google tag (gtag.js) -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-YJJS8RBN8E");
-
-      function loadGTM() {
-        if (window.__gtmLoaded) return;
-        window.__gtmLoaded = true;
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = "https://www.googletagmanager.com/gtag/js?id=G-YJJS8RBN8E";
-        document.head.appendChild(s);
-      }
-
-      ["mousemove", "scroll", "touchstart", "click", "keydown"].forEach(function (evt) {
-        window.addEventListener(evt, loadGTM, { once: true, passive: true });
-      });
-      setTimeout(loadGTM, 3500);
-    </script>
-
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
       {
