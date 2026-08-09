@@ -42,13 +42,6 @@ export default function Navbar() {
             </button>
             <button
               type="button"
-              onClick={() => navigate(`/${lang}/${isTr ? "dokumanlar" : "docs"}`)}
-              className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
-            >
-              {isTr ? "Dokümanlar" : "Docs"}
-            </button>
-            <button
-              type="button"
               onClick={() => navigate(`/${lang}/${isTr ? "muhendislik" : "engineering"}`)}
               className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
             >
@@ -125,16 +118,6 @@ export default function Navbar() {
               }}
             >
               {t("nav.projects")}
-            </button>
-            <button
-              type="button"
-              className="block font-label-mono text-label-mono text-on-surface-variant hover:text-primary uppercase tracking-widest py-2 text-left w-full"
-              onClick={() => {
-                navigate(`/${lang}/${isTr ? "dokumanlar" : "docs"}`);
-                setMobileMenuOpen(false);
-              }}
-            >
-              {isTr ? "Dokümanlar" : "Docs"}
             </button>
             <button
               type="button"

@@ -4,7 +4,6 @@ import Hero from "./components/Hero.tsx";
 import Experience from "./components/Experience.tsx";
 import Projects from "./components/Projects.tsx";
 import GithubActivity from "./components/GithubActivity.tsx";
-import Writing from "./components/Writing.tsx";
 import Contact from "./components/Contact.tsx";
 import Footer from "./components/Footer.tsx";
 import JsonLd from "./components/JsonLd.tsx";
@@ -15,7 +14,6 @@ import { Helmet } from "react-helmet-async";
 
 import ProjectDetailPage from "./pages/ProjectDetailPage.tsx";
 import ArchitecturePage from "./pages/ArchitecturePage.tsx";
-import DocsPage from "./pages/DocsPage.tsx";
 import DesignSystemPage from "./pages/DesignSystemPage.tsx";
 import EngineeringPage from "./pages/EngineeringPage.tsx";
 import AboutPage from "./pages/AboutPage.tsx";
@@ -144,7 +142,6 @@ export default function App() {
             <Experience />
             <Projects />
             <GithubActivity />
-            <Writing />
             <Contact />
           </>
         )}
@@ -153,7 +150,6 @@ export default function App() {
         )}
         {route.type === "projects_index" && <ProjectsDirectoryPage />}
         {route.type === "architecture" && <ArchitecturePage />}
-        {route.type === "docs" && <DocsPage />}
         {route.type === "design_system" && <DesignSystemPage />}
         {route.type === "engineering" && <EngineeringPage />}
         {route.type === "about" && <AboutPage />}

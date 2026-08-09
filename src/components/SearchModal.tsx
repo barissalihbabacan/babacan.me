@@ -32,15 +32,6 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
         : "Local-first data sovereignty, distributed systems, Rust core engines, and P2P sync.",
     },
     {
-      id: "page-docs",
-      title: isTr ? "Mühendislik Dokümantasyonu & ADRs" : "Engineering Documentation & ADRs",
-      category: isTr ? "Docs" : "Docs",
-      url: `/${lang}/${isTr ? "dokumanlar" : "docs"}`,
-      snippet: isTr
-        ? "CRDT, P2P, İçerik Adresli Depolama ve Mimari Karar Kayıtları (ADR)."
-        : "High-density technical docs covering CRDTs, P2P protocols, CAS, and ADRs.",
-    },
-    {
       id: "page-engineering",
       title: isTr ? "Mühendislik Günlüğü & Postmortems" : "Engineering Notes & Postmortems",
       category: isTr ? "Engineering" : "Engineering",
