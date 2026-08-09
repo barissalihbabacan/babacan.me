@@ -3,17 +3,7 @@ import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 
 export type Lang = "en" | "tr";
 
-export type RouteType =
-  | "home"
-  | "projects_index"
-  | "project_detail"
-  | "architecture"
-  | "docs"
-  | "design_system"
-  | "engineering"
-  | "about"
-  | "now"
-  | "uses";
+export type RouteType = "home" | "project_detail";
 
 export interface ParsedRoute {
   lang: Lang;
@@ -53,29 +43,6 @@ export function parseLocation(pathname: string): ParsedRoute {
     if (slug && slug in PROJECT_DATA) {
       return { lang, type: "project_detail", projectSlug: slug };
     }
-    return { lang, type: "projects_index", projectSlug: null };
-  }
-
-  if (segment === "architecture" || segment === "mimari") {
-    return { lang, type: "architecture", projectSlug: null };
-  }
-  if (segment === "docs" || segment === "dokumanlar") {
-    return { lang, type: "docs", projectSlug: null };
-  }
-  if (segment === "design-system" || segment === "tasarim-sistemi") {
-    return { lang, type: "design_system", projectSlug: null };
-  }
-  if (segment === "engineering" || segment === "muhendislik") {
-    return { lang, type: "engineering", projectSlug: null };
-  }
-  if (segment === "about" || segment === "hakkinda") {
-    return { lang, type: "about", projectSlug: null };
-  }
-  if (segment === "now" || segment === "simdi") {
-    return { lang, type: "now", projectSlug: null };
-  }
-  if (segment === "uses" || segment === "kullandiklarim") {
-    return { lang, type: "uses", projectSlug: null };
   }
 
   return { lang, type: "home", projectSlug: null };
@@ -117,22 +84,6 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     let newPath = `/${newLang}`;
     if (route.type === "project_detail" && route.projectSlug) {
       newPath = `/${newLang}/${newLang === "tr" ? "projeler" : "projects"}/${route.projectSlug}`;
-    } else if (route.type === "projects_index") {
-      newPath = `/${newLang}/${newLang === "tr" ? "projeler" : "projects"}`;
-    } else if (route.type === "architecture") {
-      newPath = `/${newLang}/${newLang === "tr" ? "mimari" : "architecture"}`;
-    } else if (route.type === "docs") {
-      newPath = `/${newLang}/${newLang === "tr" ? "dokumanlar" : "docs"}`;
-    } else if (route.type === "design_system") {
-      newPath = `/${newLang}/${newLang === "tr" ? "tasarim-sistemi" : "design-system"}`;
-    } else if (route.type === "engineering") {
-      newPath = `/${newLang}/${newLang === "tr" ? "muhendislik" : "engineering"}`;
-    } else if (route.type === "about") {
-      newPath = `/${newLang}/${newLang === "tr" ? "hakkinda" : "about"}`;
-    } else if (route.type === "now") {
-      newPath = `/${newLang}/${newLang === "tr" ? "simdi" : "now"}`;
-    } else if (route.type === "uses") {
-      newPath = `/${newLang}/${newLang === "tr" ? "kullandiklarim" : "uses"}`;
     }
 
     navigate(newPath);

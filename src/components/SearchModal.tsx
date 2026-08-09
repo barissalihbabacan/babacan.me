@@ -20,44 +20,13 @@ export default function SearchModal({ isOpen, onClose }: { isOpen: boolean; onCl
   const isTr = lang === "tr";
 
   // Index all searchable items
-  const allItems: SearchResult[] = [
-    // Platform pages
-    {
-      id: "page-architecture",
-      title: isTr ? "Sistem Mimarisi ve Felsefe" : "Systems Architecture & Software Philosophy",
-      category: isTr ? "Platform" : "Platform",
-      url: `/${lang}/${isTr ? "mimari" : "architecture"}`,
-      snippet: isTr
-        ? "Local-First yazılım felsefesi, Rust ile bellek güvenliği ve P2P CRDT senkronizasyonu."
-        : "Local-first data sovereignty, distributed systems, Rust core engines, and P2P sync.",
-    },
-    {
-      id: "page-about",
-      title: isTr ? "Hakkımda ve Araştırma Kaydı (ORCID)" : "About & Research Credentials",
-      category: isTr ? "About" : "About",
-      url: `/${lang}/${isTr ? "hakkinda" : "about"}`,
-      snippet: isTr
-        ? "Barış Salih Babacan'ın biyografisi ve kariyer geçmişi."
-        : "Biography and engineering background.",
-    },
-    {
-      id: "page-uses",
-      title: isTr ? "Donanım, Yazılım & Tooling Setupı" : "Hardware, Tooling & Stack Setup",
-      category: isTr ? "Setup" : "Setup",
-      url: `/${lang}/${isTr ? "kullandiklarim" : "uses"}`,
-      snippet: isTr
-        ? "MacBook Pro, Ghostty, VS Code, Cursor, Rust, Claude Code."
-        : "MacBook Pro, Ghostty terminal, VS Code, Cursor IDE, Rust, Claude Code.",
-    },
-    // Projects
-    ...Object.entries(PROJECT_DATA).map(([slug, data]) => ({
-      id: `proj-${slug}`,
-      title: data.title[lang as "en" | "tr"] ?? data.title.en,
-      category: isTr ? "Proje" : "Project",
-      url: `/${lang}/${isTr ? "projeler" : "projects"}/${slug}`,
-      snippet: data.description[lang as "en" | "tr"] ?? data.description.en,
-    })),
-  ];
+  const allItems: SearchResult[] = Object.entries(PROJECT_DATA).map(([slug, data]) => ({
+    id: `proj-${slug}`,
+    title: data.title[lang as "en" | "tr"] ?? data.title.en,
+    category: isTr ? "Proje" : "Project",
+    url: `/${lang}/${isTr ? "projeler" : "projects"}/${slug}`,
+    snippet: data.description[lang as "en" | "tr"] ?? data.description.en,
+  }));
 
   const results = query.trim()
     ? allItems.filter(

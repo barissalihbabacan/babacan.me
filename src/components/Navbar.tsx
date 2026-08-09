@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLanguage } from "../contexts/LanguageContext.tsx";
 import { useAppRouter } from "../contexts/RouterContext.tsx";
 
 export default function Navbar() {
   const { lang, toggleLanguage, t } = useLanguage();
   const { navigate } = useAppRouter();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isTr = lang === "tr";
 
   return (
     <>
@@ -32,22 +30,7 @@ export default function Navbar() {
             babacan.me
           </button>
 
-          <div className="hidden md:flex items-center gap-gutter">
-            <button
-              type="button"
-              onClick={() => navigate(`/${lang}/${isTr ? "projeler" : "projects"}`)}
-              className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
-            >
-              {t("nav.projects")}
-            </button>
-            <button
-              type="button"
-              onClick={() => navigate(`/${lang}/${isTr ? "hakkinda" : "about"}`)}
-              className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
-            >
-              {isTr ? "Hakkımda" : "About"}
-            </button>
-
+          <div className="flex items-center gap-gutter">
             <button
               type="button"
               className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer border border-primary/30 px-2 py-1 text-[11px]"
@@ -76,55 +59,7 @@ export default function Navbar() {
               {t("hero.downloadCV") || "CV"}
             </a>
           </div>
-
-          <button
-            type="button"
-            className="md:hidden text-on-surface p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle navigation menu"
-            aria-expanded={mobileMenuOpen}
-          >
-            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-            </svg>
-          </button>
         </div>
-
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-16 left-0 w-full bg-surface border-b border-primary/30 px-margin-mobile py-6 space-y-4 shadow-xl">
-            <button
-              type="button"
-              className="block font-label-mono text-label-mono text-on-surface-variant hover:text-primary uppercase tracking-widest py-2 text-left w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              onClick={() => {
-                toggleLanguage();
-                setMobileMenuOpen(false);
-              }}
-            >
-              {lang === "tr" ? "EN" : "TR"}
-            </button>
-            <button
-              type="button"
-              className="block font-label-mono text-label-mono text-on-surface-variant hover:text-primary uppercase tracking-widest py-2 text-left w-full"
-              onClick={() => {
-                navigate(`/${lang}/${isTr ? "projeler" : "projects"}`);
-                setMobileMenuOpen(false);
-              }}
-            >
-              {t("nav.projects")}
-            </button>
-
-            <button
-              type="button"
-              className="block font-label-mono text-label-mono text-on-surface-variant hover:text-primary uppercase tracking-widest py-2 text-left w-full"
-              onClick={() => {
-                navigate(`/${lang}/${isTr ? "hakkinda" : "about"}`);
-                setMobileMenuOpen(false);
-              }}
-            >
-              {isTr ? "Hakkımda" : "About"}
-            </button>
-          </div>
-        )}
       </nav>
     </>
   );

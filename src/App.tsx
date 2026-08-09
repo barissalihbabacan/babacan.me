@@ -13,13 +13,6 @@ import { PROJECT_DATA } from "./data/projectsData.ts";
 import { Helmet } from "react-helmet-async";
 
 import ProjectDetailPage from "./pages/ProjectDetailPage.tsx";
-import ArchitecturePage from "./pages/ArchitecturePage.tsx";
-import DesignSystemPage from "./pages/DesignSystemPage.tsx";
-import AboutPage from "./pages/AboutPage.tsx";
-import NowPage from "./pages/NowPage.tsx";
-import UsesPage from "./pages/UsesPage.tsx";
-import ProjectsDirectoryPage from "./pages/ProjectsDirectoryPage.tsx";
-
 import { initWebMCP } from "./utils/webmcp.ts";
 
 export default function App() {
@@ -46,53 +39,6 @@ export default function App() {
       ? `${projTitle} — Mühendislik Dokümantasyonu | Barış Salih Babacan`
       : `${projTitle} — Engineering Documentation | Barış Salih Babacan`;
     pageDesc = `${projTitle}: ${projDesc.substring(0, 150)}...`;
-  } else if (route.type === "architecture") {
-    pageTitle = isTr
-      ? "Sistem Mimarisi ve Mühendislik Felsefesi — Barış Salih Babacan"
-      : "Systems Architecture & Software Philosophy — Barış Salih Babacan";
-    pageDesc = isTr
-      ? "Bulut bağımlılıklarını ortadan kaldıran, çevrimdışı-öncelikli veri egemenliğini savunan mimari yaklaşımlar."
-      : "Architectural whitepaper covering local-first data sovereignty, distributed systems, and Rust core engines.";
-  } else if (route.type === "docs") {
-    pageTitle = isTr
-      ? "Mühendislik Dokümanları & ADR'ler — Barış Salih Babacan"
-      : "Engineering Documentation & ADRs — Barış Salih Babacan";
-    pageDesc = isTr
-      ? "Dağıtık sistemler, yerel-öncelikli yazılımlar, CRDT yapıları ve Mimari Karar Kayıtları (ADR)."
-      : "High-density technical documentation, reference guides, and Architecture Decision Records (ADRs).";
-  } else if (route.type === "design_system") {
-    pageTitle = "Design System & UI Tokens — Barış Salih Babacan";
-    pageDesc =
-      "Color palette, typography scale, glassmorphism card tokens, and WCAG accessibility standards.";
-  } else if (route.type === "engineering") {
-    pageTitle = isTr
-      ? "Mühendislik Analizleri & Design Notes — Barış Salih Babacan"
-      : "Engineering Notes, ADRs & Postmortems — Barış Salih Babacan";
-    pageDesc = isTr
-      ? "Mimari kararlar, postmortems ve sistem tasarımı günlükleri."
-      : "Architecture decision records, engineering postmortems, and system design logs.";
-  } else if (route.type === "about") {
-    pageTitle = isTr
-      ? "Hakkımda ve Mühendislik Geçmişi — Barış Salih Babacan"
-      : "About & Engineering Bio — Barış Salih Babacan";
-    pageDesc = isTr
-      ? "Barış Salih Babacan'ın kariyeri ve mühendislik geçmişi."
-      : "Career timeline and engineering philosophy of Barış Salih Babacan.";
-  } else if (route.type === "now") {
-    pageTitle = isTr
-      ? "Şu An Ne Üzerinde Çalışıyorum? — Barış Salih Babacan"
-      : "What I'm Doing Now — Barış Salih Babacan";
-    pageDesc = isTr
-      ? "Barış Salih Babacan'ın mevcut projeleri ve odak alanları."
-      : "Current focus, active software development projects, and research.";
-  } else if (route.type === "uses") {
-    pageTitle = isTr
-      ? "Donanım, Yazılım & Tooling Setupı — Barış Salih Babacan"
-      : "Hardware, Tooling & Stack Setup — Barış Salih Babacan";
-  } else if (route.type === "projects_index") {
-    pageTitle = isTr
-      ? "Tüm Projeler ve Sistemler Kataloğu — Barış Salih Babacan"
-      : "Projects & Systems Directory — Barış Salih Babacan";
   }
 
   const enUrl = `${baseUrl}/en${currentPath.replace(/^\/(en|tr)/, "")}`;
@@ -135,7 +81,9 @@ export default function App() {
       <Navbar />
 
       <main id="main-content">
-        {route.type === "home" && (
+        {route.type === "project_detail" && route.projectSlug ? (
+          <ProjectDetailPage slug={route.projectSlug} />
+        ) : (
           <>
             <Hero />
             <Experience />
@@ -144,15 +92,6 @@ export default function App() {
             <Contact />
           </>
         )}
-        {route.type === "project_detail" && route.projectSlug && (
-          <ProjectDetailPage slug={route.projectSlug} />
-        )}
-        {route.type === "projects_index" && <ProjectsDirectoryPage />}
-        {route.type === "architecture" && <ArchitecturePage />}
-        {route.type === "design_system" && <DesignSystemPage />}
-        {route.type === "about" && <AboutPage />}
-        {route.type === "now" && <NowPage />}
-        {route.type === "uses" && <UsesPage />}
       </main>
 
       <Footer />

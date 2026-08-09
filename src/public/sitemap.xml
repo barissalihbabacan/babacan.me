@@ -26,13 +26,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://babacan.me/en" />
   </url>
 
-  <!-- Directory & Platform Pages -->
-  <url>
-    <loc>https://babacan.me/projects</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+
 
   <!-- Project Detail Pages -->
   <url>
