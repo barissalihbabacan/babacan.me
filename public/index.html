@@ -97,36 +97,42 @@
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "Person",
-            "@id": "https://babacan.me/#person",
-            "name": "Barış Salih Babacan",
-            "alternateName": ["Barış Babacan", "Barissalih Babacan"],
-            "jobTitle": "Systems Architect & Chief Technology Officer",
-            "worksFor": {
-              "@type": "Organization",
-              "name": "Garage.ist",
-              "url": "https://garage.ist"
-            },
+            "@type": "ProfilePage",
+            "@id": "https://babacan.me/#profilepage",
             "url": "https://babacan.me",
-            "sameAs": [
-              "https://github.com/barissalihbabacan",
-              "https://linkedin.com/in/barissalihbabacan",
-              "https://github.com/Osmos-App",
-              "https://github.com/Mythos-IDE",
-              "https://github.com/joinchorus",
-              "https://thesinsofthefathers.com"
-            ],
-            "knowsAbout": [
-              "Distributed P2P Systems",
-              "Offline-First Software Architecture",
-              "Systems Architecture",
-              "Rust Systems Programming",
-              "Go (Golang)",
-              "React 19 & TypeScript",
-              "Content-Addressable Storage (CAS)",
-              "Node.js & MongoDB",
-              "D3.js Geographic Projections"
-            ]
+            "name": "Barış Salih Babacan — Systems Architect & CTO",
+            "mainEntity": {
+              "@type": "Person",
+              "@id": "https://babacan.me/#person",
+              "name": "Barış Salih Babacan",
+              "alternateName": ["Barış Babacan", "Barissalih Babacan"],
+              "jobTitle": "Systems Architect & Chief Technology Officer",
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Garage.ist",
+                "url": "https://garage.ist"
+              },
+              "url": "https://babacan.me",
+              "sameAs": [
+                "https://github.com/barissalihbabacan",
+                "https://linkedin.com/in/barissalihbabacan",
+                "https://github.com/Osmos-App",
+                "https://github.com/Mythos-IDE",
+                "https://github.com/joinchorus",
+                "https://thesinsofthefathers.com"
+              ],
+              "knowsAbout": [
+                "Distributed P2P Systems",
+                "Offline-First Software Architecture",
+                "Systems Architecture",
+                "Rust Systems Programming",
+                "Go (Golang)",
+                "React 19 & TypeScript",
+                "Content-Addressable Storage (CAS)",
+                "Node.js & MongoDB",
+                "D3.js Geographic Projections"
+              ]
+            }
           },
           {
             "@type": "WebSite",
@@ -137,6 +143,14 @@
             "inLanguage": ["en", "tr"],
             "publisher": {
               "@id": "https://babacan.me/#person"
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://babacan.me/en/projects?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
             }
           }
         ]
