@@ -248,7 +248,7 @@ export const i18nData: I18nNode = {
       },
       officialSite: { en: "Official Site", tr: "Resmi Site" },
       visitSite: { en: "Visit Official Site", tr: "Resmi Siteyi Ziyaret Et" },
-      status: { en: "Novel · Under Publication Review", tr: "Roman · Yayın Değerlendirmesinde" },
+      status: { en: "Novel · Writing Phase", tr: "Roman · Yazım Aşamasında" },
     },
   },
   contact: {

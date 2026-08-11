@@ -164,21 +164,6 @@ export default function Writing() {
                   <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
                 </svg>
               </a>
-              <a
-                href="https://www.goodreads.com/topic/show/23295096-open-new-book-request-the-sins-of-the-fathers-by-bar-salih-babacan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-primary/30 text-on-surface hover:border-primary px-6 py-3 font-label-mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              >
-                <span>{isTr ? "Goodreads'te İncele" : "View on Goodreads"}</span>
-                <svg
-                  className="w-3.5 h-3.5 fill-current shrink-0"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
