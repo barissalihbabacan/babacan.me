@@ -16,8 +16,8 @@ export const i18nData: I18nNode = {
       tr: "Barış Salih Babacan | Sistem Mimarı & CTO",
     },
     description: {
-      en: "Barış Salih Babacan | Systems Architect & CTO based in Istanbul. Specializing in distributed P2P systems, offline-first architectures, and interactive digital experiences.",
-      tr: "Barış Salih Babacan | İstanbul merkezli Sistem Mimarı & CTO. Dağıtık P2P sistemleri, çevrimdışı-öncelikli mimariler ve etkileşimli dijital deneyimler geliştirir.",
+      en: "Barış Salih Babacan | Systems Architect & CTO in Istanbul. Specializing in distributed P2P systems, offline-first architectures & digital experiences.",
+      tr: "Barış Salih Babacan | İstanbul merkezli Sistem Mimarı & CTO. Dağıtık P2P sistemleri, çevrimdışı-öncelikli mimariler ve dijital deneyimler geliştirir.",
     },
   },
   hero: {
