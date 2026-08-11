@@ -26,7 +26,7 @@ export default function App() {
   }, [currentPath]);
 
   const baseUrl = "https://babacan.me";
-  const canonicalUrl = `${baseUrl}${currentPath === "/" ? `/${lang}` : currentPath}`;
+  const canonicalUrl = currentPath === "/" ? `${baseUrl}/` : `${baseUrl}${currentPath}`;
 
   let pageTitle = t("seo.title");
   let pageDesc = t("seo.description");

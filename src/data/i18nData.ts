@@ -12,8 +12,8 @@ export const i18nData: I18nNode = {
   },
   seo: {
     title: {
-      en: "Barış Salih Babacan | Systems Architect & CTO",
-      tr: "Barış Salih Babacan | Sistem Mimarı & CTO",
+      en: "Barış Salih Babacan | Systems Architect & CTO Istanbul",
+      tr: "Barış Salih Babacan | Sistem Mimarı & CTO Istanbul",
     },
     description: {
       en: "Barış Salih Babacan | Systems Architect & CTO in Istanbul. Specializing in distributed P2P systems, offline-first architectures & digital experiences.",
