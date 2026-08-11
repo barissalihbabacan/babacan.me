@@ -26,7 +26,7 @@ export default function App() {
   }, [currentPath]);
 
   const baseUrl = "https://babacan.me";
-  const canonicalUrl = currentPath === "/" ? `${baseUrl}/` : `${baseUrl}${currentPath}`;
+  const canonicalUrl = `${baseUrl}${currentPath === "/" ? "/en" : currentPath}`;
 
   let pageTitle = t("seo.title");
   let pageDesc = t("seo.description");
@@ -52,26 +52,26 @@ export default function App() {
       <Helmet>
         <html lang={lang} />
         <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} data-rh="true" />
-        <link rel="canonical" href={canonicalUrl} data-rh="true" />
-        <link rel="alternate" hrefLang="en" href={enUrl} data-rh="true" />
-        <link rel="alternate" hrefLang="tr" href={trUrl} data-rh="true" />
-        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} data-rh="true" />
+        <meta name="description" content={pageDesc} />
+        <link rel="canonical" href={canonicalUrl} />
+        <link rel="alternate" hrefLang="en" href={enUrl} />
+        <link rel="alternate" hrefLang="tr" href={trUrl} />
+        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} />
 
         {/* Open Graph */}
-        <meta property="og:type" content="website" data-rh="true" />
-        <meta property="og:url" content={canonicalUrl} data-rh="true" />
-        <meta property="og:title" content={pageTitle} data-rh="true" />
-        <meta property="og:description" content={pageDesc} data-rh="true" />
-        <meta property="og:image" content={`${baseUrl}/og-image.png`} data-rh="true" />
-        <meta property="og:locale" content={lang === "tr" ? "tr_TR" : "en_US"} data-rh="true" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDesc} />
+        <meta property="og:image" content={`${baseUrl}/og-image.png`} />
+        <meta property="og:locale" content={lang === "tr" ? "tr_TR" : "en_US"} />
 
         {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" data-rh="true" />
-        <meta name="twitter:url" content={canonicalUrl} data-rh="true" />
-        <meta name="twitter:title" content={pageTitle} data-rh="true" />
-        <meta name="twitter:description" content={pageDesc} data-rh="true" />
-        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} data-rh="true" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDesc} />
+        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
       </Helmet>
 
       <JsonLd lang={lang} selectedProjectSlug={route.projectSlug} />
