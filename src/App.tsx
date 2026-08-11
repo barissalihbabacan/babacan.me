@@ -4,6 +4,7 @@ import Hero from "./components/Hero.tsx";
 import Experience from "./components/Experience.tsx";
 import Projects from "./components/Projects.tsx";
 import GithubActivity from "./components/GithubActivity.tsx";
+import Writing from "./components/Writing.tsx";
 import Contact from "./components/Contact.tsx";
 import Footer from "./components/Footer.tsx";
 import JsonLd from "./components/JsonLd.tsx";
@@ -89,6 +90,7 @@ export default function App() {
             <Experience />
             <Projects />
             <GithubActivity />
+            <Writing />
             <Contact />
           </>
         )}

@@ -27,13 +27,13 @@ export default function Writing() {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
-          {/*  Book cover  */}
+          {/* Book cover */}
           <div className="relative max-w-xs">
             <div
-              className="relative border border-primary/30 overflow-hidden"
+              className="relative border border-primary/30 overflow-hidden rounded-sm"
               style={{ aspectRatio: "3/4" }}
             >
-              {/*  Gradient cover  */}
+              {/* Gradient cover */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -41,7 +41,7 @@ export default function Writing() {
                     "linear-gradient(160deg, var(--color-surface-bright) 0%, var(--color-surface-container-high) 30%, var(--color-surface-container) 60%, var(--color-surface-container-lowest) 100%)",
                 }}
               ></div>
-              {/*  Dot texture  */}
+              {/* Dot texture */}
               <div
                 className="absolute inset-0"
                 style={{
@@ -51,7 +51,7 @@ export default function Writing() {
                   opacity: "0.04",
                 }}
               ></div>
-              {/*  Cover content  */}
+              {/* Cover content */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
                 <div
                   className="w-6 h-px mb-6"
@@ -93,12 +93,12 @@ export default function Writing() {
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-[9px] uppercase tracking-widest">
+            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-[9px] uppercase tracking-widest shadow-md">
               {t("writing.book.status")}
             </div>
           </div>
 
-          {/*  Book info  */}
+          {/* Book info */}
           <div className="space-y-6 pt-2">
             <span className="font-label-mono text-[10px] text-tertiary uppercase tracking-widest">
               {t("writing.book.genre")}
@@ -145,7 +145,7 @@ export default function Writing() {
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
@@ -156,6 +156,21 @@ export default function Writing() {
                   {t("writing.book.visitSite") ||
                     (isTr ? "Resmi Siteyi Ziyaret Et" : "Visit Official Site")}
                 </span>
+                <svg
+                  className="w-3.5 h-3.5 fill-current shrink-0"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.goodreads.com/topic/show/23295096-open-new-book-request-the-sins-of-the-fathers-by-bar-salih-babacan"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-primary/30 text-on-surface hover:border-primary px-6 py-3 font-label-mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <span>{isTr ? "Goodreads'te İncele" : "View on Goodreads"}</span>
                 <svg
                   className="w-3.5 h-3.5 fill-current shrink-0"
                   viewBox="0 0 24 24"
