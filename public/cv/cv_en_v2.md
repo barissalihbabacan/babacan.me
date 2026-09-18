@@ -9,7 +9,7 @@ linkedin.com/in/barissalihbabacan | github.com/barissalihbabacan | babacan.me
 
 ### SUMMARY
 
-Systems engineer building local-first infrastructure in Rust, with production experience spanning embedded systems, network protocol reverse engineering, and native applications. Shipped Sortify, an iOS/iPadOS game-based learning platform now at version 2.1 on the App Store; reverse-engineered the control interfaces of three TV vendors to build an Android TV remote; and delivered a hardware access-control system that served 120–150 users a day for three academic years.
+Systems engineer building local-first infrastructure in Rust, with production experience spanning embedded systems, network protocol reverse engineering, and native applications. Shipped Sortify, an iOS/iPadOS game-based learning platform now at version 2.1 on the App Store; reverse-engineered the control interfaces of three TV vendors for a shipped Android TV remote; and delivered a hardware access-control system that served 120–150 users a day for three academic years.
 
 ### SKILLS
 
@@ -27,8 +27,8 @@ _Product studio building consumer iOS and Android applications._
 - Lead development of **Sortify**, a game-based learning app for ages 3–13 with parent and teacher supervision tools (SwiftUI + MVVM + Firebase), now at **v2.1 on the App Store** across 540+ commits.
 - Split the codebase into six in-house Swift packages for core, auth, education, games, subscription and chessboard; integrated subscriptions, push notifications and analytics.
 - Led development with a two-developer team and enforced review discipline through CI that blocks direct pushes to main and self-merged pull requests.
-- Built **+TV**, a shipped Android TV remote, by reverse-engineering the control interfaces of Samsung (Tizen), LG (webOS) and Philips televisions with Wireshark and curl.
-- Wrote the Philips client from scratch where no SDK existed: HTTP Digest authentication over a 401 challenge–response flow, PIN-based device pairing as an explicit state machine, and TLS handling for self-signed certificates.
+- Co-built **+TV**, a shipped Android TV remote, with a fellow developer, and reverse-engineered the control interfaces of Samsung (Tizen), LG (webOS) and Philips televisions using Wireshark and curl.
+- Wrote the Philips integration myself where no SDK existed, reverse-engineering Philips' own remote app off the wire: HTTP Digest authentication over a 401 challenge–response flow, PIN-based device pairing as an explicit state machine, and TLS handling for self-signed certificates.
 - Shipped four additional iOS titles (RuleSort, Block Nest, Water Sort, Guess the City) to release builds.
 
 **IT & Systems Integration Intern** | _ENLOG, Istanbul_ | Sep 2023 – Jun 2024

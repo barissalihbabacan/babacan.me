@@ -9,7 +9,7 @@ linkedin.com/in/barissalihbabacan | github.com/barissalihbabacan | babacan.me
 
 ### ÖZET
 
-Rust ile yerel-öncelikli altyapı geliştiren; gömülü sistemler, ağ protokolü tersine mühendisliği ve native uygulamalar alanlarında üretim deneyimi olan sistem mühendisi. App Store'da 2.1 sürümüne ulaşan oyun temelli öğrenme platformu Sortify'ı yayına aldı; üç TV üreticisinin kontrol arayüzlerini tersine mühendislikle çözerek Android için bir kumanda uygulaması geliştirdi; üç eğitim-öğretim yılı boyunca günlük 120–150 kullanıcıya hizmet veren donanımlı bir geçiş kontrol sistemi teslim etti.
+Rust ile yerel-öncelikli altyapı geliştiren; gömülü sistemler, ağ protokolü tersine mühendisliği ve native uygulamalar alanlarında üretim deneyimi olan sistem mühendisi. App Store'da 2.1 sürümüne ulaşan oyun temelli öğrenme platformu Sortify'ı yayına aldı; yayına alınan bir Android kumanda uygulaması için üç TV üreticisinin kontrol arayüzlerini tersine mühendislikle çözdü; üç eğitim-öğretim yılı boyunca günlük 120–150 kullanıcıya hizmet veren donanımlı bir geçiş kontrol sistemi teslim etti.
 
 ### YETKİNLİKLER
 
@@ -27,8 +27,8 @@ _Tüketiciye yönelik iOS ve Android uygulamaları geliştiren ürün stüdyosu.
 - 3–13 yaş arası çocuklar için veli ve öğretmen gözetim araçları içeren oyun temelli öğrenme uygulaması **Sortify**'ın geliştirilmesini yönetiyorum (SwiftUI + MVVM + Firebase); 540'ı aşkın commit ile **App Store'da v2.1** sürümünde.
 - Kod tabanını core, auth, education, games, subscription ve chessboard olmak üzere altı şirket içi Swift paketine ayırdım; abonelik, push bildirim ve analitik entegrasyonlarını kurdum.
 - İki kişilik geliştirici ekibiyle geliştirmeyi yönettim; main dalına doğrudan push'u ve kendi PR'ını merge etmeyi engelleyen CI kuralları ile code review disiplinini işlettim.
-- Samsung (Tizen), LG (webOS) ve Philips TV'lerin kontrol arayüzlerini Wireshark ve curl ile tersine mühendislik yaparak çözümledim ve yayına alınan Android kumanda uygulaması **+TV**'yi geliştirdim.
-- Hazır SDK bulunmayan Philips için istemciyi sıfırdan yazdım: 401 challenge–response akışı üzerinden HTTP Digest kimlik doğrulama, durum makinesi olarak modellenmiş PIN tabanlı cihaz eşleştirme ve kendinden imzalı sertifikalar için TLS yönetimi.
+- Yayına alınan Android kumanda uygulaması **+TV**'yi bir geliştirici arkadaşımla birlikte geliştirdim; Samsung (Tizen), LG (webOS) ve Philips TV'lerin kontrol arayüzlerini Wireshark ve curl ile tersine mühendislik yaparak çözümledim.
+- Hazır SDK bulunmayan Philips entegrasyonunu tek başıma yazdım; Philips'in kendi kumanda uygulamasını ağ trafiği üzerinden tersine mühendislikle çözerek: 401 challenge–response akışı üzerinden HTTP Digest kimlik doğrulama, durum makinesi olarak modellenmiş PIN tabanlı cihaz eşleştirme ve kendinden imzalı sertifikalar için TLS yönetimi.
 - Dört ek iOS oyununu (RuleSort, Block Nest, Water Sort, Guess the City) yayın sürümüne taşıdım.
 
 **IT ve Sistem Entegrasyon Stajyeri** | _ENLOG, İstanbul_ | Eyl 2023 – Haz 2024
