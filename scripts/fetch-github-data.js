@@ -8,7 +8,9 @@ const headers = token
   : { "User-Agent": "babacan.me-build-script" };
 
 async function fetchGitHubData() {
-  const outputDir = path.resolve("public");
+  // Statik varlik kaynagina yazilir: vite build "public/" dizinini
+  // emptyOutDir ile sildigi icin dogrudan oraya yazmak sonucsuz kalirdi.
+  const outputDir = path.resolve("src/public");
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }

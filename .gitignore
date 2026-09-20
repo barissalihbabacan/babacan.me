@@ -76,3 +76,6 @@ venv/
 # Vite build ciktisi (vite.config.ts -> build.outDir). CI her deploy oncesi
 # "npm run build" ile yeniden uretiyor, bu yuzden depoda tutulmuyor.
 /public/
+
+# prebuild ciktisi (scripts/fetch-github-data.js)
+src/public/github-data.json
