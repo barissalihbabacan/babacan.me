@@ -1,14 +1,7 @@
-import React, { createContext, useContext, type ReactNode } from "react";
+import React, { type ReactNode } from "react";
 import { i18nData, type I18nNode } from "../data/i18nData";
-import { useAppRouter, type Lang } from "./RouterContext";
-
-interface LanguageContextValue {
-  lang: Lang;
-  toggleLanguage: () => void;
-  t: (path: string) => string;
-}
-
-const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
+import { useAppRouter, type Lang } from "./router.ts";
+import { LanguageContext } from "./language.ts";
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const { lang, setLang } = useAppRouter();
@@ -46,10 +39,4 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       {children}
     </LanguageContext.Provider>
   );
-};
-
-export const useLanguage = (): LanguageContextValue => {
-  const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLanguage must be used within LanguageProvider");
-  return ctx;
 };

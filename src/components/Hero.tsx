@@ -1,5 +1,5 @@
 import React, { useState, useEffect, lazy, Suspense } from "react";
-import { useLanguage } from "../contexts/LanguageContext.tsx";
+import { useLanguage } from "../contexts/language.ts";
 
 const NetworkGraphic = lazy(() => import("./NetworkGraphic.tsx"));
 

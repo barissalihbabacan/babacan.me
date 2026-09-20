@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
-import { useLanguage } from "../contexts/LanguageContext";
-import { useAppRouter } from "../contexts/RouterContext";
+import { useLanguage } from "../contexts/language.ts";
+import { useAppRouter } from "../contexts/router.ts";
 
 type FilterCategory = "all" | "p2p" | "web" | "hardware";
 

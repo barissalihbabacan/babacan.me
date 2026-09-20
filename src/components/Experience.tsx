@@ -1,5 +1,5 @@
 import React from "react";
-import { useLanguage } from "../contexts/LanguageContext.tsx";
+import { useLanguage } from "../contexts/language.ts";
 
 export default function Experience() {
   const { t } = useLanguage();

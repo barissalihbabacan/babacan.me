@@ -1,6 +1,6 @@
 import React from "react";
-import { useLanguage } from "../contexts/LanguageContext.tsx";
-import { useAppRouter } from "../contexts/RouterContext.tsx";
+import { useLanguage } from "../contexts/language.ts";
+import { useAppRouter } from "../contexts/router.ts";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData.ts";
 
 export default function Projects() {

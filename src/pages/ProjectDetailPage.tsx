@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
-import { useLanguage } from "../contexts/LanguageContext";
+import { useLanguage } from "../contexts/language.ts";
 import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
-import { useAppRouter } from "../contexts/RouterContext";
+import { useAppRouter } from "../contexts/router.ts";
 
 interface ProjectDetailPageProps {
   slug: ProjectKey;

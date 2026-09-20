@@ -1,7 +1,7 @@
 import React from "react";
 import CustomGithubCalendar from "./CustomGithubCalendar.tsx";
 import { useGithubStats } from "../contexts/useGithubStats.ts";
-import { useLanguage } from "../contexts/LanguageContext.tsx";
+import { useLanguage } from "../contexts/language.ts";
 
 export default function GithubActivity() {
   const { t, lang } = useLanguage();

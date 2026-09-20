@@ -8,8 +8,8 @@ import Writing from "./components/Writing.tsx";
 import Contact from "./components/Contact.tsx";
 import Footer from "./components/Footer.tsx";
 import JsonLd from "./components/JsonLd.tsx";
-import { useLanguage } from "./contexts/LanguageContext.tsx";
-import { useAppRouter } from "./contexts/RouterContext.tsx";
+import { useLanguage } from "./contexts/language.ts";
+import { useAppRouter } from "./contexts/router.ts";
 import { PROJECT_DATA } from "./data/projectsData.ts";
 import { Helmet } from "react-helmet-async";
 
