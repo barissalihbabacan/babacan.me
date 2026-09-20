@@ -73,4 +73,6 @@ node_modules/
 skills-lock.json
 venv/
 .vite-hooks
-public/assets
+# Vite build ciktisi (vite.config.ts -> build.outDir). CI her deploy oncesi
+# "npm run build" ile yeniden uretiyor, bu yuzden depoda tutulmuyor.
+/public/
