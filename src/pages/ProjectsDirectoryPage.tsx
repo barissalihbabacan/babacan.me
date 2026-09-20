@@ -37,7 +37,7 @@ export default function ProjectsDirectoryPage() {
           {isTr ? "Ana Sayfa" : "Home"}
         </button>
         <span aria-hidden="true">/</span>
-        <span className="text-primary">{isTr ? "Projeler Kataloğu" : "Projects Directory"}</span>
+        <span className="text-primary">{isTr ? "Projeler" : "Projects"}</span>
       </nav>
 
       <header className="border-b border-primary/30 pb-10 mb-8">
@@ -48,8 +48,8 @@ export default function ProjectsDirectoryPage() {
         </h1>
         <p className="font-body-lg text-on-surface-variant text-lg max-w-3xl leading-relaxed">
           {isTr
-            ? "Geliştirdiğim yerel-öncelikli yazılımlar, P2P sistemler, kurumsal web platformları ve donanım/IoT projeleri."
-            : "Complete architectural catalog of local-first software, P2P engines, enterprise web platforms, and hardware/IoT systems."}
+            ? "Geliştirdiğim yerel-öncelikli motorlar, native uygulamalar, web platformları ve donanım/IoT projeleri."
+            : "Catalog of local-first engines, native applications, web platforms, and hardware/IoT systems."}
         </p>
       </header>
 
@@ -57,7 +57,7 @@ export default function ProjectsDirectoryPage() {
       <div className="flex flex-wrap gap-3 mb-10 border-b border-primary/20 pb-4">
         {[
           { id: "all", label: isTr ? "Tüm Projeler" : "All Projects" },
-          { id: "p2p", label: isTr ? "P2P & Local-First" : "P2P & Systems" },
+          { id: "p2p", label: isTr ? "Rust & Yerel-Öncelikli" : "Rust & Local-First" },
           { id: "web", label: isTr ? "Kurumsal & Web" : "Commercial & Web" },
           { id: "hardware", label: isTr ? "Donanım & IoT" : "Hardware / IoT" },
         ].map((tab) => (

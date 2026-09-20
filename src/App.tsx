@@ -14,6 +14,8 @@ import { PROJECT_DATA } from "./data/projectsData.ts";
 import { Helmet } from "react-helmet-async";
 
 import ProjectDetailPage from "./pages/ProjectDetailPage.tsx";
+import ProjectsDirectoryPage from "./pages/ProjectsDirectoryPage.tsx";
+import NotFoundPage from "./pages/NotFoundPage.tsx";
 import { initWebMCP } from "./utils/webmcp.ts";
 
 export default function App() {
@@ -40,6 +42,16 @@ export default function App() {
       ? `${projTitle} — Mühendislik Dokümantasyonu | Barış Salih Babacan`
       : `${projTitle} — Engineering Documentation | Barış Salih Babacan`;
     pageDesc = `${projTitle}: ${projDesc.substring(0, 150)}...`;
+  } else if (route.type === "projects_directory") {
+    pageTitle = isTr ? "Projeler — Barış Salih Babacan" : "Projects — Barış Salih Babacan";
+    pageDesc = isTr
+      ? "Rust, Go ve Swift ile geliştirilen yerel-öncelikli motorlar, gömülü sistemler ve native uygulamalar."
+      : "Local-first engines, embedded systems and native applications built in Rust, Go and Swift.";
+  } else if (route.type === "not_found") {
+    pageTitle = isTr ? "404 — Sayfa Bulunamadı" : "404 — Page Not Found";
+    pageDesc = isTr
+      ? "Aradığınız sayfa mevcut değil."
+      : "The page you are looking for does not exist.";
   }
 
   const enUrl = `${baseUrl}/en${currentPath.replace(/^\/(en|tr)/, "")}`;
@@ -55,6 +67,7 @@ export default function App() {
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />
         <link rel="canonical" href={canonicalUrl} />
+        {route.type === "not_found" && <meta name="robots" content="noindex, follow" />}
         <link rel="alternate" hrefLang="en" href={enUrl} />
         <link rel="alternate" hrefLang="tr" href={trUrl} />
         <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} />
@@ -84,6 +97,10 @@ export default function App() {
       <main id="main-content">
         {route.type === "project_detail" && route.projectSlug ? (
           <ProjectDetailPage slug={route.projectSlug} />
+        ) : route.type === "projects_directory" ? (
+          <ProjectsDirectoryPage />
+        ) : route.type === "not_found" ? (
+          <NotFoundPage />
         ) : (
           <>
             <Hero />

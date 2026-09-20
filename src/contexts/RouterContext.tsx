@@ -3,7 +3,7 @@ import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 
 export type Lang = "en" | "tr";
 
-export type RouteType = "home" | "project_detail";
+export type RouteType = "home" | "project_detail" | "projects_directory" | "not_found";
 
 export interface ParsedRoute {
   lang: Lang;
@@ -30,6 +30,9 @@ export function parseLocation(pathname: string): ParsedRoute {
     lang = "tr";
   } else if (parts[0] === "en") {
     lang = "en";
+  } else if (parts.length > 0) {
+    // Dil oneki olmayan yol (ornegin /project/osmos) gecerli bir rota degildir.
+    return { lang, type: "not_found", projectSlug: null };
   }
 
   const segment = parts[1] || "";
@@ -43,9 +46,14 @@ export function parseLocation(pathname: string): ParsedRoute {
     if (slug && slug in PROJECT_DATA) {
       return { lang, type: "project_detail", projectSlug: slug };
     }
+    // Slug yok ya da taninmiyor -> proje dizinini goster.
+    // (Onceden buradan home'a dusuyordu; /en/projects ana sayfayi servis ediyordu.)
+    return { lang, type: "projects_directory", projectSlug: null };
   }
 
-  return { lang, type: "home", projectSlug: null };
+  // Dil oneki dogru ama segment taninmiyor -> 404.
+  // (Onceden burada home donuyordu; her yanlis URL ana sayfayi servis ediyordu.)
+  return { lang, type: "not_found", projectSlug: null };
 }
 
 export function RouterProvider({ children }: { children: ReactNode }) {

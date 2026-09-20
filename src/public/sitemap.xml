@@ -1,112 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <!-- Core Pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://babacan.me/</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://babacan.me/en</loc>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://babacan.me/tr" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://babacan.me/en" />
   </url>
   <url>
     <loc>https://babacan.me/tr</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://babacan.me/tr" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://babacan.me/en" />
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://babacan.me/en</loc>
-    <lastmod>2026-08-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://babacan.me/tr" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://babacan.me/en" />
-  </url>
-
-
-
-  <!-- Project Detail Pages -->
-  <url>
-    <loc>https://babacan.me/project/osmos</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/mythos</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/tr/projeler</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/chorus</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/osmos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/itrms</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/mythos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/worldclock</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/qpass</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/sortify</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/gayrimenkuldunyasi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/qpass</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/sortify</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/sporsayfasi</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/plus-tv</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/gayrimenkuldunyasi</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/playsortify</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/plus-tv</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/sporsayfasi</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://babacan.me/project/playsortify</loc>
-    <lastmod>2026-08-08</lastmod>
+    <loc>https://babacan.me/en/projects/worldclock</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- LLM Context Resources -->
+  <url>
+    <loc>https://babacan.me/en/projects/itrms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/en/projects/chorus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/osmos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/mythos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/qpass</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/gayrimenkuldunyasi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/sortify</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/plus-tv</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/playsortify</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/sporsayfasi</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/worldclock</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/itrms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://babacan.me/tr/projeler/chorus</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://babacan.me/llms.txt</loc>
-    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://babacan.me/llms-full.txt</loc>
-    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

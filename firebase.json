@@ -6,7 +6,23 @@
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
-        "source": "**",
+        "source": "/",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/en",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/tr",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/en/**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/tr/**",
         "destination": "/index.html"
       }
     ],
