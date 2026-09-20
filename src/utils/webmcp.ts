@@ -13,17 +13,17 @@ export function initWebMCP() {
   }
 
   try {
-    // 1. Tool: Search Documentation & Projects
+    // 1. Tool: Search Projects
     modelContext.registerTool({
-      name: "search-documentation",
+      name: "search-projects",
       description:
-        "Search technical documentation, Architecture Decision Records (ADR), P2P/CRDT research notes, and projects on babacan.me",
+        "Search the engineering projects on babacan.me by name, technology or description",
       inputSchema: {
         type: "object",
         properties: {
           query: {
             type: "string",
-            description: "Keyword or search query (e.g., Rust, P2P, CRDT, Osmos, ADR)",
+            description: "Project name or keyword (e.g., Osmos, Rust, RFID)",
           },
         },
         required: ["query"],
