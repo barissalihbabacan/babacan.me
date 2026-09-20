@@ -8,7 +8,6 @@ export const i18nData: I18nNode = {
     projects: { en: "Projects", tr: "Projeler" },
     writing: { en: "Publications", tr: "Yayınlar" },
     contact: { en: "Contact", tr: "İletişim" },
-    techBlog: { en: "Technical Blog", tr: "Teknik Blog" },
   },
   seo: {
     title: {
@@ -49,24 +48,12 @@ export const i18nData: I18nNode = {
     stat3_lbl: { en: "DAILY USERS · 3 YEARS", tr: "GÜNLÜK KULLANICI · 3 YIL" },
     stat4_val: { en: "0", tr: "0" },
     stat4_lbl: { en: "UNSAFE BLOCKS", tr: "UNSAFE BLOK" },
-    badge: {
-      en: "Available for technical consulting & advisory",
-      tr: "Teknik danışmanlık & mentörlük için uygun",
-    },
-    titlePrefix: { en: "Systems Engineer &", tr: "Sistem Mühendisi &" },
-    titleSuffix: { en: "Developer", tr: "Geliştirici" },
-    subTitle: {
-      en: "CTO @ Garage.ist. Shipping native iOS applications, reverse-engineering network protocols, and building local-first engines in Rust.",
-      tr: "Garage.ist CTO'su. Native iOS uygulamaları yayınlıyor, ağ protokollerini tersine mühendislikle çözüyor ve Rust ile yerel-öncelikli motorlar geliştiriyorum.",
-    },
     downloadCV: { en: "Download CV", tr: "CV İndir" },
-    exploreProjects: { en: "Explore Systems", tr: "Sistemleri İncele" },
     scroll: { en: "SCROLL", tr: "KAYDIR" },
   },
   experience: {
     sectionLabel: { en: "01 / Experience", tr: "01 / Deneyim" },
     title: { en: "Engineering & Leadership", tr: "Mühendislik & Liderlik" },
-    techStackTitle: { en: "TECHNICAL CAPABILITIES", tr: "TEKNİK YETKİNLİKLER" },
     item1_title: {
       en: "Technical Leadership & CTO",
       tr: "Teknik Liderlik & CTO",
@@ -106,8 +93,6 @@ export const i18nData: I18nNode = {
       tls: { en: "TLS", tr: "TLS" },
     },
     garage: {
-      role: { en: "CTO & Lead Developer", tr: "CTO & Baş Geliştirici" },
-      period: { en: "Present", tr: "Halen" },
       desc: {
         en: "Leading overall technical direction, software architecture, and product development across all mobile, web, and internal projects at Garage.ist.",
         tr: "Garage.ist bünyesindeki tüm mobil, web ve dahili projelerin genel teknik yönünü, yazılım mimarisini ve ürün geliştirmesini yönetiyorum.",
@@ -119,8 +104,6 @@ export const i18nData: I18nNode = {
     title: { en: "Selected Works", tr: "Seçilmiş Çalışmalar" },
     garageTitle: { en: "GARAGE.IST PROJECTS", tr: "GARAGE.IST PROJELERİ" },
     personalTitle: { en: "PERSONAL & OPEN SOURCE", tr: "KİŞİSEL & AÇIK KAYNAK" },
-    viewProject: { en: "View Details", tr: "Detayları Gör" },
-    close: { en: "Close", tr: "Kapat" },
     highlights: { en: "Key Highlights", tr: "Öne Çıkan Özellikler" },
     techStack: { en: "Technologies & Stack", tr: "Kullanılan Teknolojiler" },
     visitLive: { en: "Visit Live", tr: "Canlı Siteyi Gör" },
@@ -130,19 +113,11 @@ export const i18nData: I18nNode = {
         en: "A Garage.ist project. CTO, Project Manager & Lead Developer — full development lifecycle and App Store launches for iOS & Android.",
         tr: "Bir Garage.ist projesi. CTO, Proje Yöneticisi & Baş Geliştirici — iOS ve Android için tüm geliştirme döngüsü ve App Store lansmanları.",
       },
-      bullets: {
-        en: "<li>Architected Firestore security rules for robust data integrity.</li><li>Automated multi-platform App Store Connect publishing pipelines.</li><li>Established isolated Git patch workflows for junior engineers.</li>",
-        tr: "<li>Sağlam veri bütünlüğü için Firestore güvenlik kurallarını tasarladım.</li><li>Çok platformlu App Store Connect yayınlama hatlarını otomatize ettim.</li><li>Junior mühendisler için izole Git yama iş akışları oluşturdum.</li>",
-      },
     },
     tv: {
       desc: {
         en: "TV remote control application that operates over a local network. Built at Garage.ist as Lead Developer — architected the control protocol and all core systems.",
         tr: "Yerel ağ üzerinden çalışan TV uzaktan kumanda uygulaması. Garage.ist'te Baş Geliştirici olarak geliştirdim — kontrol protokolü ve tüm çekirdek sistemleri tasarladım.",
-      },
-      bullets: {
-        en: "<li>Engineered low-latency custom UDP/TCP local control protocols.</li><li>Built a resilient auto-discovery mechanism across diverse network topologies.</li>",
-        tr: "<li>Düşük gecikmeli özel UDP/TCP yerel kontrol protokolleri geliştirdim.</li><li>Farklı ağ topolojileri genelinde dayanıklı bir otomatik keşif mekanizması oluşturdum.</li>",
       },
     },
     gayrimenkul: {
@@ -150,19 +125,11 @@ export const i18nData: I18nNode = {
         en: "Comprehensive real estate CRM system serving thousands of property listings, built for Garage.ist.",
         tr: "Garage.ist için oluşturulmuş, binlerce emlak ilanına hizmet veren kapsamlı gayrimenkul CRM sistemi.",
       },
-      bullets: {
-        en: "<li>Spearheaded the migration to a highly scalable microservice architecture.</li><li>Implemented full-text search engine integration with Algolia.</li>",
-        tr: "<li>Yüksek düzeyde ölçeklenebilir bir mikroservis mimarisine geçişe öncülük ettim.</li><li>Algolia ile tam metin arama motoru entegrasyonu uyguladım.</li>",
-      },
     },
     playSortify: {
       desc: {
         en: "Web port of the official Sortify iOS game. Built using React, TypeScript, and Vite to deliver a seamless browser-based gaming experience for kids, parents, and teachers, hosted on Firebase Hosting.",
         tr: "Resmi Sortify iOS oyununun web portu. React, TypeScript ve Vite kullanılarak, çocuklar, ebeveynler ve öğretmenler için Firebase Hosting üzerinde barındırılan sorunsuz bir tarayıcı tabanlı oyun deneyimi sunmak üzere oluşturuldu.",
-      },
-      bullets: {
-        en: "<li>Led the frontend architecture, focusing on component reusability and animation performance.</li><li>Developed a specialized global state management solution optimized for web-based gaming logic.</li>",
-        tr: "<li>Bileşen yeniden kullanılabilirliği ve animasyon performansına odaklanarak önyüz mimarisini yönettim.</li><li>Web tabanlı oyun mantığı için optimize edilmiş özel bir küresel durum yönetimi çözümü geliştirdim.</li>",
       },
     },
     osmos: {
@@ -170,19 +137,11 @@ export const i18nData: I18nNode = {
         en: "Local-first version control engine with a Rust core (osmos-core, osmos-daemon), content-addressable storage, and an early Tauri/React desktop client.",
         tr: "Bellek güvenli Rust çekirdeği (osmos-core, osmos-daemon), içerik-adresli depolama ve erken aşamadaki Tauri/React masaüstü istemcisine sahip yerel-öncelikli sürüm kontrol motoru.",
       },
-      bullets: {
-        en: "<li>Rust core across <code>osmos-core</code>, <code>osmos-daemon</code>, and <code>osmos-transport</code></li><li>Content-addressable storage with BLAKE3 + SQLite metadata</li><li>Early-stage Tauri 2 + React 19 desktop client</li><li>Working local versioning, branching & merging (P2P sync on roadmap)</li>",
-        tr: "<li><code>osmos-core</code>, <code>osmos-daemon</code> ve <code>osmos-transport</code> Rust crate yapısı</li><li>BLAKE3 + SQLite metadata ile içerik-adresli depolama</li><li>Erken aşamadaki Tauri 2 + React 19 masaüstü istemcisi</li><li>Çalışan yerel sürümleme, dallanma ve birleştirme (P2P yol haritasında)</li>",
-      },
     },
     sins: {
       desc: {
         en: "A narrative-driven, grid-based RPG exploring a world trapped in a time loop. Developed solo, focusing on deep systemic design and storytelling.",
         tr: "Zaman döngüsüne hapsolmuş bir dünyayı keşfeden anlatı odaklı, ızgara tabanlı bir RPG. Derin sistemik tasarım ve hikaye anlatımına odaklanarak tek başına geliştirildi.",
-      },
-      bullets: {
-        en: "<li>Architected a custom dialogue engine and event scripting system.</li><li>Implemented highly modular turn-based combat mechanics.</li>",
-        tr: "<li>Özel bir diyalog motoru ve olay senaryosu sistemi modelledim.</li><li>Son derece modüler sıra tabanlı savaş mekanikleri uyguladım.</li>",
       },
     },
     writersIde: {
@@ -190,14 +149,6 @@ export const i18nData: I18nNode = {
       desc: {
         en: "Local-first narrative development environment built specifically for novelists developing multi-book, relational fiction worlds.",
         tr: "Çok kitaplı ve ilişkisel kurgu dünyaları geliştiren romancılar için yerel-öncelikli anlatı geliştirme ortamı.",
-      },
-      bullets: {
-        en: "<li>Enforces a strict Series &rarr; Book &rarr; Chapter &rarr; Scene hierarchy for scalable storytelling.</li><li>Rust engine and Tauri/React client communicate over stdio — local-first by construction.</li>",
-        tr: "<li>Ölçeklenebilir hikaye anlatımı için katı bir Seri &rarr; Kitap &rarr; Bölüm &rarr; Sahne hiyerarşisi uygular.</li><li>Rust motoru ve Tauri/React istemcisi stdio üzerinden konuşur — yapısal olarak yerel-öncelikli.</li>",
-      },
-      tags: {
-        en: '<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Tauri</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Rust</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">TypeScript</span>',
-        tr: '<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Tauri</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">Rust</span>\n<span class="font-label-mono text-[9px] text-on-surface-variant/50 border border-primary/30 px-2 py-0.5">TypeScript</span>',
       },
     },
   },
@@ -210,20 +161,9 @@ export const i18nData: I18nNode = {
     totalForks: { en: "TOTAL FORKS", tr: "TOPLAM FORK" },
     followers: { en: "FOLLOWERS", tr: "TAKİPÇİLER" },
     activity: { en: "CONTRIBUTION ACTIVITY", tr: "KATKI AKTİVİTESİ" },
-    viewOnGithub: { en: "View on GitHub", tr: "GitHub'da Gör" },
     langDist: { en: "LANGUAGE DISTRIBUTION", tr: "DİL DAĞILIMI" },
     noLangData: { en: "No language data available", tr: "Dil verisi bulunamadı" },
     personal: { en: "PERSONAL", tr: "KİŞİSEL" },
-    loadingRepos: { en: "LOADING REPOSITORIES...", tr: "REPOLAR YÜKLENİYOR..." },
-    errorLoading: { en: "Error loading repositories", tr: "Repolar yüklenirken hata oluştu" },
-    noDescription: { en: "No description provided.", tr: "Açıklama bulunmuyor." },
-    noRepos: { en: "No repositories found", tr: "Repo bulunamadı" },
-    calendarTotal: {
-      en: "{{count}} contributions in the last year",
-      tr: "Son bir yılda {{count}} katkı",
-    },
-    calendarLess: { en: "Less", tr: "Az" },
-    calendarMore: { en: "More", tr: "Çok" },
   },
   writing: {
     sectionLabel: { en: "04 / Publications", tr: "04 / Yayınlar" },
@@ -246,7 +186,6 @@ export const i18nData: I18nNode = {
         en: "The possibility of spiritual rebirth against existential despair",
         tr: "Varoluşsal umutsuzluğa karşı yeniden doğuş ihtimali",
       },
-      officialSite: { en: "Official Site", tr: "Resmi Site" },
       visitSite: { en: "Visit Official Site", tr: "Resmi Siteyi Ziyaret Et" },
       status: { en: "Novel · Writing Phase", tr: "Roman · Yazım Aşamasında" },
     },

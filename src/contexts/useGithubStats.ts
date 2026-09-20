@@ -162,48 +162,4 @@ export const useGithubStats = () => {
 
 type RepoType = "personal" | "org-sins" | "org-osmos";
 
-export const useGithubRepos = (type: RepoType) => {
-  const [repos, setRepos] = useState<GithubRepo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchRepos = async () => {
-      setLoading(true);
-      setError(false);
-
-      let url = "";
-      if (type === "personal") {
-        url = "https://api.github.com/users/barissalihbabacan/repos?sort=updated&per_page=6";
-      } else if (type === "org-sins") {
-        url = "https://api.github.com/orgs/thesinsofthefathers/repos?sort=updated&per_page=6";
-      } else if (type === "org-osmos") {
-        url = "https://api.github.com/orgs/Osmos-App/repos?sort=updated&per_page=6";
-      }
-
-      if (!url) {
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const data = await fetchWithCache<GithubRepo[]>(url, `gh_repos_${type}`);
-        if (Array.isArray(data)) {
-          setRepos(data.slice(0, 6));
-        } else {
-          setRepos([]);
-        }
-      } catch (fetchError) {
-        console.error("Error fetching repos:", fetchError);
-        setError(true);
-      } finally {
-        setLoading(false);
-      }
-    };
-    void fetchRepos();
-  }, [type]);
-
-  return { repos, loading, error };
-};
-
 export type { GithubRepo, GithubStats, RepoType };

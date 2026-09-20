@@ -60,10 +60,6 @@ function checkWebGLSupport(): boolean {
   }
 }
 
-export function FallbackGraphic() {
-  return null;
-}
-
 interface DodecahedronNetworkProps {
   isDesktop: boolean;
 }
