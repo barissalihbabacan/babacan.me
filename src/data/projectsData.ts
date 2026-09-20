@@ -3,16 +3,6 @@ export interface LocalizedText {
   tr: string;
 }
 
-export interface FAQItem {
-  q: LocalizedText;
-  a: LocalizedText;
-}
-
-export interface RelatedConcept {
-  name: LocalizedText;
-  url: string;
-}
-
 export interface ProjectData {
   title: LocalizedText;
   category: LocalizedText;
@@ -21,18 +11,12 @@ export interface ProjectData {
   statusColor: string;
   year: LocalizedText;
   role: LocalizedText;
-  cardGradient: string;
   description: LocalizedText;
   executiveSummary?: LocalizedText;
   problem?: LocalizedText;
   solution?: LocalizedText;
   architectureText?: LocalizedText;
   tradeoffs?: LocalizedText;
-  securityText?: LocalizedText;
-  performanceText?: LocalizedText;
-  faq?: FAQItem[];
-  relatedConcepts?: RelatedConcept[];
-  relatedProjects?: ProjectKey[];
   mermaidDiagram?: string;
   highlights: { en: string[]; tr: string[] };
   tech: string[];
@@ -62,7 +46,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026–", tr: "2026–" },
     role: { en: "Founder & Lead Developer", tr: "Kurucu & Baş Geliştirici" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Osmos is a local-first version control engine built on a memory-safe Rust core, content-addressable storage, and a local daemon API. A Tauri + React + TypeScript desktop client is in early development on top of it.",
       tr: "Osmos; bellek güvenli Rust çekirdeği, içerik-adresli depolama ve yerel daemon API'si üzerine kurulu, yerel-öncelikli bir sürüm kontrol motorudur. Tauri + React + TypeScript masaüstü istemcisi erken geliştirme aşamasındadır.",
@@ -108,17 +91,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["Rust", "Tauri", "React", "TypeScript", "SQLite", "BLAKE3", "Local-First"],
     githubUrl: "https://github.com/Osmos-App/osmos-core",
-    relatedProjects: ["mythos"],
-    relatedConcepts: [
-      {
-        name: { en: "Local-First Version Control", tr: "Yerel-Öncelikli Sürüm Kontrolü" },
-        url: "/en/docs#protocols",
-      },
-      {
-        name: { en: "Content-Addressable Storage", tr: "İçerik-Adresli Depolama" },
-        url: "/en/docs#crdt",
-      },
-    ],
   },
   mythos: {
     title: { en: "Mythos", tr: "Mythos" },
@@ -128,7 +100,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026", tr: "2026" },
     role: { en: "Creator & Developer", tr: "Kurucu & Geliştirici" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Mythos is a local-first writer's IDE for novelists building multi-book, relational fiction worlds. The engine (mythoside-core) is a standalone Rust crate that models manuscripts as plain Markdown + YAML files on disk and exposes them over JSON-RPC on stdio; the desktop client (mythoside-ts) is a Tauri 2 + React 19 + TypeScript app that runs the engine as a sidecar process.",
       tr: "Mythos; çok kitaplı ve ilişkisel kurgu dünyaları geliştiren romancılar için yerel-öncelikli bir yazar IDE'sidir. Çekirdek motor (mythoside-core), taslakları düz Markdown + YAML dosyaları olarak diskte modelleyen ve stdio üzerinden JSON-RPC protokolüyle dışa açan bağımsız bir Rust crate'idir; masaüstü istemcisi (mythoside-ts) ise motoru sidecar süreç olarak çalıştıran Tauri 2 + React 19 + TypeScript uygulamasıdır.",
@@ -173,14 +144,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["Tauri", "Rust", "React", "TypeScript"],
     githubUrl: "https://github.com/Mythos-IDE/mythoside-core",
-    relatedProjects: ["osmos"],
-    relatedConcepts: [
-      {
-        name: { en: "Local-First Architecture", tr: "Yerel-Öncelikli Mimari" },
-        url: "/en/docs#architecture",
-      },
-      { name: { en: "Tauri vs Electron ADR", tr: "Tauri vs Electron ADR" }, url: "/en/docs#adr" },
-    ],
   },
   qpass: {
     title: { en: "Q-PASS", tr: "Q-PASS" },
@@ -190,7 +153,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-tertiary/20 border border-tertiary/30 text-tertiary",
     year: { en: "Production", tr: "Üretim" },
     role: { en: "System Architect", tr: "Sistem Mimarı" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Q-PASS is a hardware-backed RFID access control and meal-tracking system deployed in active production at Haydarpaşa MTAL. Custom 3D-printed RFID reader units run C++ microcontroller firmware, bridging over RS-232/USB serial interfaces to a Python background service and a PHP/MySQL web management dashboard for access logging and meal quota tracking.",
       tr: "Q-PASS; Haydarpaşa Mesleki ve Teknik Anadolu Lisesi'nde (Haydarpaşa MTAL) aktif üretim ortamında çalışan donanım destekli RFID geçiş kontrol ve yemek takip sistemidir. Özel tasarım 3D baskı RFID okuyucu üniteleri C++ mikrodenetleyici aygıt yazılımı ile çalışır; RS-232/USB seri bağlantısı üzerinden bir Python servisine ve geçiş/yemek kotası kayıtlarını yöneten bir PHP/MySQL web paneline bağlanır.",
@@ -241,7 +203,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Founder & Lead Architect", tr: "Kurucu & Baş Mimar" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Gayrimenkul Dünyası is a real estate data ingestion, normalization, and CRM platform. Built with Next.js App Router and TypeScript, it combines Playwright Stealth automated data collection pipelines with Google News XML/RSS parsers connected to Cloud Firestore.",
       tr: "Gayrimenkul Dünyası; gayrimenkul verilerini toplamak, yapılandırmak ve CRM süreçlerine taşımak için geliştirilen bir veri toplama ve yönetim platformudur. Next.js App Router ve TypeScript ile geliştirilen altyapı, Playwright Stealth otomatik veri toplama hatlarını Google News XML/RSS ayrıştırıcıları ile birleştirerek Cloud Firestore veritabanına bağlar.",
@@ -291,7 +252,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       en: "CTO · Lead Architect",
       tr: "CTO · Baş Mimar",
     },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Sortify is a native SwiftUI iOS/iPadOS educational application for children (ages 3–13+) and parents. Built with a modular Swift Package architecture, it pairs a native iOS client with Firebase backend services, server-side StoreKit purchase verification, and local network device pairing.",
       tr: "Sortify; 3–13+ yaş arası çocukların öğrenme, oyun ve gelişim süreçlerini ebeveynleriyle birlikte yöneten, SwiftUI ile geliştirilmiş native iOS/iPadOS uygulamasıdır. Modüler Swift Package mimarisi üzerine kurulu altyapı; Firebase servisleri, sunucu taraflı StoreKit satın alma doğrulaması ve yerel ağ cihaz eşleştirme protokolü ile desteklenir.",
@@ -344,7 +304,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Lead Developer", tr: "Baş Geliştirici" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "+TV is an Android application developed under Garage.ist designed to discover and control Smart TV devices over the local network. Built with Java and Kotlin, the application communicates directly with TV devices over local Wi-Fi without relying on external cloud services.",
       tr: "+TV; Garage.ist bünyesinde geliştirilen, yerel ağ üzerindeki Akıllı TV cihazlarını keşfetmek ve kontrol etmek için tasarlanmış Android uygulamasıdır. Java ve Kotlin ile geliştirilen uygulama, TV cihazlarıyla doğrudan yerel ağ üzerinden iletişim kurarak kontrol akışını harici bir bulut servisine bağımlı olmadan gerçekleştirir.",
@@ -391,7 +350,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Lead Developer", tr: "Baş Geliştirici" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Sortify Web is the browser client of the Sortify educational platform. Built with React 19, TypeScript, and Vite, the application brings native iOS game logic into web browsers using an HTML5 Canvas rendering architecture and responsive controls.",
       tr: "Sortify Web; Sortify eğitim platformunun web tarayıcıları için geliştirilmiş istemcisidir. React 19, TypeScript ve Vite ile geliştirilen uygulama, native iOS oyun mantığını HTML5 Canvas tabanlı bir çizim altyapısı ve duyarlı kontrollerle web ortamına taşır.",
@@ -440,7 +398,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Infrastructure & Backend Integration", tr: "Altyapı & Backend Entegrasyonu" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Spor Sayfası is a sports news portal developed under Garage.ist using Next.js App Router and TypeScript. My engineering contributions centered on configuring the Firebase infrastructure, hosting setup, database record persistence, and debugging news ingestion API integrations.",
       tr: "Spor Sayfası; Garage.ist bünyesinde Next.js App Router ve TypeScript ile geliştirilen bir spor haber portalıdır. Projede Firebase altyapısı, Hosting kurulumu, veritabanı kayıt süreçleri ve haber toplama API entegrasyonu tarafımdan yapılandırılmıştır.",
@@ -487,7 +444,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Lead Developer", tr: "Baş Geliştirici" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "World Clock is an interactive timezone, geographic visualization, and SEO-driven city directory application developed under Garage.ist using React 18, Vite, and D3.js. It pairs a D3 projection rendering engine with an SSG/Prerender pipeline, solar terminator calculations, and multi-city meeting planner tools.",
       tr: "World Clock; Garage.ist bünyesinde React 18, Vite ve D3.js ile geliştirilen etkileşimli zaman dilimi, coğrafi görselleştirme ve SEO odaklı şehir rehberi uygulamasıdır. D3 tabanlı projeksiyon altyapısını SSG/Prerender motoru, güneş terminatörü hesaplamaları ve çoklu şehir toplantı planlama araçlarıyla birleştirir.",
@@ -536,7 +492,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2024–2026", tr: "2024–2026" },
     role: { en: "Lead Architect & Developer", tr: "Baş Mimar & Geliştirici" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "IT-RMS is a web-based IT asset, inventory, and laboratory management system originally developed for an educational institution's IT department. Initially built with PHP 8, MySQL, and Composer, the system was subsequently migrated to a modern Node.js, Express.js, and MongoDB (Mongoose) architecture. It features 2D lab layout mapping, stock threshold alerts, QR/barcode generation, and role-based access control.",
       tr: "IT-RMS; bir eğitim kurumunun BT departmanı için geliştirilen web tabanlı bir BT varlık, envanter ve laboratuvar yönetim sistemidir. İlk olarak PHP 8, MySQL ve Composer bağımlılıklarıyla inşa edilen platform, daha sonra modern Node.js, Express.js ve MongoDB (Mongoose) mimarisine taşınmıştır. 2D laboratuvar kroki yerleşimi, stok eşik uyarıları, karekod/barkod üretimi ve rol tabanlı erişim kontrolü sunar.",
@@ -582,7 +537,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026–", tr: "2026–" },
     role: { en: "Founding Engineer", tr: "Kurucu Mühendis" },
-    cardGradient: "linear-gradient(135deg, #18181b 0%, #121214 50%, #09090b 100%)",
     description: {
       en: "Chorus is an open-source, anonymous discussion engine built with a Go backend and a React frontend. Instead of persistent accounts, profiles, and ranking algorithms, it assigns thread-scoped temporary identities and persists every thread and message as cryptographically verifiable Git commits.",
       tr: "Chorus; Go arka ucu ve React önyüzü ile geliştirilen açık kaynaklı, anonim bir tartışma motorudur. Kalıcı hesaplar, profiller ve sıralama algoritmaları yerine, her konuya özgü geçici kimlikler atar ve her konu/mesajı kriptografik olarak doğrulanabilir Git commit'leri olarak saklar.",

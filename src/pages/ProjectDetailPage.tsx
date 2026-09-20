@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/LanguageContext";
+import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
 import { useAppRouter } from "../contexts/RouterContext";
 
 interface ProjectDetailPageProps {
@@ -43,6 +44,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const solution = project.solution?.[lang] ?? project.solution?.en;
   const architecture = project.architectureText?.[lang] ?? project.architectureText?.en;
   const tradeoffs = project.tradeoffs?.[lang] ?? project.tradeoffs?.en;
+  const diagram = project.mermaidDiagram;
   const highlights = project.highlights[lang] ?? project.highlights.en;
 
   return (
@@ -173,14 +175,27 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
           )}
 
           {/* Architecture */}
-          {architecture && (
+          {(architecture || diagram) && (
             <section className="space-y-4 border-t border-primary/20 pt-8">
               <h2 className="text-2xl font-bold text-on-surface">
                 {isTr ? "Sistem Mimarisi" : "System Architecture"}
               </h2>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-base">
-                {architecture}
-              </p>
+              {architecture && (
+                <p className="font-body-md text-on-surface-variant leading-relaxed text-base">
+                  {architecture}
+                </p>
+              )}
+              {diagram && (
+                <ArchitectureDiagram
+                  slug={slug}
+                  source={diagram}
+                  label={
+                    isTr
+                      ? `${title} sistem mimarisi diyagramı`
+                      : `${title} system architecture diagram`
+                  }
+                />
+              )}
             </section>
           )}
 
