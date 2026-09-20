@@ -22,9 +22,12 @@ async function fetchWithCache<T>(url: string, cacheKey: string): Promise<T> {
   }
 
   const headers: Record<string, string> = {};
-  const token =
-    import.meta.env.VITE_GITHUB_TOKEN || (localStorage.getItem("GITHUB_TOKEN") ?? undefined);
-  console.log("GitHub Token loaded:", token ? "YES (hidden)" : "NO");
+  // NOT: burada import.meta.env.VITE_GITHUB_TOKEN OKUNMAZ. VITE_ onekli degiskenler
+  // istemci paketine gomulur; bir kisisel erisim tokenini her ziyaretciye gondermek olur.
+  // Token yalnizca build sirasinda scripts/fetch-github-data.js tarafindan kullanilir ve
+  // sonucu public/github-data.json olarak yayinlanir. Asagidaki localStorage yedegi
+  // yalnizca gelistiricinin kendi tarayicisinda gecerlidir.
+  const token = localStorage.getItem("GITHUB_TOKEN") ?? undefined;
   if (token) {
     headers["Authorization"] = `Bearer ${token}`;
   }
