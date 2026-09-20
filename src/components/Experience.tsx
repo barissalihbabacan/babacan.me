@@ -40,13 +40,13 @@ export default function Experience() {
             ></p>
             <div className="flex flex-wrap gap-2">
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                React
+                Swift
               </span>
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                Node.js
+                SwiftUI
               </span>
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                TypeScript
+                Firebase
               </span>
             </div>
           </div>
@@ -88,10 +88,10 @@ export default function Experience() {
             ></p>
             <div className="flex flex-wrap gap-2">
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                CRDT
+                BLAKE3
               </span>
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                P2P
+                SQLite
               </span>
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
                 {t("experience.tags.localFirst")}
@@ -112,13 +112,13 @@ export default function Experience() {
             ></p>
             <div className="flex flex-wrap gap-2">
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                {t("experience.tags.worldbuilding")}
+                {t("experience.tags.wireshark")}
               </span>
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                {t("experience.tags.lore")}
+                {t("experience.tags.httpDigest")}
               </span>
               <span className="font-label-mono text-[9px] text-primary/70 border border-primary/20 px-2 py-0.5 uppercase">
-                {t("experience.tags.systemsDesign")}
+                {t("experience.tags.tls")}
               </span>
             </div>
           </div>

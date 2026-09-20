@@ -16,7 +16,7 @@ export default function JsonLd({ lang, selectedProjectSlug }: JsonLdProps) {
     "@id": `${baseUrl}/#person`,
     name: "Barış Salih Babacan",
     alternateName: ["Barış Babacan", "Barissalih Babacan"],
-    jobTitle: "Systems Architect & Chief Technology Officer",
+    jobTitle: "Systems Engineer & Chief Technology Officer",
     worksFor: {
       "@type": "Organization",
       name: "Garage.ist",
@@ -32,9 +32,9 @@ export default function JsonLd({ lang, selectedProjectSlug }: JsonLdProps) {
       "https://thesinsofthefathers.com",
     ],
     knowsAbout: [
-      "Distributed P2P Systems",
+      "Local-First Storage Engines",
       "Offline-First Software Architecture",
-      "Systems Architecture",
+      "Network Protocol Reverse Engineering",
       "Rust Systems Programming",
       "Go (Golang)",
       "React 19 & TypeScript",
@@ -49,9 +49,9 @@ export default function JsonLd({ lang, selectedProjectSlug }: JsonLdProps) {
     "@type": "WebSite",
     "@id": `${baseUrl}/#website`,
     url: baseUrl,
-    name: "Barış Salih Babacan — Systems Architect & CTO",
+    name: "Barış Salih Babacan — Systems Engineer & CTO",
     description:
-      "Official portfolio and technical architecture platform of Barış Salih Babacan, CTO at Garage.ist and Systems Architect.",
+      "Official portfolio and technical architecture platform of Barış Salih Babacan, CTO at Garage.ist and Systems Engineer.",
     inLanguage: ["en", "tr"],
     publisher: {
       "@id": `${baseUrl}/#person`,

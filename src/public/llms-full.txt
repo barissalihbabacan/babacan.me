@@ -6,7 +6,7 @@ This document provides a comprehensive, full-text technical specification of Bar
 
 ## 1. Biography & Professional Role
 - **Full Name**: Barış Salih Babacan
-- **Title**: Chief Technology Officer (CTO) @ Garage.ist & Systems Architect
+- **Title**: Chief Technology Officer (CTO) @ Garage.ist & Systems Engineer
 - **Location**: Istanbul, Turkey
 - **Domains of Expertise**: Distributed P2P Networks, Offline-First / Local-First Database Architecture, Content-Addressable Storage (CAS), Embedded Systems & IoT Bridges, Systems Engineering, Web GIS & D3 Projections, Psychological Fiction.
 

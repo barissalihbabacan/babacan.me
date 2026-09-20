@@ -1,9 +1,9 @@
-# Barış Salih Babacan — Systems Architect & CTO
+# Barış Salih Babacan — Systems Engineer & CTO
 
-> Official technical portfolio and knowledge platform of Barış Salih Babacan, Systems Architect & CTO at Garage.ist. Specializing in distributed P2P systems, local-first / offline-first architectures, content-addressable storage, and psychological fiction.
+> Official technical portfolio and knowledge platform of Barış Salih Babacan, Systems Engineer & CTO at Garage.ist. Local-first infrastructure in Rust, network protocol reverse engineering, native iOS applications, and psychological fiction.
 
 ## Core Profile
-- **Role**: CTO @ Garage.ist · Systems Architect · Author
+- **Role**: CTO @ Garage.ist · Systems Engineer · Author
 - **Location**: Istanbul, Turkey
 - **Email**: barissalih@babacan.me
 - **Website**: https://babacan.me
@@ -11,7 +11,7 @@
 - **LinkedIn**: https://linkedin.com/in/barissalihbabacan
 
 ## Primary Technical Focus & Philosophy
-- **Distributed P2P Systems**: Designing decentralized P2P networks with content-addressable storage (CAS) and identity verification models.
+- **Local-First Storage Engines**: Content-addressable storage (BLAKE3 + SQLite) and Unix-socket daemons in Rust. P2P sync is on the Osmos roadmap, not yet implemented.
 - **Offline-First & Local-First Architectures**: Building resilient systems where user data persists locally on-device using SQLite, Mongoose, or native Git storage, synchronizing state peer-to-peer.
 - **Geographic & Spatial Math**: Building interactive 3D/2D orthographic map projections with solar terminator calculations.
 
