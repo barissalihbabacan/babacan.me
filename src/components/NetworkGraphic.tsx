@@ -1,174 +1,178 @@
-import React, {
-  useRef,
-  useMemo,
-  useState,
-  useEffect,
-  Component,
-  type ErrorInfo,
-  type ReactNode,
-} from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { OrbitControls, Line, Sphere } from "@react-three/drei";
-import * as THREE from "three";
+import React, { useEffect, useRef } from "react";
 
-// Error boundary to catch WebGL Context Creation errors
-interface WebGLBoundaryProps {
-  fallback: ReactNode;
-  children: ReactNode;
-}
+/**
+ * Hero'daki donen dodekahedron ag grafigi.
+ *
+ * Eskiden three.js ile ciziliyordu (~245 KB gzip); sahne yalnizca 20 dugum ve
+ * 30 kenardan olustugu icin perspektif izdusumu burada elle yapilip Canvas 2D
+ * ile ciziliyor. Donus formulu, kamera (z=9, fov 60) ve sis (6..15) ayni.
+ */
 
-interface WebGLBoundaryState {
-  hasError: boolean;
-}
+const PRIMARY = "197, 160, 89"; // #c5a059
+const RADIUS = 3.5 * 1.1; // DodecahedronGeometry(3.5) * group scale 1.1
+const NODE_RADIUS = 0.15 * 1.1;
+const CAMERA_Z = 9;
+const FOV = (60 * Math.PI) / 180;
+const FOG_NEAR = 6;
+const FOG_FAR = 15;
 
-class WebGLBoundary extends Component<WebGLBoundaryProps, WebGLBoundaryState> {
-  constructor(props: WebGLBoundaryProps) {
-    super(props);
-    this.state = { hasError: false };
-  }
+type Vec3 = [number, number, number];
 
-  static getDerivedStateFromError(): WebGLBoundaryState {
-    return { hasError: true };
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.warn(
-      "WebGL context could not be created or failed. Falling back to SVG graphic.",
-      error,
-      errorInfo,
-    );
-  }
-
-  render() {
-    if (this.state.hasError) {
-      return this.props.fallback;
+function buildDodecahedron(): { nodes: Vec3[]; edges: [number, number][] } {
+  const phi = (1 + Math.sqrt(5)) / 2;
+  const inv = 1 / phi;
+  const raw: Vec3[] = [];
+  for (const x of [-1, 1]) for (const y of [-1, 1]) for (const z of [-1, 1]) raw.push([x, y, z]);
+  for (const a of [-1, 1]) {
+    for (const b of [-1, 1]) {
+      raw.push([0, a * inv, b * phi]);
+      raw.push([a * inv, b * phi, 0]);
+      raw.push([a * phi, 0, b * inv]);
     }
-    return this.props.children;
   }
-}
+  // Birim kure uzerindeki koseler sqrt(3) yaricapinda; hedef yaricapa olcekle.
+  const scale = RADIUS / Math.sqrt(3);
+  const nodes = raw.map((v) => v.map((c) => c * scale) as Vec3);
 
-function checkWebGLSupport(): boolean {
-  if (typeof window === "undefined") return false;
-  try {
-    const canvas = document.createElement("canvas");
-    return !!(
-      window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-    );
-  } catch {
-    return false;
+  // Komsu koseler arasi uzaklik kenar uzunluguna (2/phi) esittir.
+  const edgeLength = (2 / phi) * scale;
+  const edges: [number, number][] = [];
+  for (let i = 0; i < nodes.length; i++) {
+    for (let j = i + 1; j < nodes.length; j++) {
+      const d = Math.hypot(
+        nodes[i][0] - nodes[j][0],
+        nodes[i][1] - nodes[j][1],
+        nodes[i][2] - nodes[j][2],
+      );
+      if (Math.abs(d - edgeLength) < 1e-3 * scale) edges.push([i, j]);
+    }
   }
+  return { nodes, edges };
 }
 
-interface DodecahedronNetworkProps {
-  isDesktop: boolean;
-}
+const { nodes: NODES, edges: EDGES } = buildDodecahedron();
 
-function DodecahedronNetwork({ isDesktop }: DodecahedronNetworkProps) {
-  const group = useRef<THREE.Group>(null);
+function draw(ctx: CanvasRenderingContext2D, size: number, t: number) {
+  const rx = t * 0.1 + Math.sin(t * 0.3) * 0.5;
+  const ry = t * 0.15 + Math.cos(t * 0.2) * 0.5;
+  const rz = Math.sin(t * 0.1) * 0.5;
 
-  const { nodes, edges } = useMemo(() => {
-    const geometry = new THREE.DodecahedronGeometry(3.5, 0);
-    const positionAttribute = geometry.getAttribute("position");
-    const vertices: THREE.Vector3[] = [];
-
-    for (let i = 0; i < positionAttribute.count; i++) {
-      const v = new THREE.Vector3().fromBufferAttribute(positionAttribute, i);
-      if (!vertices.some((existing) => existing.distanceTo(v) < 0.1)) {
-        vertices.push(v);
-      }
-    }
-
-    const edgeList: [THREE.Vector3Tuple, THREE.Vector3Tuple][] = [];
-    const edgesGeometry = new THREE.EdgesGeometry(geometry);
-    const edgesPos = edgesGeometry.getAttribute("position");
-
-    for (let i = 0; i < edgesPos.count; i += 2) {
-      const v1 = new THREE.Vector3().fromBufferAttribute(edgesPos, i);
-      const v2 = new THREE.Vector3().fromBufferAttribute(edgesPos, i + 1);
-      edgeList.push([v1.toArray(), v2.toArray()]);
-    }
-
-    return { nodes: vertices.map((v) => v.toArray()), edges: edgeList };
-  }, []);
-
-  const time = useRef(0);
-
-  useFrame((_state, delta) => {
-    if (group.current) {
-      time.current += delta;
-      const t = time.current;
-      group.current.rotation.x = t * 0.1 + Math.sin(t * 0.3) * 0.5;
-      group.current.rotation.y = t * 0.15 + Math.cos(t * 0.2) * 0.5;
-      group.current.rotation.z = Math.sin(t * 0.1) * 0.5;
-    }
+  const focal = size / 2 / Math.tan(FOV / 2);
+  const projected = NODES.map((v) => {
+    const [x, y, z] = rotateXYZ(v, rx, ry, rz);
+    const depth = CAMERA_Z - z;
+    const k = focal / depth;
+    const fog = Math.min(1, Math.max(0, (depth - FOG_NEAR) / (FOG_FAR - FOG_NEAR)));
+    return { x: size / 2 + x * k, y: size / 2 - y * k, k, visibility: 1 - fog, depth };
   });
 
-  const primaryColor = "#c5a059";
+  ctx.clearRect(0, 0, size, size);
+  ctx.lineWidth = 2;
+  for (const [a, b] of EDGES) {
+    const pa = projected[a];
+    const pb = projected[b];
+    const gradient = ctx.createLinearGradient(pa.x, pa.y, pb.x, pb.y);
+    gradient.addColorStop(0, `rgba(${PRIMARY}, ${0.5 * pa.visibility})`);
+    gradient.addColorStop(1, `rgba(${PRIMARY}, ${0.5 * pb.visibility})`);
+    ctx.strokeStyle = gradient;
+    ctx.beginPath();
+    ctx.moveTo(pa.x, pa.y);
+    ctx.lineTo(pb.x, pb.y);
+    ctx.stroke();
+  }
 
-  return (
-    <>
-      <group ref={group} scale={1.1} position={[0, 0, 0]}>
-        {edges.map((points, i) => (
-          <Line
-            key={`edge-${i}`}
-            points={points}
-            color={primaryColor}
-            lineWidth={2}
-            transparent
-            opacity={0.5}
-          />
-        ))}
+  // Uzaktaki dugumler once cizilsin.
+  for (const p of [...projected].sort((a, b) => b.depth - a.depth)) {
+    ctx.fillStyle = `rgba(${PRIMARY}, ${0.9 * p.visibility})`;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, NODE_RADIUS * p.k, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
 
-        {nodes.map((pos, i) => (
-          <Sphere key={`node-${i}`} args={[0.15, 16, 16]} position={pos}>
-            <meshBasicMaterial color={primaryColor} transparent opacity={0.9} />
-          </Sphere>
-        ))}
-
-        <Sphere args={[2, 32, 32]}>
-          <meshBasicMaterial color={primaryColor} transparent opacity={0.03} wireframe />
-        </Sphere>
-      </group>
-
-      <OrbitControls enabled={isDesktop} enableZoom={false} enablePan={false} autoRotate={false} />
-    </>
-  );
+/** three.js'in varsayilan 'XYZ' Euler sirasi: v' = Rx * Ry * Rz * v */
+function rotateXYZ([x, y, z]: Vec3, rx: number, ry: number, rz: number): Vec3 {
+  // Rz
+  const cz = Math.cos(rz);
+  const sz = Math.sin(rz);
+  const x1 = x * cz - y * sz;
+  const y1 = x * sz + y * cz;
+  const z1 = z;
+  // Ry
+  const cy = Math.cos(ry);
+  const sy = Math.sin(ry);
+  const x2 = x1 * cy + z1 * sy;
+  const y2 = y1;
+  const z2 = -x1 * sy + z1 * cy;
+  // Rx
+  const cx = Math.cos(rx);
+  const sx = Math.sin(rx);
+  return [x2, y2 * cx - z2 * sx, y2 * sx + z2 * cx];
 }
 
 export default function NetworkGraphic() {
-  const [isDesktop, setIsDesktop] = useState(true);
-  const [webGLAvailable, setWebGLAvailable] = useState(true);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    setWebGLAvailable(checkWebGLSupport());
-    const mq = window.matchMedia("(min-width: 1025px)");
-    setIsDesktop(mq.matches);
-    const handleChange = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mq.addEventListener("change", handleChange);
-    return () => mq.removeEventListener("change", handleChange);
+    const canvas = canvasRef.current;
+    const ctx = canvas?.getContext("2d");
+    if (!canvas || !ctx) return;
+
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let size = 0;
+    let frame = 0;
+    let elapsed = 0;
+    let last: number | null = null;
+
+    const resize = () => {
+      const dpr = window.devicePixelRatio || 1;
+      size = canvas.clientWidth;
+      canvas.width = Math.round(size * dpr);
+      canvas.height = Math.round(size * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw(ctx, size, elapsed);
+    };
+
+    const tick = (now: number) => {
+      if (last !== null) elapsed += (now - last) / 1000;
+      last = now;
+      draw(ctx, size, elapsed);
+      frame = requestAnimationFrame(tick);
+    };
+
+    const start = () => {
+      if (reducedMotion || frame) return;
+      last = null;
+      frame = requestAnimationFrame(tick);
+    };
+    const stop = () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+    };
+
+    const resizeObserver = new ResizeObserver(resize);
+    resizeObserver.observe(canvas);
+
+    // Ekran disindayken animasyonu durdur.
+    const intersectionObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) start();
+      else stop();
+    });
+    intersectionObserver.observe(canvas);
+
+    resize();
+    start();
+
+    return () => {
+      stop();
+      resizeObserver.disconnect();
+      intersectionObserver.disconnect();
+    };
   }, []);
 
-  if (!webGLAvailable) return null;
-
   return (
-    <div className="relative w-full aspect-square max-w-125 flex items-center justify-center cursor-grab active:cursor-grabbing">
-      <WebGLBoundary fallback={null}>
-        <Canvas
-          camera={{ position: [0, 0, 9], fov: 60 }}
-          className="w-full h-full"
-          onCreated={({ gl }) => {
-            // Ensure gl doesn't crash on loss
-            gl.domElement.addEventListener("webglcontextlost", (e) => {
-              e.preventDefault();
-              setWebGLAvailable(false);
-            });
-          }}
-        >
-          <fog attach="fog" args={["#000000", 6, 15]} />
-          <DodecahedronNetwork isDesktop={isDesktop} />
-        </Canvas>
-      </WebGLBoundary>
+    <div className="relative w-full aspect-square max-w-125 flex items-center justify-center">
+      <canvas ref={canvasRef} className="w-full h-full" aria-hidden="true" />
     </div>
   );
 }

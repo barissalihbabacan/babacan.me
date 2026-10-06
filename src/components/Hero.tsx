@@ -1,7 +1,6 @@
-import React, { useState, useEffect, lazy, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { useLanguage } from "../contexts/language.ts";
-
-const NetworkGraphic = lazy(() => import("./NetworkGraphic.tsx"));
+import NetworkGraphic from "./NetworkGraphic.tsx";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -76,11 +75,7 @@ export default function Hero() {
 
           {/* Right Graphic / Photo */}
           <div className="hidden lg:flex justify-center items-center relative w-full opacity-90 pointer-events-none">
-            {isDesktop ? (
-              <Suspense fallback={null}>
-                <NetworkGraphic />
-              </Suspense>
-            ) : null}
+            {isDesktop ? <NetworkGraphic /> : null}
           </div>
         </div>
 
@@ -127,7 +122,7 @@ export default function Hero() {
         aria-label={t("hero.scroll")}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
       >
-        <span className="font-label-mono text-[9px] uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
+        <span className="font-label-mono text-[10px] uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
           {t("hero.scroll")}
         </span>
         {/* Animated capsule mouse pill */}
@@ -136,7 +131,7 @@ export default function Hero() {
         </div>
         {/* Bouncing down chevron icon */}
         <svg
-          className="w-4 h-4 fill-current text-primary/80 group-hover:text-primary animate-bounce shrink-0"
+          className="w-4 h-4 fill-current text-primary/80 group-hover:text-primary motion-safe:animate-bounce shrink-0"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >

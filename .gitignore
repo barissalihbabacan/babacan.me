@@ -79,3 +79,6 @@ venv/
 
 # prebuild ciktisi (scripts/fetch-github-data.js)
 src/public/github-data.json
+
+# macOS
+.DS_Store

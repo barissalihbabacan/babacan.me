@@ -4,7 +4,6 @@ import App from "./App.tsx";
 import "./styles/main.css";
 import { RouterProvider } from "./contexts/RouterContext.tsx";
 import { LanguageProvider } from "./contexts/LanguageContext.tsx";
-import "./firebase.ts";
 import { HelmetProvider } from "react-helmet-async";
 
 // Enforce dark mode

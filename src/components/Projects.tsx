@@ -1,17 +1,12 @@
 import React from "react";
 import { useLanguage } from "../contexts/language.ts";
-import { useAppRouter } from "../contexts/router.ts";
+import type { Lang } from "../contexts/router.ts";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData.ts";
+import Link from "./Link.tsx";
 
 export default function Projects() {
   const { lang, t } = useLanguage();
-  const { navigate } = useAppRouter();
   const isTr = lang === "tr";
-
-  const handleCardClick = (key: ProjectKey) => {
-    const pSegment = isTr ? "projeler" : "projects";
-    navigate(`/${lang}/${pSegment}/${key}`);
-  };
 
   return (
     <section
@@ -40,8 +35,8 @@ export default function Projects() {
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <ProjectCard projectKey="osmos" onClick={handleCardClick} lang={lang} isFeatured />
-            <ProjectCard projectKey="mythos" onClick={handleCardClick} lang={lang} isFeatured />
+            <ProjectCard projectKey="osmos" lang={lang} isFeatured />
+            <ProjectCard projectKey="mythos" lang={lang} isFeatured />
           </div>
         </div>
 
@@ -54,12 +49,12 @@ export default function Projects() {
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ProjectCard projectKey="sortify" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="plus-tv" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="gayrimenkuldunyasi" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="playsortify" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="sporsayfasi" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="worldclock" onClick={handleCardClick} lang={lang} />
+            <ProjectCard projectKey="sortify" lang={lang} />
+            <ProjectCard projectKey="plus-tv" lang={lang} />
+            <ProjectCard projectKey="gayrimenkuldunyasi" lang={lang} />
+            <ProjectCard projectKey="playsortify" lang={lang} />
+            <ProjectCard projectKey="sporsayfasi" lang={lang} />
+            <ProjectCard projectKey="worldclock" lang={lang} />
           </div>
         </div>
 
@@ -72,9 +67,9 @@ export default function Projects() {
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ProjectCard projectKey="qpass" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="itrms" onClick={handleCardClick} lang={lang} />
-            <ProjectCard projectKey="chorus" onClick={handleCardClick} lang={lang} />
+            <ProjectCard projectKey="qpass" lang={lang} />
+            <ProjectCard projectKey="itrms" lang={lang} />
+            <ProjectCard projectKey="chorus" lang={lang} />
           </div>
         </div>
       </div>
@@ -84,52 +79,50 @@ export default function Projects() {
 
 function ProjectCard({
   projectKey,
-  onClick,
   lang,
   isFeatured = false,
 }: {
   projectKey: ProjectKey;
-  onClick: (key: ProjectKey) => void;
-  lang: string;
+  lang: Lang;
   isFeatured?: boolean;
 }) {
   const data = PROJECT_DATA[projectKey];
+  const segment = lang === "tr" ? "projeler" : "projects";
 
   return (
-    <button
-      type="button"
-      onClick={() => onClick(projectKey)}
+    <Link
+      to={`/${lang}/${segment}/${projectKey}`}
       className={`project-card w-full text-left accent-card group relative flex flex-col justify-between cursor-pointer border border-primary/20 hover:border-primary/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
         isFeatured ? "p-8 min-h-60" : "p-6 min-h-52"
       }`}
       aria-label={
         lang === "tr"
-          ? `${data.title[lang as "en" | "tr"] ?? data.title.en} teknik detaylarını incele`
-          : `Explore technical documentation for ${data.title[lang as "en" | "tr"] ?? data.title.en}`
+          ? `${data.title[lang] ?? data.title.en} teknik detaylarını incele`
+          : `Explore technical documentation for ${data.title[lang] ?? data.title.en}`
       }
     >
       <div>
         <div className="flex items-center justify-between gap-2 mb-3">
           <span
-            className={`font-label-mono text-[9px] uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
+            className={`font-label-mono text-[10px] uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
           >
-            {data.category[lang as "en" | "tr"] ?? data.category.en}
+            {data.category[lang] ?? data.category.en}
           </span>
           <span
-            className={`font-label-mono text-[9px] uppercase tracking-widest px-2 py-0.5 ${data.statusColor}`}
+            className={`font-label-mono text-[10px] uppercase tracking-widest px-2 py-0.5 ${data.statusColor}`}
           >
-            {data.status[lang as "en" | "tr"] ?? data.status.en}
+            {data.status[lang] ?? data.status.en}
           </span>
         </div>
 
         <h4
           className={`text-on-surface font-bold group-hover:text-primary transition-colors mb-2 ${isFeatured ? "text-2xl" : "text-xl"}`}
         >
-          {data.title[lang as "en" | "tr"] ?? data.title.en}
+          {data.title[lang] ?? data.title.en}
         </h4>
 
         <p className="font-body-md text-on-surface-variant text-xs leading-relaxed mb-4 line-clamp-2">
-          {data.description[lang as "en" | "tr"] ?? data.description.en}
+          {data.description[lang] ?? data.description.en}
         </p>
       </div>
 
@@ -138,7 +131,7 @@ function ProjectCard({
           {data.tech.slice(0, 4).map((tItem) => (
             <span
               key={tItem}
-              className="font-label-mono text-[9px] text-on-surface-variant/80 border border-outline-variant/40 px-2 py-0.5"
+              className="font-label-mono text-[10px] text-on-surface-variant/80 border border-outline-variant/40 px-2 py-0.5"
             >
               {tItem}
             </span>
@@ -149,6 +142,6 @@ function ProjectCard({
           <span aria-hidden="true">→</span>
         </span>
       </div>
-    </button>
+    </Link>
   );
 }

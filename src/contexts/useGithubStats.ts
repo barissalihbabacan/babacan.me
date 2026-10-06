@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 import { useState, useEffect } from "react";
+import { loadGithubData } from "./githubData.ts";
 
 const CACHE_TTL = 1000 * 60 * 60 * 2; // 2 hours
 
@@ -86,35 +87,28 @@ export const useGithubStats = () => {
   useEffect(() => {
     const fetchStats = async () => {
       // 1. Try local prebuilt github-data.json
-      try {
-        const ghRes = await fetch("/github-data.json");
-        if (ghRes.ok) {
-          const ghData = await ghRes.json();
-          if (ghData?.user && Array.isArray(ghData?.repos) && ghData.repos.length > 0) {
-            const reposData: GithubRepo[] = ghData.repos;
-            const stars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
-            const forks = reposData.reduce((acc, repo) => acc + (repo.forks_count || 0), 0);
+      const ghData = await loadGithubData();
+      if (ghData?.user && Array.isArray(ghData.repos) && ghData.repos.length > 0) {
+        const reposData = ghData.repos;
+        const stars = reposData.reduce((acc, repo) => acc + (repo.stargazers_count || 0), 0);
+        const forks = reposData.reduce((acc, repo) => acc + (repo.forks_count || 0), 0);
 
-            setStats({
-              followers: ghData.user.followers || 0,
-              repos: reposData.length,
-              stars,
-              forks,
-            });
+        setStats({
+          followers: ghData.user.followers || 0,
+          repos: reposData.length,
+          stars,
+          forks,
+        });
 
-            const langs: Record<string, number> = {};
-            reposData.forEach((repo) => {
-              if (repo.language) {
-                langs[repo.language] = (langs[repo.language] || 0) + 1;
-              }
-            });
-            setLanguages(langs);
-            setLoading(false);
-            return;
+        const langs: Record<string, number> = {};
+        reposData.forEach((repo) => {
+          if (repo.language) {
+            langs[repo.language] = (langs[repo.language] || 0) + 1;
           }
-        }
-      } catch {
-        // fallback to direct API
+        });
+        setLanguages(langs);
+        setLoading(false);
+        return;
       }
 
       const username = "barissalihbabacan";

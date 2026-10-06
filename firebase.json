@@ -4,26 +4,27 @@
     "target": "babacan-me",
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-    "rewrites": [
+    "trailingSlash": false,
+    "redirects": [
       {
-        "source": "/",
-        "destination": "/index.html"
+        "source": "/en/projeler",
+        "destination": "/en/projects",
+        "type": 301
       },
       {
-        "source": "/en",
-        "destination": "/index.html"
+        "source": "/en/projeler/:slug",
+        "destination": "/en/projects/:slug",
+        "type": 301
       },
       {
-        "source": "/tr",
-        "destination": "/index.html"
+        "source": "/tr/projects",
+        "destination": "/tr/projeler",
+        "type": 301
       },
       {
-        "source": "/en/**",
-        "destination": "/index.html"
-      },
-      {
-        "source": "/tr/**",
-        "destination": "/index.html"
+        "source": "/tr/projects/:slug",
+        "destination": "/tr/projeler/:slug",
+        "type": 301
       }
     ],
     "headers": [
@@ -52,7 +53,7 @@
           },
           {
             "key": "Content-Security-Policy",
-            "value": "default-src 'self'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://raw.githubusercontent.com https://github.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://firebase.googleapis.com https://firebaseinstallations.googleapis.com https://*.googleapis.com https://*.firebaseio.com;"
+            "value": "default-src 'self'; frame-ancestors 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self' https://api.github.com https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com;"
           }
         ]
       },

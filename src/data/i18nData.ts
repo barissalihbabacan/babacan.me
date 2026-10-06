@@ -25,8 +25,8 @@ export const i18nData: I18nNode = {
       tr: "Garage.ist CTO'su · Sistem Mühendisi",
     },
     title: {
-      en: 'Barış Salih<br /><em className="text-on-surface-variant font-normal not-italic">Babacan</em>',
-      tr: 'Barış Salih<br /><em className="text-on-surface-variant font-normal not-italic">Babacan</em>',
+      en: 'Barış Salih<br /><em class="text-on-surface-variant font-normal not-italic">Babacan</em>',
+      tr: 'Barış Salih<br /><em class="text-on-surface-variant font-normal not-italic">Babacan</em>',
     },
     subtitle: {
       en: "Systems engineer building local-first infrastructure in Rust. Production work spans embedded systems, network protocol reverse engineering, and native iOS applications.",

@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
-import { useAppRouter } from "../contexts/router.ts";
+import Link from "../components/Link.tsx";
 
 type FilterCategory = "all" | "p2p" | "web" | "hardware";
 
 export default function ProjectsDirectoryPage() {
   const { lang } = useLanguage();
-  const { navigate } = useAppRouter();
   const [filter, setFilter] = useState<FilterCategory>("all");
   const isTr = lang === "tr";
 
@@ -29,13 +28,12 @@ export default function ProjectsDirectoryPage() {
         aria-label="Breadcrumb"
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}`)}
+        <Link
+          to={`/${lang}`}
           className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
         >
           {isTr ? "Ana Sayfa" : "Home"}
-        </button>
+        </Link>
         <span aria-hidden="true">/</span>
         <span className="text-primary">{isTr ? "Projeler" : "Projects"}</span>
       </nav>
@@ -92,12 +90,12 @@ export default function ProjectsDirectoryPage() {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span
-                    className={`font-label-mono text-[9px] uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
+                    className={`font-label-mono text-[10px] uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
                   >
                     {category}
                   </span>
                   <span
-                    className={`font-label-mono text-[9px] uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
+                    className={`font-label-mono text-[10px] uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
                   >
                     {status}
                   </span>
@@ -114,7 +112,7 @@ export default function ProjectsDirectoryPage() {
                   {p.tech.map((tItem) => (
                     <span
                       key={tItem}
-                      className="font-label-mono text-[9px] border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
+                      className="font-label-mono text-[10px] border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
                     >
                       {tItem}
                     </span>
@@ -122,14 +120,13 @@ export default function ProjectsDirectoryPage() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                onClick={() => navigate(`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`)}
+              <Link
+                to={`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`}
                 className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
               >
                 <span>{isTr ? "Detaylı İncele" : "Explore Technical Documentation"}</span>
                 <span aria-hidden="true">→</span>
-              </button>
+              </Link>
             </article>
           );
         })}

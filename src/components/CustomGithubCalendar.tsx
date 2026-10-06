@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-interface ContributionDay {
-  date: string;
-  level: number;
-}
-
-const CACHE_KEY = "gh_custom_contributions_v1";
-const CACHE_TTL = 1000 * 60 * 60 * 4; // 4 hours
+import { loadGithubData, type ContributionDay } from "../contexts/githubData.ts";
 
 const LEVEL_COLORS = [
   "#181a1c", // level 0 - empty
@@ -46,72 +39,28 @@ const MONTH_NAMES_EN = [
 ];
 
 interface CustomGithubCalendarProps {
-  username?: string;
   lang?: "en" | "tr";
 }
 
-export default function CustomGithubCalendar({
-  username = "barissalihbabacan",
-  lang = "tr",
-}: CustomGithubCalendarProps) {
+export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalendarProps) {
   const [days, setDays] = useState<ContributionDay[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalContributions, setTotalContributions] = useState<number | null>(null);
 
   useEffect(() => {
-    async function loadContributions() {
-      // Check cache first
-      try {
-        const cached = localStorage.getItem(`${CACHE_KEY}_${username}`);
-        if (cached) {
-          const { data, total, timestamp } = JSON.parse(cached);
-          if (Date.now() - timestamp < CACHE_TTL && Array.isArray(data) && data.length > 0) {
-            setDays(data);
-            setTotalContributions(total);
-            setLoading(false);
-            return;
-          }
-        }
-      } catch {
-        // ignore cache parse errors
+    let cancelled = false;
+    void loadGithubData().then((data) => {
+      if (cancelled) return;
+      if (data?.contributions?.days?.length) {
+        setDays(data.contributions.days);
+        setTotalContributions(data.contributions.total ?? null);
       }
-
-      // Try local github-data.json built at deploy time
-      try {
-        const ghRes = await fetch("/github-data.json");
-        if (ghRes.ok) {
-          const ghJson = await ghRes.json();
-          if (ghJson?.contributions?.days?.length > 0) {
-            setDays(ghJson.contributions.days);
-            setTotalContributions(ghJson.contributions.total ?? null);
-            setLoading(false);
-            return;
-          }
-        }
-      } catch {
-        // ignore static file fetch error
-      }
-
-      generateFallbackData();
       setLoading(false);
-    }
-
-    function generateFallbackData() {
-      const fallback: ContributionDay[] = [];
-      const now = new Date();
-      for (let i = 364; i >= 0; i--) {
-        const d = new Date(now);
-        d.setDate(d.getDate() - i);
-        const dateStr = d.toISOString().split("T")[0];
-        const randomLevel = Math.random() > 0.65 ? Math.floor(Math.random() * 4) + 1 : 0;
-        fallback.push({ date: dateStr, level: randomLevel });
-      }
-      setDays(fallback);
-      setTotalContributions(248);
-    }
-
-    void loadContributions();
-  }, [username]);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Group days into 53 weeks (each week has 7 days)
   const weeks: ContributionDay[][] = [];
@@ -149,6 +98,16 @@ export default function CustomGithubCalendar({
     return (
       <div className="w-full py-12 flex items-center justify-center font-label-mono text-xs text-primary animate-pulse">
         {lang === "tr" ? "Katkı haritası yükleniyor..." : "Loading contribution graph..."}
+      </div>
+    );
+  }
+
+  if (days.length === 0) {
+    return (
+      <div className="w-full py-12 flex items-center justify-center font-label-mono text-xs text-on-surface-variant">
+        {lang === "tr"
+          ? "Katkı verisi şu an alınamıyor."
+          : "Contribution data is currently unavailable."}
       </div>
     );
   }

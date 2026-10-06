@@ -10,87 +10,58 @@ import Footer from "./components/Footer.tsx";
 import JsonLd from "./components/JsonLd.tsx";
 import { useLanguage } from "./contexts/language.ts";
 import { useAppRouter } from "./contexts/router.ts";
-import { PROJECT_DATA } from "./data/projectsData.ts";
 import { Helmet } from "react-helmet-async";
 
 import ProjectDetailPage from "./pages/ProjectDetailPage.tsx";
 import ProjectsDirectoryPage from "./pages/ProjectsDirectoryPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import { initWebMCP } from "./utils/webmcp.ts";
+import { getPageMeta, OG_IMAGE } from "./seo.ts";
 
 export default function App() {
-  const { lang, t } = useLanguage();
+  const { lang } = useLanguage();
   const { route, currentPath } = useAppRouter();
-  const isTr = lang === "tr";
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
     initWebMCP();
   }, [currentPath]);
 
-  const baseUrl = "https://babacan.me";
-  const canonicalUrl = `${baseUrl}${currentPath === "/" ? "/en" : currentPath}`;
-
-  let pageTitle = t("seo.title");
-  let pageDesc = t("seo.description");
-
-  if (route.type === "project_detail" && route.projectSlug && PROJECT_DATA[route.projectSlug]) {
-    const proj = PROJECT_DATA[route.projectSlug];
-    const projTitle = proj.title[lang] ?? proj.title.en;
-    const projDesc = proj.description[lang] ?? proj.description.en;
-    pageTitle = isTr
-      ? `${projTitle} — Mühendislik Dokümantasyonu | Barış Salih Babacan`
-      : `${projTitle} — Engineering Documentation | Barış Salih Babacan`;
-    pageDesc = `${projTitle}: ${projDesc.substring(0, 150)}...`;
-  } else if (route.type === "projects_directory") {
-    pageTitle = isTr ? "Projeler — Barış Salih Babacan" : "Projects — Barış Salih Babacan";
-    pageDesc = isTr
-      ? "Rust, Go ve Swift ile geliştirilen yerel-öncelikli motorlar, gömülü sistemler ve native uygulamalar."
-      : "Local-first engines, embedded systems and native applications built in Rust, Go and Swift.";
-  } else if (route.type === "not_found") {
-    pageTitle = isTr ? "404 — Sayfa Bulunamadı" : "404 — Page Not Found";
-    pageDesc = isTr
-      ? "Aradığınız sayfa mevcut değil."
-      : "The page you are looking for does not exist.";
-  }
-
-  const enUrl = `${baseUrl}/en${currentPath.replace(/^\/(en|tr)/, "")}`;
-  const trUrl = `${baseUrl}/tr${currentPath.replace(/^\/(en|tr)/, "")}`;
+  const meta = getPageMeta(route, currentPath);
 
   return (
     <div
       className="bg-surface text-on-surface font-body-md antialiased selection:bg-primary/20 selection:text-primary relative"
       lang={lang}
     >
+      {/* scripts/prerender.ts ayni etiketleri statik HTML'e yazar; degisiklikleri iki yerde tut. */}
       <Helmet>
         <html lang={lang} />
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDesc} />
-        <link rel="canonical" href={canonicalUrl} />
-        {route.type === "not_found" && <meta name="robots" content="noindex, follow" />}
-        <link rel="alternate" hrefLang="en" href={enUrl} />
-        <link rel="alternate" hrefLang="tr" href={trUrl} />
-        <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/en`} />
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <link rel="canonical" href={meta.canonical} />
+        {meta.noindex && <meta name="robots" content="noindex, follow" />}
+        <link rel="alternate" hrefLang="en" href={meta.alternates.en} />
+        <link rel="alternate" hrefLang="tr" href={meta.alternates.tr} />
+        <link rel="alternate" hrefLang="x-default" href={meta.alternates.en} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDesc} />
-        <meta property="og:image" content={`${baseUrl}/og-image.png`} />
-        <meta property="og:locale" content={lang === "tr" ? "tr_TR" : "en_US"} />
+        <meta property="og:url" content={meta.canonical} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:locale" content={meta.ogLocale} />
 
         {/* Twitter Cards */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={canonicalUrl} />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDesc} />
-        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
+        <meta name="twitter:url" content={meta.canonical} />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={OG_IMAGE} />
       </Helmet>
 
       <JsonLd lang={lang} selectedProjectSlug={route.projectSlug} />
-
-      <div className="card-dot-grid pointer-events-none"></div>
 
       <Navbar />
 

@@ -93,7 +93,7 @@ export default function Writing() {
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-[9px] uppercase tracking-widest shadow-md">
+            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-[10px] uppercase tracking-widest shadow-md">
               {t("writing.book.status")}
             </div>
           </div>

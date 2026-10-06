@@ -1,10 +1,9 @@
 import React from "react";
 import { useLanguage } from "../contexts/language.ts";
-import { useAppRouter } from "../contexts/router.ts";
+import Link from "./Link.tsx";
 
 export default function Navbar() {
   const { lang, toggleLanguage, t } = useLanguage();
-  const { navigate } = useAppRouter();
 
   return (
     <>
@@ -19,16 +18,15 @@ export default function Navbar() {
         aria-label="Main Navigation"
       >
         <div className="max-w-container-max mx-auto px-margin-desktop h-full flex items-center justify-between">
-          <button
-            type="button"
-            onClick={() => navigate(`/${lang}`)}
+          <Link
+            to={`/${lang}`}
             className="font-label-mono text-label-mono text-on-surface tracking-tighter flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
           >
             <span className="text-primary text-xs" aria-hidden="true">
               ■
             </span>
             babacan.me
-          </button>
+          </Link>
 
           <div className="flex items-center gap-gutter">
             <button

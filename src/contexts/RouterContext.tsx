@@ -34,9 +34,12 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("site-lang", newLang);
     document.documentElement.lang = newLang;
 
+    const segment = newLang === "tr" ? "projeler" : "projects";
     let newPath = `/${newLang}`;
     if (route.type === "project_detail" && route.projectSlug) {
-      newPath = `/${newLang}/${newLang === "tr" ? "projeler" : "projects"}/${route.projectSlug}`;
+      newPath = `/${newLang}/${segment}/${route.projectSlug}`;
+    } else if (route.type === "projects_directory") {
+      newPath = `/${newLang}/${segment}`;
     }
 
     navigate(newPath);

@@ -30,20 +30,6 @@ async function fetchGitHubData() {
     if (!reposRes.ok) throw new Error(`Repos API failed: ${reposRes.status}`);
     const repos = await reposRes.json();
 
-    console.log("Fetching org repositories (thesinsofthefathers)...");
-    const sinsRes = await fetch(
-      `https://api.github.com/orgs/thesinsofthefathers/repos?sort=stars&per_page=30`,
-      { headers },
-    );
-    const sinsRepos = sinsRes.ok ? await sinsRes.json() : [];
-
-    console.log("Fetching org repositories (Osmos-App)...");
-    const osmosRes = await fetch(
-      `https://api.github.com/orgs/Osmos-App/repos?sort=stars&per_page=30`,
-      { headers },
-    );
-    const osmosRepos = osmosRes.ok ? await osmosRes.json() : [];
-
     console.log("Fetching GitHub contribution calendar...");
     let contributions = { days: [], total: 0 };
     try {
@@ -53,7 +39,11 @@ async function fetchGitHubData() {
       if (contribRes.ok) {
         const html = await contribRes.text();
         const dayMatches = [...html.matchAll(/data-date="([^"]+)".*?data-level="(\d+)"/g)];
-        const days = dayMatches.map((m) => ({ date: m[1], level: parseInt(m[2], 10) || 0 }));
+        // GitHub tabloyu satir satir (once tum pazarlar, sonra pazartesiler...) verir;
+        // takvim gunleri sirayla 7'li haftalara boldugu icin tarihe gore siralanmali.
+        const days = dayMatches
+          .map((m) => ({ date: m[1], level: parseInt(m[2], 10) || 0 }))
+          .sort((a, b) => a.date.localeCompare(b.date));
 
         const totalMatch = html.match(/([\d,]+)\s+contributions/i);
         const total = totalMatch
@@ -65,18 +55,20 @@ async function fetchGitHubData() {
       console.warn("Contribution fetch note:", cErr);
     }
 
+    // Yalnizca istemcinin kullandigi alanlar (bkz. src/contexts/githubData.ts);
+    // tam API yaniti ~120 KB tutuyordu.
     const data = {
-      user,
-      repos,
-      orgs: {
-        "org-sins": sinsRepos,
-        "org-osmos": osmosRepos,
-      },
+      user: { followers: user.followers },
+      repos: repos.map((repo) => ({
+        language: repo.language,
+        stargazers_count: repo.stargazers_count,
+        forks_count: repo.forks_count,
+      })),
       contributions,
       timestamp: Date.now(),
     };
 
-    fs.writeFileSync(targetFile, JSON.stringify(data, null, 2));
+    fs.writeFileSync(targetFile, JSON.stringify(data));
     console.log("Successfully saved GitHub data to public/github-data.json");
   } catch (err) {
     console.warn("GitHub API rate limit or network warning:", err.message);

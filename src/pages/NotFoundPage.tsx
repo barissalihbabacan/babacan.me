@@ -1,10 +1,9 @@
 import React from "react";
 import { useLanguage } from "../contexts/language.ts";
-import { useAppRouter } from "../contexts/router.ts";
+import Link from "../components/Link.tsx";
 
 export default function NotFoundPage() {
   const { lang } = useLanguage();
-  const { navigate } = useAppRouter();
   const isTr = lang === "tr";
 
   return (
@@ -13,13 +12,12 @@ export default function NotFoundPage() {
         aria-label="Breadcrumb"
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}`)}
+        <Link
+          to={`/${lang}`}
           className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
         >
           {isTr ? "Ana Sayfa" : "Home"}
-        </button>
+        </Link>
         <span aria-hidden="true">/</span>
         <span className="text-primary">404</span>
       </nav>
@@ -39,20 +37,18 @@ export default function NotFoundPage() {
       </header>
 
       <div className="flex flex-wrap gap-4">
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}`)}
+        <Link
+          to={`/${lang}`}
           className="bg-primary text-surface px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/85 transition-colors"
         >
           {isTr ? "Ana Sayfa" : "Home"}
-        </button>
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}/${isTr ? "projeler" : "projects"}`)}
+        </Link>
+        <Link
+          to={`/${lang}/${isTr ? "projeler" : "projects"}`}
           className="border border-on-surface-variant/30 text-on-surface-variant px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
         >
           {isTr ? "Projeler" : "Projects"}
-        </button>
+        </Link>
       </div>
     </div>
   );

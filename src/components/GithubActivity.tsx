@@ -59,7 +59,7 @@ export default function GithubActivity() {
           <div className="space-y-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest mb-1">
+                <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">
                   —
                 </div>
                 <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
@@ -70,7 +70,7 @@ export default function GithubActivity() {
                 </div>
               </div>
               <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest mb-1">
+                <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">
                   —
                 </div>
                 <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
@@ -81,7 +81,7 @@ export default function GithubActivity() {
                 </div>
               </div>
               <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest mb-1">
+                <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">
                   —
                 </div>
                 <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
@@ -92,7 +92,7 @@ export default function GithubActivity() {
                 </div>
               </div>
               <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[9px] text-on-surface-variant uppercase tracking-widest mb-1">
+                <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">
                   —
                 </div>
                 <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
@@ -110,7 +110,7 @@ export default function GithubActivity() {
               </div>
 
               <div className="overflow-x-auto pb-2 w-full">
-                <CustomGithubCalendar username="barissalihbabacan" lang={lang as "en" | "tr"} />
+                <CustomGithubCalendar lang={lang} />
               </div>
             </div>
 

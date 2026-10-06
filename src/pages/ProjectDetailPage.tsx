@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
+import Link from "../components/Link.tsx";
 import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
-import { useAppRouter } from "../contexts/router.ts";
 
 interface ProjectDetailPageProps {
   slug: ProjectKey;
@@ -10,7 +10,6 @@ interface ProjectDetailPageProps {
 
 export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const { lang, t } = useLanguage();
-  const { navigate } = useAppRouter();
   const project = PROJECT_DATA[slug];
 
   useEffect(() => {
@@ -21,13 +20,12 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
     return (
       <div className="min-h-screen pt-24 px-margin-desktop text-center">
         <h1 className="text-2xl font-bold text-on-surface">Project Not Found</h1>
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}/projects`)}
+        <Link
+          to={`/${lang}/projects`}
           className="mt-4 text-primary hover:underline font-label-mono text-xs uppercase"
         >
           Return to Projects
-        </button>
+        </Link>
       </div>
     );
   }
@@ -54,21 +52,19 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         aria-label="Breadcrumb"
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}`)}
+        <Link
+          to={`/${lang}`}
           className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
         >
           {isTr ? "Ana Sayfa" : "Home"}
-        </button>
+        </Link>
         <span aria-hidden="true">/</span>
-        <button
-          type="button"
-          onClick={() => navigate(`/${lang}/${isTr ? "projeler" : "projects"}`)}
+        <Link
+          to={`/${lang}/${isTr ? "projeler" : "projects"}`}
           className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
         >
           {isTr ? "Projeler" : "Projects"}
-        </button>
+        </Link>
         <span aria-hidden="true">/</span>
         <span className="text-primary">{title}</span>
       </nav>
@@ -234,21 +230,21 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         <aside className="space-y-8">
           <div className="border border-primary/20 p-6 bg-surface-container/10 space-y-6">
             <div>
-              <div className="font-label-mono text-[9px] text-on-surface-variant/70 uppercase tracking-widest mb-1">
+              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-1">
                 {isTr ? "Rol" : "Role"}
               </div>
               <div className="font-label-mono text-sm text-on-surface font-semibold">{role}</div>
             </div>
 
             <div>
-              <div className="font-label-mono text-[9px] text-on-surface-variant/70 uppercase tracking-widest mb-2">
+              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-2">
                 {t("projects.techStack")}
               </div>
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tItem, idx) => (
                   <span
                     key={idx}
-                    className="font-label-mono text-[9px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                    className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
                   >
                     {tItem}
                   </span>
