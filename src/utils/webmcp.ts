@@ -40,6 +40,7 @@ export function initWebMCP() {
               proj.title.en.toLowerCase().includes(q) ||
               proj.title.tr.toLowerCase().includes(q) ||
               proj.description.en.toLowerCase().includes(q) ||
+              proj.description.tr.toLowerCase().includes(q) ||
               (Array.isArray(proj.tech) ? proj.tech : []).some((t) => t.toLowerCase().includes(q))
             );
           })
@@ -49,6 +50,7 @@ export function initWebMCP() {
             description: proj.description.en,
             techStack: proj.tech,
             url: `https://babacan.me/en/projects/${slug}`,
+            urlTr: `https://babacan.me/tr/projeler/${slug}`,
           }));
 
         return {
@@ -87,11 +89,20 @@ export function initWebMCP() {
         return {
           slug,
           title: proj.title,
+          category: proj.category,
           status: proj.status,
+          year: proj.year,
           role: proj.role,
           techStack: proj.tech,
           description: proj.description,
-          fullArchitecture: proj.fullArchitecture,
+          executiveSummary: proj.executiveSummary,
+          problem: proj.problem,
+          solution: proj.solution,
+          architecture: proj.architectureText,
+          tradeoffs: proj.tradeoffs,
+          highlights: proj.highlights,
+          githubUrl: proj.githubUrl,
+          liveUrl: proj.liveUrl,
         };
       },
     });
