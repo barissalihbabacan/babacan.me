@@ -17,7 +17,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vp dev",
-    "prebuild": "node scripts/fetch-github-data.js",
+    "prebuild": "node --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/fetch-github-data.js",
     "build": "vp build",
     "postbuild": "node scripts/prerender.ts",
     "preview": "vp preview",

@@ -83,6 +83,18 @@ This project uses **Vite+**, a unified web toolchain. Execute tasks via `vp`:
 - **Node.js**: `24.x` or higher
 - **npm**: `>= 11.0.0`
 
+### Optional: GitHub API token
+
+The build fetches live GitHub stats via `scripts/fetch-github-data.js`. For public
+data no token is required, but a token raises the GitHub API rate limit. Copy
+`.env.example` to `.env.local` and set `GITHUB_TOKEN` (a classic token with the
+`public_repo` scope is enough).
+
+The token is read **only** by the prebuild step and is never shipped to the
+browser. Do not rename it to a `VITE_`-prefixed variable: Vite exposes `VITE_*`
+variables to client code, which would leak the token to every visitor. Never
+commit it, and rotate it immediately if it is ever exposed.
+
 ### 1. Clone & Install
 
 ```bash
