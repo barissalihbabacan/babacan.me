@@ -18,6 +18,7 @@ import { PROJECT_DATA } from "../src/data/projectsData.ts";
 import { i18nData } from "../src/data/i18nData.ts";
 import {
   allRoutes,
+  BASE_URL,
   buildJsonLd,
   getPageMeta,
   OG_IMAGE,
@@ -154,3 +155,26 @@ fs.writeFileSync(
 );
 
 console.log(`Prerendered ${count} routes into public/`);
+
+// sitemap.xml: elle bakim yerine rotalardan uretilir; lastmod build tarihidir.
+const lastmod = new Date().toISOString().slice(0, 10);
+const sitemapUrls: { loc: string; priority: string }[] = allRoutes().map((r) => ({
+  loc: `${BASE_URL}${routePath(r)!}`,
+  priority: r.type === "home" ? "1.0" : "0.8",
+}));
+sitemapUrls.push(
+  { loc: `${BASE_URL}/llms.txt`, priority: "0.8" },
+  { loc: `${BASE_URL}/llms-full.txt`, priority: "0.8" },
+);
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapUrls
+  .map(
+    (u) =>
+      `  <url>\n    <loc>${u.loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${u.priority}</priority>\n  </url>`,
+  )
+  .join("\n")}
+</urlset>
+`;
+fs.writeFileSync(path.join(OUT_DIR, "sitemap.xml"), sitemap);
+console.log(`Wrote sitemap.xml with ${sitemapUrls.length} urls`);
