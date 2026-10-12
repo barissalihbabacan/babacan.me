@@ -2,7 +2,9 @@ import fs from "fs";
 import path from "path";
 
 const GITHUB_USER = "barissalihbabacan";
-const token = process.env.VITE_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+// Oneksiz GITHUB_TOKEN tercih edilir; VITE_ onekli degiskenler istemci paketine
+// gomulebilir, bu yuzden token icin kullanilmamalidir (geri uyumluluk icin hala okunur).
+const token = process.env.GITHUB_TOKEN || process.env.VITE_GITHUB_TOKEN;
 const headers = token
   ? { Authorization: `token ${token}`, "User-Agent": "babacan.me-build-script" }
   : { "User-Agent": "babacan.me-build-script" };
