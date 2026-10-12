@@ -3,6 +3,7 @@ import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
 import Link from "../components/Link.tsx";
 import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
+import { projectsSegment } from "../seo.ts";
 
 interface ProjectDetailPageProps {
   slug: ProjectKey;
@@ -21,7 +22,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
       <div className="min-h-screen pt-24 px-margin-desktop text-center">
         <h1 className="text-2xl font-bold text-on-surface">Project Not Found</h1>
         <Link
-          to={`/${lang}/projects`}
+          to={`/${lang}/${projectsSegment(lang)}`}
           className="mt-4 text-primary hover:underline font-label-mono text-xs uppercase"
         >
           Return to Projects
