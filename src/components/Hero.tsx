@@ -85,7 +85,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat1_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">
+            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat1_lbl")}
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat2_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">
+            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat2_lbl")}
             </div>
           </div>
@@ -101,7 +101,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat3_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">
+            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat3_lbl")}
             </div>
           </div>
@@ -109,7 +109,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat4_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1">
+            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat4_lbl")}
             </div>
           </div>

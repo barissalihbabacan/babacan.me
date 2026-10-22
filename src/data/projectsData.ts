@@ -22,7 +22,59 @@ export interface ProjectData {
   tech: string[];
   githubUrl?: string;
   liveUrl?: string;
+  cover?: ProjectCover;
 }
+
+/** 1200x627 kapak: `webp`/`webp2x` sayfada (srcset); `og` paylasim onizlemesi icin
+ * src/public/og/ altindaki ~45 KB JPEG (2400px PNG, WhatsApp gibi istemcilerin sinirini asiyordu). */
+export interface ProjectCover {
+  webp: string;
+  webp2x: string;
+  /** Site koku goreli yol, orn. "/og/osmos.jpg". */
+  og: string;
+}
+
+// Kapaklar Firebase Storage'da (babacan-sites bucket, linkedin/ klasoru).
+const STORAGE_BASE =
+  "https://firebasestorage.googleapis.com/v0/b/babacan-sites.firebasestorage.app/o/linkedin%2F";
+
+const COVERS = {
+  osmos: {
+    webp: `${STORAGE_BASE}osmos-featured-1200.webp?alt=media&token=35128fab-9954-4196-8e55-d7535ebe5912`,
+    webp2x: `${STORAGE_BASE}osmos-featured-2400.webp?alt=media&token=97e7d8bc-52c0-4e49-ab83-ffd2e955a66b`,
+    og: "/og/osmos.jpg",
+  },
+  mythos: {
+    webp: `${STORAGE_BASE}mythos-featured-1200.webp?alt=media&token=9f38de20-3872-48a1-afc1-0026c0180d25`,
+    webp2x: `${STORAGE_BASE}mythos-featured-2400.webp?alt=media&token=979d1694-eeca-49a4-85a5-8264348303cc`,
+    og: "/og/mythos.jpg",
+  },
+  chorus: {
+    webp: `${STORAGE_BASE}chorus-featured-1200.webp?alt=media&token=fdf0aa39-2a30-4626-b9de-47e81da20e6d`,
+    webp2x: `${STORAGE_BASE}chorus-featured-2400.webp?alt=media&token=f0d9ea2a-2278-4df7-a67b-5cff91d9b80a`,
+    og: "/og/chorus.jpg",
+  },
+  sortify: {
+    webp: `${STORAGE_BASE}sortify-featured-1200.webp?alt=media&token=7ae596d0-590f-4997-889a-c63730309981`,
+    webp2x: `${STORAGE_BASE}sortify-featured-2400.webp?alt=media&token=fb093bc2-fcd6-4282-9a72-e8973020a1aa`,
+    og: "/og/sortify.jpg",
+  },
+  plusTv: {
+    webp: `${STORAGE_BASE}plustv-featured-1200.webp?alt=media&token=c6c8280f-35db-4851-ba62-edc0666f01a0`,
+    webp2x: `${STORAGE_BASE}plustv-featured-2400.webp?alt=media&token=126acffb-7c72-4d31-ac1f-cc85d2da527c`,
+    og: "/og/plus-tv.jpg",
+  },
+  qpass: {
+    webp: `${STORAGE_BASE}qpass-featured-1200.webp?alt=media&token=a01df62c-97df-466f-bcc6-f0ea321ca321`,
+    webp2x: `${STORAGE_BASE}qpass-featured-2400.webp?alt=media&token=5df67c65-4fb9-4b17-94a9-9db83c313b7d`,
+    og: "/og/qpass.jpg",
+  },
+  itrms: {
+    webp: `${STORAGE_BASE}itrms-featured-1200.webp?alt=media&token=98e7fbd6-97b4-462d-b5d9-6ee35eb37895`,
+    webp2x: `${STORAGE_BASE}itrms-featured-2400.webp?alt=media&token=7abfcaad-63e8-46cd-8c9d-0e273e84074e`,
+    og: "/og/itrms.jpg",
+  },
+} satisfies Record<string, ProjectCover>;
 
 export type ProjectKey =
   | "mythos"
@@ -91,12 +143,13 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["Rust", "Tauri", "React", "TypeScript", "SQLite", "BLAKE3", "Local-First"],
     githubUrl: "https://github.com/Osmos-App/osmos-core",
+    cover: COVERS.osmos,
   },
   mythos: {
     title: { en: "Mythos", tr: "Mythos" },
     category: { en: "App · Tooling", tr: "Uygulama · Araçlar" },
     categoryColor: "text-primary border-primary/20",
-    status: { en: "In Development", tr: "Geliştirime Aşamasında" },
+    status: { en: "In Development", tr: "Geliştirme Aşamasında" },
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026", tr: "2026" },
     role: { en: "Creator & Developer", tr: "Kurucu & Geliştirici" },
@@ -144,6 +197,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["Tauri", "Rust", "React", "TypeScript"],
     githubUrl: "https://github.com/Mythos-IDE/mythoside-core",
+    cover: COVERS.mythos,
   },
   qpass: {
     title: { en: "Q-PASS", tr: "Q-PASS" },
@@ -194,6 +248,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["C++ / Arduino", "Python", "PHP", "MySQL", "RFID", "Serial Protocol"],
     githubUrl: "https://github.com/barissalihbabacan/Q-PASS-RFID-Access-Control",
+    cover: COVERS.qpass,
   },
   gayrimenkuldunyasi: {
     title: { en: "Gayrimenkul Dünyası", tr: "Gayrimenkul Dünyası" },
@@ -295,52 +350,63 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     tech: ["SwiftUI", "Swift", "Firebase", "Cloud Functions", "StoreKit 2", "mDNS"],
     liveUrl:
       "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=sortify_project",
+    cover: COVERS.sortify,
   },
   "plus-tv": {
     title: { en: "+TV", tr: "+TV" },
-    category: { en: "Mobile · Android", tr: "Mobil · Android" },
+    category: { en: "Mobile · Android & Protocols", tr: "Mobil · Android & Protokoller" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Lead Developer", tr: "Baş Geliştirici" },
+    role: {
+      en: "Co-developer · Philips integration",
+      tr: "Ortak geliştirici · Philips entegrasyonu",
+    },
     description: {
-      en: "+TV is an Android application developed under Garage.ist designed to discover and control Smart TV devices over the local network. Built with Java and Kotlin, the application communicates directly with TV devices over local Wi-Fi without relying on external cloud services.",
-      tr: "+TV; Garage.ist bünyesinde geliştirilen, yerel ağ üzerindeki Akıllı TV cihazlarını keşfetmek ve kontrol etmek için tasarlanmış Android uygulamasıdır. Java ve Kotlin ile geliştirilen uygulama, TV cihazlarıyla doğrudan yerel ağ üzerinden iletişim kurarak kontrol akışını harici bir bulut servisine bağımlı olmadan gerçekleştirir.",
+      en: "+TV is an Android remote, cast and screen-mirroring app for smart TVs, with 10K+ downloads on Google Play. I built it with a fellow developer at Garage.ist. Samsung and LG came with SDKs; Philips had none, so I reverse-engineered its undocumented JointSpace API and wrote that integration myself.",
+      tr: "+TV, akıllı TV'ler için kumanda, yansıtma ve ekran paylaşımı sunan, Google Play'de 10 binden fazla indirilen bir Android uygulaması. Garage.ist'te bir geliştirici arkadaşımla birlikte geliştirdik. Samsung ve LG için SDK vardı; Philips için yoktu. Bu yüzden Philips'in belgelenmemiş JointSpace API'sini tersine mühendislikle çözdüm ve entegrasyonu tek başıma yazdım.",
     },
     executiveSummary: {
-      en: "+TV combines local network device discovery and TV control on Android. Ingesting compatible TV devices on the same subnet, the app transmits control commands directly to devices. This approach eliminates unnecessary remote service dependencies while shifting device communication directly to the local network layer.",
-      tr: "+TV, Android üzerinde yerel ağ cihaz keşfi ve TV kontrolünü bir araya getirir. Uygulama, aynı ağ üzerindeki uyumlu TV cihazlarını keşfederek kontrol komutlarını doğrudan cihazlara iletir. Bu yaklaşım, kontrol akışındaki gereksiz uzak servis bağımlılıklarını ortadan kaldırırken cihaz iletişimini doğrudan yerel ağ katmanına taşır.",
+      en: "Getting a Philips TV to respond took two to five days. Mapping every endpoint took about three weeks. What documentation existed sat on old, half-abandoned pages, so most of the API came out of Philips' own remote app: its logs, read with CatLog, and the traffic it sent to the TV's IP address, captured with Wireshark. Everything was then confirmed by trial and error against a real set.",
+      tr: "Bir Philips TV'yi komutlara cevap verir hâle getirmek iki ila beş gün sürdü; bütün endpoint'leri çıkarmak ise yaklaşık üç hafta. Var olan dokümantasyon eski, yarı terk edilmiş sayfalardaydı. Bu yüzden API'nin büyük kısmını Philips'in kendi kumanda uygulamasından çıkardım: loglarını CatLog ile okudum, TV'nin IP adresine giden trafiğini Wireshark ile yakaladım. Bulduğum her şeyi gerçek bir cihaz üzerinde deneme yanılmayla doğruladım.",
     },
     problem: {
-      en: "Routing Smart TV control commands through external cloud servers creates an unnecessary intermediate layer for devices that can be communicated with directly over the local network.",
-      tr: "Akıllı TV kontrolünün harici servisler üzerinden gerçekleştirilmesi, yerel ağda doğrudan iletişim kurulabilecek cihazlar için gereksiz bir ara katman oluşturabilir. +TV, cihaz ve kontrol uygulaması arasındaki iletişimi doğrudan yerel ağ üzerinde gerçekleştirerek bu bağımlılığı azaltmak üzere tasarlanmıştır.",
+      en: "Samsung (Tizen SDK) and LG (ConnectSDK) ship libraries for controlling their TVs. Philips does not. Its TitanOS sets expose JointSpace, an HTTPS API with no public reference that pairs with a PIN and presents a self-signed certificate. Until that was solved, +TV could not control a whole brand of TVs.",
+      tr: "Samsung (Tizen SDK) ve LG (ConnectSDK), TV'lerini kontrol etmek için kütüphane sunuyor. Philips sunmuyor. TitanOS çalıştıran modelleri, herkese açık bir referansı olmayan, PIN ile eşleşen ve kendinden imzalı sertifika sunan JointSpace adlı bir HTTPS API'si açıyor. Bu çözülene kadar +TV koca bir markayı kontrol edemiyordu.",
     },
     solution: {
-      en: "+TV executes device discovery and control communications over the local network within the Android application. Once compatible TV devices are discovered, control commands transmit directly to the device.",
-      tr: "+TV, cihaz keşfi ve kontrol iletişimini Android uygulaması içinde yerel ağ üzerinden gerçekleştirir. Böylece uyumlu TV cihazları keşfedildikten sonra kontrol komutları doğrudan cihaza iletilir.",
+      en: "Pairing is a challenge–response flow. An empty request comes back as 401 with a nonce; the app then signs the request with HTTP Digest, using that nonce and the PIN shown on the TV screen. I modelled pairing as an explicit state machine so every failure lands in a known state, and handled the TV's self-signed certificate in the TLS layer.",
+      tr: "Eşleştirme bir challenge–response akışı. Boş bir istek, bir nonce ile birlikte 401 olarak dönüyor; uygulama ardından isteği bu nonce ve TV ekranında görünen PIN ile HTTP Digest olarak imzalıyor. Eşleştirmeyi açık bir durum makinesi olarak modelledim, böylece her hata bilinen bir duruma düşüyor. TV'nin kendinden imzalı sertifikasını da TLS katmanında ele aldım.",
     },
     architectureText: {
-      en: "The Android application is developed with Java and Kotlin. Device discovery and control communications execute over the local network, where the application layer manages TV discovery, connection state, and command transmission.",
-      tr: "Android uygulaması Java ve Kotlin ile geliştirilmiştir. Cihaz keşfi ve kontrol iletişimi yerel ağ üzerinden gerçekleştirilirken, uygulama katmanı TV cihazlarının bulunması, bağlantının yönetilmesi ve kontrol komutlarının iletilmesinden sorumludur.",
+      en: "+TV is a native Android app. Each TV brand sits behind its own integration: the Tizen SDK for Samsung, ConnectSDK for LG, and a hand-written JointSpace client for Philips that owns pairing, digest authentication and TLS. Control traffic stays on the local network.",
+      tr: "+TV native bir Android uygulaması. Her TV markası kendi entegrasyonunun arkasında duruyor: Samsung için Tizen SDK, LG için ConnectSDK, Philips için ise eşleştirmeyi, digest kimlik doğrulamayı ve TLS'i yöneten, elle yazılmış bir JointSpace istemcisi. Kontrol trafiği yerel ağda kalıyor.",
+    },
+    tradeoffs: {
+      en: "The hardest parts were not the endpoints but the plumbing around them. The nonce has a limited lifetime, so the client has to notice when it has expired and fetch a fresh one before signing again. And the TV presents a self-signed certificate, so the standard TLS path rejects the connection until the app handles it explicitly.",
+      tr: "En zor kısımlar endpoint'lerin kendisi değil, etraflarındaki tesisattı. Nonce'un ömrü sınırlı; istemcinin süresinin dolduğunu fark edip yeniden imzalamadan önce yenisini alması gerekiyor. TV de kendinden imzalı bir sertifika sunuyor; uygulama bunu açıkça ele alana kadar standart TLS yolu bağlantıyı reddediyor.",
     },
     highlights: {
       en: [
-        "Native Java and Kotlin application on Android.",
-        "Smart TV device discovery and direct control over the local network.",
-        "Local communication architecture independent of external cloud services.",
-        "Unified management of device discovery and control workflows within a single app.",
+        "10K+ downloads on Google Play.",
+        "Samsung via the Tizen SDK, LG via ConnectSDK.",
+        "Philips JointSpace API reverse-engineered with CatLog and Wireshark: working in 2–5 days, fully mapped in about 3 weeks.",
+        "PIN pairing as a state machine over HTTP Digest (401 challenge–response with a nonce).",
+        "Nonce expiry and the TV's self-signed certificate handled in the client.",
       ],
       tr: [
-        "Android üzerinde native Java + Kotlin uygulaması.",
-        "Yerel ağ üzerinden Akıllı TV cihazı keşfi ve doğrudan kontrol.",
-        "Harici bulut servisine ihtiyaç duymayan yerel iletişim mimarisi.",
-        "Cihaz keşfi ve kontrol iletişiminin tek uygulama içinde yönetilmesi.",
+        "Google Play'de 10 binden fazla indirme.",
+        "Samsung Tizen SDK ile, LG ConnectSDK ile.",
+        "Philips JointSpace API'si CatLog ve Wireshark ile çözüldü: 2–5 günde çalışır hâle geldi, yaklaşık 3 haftada tamamen haritalandı.",
+        "HTTP Digest üzerinde durum makinesi olarak PIN eşleştirme (nonce'lu 401 challenge–response).",
+        "Nonce'un süresinin dolması ve TV'nin kendinden imzalı sertifikası istemcide ele alındı.",
       ],
     },
-    tech: ["Java", "Kotlin", "Android", "Local Networking"],
+    tech: ["Kotlin", "Java", "Android", "Wireshark", "HTTP Digest", "ConnectSDK"],
     liveUrl:
       "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+    cover: COVERS.plusTv,
   },
   playsortify: {
     title: { en: "Sortify Web", tr: "Sortify Web" },
@@ -528,6 +594,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "PHP", "MySQL", "QR Code", "RBAC"],
     githubUrl: "https://github.com/barissalihbabacan/IT-Department-Resource-Management-System",
+    cover: COVERS.itrms,
   },
   chorus: {
     title: { en: "Chorus", tr: "Chorus" },
@@ -574,5 +641,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     tech: ["Go", "React", "Git", "TypeScript", "Vite"],
     githubUrl: "https://github.com/barissalihbabacan/chorus",
     liveUrl: "https://joinchorus.app",
+    cover: COVERS.chorus,
   },
 };

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
 import Link from "../components/Link.tsx";
+import ProjectCover from "../components/ProjectCover.tsx";
+import LatinText from "../components/LatinText.tsx";
 
 type FilterCategory = "all" | "p2p" | "web" | "hardware";
 
 export default function ProjectsDirectoryPage() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const [filter, setFilter] = useState<FilterCategory>("all");
   const isTr = lang === "tr";
 
@@ -25,7 +27,7 @@ export default function ProjectsDirectoryPage() {
   return (
     <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
       <nav
-        aria-label="Breadcrumb"
+        aria-label={t("nav.breadcrumb")}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
         <Link
@@ -74,63 +76,77 @@ export default function ProjectsDirectoryPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {filteredKeys.map((slug) => {
-          const p = PROJECT_DATA[slug];
-          const title = p.title[lang] ?? p.title.en;
-          const category = p.category[lang] ?? p.category.en;
-          const status = p.status[lang] ?? p.status.en;
-          const desc = p.description[lang] ?? p.description.en;
+      {/* Kapakli projeler ustte; kapaksizlarla ayni satirda bos alan kalmasin. */}
+      {[
+        filteredKeys.filter((slug) => PROJECT_DATA[slug].cover),
+        filteredKeys.filter((slug) => !PROJECT_DATA[slug].cover),
+      ]
+        .filter((group) => group.length > 0)
+        .map((group) => (
+          <div key={group[0]} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            {group.map((slug) => {
+              const p = PROJECT_DATA[slug];
+              const title = p.title[lang] ?? p.title.en;
+              const category = p.category[lang] ?? p.category.en;
+              const status = p.status[lang] ?? p.status.en;
+              const desc = p.description[lang] ?? p.description.en;
 
-          return (
-            <article
-              key={slug}
-              className="border border-primary/20 p-8 bg-surface-container/10 hover:border-primary/50 transition-all group flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`font-label-mono text-[10px] uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
+              return (
+                <article
+                  key={slug}
+                  className="border border-primary/20 p-8 bg-surface-container/10 hover:border-primary/50 transition-all group flex flex-col justify-between"
+                >
+                  <div>
+                    {p.cover && (
+                      <ProjectCover
+                        cover={p.cover}
+                        className="mb-6 border border-primary/10 group-hover:border-primary/30 transition-colors"
+                      />
+                    )}
+                    <div className="flex items-center justify-between mb-4">
+                      <span
+                        className={`font-label-mono text-[10px] uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
+                      >
+                        <LatinText text={category} />
+                      </span>
+                      <span
+                        className={`font-label-mono text-[10px] uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
+                      >
+                        {status}
+                      </span>
+                    </div>
+
+                    <h2 className="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors mb-3">
+                      {title}
+                    </h2>
+                    <p className="font-body-md text-on-surface-variant text-sm leading-relaxed mb-6">
+                      {desc}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {p.tech.map((tItem) => (
+                        <span
+                          key={tItem}
+                          className="font-label-mono text-[10px] border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
+                        >
+                          {tItem}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    to={`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`}
+                    className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
                   >
-                    {category}
-                  </span>
-                  <span
-                    className={`font-label-mono text-[10px] uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
-                  >
-                    {status}
-                  </span>
-                </div>
-
-                <h2 className="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors mb-3">
-                  {title}
-                </h2>
-                <p className="font-body-md text-on-surface-variant text-sm leading-relaxed mb-6">
-                  {desc}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {p.tech.map((tItem) => (
-                    <span
-                      key={tItem}
-                      className="font-label-mono text-[10px] border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
-                    >
-                      {tItem}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              <Link
-                to={`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`}
-                className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
-              >
-                <span>{isTr ? "Detaylı İncele" : "Explore Technical Documentation"}</span>
-                <span aria-hidden="true">→</span>
-              </Link>
-            </article>
-          );
-        })}
-      </div>
+                    <span>{isTr ? "Detaylı İncele" : "Explore Technical Documentation"}</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </article>
+              );
+            })}
+          </div>
+        ))}
     </div>
   );
 }

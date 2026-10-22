@@ -59,8 +59,9 @@ This document provides a comprehensive, full-text technical specification of Bar
 - **Tech Stack**: Arduino (C++) · Python Serial Bridge · PHP 8 · MySQL
 
 ### 3.7 Garage.ist Commercial Portfolio
-- **Sortify & Sortify Web**: Real-time visual media sorting solution (Backend & Infrastructure Lead).
-- **Gayrimenkul Dünyası & +TV**: Enterprise real estate web application and video streaming platform.
+- **Sortify & Sortify Web**: Game-based learning app for children aged 3–13 (SwiftUI, iOS/iPadOS, v2.1 on the App Store) and its React + HTML5 Canvas web client (CTO & Lead Developer).
+- **Gayrimenkul Dünyası**: Real estate data ingestion and CRM platform.
+- **+TV**: Android TV remote and screen-mirroring app, 10K+ downloads on Google Play. Samsung via the Tizen SDK, LG via ConnectSDK; the Philips JointSpace API was reverse-engineered from the official remote app (CatLog logs, Wireshark traffic): HTTP Digest auth, PIN pairing, self-signed TLS.
 - **Spor Sayfası**: Automated sports news aggregator (Firebase Hosting & DB record persistence).
 
 ---

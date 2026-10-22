@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
 import Link from "../components/Link.tsx";
 import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
+import ProjectCover from "../components/ProjectCover.tsx";
+import LatinText from "../components/LatinText.tsx";
 import { projectsSegment } from "../seo.ts";
 
 interface ProjectDetailPageProps {
@@ -13,19 +15,17 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const { lang, t } = useLanguage();
   const project = PROJECT_DATA[slug];
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
-  }, [slug]);
-
   if (!project) {
     return (
       <div className="min-h-screen pt-24 px-margin-desktop text-center">
-        <h1 className="text-2xl font-bold text-on-surface">Project Not Found</h1>
+        <h1 className="text-2xl font-bold text-on-surface">
+          {lang === "tr" ? "Proje bulunamadı" : "Project Not Found"}
+        </h1>
         <Link
           to={`/${lang}/${projectsSegment(lang)}`}
           className="mt-4 text-primary hover:underline font-label-mono text-xs uppercase"
         >
-          Return to Projects
+          {lang === "tr" ? "Projelere dön" : "Return to Projects"}
         </Link>
       </div>
     );
@@ -50,7 +50,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
     <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
       {/* Breadcrumb Navigation */}
       <nav
-        aria-label="Breadcrumb"
+        aria-label={t("nav.breadcrumb")}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
         <Link
@@ -67,20 +67,22 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
           {isTr ? "Projeler" : "Projects"}
         </Link>
         <span aria-hidden="true">/</span>
-        <span className="text-primary">{title}</span>
+        <span className="text-primary">
+          <LatinText text={title} />
+        </span>
       </nav>
 
       {/* Header Section */}
       <header className="border-b border-primary/30 pb-10 mb-12">
         <div className="flex flex-wrap gap-3 mb-4">
           <span className="font-label-mono text-[10px] text-primary border border-primary/30 px-2.5 py-1 uppercase tracking-widest">
-            {category}
+            <LatinText text={category} />
           </span>
           <span className="font-label-mono text-[10px] text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
             {status}
           </span>
           <span className="font-label-mono text-[10px] text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
-            {year}
+            <LatinText text={year} />
           </span>
         </div>
 
@@ -100,7 +102,9 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
               rel="noopener noreferrer"
               className="bg-primary text-surface px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
             >
-              <span>{isTr ? "GitHub Deposu" : "GitHub Repository"}</span>
+              <span>
+                <LatinText text={isTr ? "GitHub Deposu" : "GitHub Repository"} />
+              </span>
               <svg
                 className="w-3.5 h-3.5 fill-current shrink-0"
                 viewBox="0 0 24 24"
@@ -130,14 +134,24 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         </div>
       </header>
 
+      {project.cover && (
+        <ProjectCover
+          cover={project.cover}
+          alt={isTr ? `${title} kapak görseli` : `${title} cover image`}
+          sizes="(min-width: 768px) 768px, 100vw"
+          priority
+          className="max-w-3xl mb-12 border border-primary/20"
+        />
+      )}
+
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start">
         <div className="space-y-12">
-          {/* Executive Summary */}
+          {/* Overview */}
           {summary && (
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-on-surface">
-                {isTr ? "Mühendislik Özeti" : "Executive Summary"}
+                {isTr ? "Genel Bakış" : "Overview"}
               </h2>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-base">
                 {summary}
@@ -151,7 +165,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
               {problem && (
                 <div className="space-y-3">
                   <h3 className="font-label-mono text-xs text-primary uppercase tracking-widest">
-                    {isTr ? "Mevcut Problem" : "The Problem"}
+                    Problem
                   </h3>
                   <p className="font-body-md text-on-surface-variant text-sm leading-relaxed">
                     {problem}
@@ -161,7 +175,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
               {solution && (
                 <div className="space-y-3">
                   <h3 className="font-label-mono text-xs text-secondary uppercase tracking-widest">
-                    {isTr ? "Mühendislik Çözümü" : "Engineering Solution"}
+                    {isTr ? "Yaklaşım" : "Approach"}
                   </h3>
                   <p className="font-body-md text-on-surface-variant text-sm leading-relaxed">
                     {solution}
@@ -245,6 +259,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                 {project.tech.map((tItem, idx) => (
                   <span
                     key={idx}
+                    lang="en"
                     className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
                   >
                     {tItem}

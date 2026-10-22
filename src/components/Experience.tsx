@@ -39,13 +39,22 @@ export default function Experience() {
               dangerouslySetInnerHTML={{ __html: t("experience.item1_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 Swift
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 SwiftUI
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 Firebase
               </span>
             </div>
@@ -63,13 +72,22 @@ export default function Experience() {
               dangerouslySetInnerHTML={{ __html: t("experience.item2_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 Rust
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 Go
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 C++
               </span>
             </div>
@@ -87,10 +105,16 @@ export default function Experience() {
               dangerouslySetInnerHTML={{ __html: t("experience.item3_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 BLAKE3
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 SQLite
               </span>
               <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
@@ -111,13 +135,22 @@ export default function Experience() {
               dangerouslySetInnerHTML={{ __html: t("experience.item4_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 {t("experience.tags.wireshark")}
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 {t("experience.tags.httpDigest")}
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span
+                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                lang="en"
+              >
                 {t("experience.tags.tls")}
               </span>
             </div>

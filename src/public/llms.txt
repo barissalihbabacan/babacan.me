@@ -56,11 +56,11 @@
 ## Commercial Projects @ Garage.ist
 
 ### Sortify & Sortify Web
-- **Description**: Real-Time Visual Media Sorting & Asset Management Solution.
-- **Role**: Backend & Infrastructure Lead @ Garage.ist
+- **Description**: Game-based learning app for children aged 3–13 with parent and teacher tools (SwiftUI, iOS/iPadOS, v2.1 on the App Store), plus its React + HTML5 Canvas web client.
+- **Role**: CTO & Lead Developer @ Garage.ist
 
 ### Gayrimenkul Dünyası & +TV & Spor Sayfası
-- **Description**: Enterprise real estate, video streaming, and automated sports news publishing platforms.
+- **Description**: Real estate data ingestion and CRM platform; +TV, an Android TV remote and screen-mirroring app (10K+ downloads on Google Play; Samsung via the Tizen SDK, LG via ConnectSDK, Philips via its reverse-engineered JointSpace API); and an automated sports news portal.
 - **Role**: Backend Integration & Firebase Cloud Infrastructure @ Garage.ist
 
 ## Publications & Literary Works

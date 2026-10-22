@@ -22,6 +22,7 @@ export default function Footer() {
             href="https://github.com/barissalihbabacan"
             target="_blank"
             rel="noopener noreferrer"
+            lang="en"
           >
             GitHub
           </a>
@@ -30,6 +31,7 @@ export default function Footer() {
             href="https://linkedin.com/in/barissalihbabacan"
             target="_blank"
             rel="noopener noreferrer"
+            lang="en"
           >
             LinkedIn
           </a>
@@ -41,12 +43,13 @@ export default function Footer() {
           >
             {lang === "tr" ? "Babaların Günahları" : "The Sins of the Fathers"}
           </a>
-          <a
+          {/* Iletisim bolumu yalnizca ana sayfada; diger sayfalardan oraya gider. */}
+          <Link
             className="text-on-surface-variant hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
-            href="#contact"
+            to={`/${lang}#contact`}
           >
             {t("nav.contact")}
-          </a>
+          </Link>
         </div>
         <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">
           © 2026 Barış Salih Babacan

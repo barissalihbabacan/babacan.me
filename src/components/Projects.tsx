@@ -3,6 +3,8 @@ import { useLanguage } from "../contexts/language.ts";
 import type { Lang } from "../contexts/router.ts";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData.ts";
 import Link from "./Link.tsx";
+import ProjectCover from "./ProjectCover.tsx";
+import LatinText from "./LatinText.tsx";
 
 export default function Projects() {
   const { lang, t } = useLanguage();
@@ -48,14 +50,18 @@ export default function Projects() {
             </h3>
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ProjectCard projectKey="sortify" lang={lang} />
-            <ProjectCard projectKey="plus-tv" lang={lang} />
-            <ProjectCard projectKey="gayrimenkuldunyasi" lang={lang} />
-            <ProjectCard projectKey="playsortify" lang={lang} />
-            <ProjectCard projectKey="sporsayfasi" lang={lang} />
-            <ProjectCard projectKey="worldclock" lang={lang} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ProjectCard projectKey="sortify" lang={lang} wide />
+            <ProjectCard projectKey="plus-tv" lang={lang} wide />
           </div>
+          {/* Diger Garage.ist isleri (katkinin sinirli oldugu web projeleri) yalnizca dizinde. */}
+          <Link
+            to={`/${lang}/${isTr ? "projeler" : "projects"}`}
+            className="mt-6 inline-flex items-center gap-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          >
+            <span>{isTr ? "Tüm projeler" : "All projects"}</span>
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
         {/* Hardware & Systems */}
@@ -81,10 +87,13 @@ function ProjectCard({
   projectKey,
   lang,
   isFeatured = false,
+  wide = false,
 }: {
   projectKey: ProjectKey;
   lang: Lang;
   isFeatured?: boolean;
+  /** Iki sutunlu satirda; kapak icin daha genis `sizes` secilir. */
+  wide?: boolean;
 }) {
   const data = PROJECT_DATA[projectKey];
   const segment = lang === "tr" ? "projeler" : "projects";
@@ -102,11 +111,22 @@ function ProjectCard({
       }
     >
       <div>
+        {data.cover && (
+          <ProjectCover
+            cover={data.cover}
+            sizes={
+              isFeatured || wide
+                ? "(min-width: 768px) 50vw, 100vw"
+                : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            }
+            className="mb-5 border border-primary/10 group-hover:border-primary/30 transition-colors"
+          />
+        )}
         <div className="flex items-center justify-between gap-2 mb-3">
           <span
             className={`font-label-mono text-[10px] uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
           >
-            {data.category[lang] ?? data.category.en}
+            <LatinText text={data.category[lang] ?? data.category.en} />
           </span>
           <span
             className={`font-label-mono text-[10px] uppercase tracking-widest px-2 py-0.5 ${data.statusColor}`}

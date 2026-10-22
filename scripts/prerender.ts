@@ -21,7 +21,6 @@ import {
   BASE_URL,
   buildJsonLd,
   getPageMeta,
-  OG_IMAGE,
   projectsSegment,
   routePath,
 } from "../src/seo.ts";
@@ -72,13 +71,13 @@ function headTags(route: ParsedRoute, routeUrlPath: string): string {
     `<meta property="og:url" content="${attr(meta.canonical)}" data-rh="true" />`,
     `<meta property="og:title" content="${attr(meta.title)}" data-rh="true" />`,
     `<meta property="og:description" content="${attr(meta.description)}" data-rh="true" />`,
-    `<meta property="og:image" content="${OG_IMAGE}" data-rh="true" />`,
+    `<meta property="og:image" content="${attr(meta.image)}" data-rh="true" />`,
     `<meta property="og:locale" content="${meta.ogLocale}" data-rh="true" />`,
     `<meta name="twitter:card" content="summary_large_image" data-rh="true" />`,
     `<meta name="twitter:url" content="${attr(meta.canonical)}" data-rh="true" />`,
     `<meta name="twitter:title" content="${attr(meta.title)}" data-rh="true" />`,
     `<meta name="twitter:description" content="${attr(meta.description)}" data-rh="true" />`,
-    `<meta name="twitter:image" content="${OG_IMAGE}" data-rh="true" />`,
+    `<meta name="twitter:image" content="${attr(meta.image)}" data-rh="true" />`,
     ...buildJsonLd(route.lang, route.projectSlug).map(
       (schema) =>
         // "<" kacirilir ki veri icindeki bir "</script>" etiketi kapatamasin.

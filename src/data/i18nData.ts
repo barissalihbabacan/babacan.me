@@ -8,6 +8,10 @@ export const i18nData: I18nNode = {
     projects: { en: "Projects", tr: "Projeler" },
     writing: { en: "Publications", tr: "Yayınlar" },
     contact: { en: "Contact", tr: "İletişim" },
+    skipToContent: { en: "Skip to main content", tr: "Ana içeriğe geç" },
+    mainNav: { en: "Main navigation", tr: "Ana gezinme" },
+    switchLang: { en: "Switch language to Turkish", tr: "Dili İngilizceye çevir" },
+    breadcrumb: { en: "Breadcrumb", tr: "Sayfa konumu" },
   },
   seo: {
     title: {
@@ -22,7 +26,7 @@ export const i18nData: I18nNode = {
   hero: {
     roles: {
       en: "CTO @ Garage.ist · Systems Engineer",
-      tr: "Garage.ist CTO'su · Sistem Mühendisi",
+      tr: "GARAGE.IST CTO'su · Sistem Mühendisi",
     },
     title: {
       en: 'Barış Salih<br /><em class="text-on-surface-variant font-normal not-italic">Babacan</em>',
@@ -42,10 +46,10 @@ export const i18nData: I18nNode = {
     },
     stat1_val: { en: "6", tr: "6" },
     stat1_lbl: { en: "SHIPPED PRODUCTS", tr: "YAYINLANAN ÜRÜN" },
-    stat2_val: { en: "3", tr: "3" },
-    stat2_lbl: { en: "TV PROTOCOLS DECODED", tr: "ÇÖZÜLEN TV PROTOKOLÜ" },
+    stat2_val: { en: "10K+", tr: "10K+" },
+    stat2_lbl: { en: "+TV DOWNLOADS", tr: "+TV İNDİRME" },
     stat3_val: { en: "120–150", tr: "120–150" },
-    stat3_lbl: { en: "DAILY USERS · 3 YEARS", tr: "GÜNLÜK KULLANICI · 3 YIL" },
+    stat3_lbl: { en: "DAILY USERS\nFOR 3 YEARS", tr: "GÜNLÜK KULLANICI\n3 YIL BOYUNCA" },
     stat4_val: { en: "0", tr: "0" },
     stat4_lbl: { en: "UNSAFE BLOCKS", tr: "UNSAFE BLOK" },
     downloadCV: { en: "Download CV", tr: "CV İndir" },
@@ -83,8 +87,8 @@ export const i18nData: I18nNode = {
       tr: "Protokol Tersine Mühendisliği",
     },
     item4_desc: {
-      en: "Decoded the control interfaces of Samsung (Tizen), LG (webOS) and Philips televisions off the wire: HTTP Digest auth over a 401 challenge–response flow, PIN pairing as an explicit state machine, and TLS for self-signed certificates.",
-      tr: "Samsung (Tizen), LG (webOS) ve Philips televizyonların kontrol arayüzlerini ağ trafiği üzerinden çözdüm: 401 challenge–response akışıyla HTTP Digest kimlik doğrulama, durum makinesi olarak PIN eşleştirme ve kendinden imzalı sertifikalar için TLS.",
+      en: "Reverse-engineered Philips' undocumented JointSpace API from its own remote app's logs (CatLog) and network traffic (Wireshark): HTTP Digest auth over a 401 challenge–response flow, PIN pairing as an explicit state machine, and TLS for self-signed certificates.",
+      tr: "Philips'in belgelenmemiş JointSpace API'sini kendi kumanda uygulamasının loglarından (CatLog) ve ağ trafiğinden (Wireshark) çözdüm: 401 challenge–response akışıyla HTTP Digest kimlik doğrulama, durum makinesi olarak PIN eşleştirme ve kendinden imzalı sertifikalar için TLS.",
     },
     tags: {
       localFirst: { en: "Local-First", tr: "Yerel-Öncelikli" },
@@ -157,9 +161,8 @@ export const i18nData: I18nNode = {
     title: { en: "Terminal", tr: "Terminal" },
     contributionsLabel: { en: "CONTRIBUTIONS", tr: "KATKILAR" },
     publicRepos: { en: "PUBLIC REPOS", tr: "AÇIK REPOLAR" },
-    totalStars: { en: "TOTAL STARS", tr: "TOPLAM YILDIZ" },
-    totalForks: { en: "TOTAL FORKS", tr: "TOPLAM FORK" },
-    followers: { en: "FOLLOWERS", tr: "TAKİPÇİLER" },
+    organizations: { en: "GITHUB ORGANIZATIONS", tr: "GITHUB ORGANİZASYONU" },
+    yearContributions: { en: "CONTRIBUTIONS · LAST YEAR", tr: "KATKI · SON 1 YIL" },
     activity: { en: "CONTRIBUTION ACTIVITY", tr: "KATKI AKTİVİTESİ" },
     langDist: { en: "LANGUAGE DISTRIBUTION", tr: "DİL DAĞILIMI" },
     noLangData: { en: "No language data available", tr: "Dil verisi bulunamadı" },

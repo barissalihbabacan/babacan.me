@@ -20,7 +20,7 @@ function ContactIcon({ name, className }: { name: keyof typeof ICON_PATHS; class
 }
 
 export default function Contact() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   return (
     <section
       id="contact"
@@ -58,7 +58,7 @@ export default function Contact() {
             />
             <div>
               <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
-                Email
+                {lang === "tr" ? "E-posta" : "Email"}
               </div>
               <div className="font-label-mono text-sm text-on-surface group-hover:text-primary transition-colors">
                 barissalih@babacan.me
@@ -87,7 +87,10 @@ export default function Contact() {
               className="text-on-surface-variant/40 group-hover:text-secondary transition-colors shrink-0"
             />
             <div>
-              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
+              <div
+                className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
+                lang="en"
+              >
                 GitHub
               </div>
               <div className="font-label-mono text-sm text-on-surface group-hover:text-secondary transition-colors">
@@ -106,7 +109,10 @@ export default function Contact() {
               className="text-on-surface-variant/40 group-hover:text-primary transition-colors shrink-0"
             />
             <div>
-              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
+              <div
+                className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
+                lang="en"
+              >
                 LinkedIn
               </div>
               <div className="font-label-mono text-sm text-on-surface group-hover:text-primary transition-colors">

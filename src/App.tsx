@@ -16,16 +16,16 @@ import ProjectDetailPage from "./pages/ProjectDetailPage.tsx";
 import ProjectsDirectoryPage from "./pages/ProjectsDirectoryPage.tsx";
 import NotFoundPage from "./pages/NotFoundPage.tsx";
 import { initWebMCP } from "./utils/webmcp.ts";
-import { getPageMeta, OG_IMAGE } from "./seo.ts";
+import { getPageMeta } from "./seo.ts";
 
 export default function App() {
   const { lang } = useLanguage();
   const { route, currentPath } = useAppRouter();
 
+  // Kaydirma RouterProvider'da; araclar bir kez kaydedilir (ayni ad ikinci kez reddedilir).
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior });
     initWebMCP();
-  }, [currentPath]);
+  }, []);
 
   const meta = getPageMeta(route, currentPath);
 
@@ -50,7 +50,7 @@ export default function App() {
         <meta property="og:url" content={meta.canonical} />
         <meta property="og:title" content={meta.title} />
         <meta property="og:description" content={meta.description} />
-        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image" content={meta.image} />
         <meta property="og:locale" content={meta.ogLocale} />
 
         {/* Twitter Cards */}
@@ -58,7 +58,7 @@ export default function App() {
         <meta name="twitter:url" content={meta.canonical} />
         <meta name="twitter:title" content={meta.title} />
         <meta name="twitter:description" content={meta.description} />
-        <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image" content={meta.image} />
       </Helmet>
 
       <JsonLd lang={lang} selectedProjectSlug={route.projectSlug} />

@@ -51,6 +51,8 @@ export interface PageMeta {
   alternates: Record<Lang, string>;
   noindex: boolean;
   ogLocale: string;
+  /** og:image / twitter:image; kapagi olan projelerde proje kapagi. */
+  image: string;
 }
 
 const seoText = (key: "title" | "description", lang: Lang): string =>
@@ -61,9 +63,11 @@ export function getPageMeta(route: ParsedRoute, currentPath: string): PageMeta {
   const isTr = lang === "tr";
   let title = seoText("title", lang);
   let description = seoText("description", lang);
+  let image = OG_IMAGE;
 
   if (route.type === "project_detail" && route.projectSlug) {
     const proj = PROJECT_DATA[route.projectSlug];
+    image = proj.cover ? `${BASE_URL}${proj.cover.og}` : OG_IMAGE;
     const projTitle = proj.title[lang] ?? proj.title.en;
     const projDesc = proj.description[lang] ?? proj.description.en;
     title = isTr
@@ -93,6 +97,7 @@ export function getPageMeta(route: ParsedRoute, currentPath: string): PageMeta {
     alternates: { en: `${BASE_URL}${altPath("en")}`, tr: `${BASE_URL}${altPath("tr")}` },
     noindex: route.type === "not_found",
     ogLocale: isTr ? "tr_TR" : "en_US",
+    image,
   };
 }
 
@@ -168,6 +173,7 @@ export function buildJsonLd(lang: Lang, projectSlug: ProjectKey | null): object[
       name: project.title[lang] ?? project.title.en,
       description: project.description[lang] ?? project.description.en,
       programmingLanguage: project.tech.join(", "),
+      ...(project.cover && { image: `${BASE_URL}${project.cover.og}` }),
       author: {
         "@id": `${BASE_URL}/#person`,
       },
