@@ -23,6 +23,8 @@ export interface ProjectData {
   githubUrl?: string;
   liveUrl?: string;
   cover?: ProjectCover;
+  /** Gercek kullaniciya ulasan urun; ana sayfadaki "yayinlanan urun" sayisi bundan hesaplanir. */
+  shipped?: boolean;
 }
 
 /** 1200x627 kapak: `webp`/`webp2x` sayfada (srcset); `og` paylasim onizlemesi icin
@@ -154,8 +156,8 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     year: { en: "2026", tr: "2026" },
     role: { en: "Creator & Developer", tr: "Kurucu & Geliştirici" },
     description: {
-      en: "Mythos is a local-first writer's IDE for novelists building multi-book, relational fiction worlds. The engine (mythoside-core) is a standalone Rust crate that models manuscripts as plain Markdown + YAML files on disk and exposes them over JSON-RPC on stdio; the desktop client (mythoside-ts) is a Tauri 2 + React 19 + TypeScript app that runs the engine as a sidecar process.",
-      tr: "Mythos; çok kitaplı ve ilişkisel kurgu dünyaları geliştiren romancılar için yerel-öncelikli bir yazar IDE'sidir. Çekirdek motor (mythoside-core), taslakları düz Markdown + YAML dosyaları olarak diskte modelleyen ve stdio üzerinden JSON-RPC protokolüyle dışa açan bağımsız bir Rust crate'idir; masaüstü istemcisi (mythoside-ts) ise motoru sidecar süreç olarak çalıştıran Tauri 2 + React 19 + TypeScript uygulamasıdır.",
+      en: "Mythos is a local-first writer's IDE for novelists building multi-book, relational fiction worlds. The engine (mythoside-core) is a six-crate Rust workspace that models manuscripts as plain Markdown + YAML files on disk and exposes them over JSON-RPC on stdio; the desktop client (mythoside-ts) is a Tauri 2 + React 19 + TypeScript app that runs the engine as a sidecar process.",
+      tr: "Mythos; çok kitaplı ve ilişkisel kurgu dünyaları geliştiren romancılar için yerel-öncelikli bir yazar IDE'sidir. Çekirdek motor (mythoside-core), taslakları düz Markdown + YAML dosyaları olarak diskte modelleyen ve stdio üzerinden JSON-RPC protokolüyle dışa açan altı crate'lik bir Rust workspace'idir; masaüstü istemcisi (mythoside-ts) ise motoru sidecar süreç olarak çalıştıran Tauri 2 + React 19 + TypeScript uygulamasıdır.",
     },
     executiveSummary: {
       en: "Mythos treats a manuscript as a structured narrative data model inside a Series → Book → Chapter → Scene hierarchy. This structure is represented as plain Markdown and YAML files so the source of truth always remains on the author's disk, readable independently of any tool. The Rust engine never opens a network port; it talks to the desktop client strictly over stdin/stdout via JSON-RPC. A local SQLite + FTS5 index planned for fast cross-referencing is not yet built.",
@@ -170,8 +172,8 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Mythos, anlatı verisini taşınabilir Markdown ve YAML dosyaları olarak modelleyerek editör ile veriyi birbirinden ayırır. Rust motoru bu veri modelini yönetir; Tauri/React istemcisi motorla yalnızca yerel stdio tabanlı JSON-RPC hattı üzerinden iletişim kurar. Böylece uygulama katmanı değişse bile temel anlatı verisi dosya sisteminde kalır. İlişkisel sorgular ve hızlı çapraz referanslar için SQLite + FTS5 tabanlı yerel indeks bir sonraki büyük adım olarak planlanmaktadır.",
     },
     architectureText: {
-      en: "mythoside-core is a standalone Rust crate — with no Tauri or UI dependencies — handling the manuscript data model, Markdown + YAML parsing, and filesystem watching. It is packaged as a sidecar binary in the desktop app. mythoside-ts is the Tauri 2 + React 19 + TypeScript shell that spawns this engine as a sidecar process and manages client-side communication.",
-      tr: "mythoside-core, taslak veri modelini, Markdown + YAML ayrıştırmasını ve dosya izlemeyi yöneten; Tauri veya arayüz bağımlılığı bulunmayan bağımsız bir Rust crate'idir. Masaüstü uygulamasında sidecar ikili dosyası olarak paketlenir. mythoside-ts ise bu motoru sidecar süreç olarak başlatan ve istemci tarafındaki iletişimi yöneten Tauri 2 + React 19 + TypeScript kabuğudur.",
+      en: "mythoside-core is a six-crate Rust workspace (parser, narrative model, workspace, RPC and shared types) with no Tauri or UI dependencies, handling the manuscript data model, Markdown + YAML parsing, and filesystem watching. It is packaged as a sidecar binary in the desktop app. mythoside-ts is the Tauri 2 + React 19 + TypeScript shell that spawns this engine as a sidecar process and manages client-side communication.",
+      tr: "mythoside-core, taslak veri modelini, Markdown + YAML ayrıştırmasını ve dosya izlemeyi yöneten; Tauri veya arayüz bağımlılığı bulunmayan altı crate'lik bir Rust workspace'idir (ayrıştırıcı, anlatı modeli, çalışma alanı, RPC ve ortak tipler). Masaüstü uygulamasında sidecar ikili dosyası olarak paketlenir. mythoside-ts ise bu motoru sidecar süreç olarak başlatan ve istemci tarafındaki iletişimi yöneten Tauri 2 + React 19 + TypeScript kabuğudur.",
     },
     tradeoffs: {
       en: "Splitting the engine and UI into two separate processes communicating over stdio — rather than a monolithic binary — allows data handling and parsing logic to be tested independently of the UI and makes the local-first boundary structural: the engine never listens on a network port. In exchange, the IPC protocol and process lifecycle between the two processes must be managed separately.",
@@ -200,20 +202,21 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     cover: COVERS.mythos,
   },
   qpass: {
+    shipped: true,
     title: { en: "Q-PASS", tr: "Q-PASS" },
     category: { en: "Hardware · IoT", tr: "Donanım · IoT" },
     categoryColor: "text-tertiary border-tertiary/20",
-    status: { en: "Active Production", tr: "Aktif Üretim" },
+    status: { en: "Completed", tr: "Tamamlandı" },
     statusColor: "bg-tertiary/20 border border-tertiary/30 text-tertiary",
-    year: { en: "Production", tr: "Üretim" },
+    year: { en: "3 School Years", tr: "3 Eğitim Yılı" },
     role: { en: "System Architect", tr: "Sistem Mimarı" },
     description: {
-      en: "Q-PASS is a hardware-backed RFID access control and meal-tracking system deployed in active production at Haydarpaşa MTAL. Custom 3D-printed RFID reader units run C++ microcontroller firmware, bridging over RS-232/USB serial interfaces to a Python background service and a PHP/MySQL web management dashboard for access logging and meal quota tracking.",
-      tr: "Q-PASS; Haydarpaşa Mesleki ve Teknik Anadolu Lisesi'nde (Haydarpaşa MTAL) aktif üretim ortamında çalışan donanım destekli RFID geçiş kontrol ve yemek takip sistemidir. Özel tasarım 3D baskı RFID okuyucu üniteleri C++ mikrodenetleyici aygıt yazılımı ile çalışır; RS-232/USB seri bağlantısı üzerinden bir Python servisine ve geçiş/yemek kotası kayıtlarını yöneten bir PHP/MySQL web paneline bağlanır.",
+      en: "Q-PASS is a hardware-backed RFID access control and meal-tracking system that ran in production at Haydarpaşa MTAL for three school years, serving 120–150 people a day. Custom 3D-printed RFID reader units run C++ microcontroller firmware, bridging over RS-232/USB serial interfaces to a Python background service and a PHP/MySQL web management dashboard for access logging and meal quota tracking.",
+      tr: "Q-PASS; Haydarpaşa Mesleki ve Teknik Anadolu Lisesi'nde (Haydarpaşa MTAL) üç eğitim yılı boyunca her gün 120–150 kişiye hizmet veren, donanım destekli bir RFID geçiş kontrol ve yemek takip sistemidir. Özel tasarım 3D baskı RFID okuyucu üniteleri C++ mikrodenetleyici aygıt yazılımı ile çalışır; RS-232/USB seri bağlantısı üzerinden bir Python servisine ve geçiş/yemek kotası kayıtlarını yöneten bir PHP/MySQL web paneline bağlanır.",
     },
     executiveSummary: {
-      en: "Operating in an active production environment at a public educational facility, Q-PASS manages high-density physical access events and cafeteria utilization. Scanning RFID credentials triggers hardware interrupts on microcontrollers; structured serial frames are sent over dedicated serial bridges to a local Python daemon that validates authorization against the MySQL database.",
-      tr: "Aktif üretim ortamında çalışan Q-PASS, kamu eğitim kurumundaki geçiş noktalarında oluşan fiziksel veri akışını ve yemekhane kullanımını yönetir. RFID kartlarının taranması mikrodenetleyici üzerinde donanımsal kesme (interrupt) tetikler; oluşturulan yapılandırılmış seri paketler yerel Python servisi tarafından doğrulanarak MySQL veritabanına işlenir.",
+      en: "For three school years at a public school, Q-PASS handled daily entry and cafeteria access for 120–150 people. Scanning RFID credentials triggers hardware interrupts on microcontrollers; structured serial frames are sent over dedicated serial bridges to a local Python daemon that validates authorization against the MySQL database.",
+      tr: "Q-PASS, bir devlet okulunda üç eğitim yılı boyunca her gün 120–150 kişinin giriş ve yemekhane geçişlerini yönetti. RFID kartlarının taranması mikrodenetleyici üzerinde donanımsal kesme (interrupt) tetikler; oluşturulan yapılandırılmış seri paketler yerel Python servisi tarafından doğrulanarak MySQL veritabanına işlenir.",
     },
     problem: {
       en: "Manual record-keeping and standalone card readers caused entry bottlenecks during peak hours, lacked real-time digital logging, and prevented centralized credential verification.",
@@ -234,13 +237,13 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     E[Admin Dashboard UI] -->|REST| C`,
     highlights: {
       en: [
-        "Active production deployment operating in a public educational institution.",
+        "Ran in production at a public school for three school years, serving 120–150 people a day.",
         "Heterogeneous system integration across C++ microcontrollers, Python daemons, and PHP/MySQL web dashboards.",
         "Custom structured serial communication protocol operating over RS-232/USB interfaces.",
         "Real-time student entrance logging, meal quota enforcement, and administrative reporting tools.",
       ],
       tr: [
-        "Kamu eğitim kurumunda aktif üretim ortamında çalışan donanım-yazılım altyapısı.",
+        "Bir devlet okulunda üç eğitim yılı boyunca her gün 120–150 kişiye hizmet veren donanım-yazılım altyapısı.",
         "C++ mikrodenetleyiciler, Python servisleri ve PHP/MySQL web panelleri arasında heterojen sistem entegrasyonu.",
         "RS-232/USB arabirimleri üzerinden çalışan özel yapılandırılmış seri iletişim protokolü.",
         "Öğrenci geçişlerinin ve yemek kotalarının anlık dijital kaydı ve idari raporlama araçları.",
@@ -257,7 +260,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Founder & Lead Architect", tr: "Kurucu & Baş Mimar" },
+    role: {
+      en: "Backend Integration & Firebase Infrastructure",
+      tr: "Backend Entegrasyonu & Firebase Altyapısı",
+    },
     description: {
       en: "Gayrimenkul Dünyası is a real estate data ingestion, normalization, and CRM platform. Built with Next.js App Router and TypeScript, it combines Playwright Stealth automated data collection pipelines with Google News XML/RSS parsers connected to Cloud Firestore.",
       tr: "Gayrimenkul Dünyası; gayrimenkul verilerini toplamak, yapılandırmak ve CRM süreçlerine taşımak için geliştirilen bir veri toplama ve yönetim platformudur. Next.js App Router ve TypeScript ile geliştirilen altyapı, Playwright Stealth otomatik veri toplama hatlarını Google News XML/RSS ayrıştırıcıları ile birleştirerek Cloud Firestore veritabanına bağlar.",
@@ -297,6 +303,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   sortify: {
+    shipped: true,
     title: { en: "Sortify", tr: "Sortify" },
     category: { en: "Mobile · iOS & Systems", tr: "Mobil · iOS & Sistemler" },
     categoryColor: "text-secondary border-secondary/20",
@@ -304,12 +311,12 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
-      en: "CTO · Lead Architect",
-      tr: "CTO · Baş Mimar",
+      en: "CTO · Lead Developer",
+      tr: "CTO · Baş Geliştirici",
     },
     description: {
-      en: "Sortify is a native SwiftUI iOS/iPadOS educational application for children (ages 3–13+) and parents. Built with a modular Swift Package architecture, it pairs a native iOS client with Firebase backend services, server-side StoreKit purchase verification, and local network device pairing.",
-      tr: "Sortify; 3–13+ yaş arası çocukların öğrenme, oyun ve gelişim süreçlerini ebeveynleriyle birlikte yöneten, SwiftUI ile geliştirilmiş native iOS/iPadOS uygulamasıdır. Modüler Swift Package mimarisi üzerine kurulu altyapı; Firebase servisleri, sunucu taraflı StoreKit satın alma doğrulaması ve yerel ağ cihaz eşleştirme protokolü ile desteklenir.",
+      en: "Sortify is a native SwiftUI iOS/iPadOS game-based learning app for children aged 3–13, with supervision tools for parents and teachers. Built with a modular Swift Package architecture, it pairs a native iOS client with Firebase backend services, server-side StoreKit purchase verification, and local network device pairing.",
+      tr: "Sortify; 3–13 yaş arası çocuklar için oyun tabanlı bir öğrenme uygulamasıdır ve ebeveynlerle öğretmenlere takip araçları sunar. SwiftUI ile geliştirilmiş native bir iOS/iPadOS uygulamasıdır. Modüler Swift Package mimarisi üzerine kurulu altyapı; Firebase servisleri, sunucu taraflı StoreKit satın alma doğrulaması ve yerel ağ cihaz eşleştirme protokolü ile desteklenir.",
     },
     executiveSummary: {
       en: "Architected around a modular Swift Package structure, Sortify decouples domain logic into isolated packages while structuring the presentation layer with MVVM and Swift concurrency isolation. The native SwiftUI client interfaces with Firebase Auth, Cloud Firestore, serverless Cloud Functions for StoreKit purchase validation, and local mDNS device pairing.",
@@ -353,6 +360,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     cover: COVERS.sortify,
   },
   "plus-tv": {
+    shipped: true,
     title: { en: "+TV", tr: "+TV" },
     category: { en: "Mobile · Android & Protocols", tr: "Mobil · Android & Protokoller" },
     categoryColor: "text-secondary border-secondary/20",
@@ -365,7 +373,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     description: {
       en: "+TV is an Android remote, cast and screen-mirroring app for smart TVs, with 10K+ downloads on Google Play. I built it with a fellow developer at Garage.ist. Samsung and LG came with SDKs; Philips had none, so I reverse-engineered its undocumented JointSpace API and wrote that integration myself.",
-      tr: "+TV, akıllı TV'ler için kumanda, yansıtma ve ekran paylaşımı sunan, Google Play'de 10 binden fazla indirilen bir Android uygulaması. Garage.ist'te bir geliştirici arkadaşımla birlikte geliştirdik. Samsung ve LG için SDK vardı; Philips için yoktu. Bu yüzden Philips'in belgelenmemiş JointSpace API'sini tersine mühendislikle çözdüm ve entegrasyonu tek başıma yazdım.",
+      tr: "+TV, akıllı TV'ler için kumanda, yansıtma ve ekran paylaşımı sunan, Google Play'de 10 binden fazla indirilen bir Android uygulamasıdır. Garage.ist'te bir geliştirici arkadaşımla birlikte geliştirdik. Samsung ve LG için SDK vardı; Philips için yoktu. Bu yüzden Philips'in belgelenmemiş JointSpace API'sini tersine mühendislikle çözdüm ve entegrasyonu tek başıma yazdım.",
     },
     executiveSummary: {
       en: "Getting a Philips TV to respond took two to five days. Mapping every endpoint took about three weeks. What documentation existed sat on old, half-abandoned pages, so most of the API came out of Philips' own remote app: its logs, read with CatLog, and the traffic it sent to the TV's IP address, captured with Wireshark. Everything was then confirmed by trial and error against a real set.",
@@ -503,6 +511,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
   },
   worldclock: {
+    shipped: true,
     title: { en: "World Clock", tr: "World Clock" },
     category: { en: "Web · Front-End & Geo", tr: "Web · Önyüz & Geo" },
     categoryColor: "text-secondary border-secondary/20",
@@ -547,49 +556,48 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["React 18", "D3.js", "Vite", "SSG / Prerender", "TopoJSON"],
-    liveUrl:
-      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+    liveUrl: "https://worldclock.info",
   },
   itrms: {
     title: { en: "IT-RMS", tr: "IT-RMS" },
     category: { en: "Web · Full-Stack & Systems", tr: "Web · Full-Stack & Sistemler" },
     categoryColor: "text-primary border-primary/20",
-    status: { en: "Archived", tr: "Arşivlendi" },
+    status: { en: "Migration in Progress", tr: "Geçiş Sürüyor" },
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
-    year: { en: "2024–2026", tr: "2024–2026" },
+    year: { en: "2023–", tr: "2023–" },
     role: { en: "Lead Architect & Developer", tr: "Baş Mimar & Geliştirici" },
     description: {
-      en: "IT-RMS is a web-based IT asset, inventory, and laboratory management system originally developed for an educational institution's IT department. Initially built with PHP 8, MySQL, and Composer, the system was subsequently migrated to a modern Node.js, Express.js, and MongoDB (Mongoose) architecture. It features 2D lab layout mapping, stock threshold alerts, QR/barcode generation, and role-based access control.",
-      tr: "IT-RMS; bir eğitim kurumunun BT departmanı için geliştirilen web tabanlı bir BT varlık, envanter ve laboratuvar yönetim sistemidir. İlk olarak PHP 8, MySQL ve Composer bağımlılıklarıyla inşa edilen platform, daha sonra modern Node.js, Express.js ve MongoDB (Mongoose) mimarisine taşınmıştır. 2D laboratuvar kroki yerleşimi, stok eşik uyarıları, karekod/barkod üretimi ve rol tabanlı erişim kontrolü sunar.",
+      en: "IT-RMS is a web-based IT asset, inventory, and laboratory management system originally developed for an educational institution's IT department. Built with PHP 8, MySQL, and Composer starting in 2023, it is now being migrated to Node.js, Express 5, and MongoDB (Mongoose); the PHP version is preserved on a branch. It features 2D lab layout mapping, stock threshold alerts, QR/barcode generation, and role-based access control.",
+      tr: "IT-RMS; bir eğitim kurumunun BT departmanı için geliştirilen web tabanlı bir BT varlık, envanter ve laboratuvar yönetim sistemidir. 2023'te PHP 8, MySQL ve Composer ile geliştirilmeye başlanan platform şu anda Node.js, Express 5 ve MongoDB (Mongoose) mimarisine taşınıyor; PHP sürümü ayrı bir dalda korunuyor. 2D laboratuvar kroki yerleşimi, stok eşik uyarıları, karekod/barkod üretimi ve rol tabanlı erişim kontrolü sunar.",
     },
     executiveSummary: {
-      en: "Engineered for an educational IT department, IT-RMS manages multi-branch lab hardware tracking, 2D coordinate classroom layouts, QR/barcode labeling, and critical stock threshold alerts. Originally built on PHP/MySQL and migrated to Node.js/MongoDB, the system enforces role-based access control across IT Manager, System Admin, Staff, and Intern tiers.",
-      tr: "Haydarpaşa MTAL BT alanı için geliştirilen IT-RMS; kurumsal şube ve laboratuvar donanımlarının takibini, 2D kroki koordinatlarıyla cihaz konumlandırmasını, karekod/barkod etiketlemesini ve depo stok eşik uyarılarını yönetir. PHP/MySQL mirası üzerine inşa edildikten sonra Node.js/MongoDB mimarisine taşınan sistem; IT Yöneticisi, Sistem Yöneticisi, Personel ve Stajyer rolleriyle güvenli yetkilendirme sağlar.",
+      en: "Engineered for an educational IT department, IT-RMS manages multi-branch lab hardware tracking, 2D coordinate classroom layouts, QR/barcode labeling, and critical stock threshold alerts. Originally built on PHP/MySQL and now being migrated to Node.js/MongoDB, the system enforces role-based access control through a five-role user model.",
+      tr: "Haydarpaşa MTAL BT alanı için geliştirilen IT-RMS; kurumsal şube ve laboratuvar donanımlarının takibini, 2D kroki koordinatlarıyla cihaz konumlandırmasını, karekod/barkod etiketlemesini ve depo stok eşik uyarılarını yönetir. PHP/MySQL üzerine inşa edilen ve şu anda Node.js/MongoDB mimarisine taşınan sistem, beş rollü bir kullanıcı modeliyle yetkilendirme sağlar.",
     },
     problem: {
       en: "Manual IT inventory tracking lacked multi-lab data partitioning, provided no 2D spatial hardware layout, lacked automated QR/barcode tagging, and failed to alert administrators when critical maintenance supplies fell below safety thresholds.",
       tr: "BT departmanındaki manuel envanter takibi; çoklu sınıf/laboratuvar ayrıştırmasından yoksundu, fiziki cihazların 2D yerleşim planını sunmuyordu, barkod/karekod etiketlemesi barındırmıyordu ve kritik stok tükenmelerinde uyarı mekanizması sağlamıyordu.",
     },
     solution: {
-      en: "Centralized laboratory hardware, 2D spatial layouts, storage supplies, and QR code labeling into a unified administrative panel. Evolved from a PHP 8 codebase into a modern Node.js (Express.js), MongoDB (Mongoose), Passport, and QRCode architecture.",
-      tr: "Laboratuvar donanımları, 2D kroki koordinatları, depo stokları ve karekod etiketleme süreçleri tek bir yönetim panelinde toplandı. PHP 8 mimarisinden Node.js (Express.js), MongoDB (Mongoose), Passport ve QRCode entegrasyonuna sahip modern bir mimariye dönüştürüldü.",
+      en: "Centralized laboratory hardware, 2D spatial layouts, storage supplies, and QR code labeling into a unified administrative panel. The PHP 8 codebase is being moved to Node.js (Express 5), MongoDB (Mongoose), Passport, and QRCode, restructured into an MVC layout with linting, input validation, and security headers.",
+      tr: "Laboratuvar donanımları, 2D kroki koordinatları, depo stokları ve karekod etiketleme süreçleri tek bir yönetim panelinde toplandı. PHP 8 kod tabanı; Node.js (Express 5), MongoDB (Mongoose), Passport ve QRCode kullanan, lint, girdi doğrulama ve güvenlik başlıkları eklenmiş MVC yapısına taşınıyor.",
     },
     architectureText: {
-      en: "The Node.js (Express.js) and MongoDB (Mongoose) architecture incorporates 2D lab spatial models, stock threshold warnings, Passport role-based authentication, and QR code generation, retaining its original PHP 8 and MySQL legacy heritage.",
-      tr: "Node.js (Express.js) ve MongoDB (Mongoose) tabanlı mimari; 2D laboratuvar duvar/kapı koordinat modelleri, stok eşik uyarıları, Passport tabanlı rol yetkilendirmesi ve QRCode üretimi içerir. Proje geçmişi PHP 8 ve MySQL mirasını da barındırır.",
+      en: "The production version runs on PHP 8 and MySQL. The Node.js (Express 5) and MongoDB (Mongoose) version under migration carries over the 2D lab spatial models, stock threshold warnings, Passport role-based authentication, and QR code generation.",
+      tr: "Üretimdeki sürüm PHP 8 ve MySQL üzerinde çalışıyor. Taşıma sürecindeki Node.js (Express 5) ve MongoDB (Mongoose) sürümü; 2D laboratuvar duvar/kapı koordinat modellerini, stok eşik uyarılarını, Passport tabanlı rol yetkilendirmesini ve QRCode üretimini devralıyor.",
     },
     highlights: {
       en: [
         "Multi-branch hardware tracking with 2D spatial lab layout mapping.",
-        "System migration from PHP 8 / MySQL legacy code to Node.js / Express.js / MongoDB (Mongoose).",
+        "Ongoing migration from PHP 8 / MySQL to Node.js / Express 5 / MongoDB (Mongoose), with the PHP version kept on a branch.",
         "Automated QR code generation and critical inventory stock threshold alerts.",
-        "Role-based access control (RBAC) across IT Manager, System Admin, Staff, and Intern tiers.",
+        "Role-based access control (RBAC) with a five-role user model.",
       ],
       tr: [
         "Çoklu şube ve 2D laboratuvar kroki koordinatlarıyla donanım yerleşim takibi.",
-        "PHP 8 / MySQL miras mimarisinden Node.js / Express.js / MongoDB (Mongoose) mimarisine dönüşüm.",
+        "PHP 8 / MySQL sürümünden Node.js / Express 5 / MongoDB (Mongoose) mimarisine süren geçiş; PHP sürümü ayrı dalda korunuyor.",
         "Karekod (QR Code) üretimi ve kritik depo stok eşik uyarı sistemleri.",
-        "IT Yöneticisi, Sistem Yöneticisi, Personel ve Stajyer seviyelerinde rol tabanlı yetkilendirme (RBAC).",
+        "Beş rollü kullanıcı modeliyle rol tabanlı yetkilendirme (RBAC).",
       ],
     },
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "PHP", "MySQL", "QR Code", "RBAC"],
@@ -603,7 +611,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Early Development", tr: "Erken Geliştirme" },
     statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026–", tr: "2026–" },
-    role: { en: "Founding Engineer", tr: "Kurucu Mühendis" },
+    role: { en: "Founding Engineer", tr: "Kurucu Geliştirici" },
     description: {
       en: "Chorus is an open-source, anonymous discussion engine built with a Go backend and a React frontend. Instead of persistent accounts, profiles, and ranking algorithms, it assigns thread-scoped temporary identities and persists every thread and message as cryptographically verifiable Git commits.",
       tr: "Chorus; Go arka ucu ve React önyüzü ile geliştirilen açık kaynaklı, anonim bir tartışma motorudur. Kalıcı hesaplar, profiller ve sıralama algoritmaları yerine, her konuya özgü geçici kimlikler atar ve her konu/mesajı kriptografik olarak doğrulanabilir Git commit'leri olarak saklar.",
@@ -621,8 +629,8 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Chorus, kullanıcı kimliğini platform genelinde kalıcı hale getirmek yerine konu kapsamına indirger. Konu ve mesaj geçmişi Git commit modeliyle temsil edilerek tartışma geçmişi veritabanı bağımlılığından bağımsız, doğrulanabilir bir geçmişe dönüştürülür.",
     },
     architectureText: {
-      en: "The high-performance Go (1.22+) backend service utilizes native local Git repository operations and file-system JSON structures for persistence. The frontend is a React 19, TypeScript, and Vite SPA communicating with the Go engine via TanStack Query.",
-      tr: "Go (1.22+) ile yazılan yüksek performanslı arka uç servisi, veri kalıcılığı için doğrudan yerel Git deposu komutlarını ve dosya sistemini kullanır. Önyüz tarafı React 19, TypeScript ve Vite üzerine kurulu bir SPA olup, API iletişimini TanStack Query üzerinden yürütür.",
+      en: "The Go (1.22+) backend uses native local Git repository operations and file-system JSON structures for persistence. The frontend is a React 19, TypeScript, and Vite SPA communicating with the Go engine via TanStack Query.",
+      tr: "Go (1.22+) ile yazılan arka uç servisi, veri kalıcılığı için doğrudan yerel Git deposu komutlarını ve dosya sistemini kullanır. Önyüz tarafı React 19, TypeScript ve Vite üzerine kurulu bir SPA olup, API iletişimini TanStack Query üzerinden yürütür.",
     },
     highlights: {
       en: [
@@ -639,7 +647,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["Go", "React", "Git", "TypeScript", "Vite"],
-    githubUrl: "https://github.com/barissalihbabacan/chorus",
+    githubUrl: "https://github.com/joinchorus/chorus",
     liveUrl: "https://joinchorus.app",
     cover: COVERS.chorus,
   },

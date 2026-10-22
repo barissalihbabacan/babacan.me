@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "../contexts/language.ts";
+import LatinText from "./LatinText.tsx";
+import Link from "./Link.tsx";
+import { PROJECT_DATA } from "../data/projectsData.ts";
 import NetworkGraphic from "./NetworkGraphic.tsx";
 
+const SHIPPED_COUNT = Object.values(PROJECT_DATA).filter((p) => p.shipped).length;
+
 export default function Hero() {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -38,7 +43,7 @@ export default function Hero() {
             <div className="flex items-center gap-4 mb-[4vh]">
               <div className="h-px w-12 bg-primary shrink-0"></div>
               <span className="font-label-mono text-[11px] text-primary uppercase tracking-widest">
-                {t("hero.roles")}
+                <LatinText text={t("hero.roles")} />
               </span>
             </div>
 
@@ -50,9 +55,9 @@ export default function Hero() {
             ></h1>
 
             {/* Tagline */}
+            {/* 50vw siniri yalnizca iki sutunlu masaustu duzeni icin; mobilde metni daraltiyordu. */}
             <p
-              className="font-body-lg text-on-surface-variant mb-[5vh]"
-              style={{ maxWidth: "min(560px, 50vw)" }}
+              className="font-body-lg text-on-surface-variant mb-[5vh] max-w-140 lg:max-w-[min(560px,50vw)]"
               dangerouslySetInnerHTML={{ __html: t("hero.subtitle") }}
             ></p>
 
@@ -81,14 +86,18 @@ export default function Hero() {
 
         {/* Stats bar */}
         <div className="border-t border-primary/30 pt-[4vh] mt-[8vh] lg:mt-[10vh] grid grid-cols-2 md:grid-cols-4 gap-5 max-w-2xl relative z-10">
-          <div>
-            <div className="text-2xl font-bold text-on-surface font-display-lg">
-              {t("hero.stat1_val")}
+          {/* Hangi urunler oldugu sayilabilsin: dizini o filtreyle acar. */}
+          <Link
+            to={`/${lang}/${lang === "tr" ? "projeler" : "projects"}?filter=shipped`}
+            className="group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          >
+            <div className="text-2xl font-bold text-on-surface font-display-lg group-hover:text-primary transition-colors">
+              {SHIPPED_COUNT}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
+            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line underline decoration-primary/40 underline-offset-4 group-hover:text-primary transition-colors">
               {t("hero.stat1_lbl")}
             </div>
-          </div>
+          </Link>
           <div>
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat2_val")}
@@ -120,7 +129,7 @@ export default function Hero() {
       <a
         href="#experience"
         aria-label={t("hero.scroll")}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
+        className="absolute bottom-6 left-3/4 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
       >
         <span className="font-label-mono text-[10px] uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
           {t("hero.scroll")}

@@ -1,75 +1,104 @@
 # Barış Salih Babacan — Systems Engineer & CTO
 
-> Official technical portfolio and knowledge platform of Barış Salih Babacan, Systems Engineer & CTO at Garage.ist. Local-first infrastructure in Rust, network protocol reverse engineering, native iOS applications, and psychological fiction.
+> Portfolio of Barış Salih Babacan, CTO at Garage.ist, an Istanbul product studio. He builds local-first infrastructure in Rust, reverse-engineers network protocols, and ships native iOS and Android apps. He is also a novelist.
 
 ## Core Profile
-- **Role**: CTO @ Garage.ist · Systems Engineer · Author
-- **Location**: Istanbul, Turkey
+- **Role**: CTO & Lead Developer @ Garage.ist (since Oct 2024; two-developer team) · Systems Engineer
+- **Location**: Istanbul, Turkey (open to remote)
+- **Education**: Associate degree in Computer Programming, Istanbul University (2024–present); Haydarpaşa Vocational & Technical High School, Network Management & Cyber Security (2020–2024)
 - **Email**: barissalih@babacan.me
 - **Website**: https://babacan.me
 - **GitHub**: https://github.com/barissalihbabacan
 - **LinkedIn**: https://linkedin.com/in/barissalihbabacan
+- **CV**: https://babacan.me/cv/Baris_Salih_Babacan_CV_EN.pdf (Turkish: https://babacan.me/cv/Baris_Salih_Babacan_CV_TR.pdf)
 
-## Primary Technical Focus & Philosophy
-- **Local-First Storage Engines**: Content-addressable storage (BLAKE3 + SQLite) and Unix-socket daemons in Rust. P2P sync is on the Osmos roadmap, not yet implemented.
-- **Offline-First & Local-First Architectures**: Building resilient systems where user data persists locally on-device using SQLite, Mongoose, or native Git storage, synchronizing state peer-to-peer.
-- **Geographic & Spatial Math**: Building interactive 3D/2D orthographic map projections with solar terminator calculations.
+## Focus
+- **Local-first systems in Rust**: content-addressable storage (BLAKE3 + SQLite), Unix-socket daemons, JSON-RPC over stdio. Peer-to-peer sync is on the Osmos roadmap, not yet implemented.
+- **Network protocol reverse engineering**: undocumented device APIs, HTTP Digest auth, PIN pairing, self-signed TLS.
+- **Native apps**: SwiftUI/MVVM on iOS and iPadOS, Android, Tauri on desktop.
 
-## Notable Open-Source & Personal Projects
+## Open-Source & Personal Projects
 
 ### Osmos
-- **Description**: Next-Generation Local-First Database & P2P Sync Engine.
-- **Role**: Founder & Lead Architect
-- **Tech**: Rust · Tauri · SQLite · Libp2p · TypeScript
-- **URL**: https://github.com/Osmos-App/osmos
+- **Description**: Local-first version control engine. Three-crate Rust workspace (osmos-core, osmos-daemon, osmos-transport) with BLAKE3 blob storage, SQLite metadata and a Unix-socket daemon. Early Tauri 2 + React desktop client. Status: alpha; mDNS/QUIC peer sync planned.
+- **Role**: Founder & Lead Developer (2026–)
+- **Tech**: Rust · Tauri · React · TypeScript · SQLite · BLAKE3
+- **URL**: https://github.com/Osmos-App/osmos-core
+- **Page**: https://babacan.me/en/projects/osmos
 
 ### Mythos
-- **Description**: High-Performance Desktop IDE & System Workbench.
-- **Role**: Lead Architect
-- **Tech**: Rust · WebAssembly · React 19 · Vite
-- **URL**: https://github.com/Mythos-IDE/mythos
+- **Description**: Local-first IDE for novelists. The engine (mythoside-core) is a six-crate Rust workspace that models manuscripts as Markdown + YAML on disk and exposes 13 JSON-RPC methods over stdio; a Tauri 2 + React client runs it as a sidecar. 82 tests. A SQLite FTS5 index is planned.
+- **Role**: Creator & Developer (2026)
+- **Tech**: Rust · Tauri · React · TypeScript
+- **URL**: https://github.com/Mythos-IDE/mythoside-core
+- **Page**: https://babacan.me/en/projects/mythos
 
 ### Chorus
-- **Description**: Anonymous Discussion Engine Built on Native Git Storage.
-- **Role**: Founding Engineer
-- **Tech**: Go 1.22+ · React 19 · Vite · TanStack Query
-- **URL**: https://github.com/barissalihbabacan/chorus
+- **Description**: Anonymous discussion engine that stores every thread and message as a Git commit, with thread-scoped temporary identities instead of accounts. v0.1.0-alpha; 24 tests and 5 benchmarks.
+- **Role**: Founding Engineer (2026–)
+- **Tech**: Go 1.22+ · React · TypeScript · Vite · Git
+- **URL**: https://github.com/joinchorus/chorus · https://joinchorus.app
+- **Page**: https://babacan.me/en/projects/chorus
 
 ### IT-RMS (IT Resource Management System)
-- **Description**: Production Lab & Device Hardware Asset Management System.
-- **Role**: Lead Architect & Developer (2024–2026)
-- **Tech**: Node.js · Express.js · MongoDB (Mongoose) · Passport.js · QRCode
+- **Description**: IT asset, inventory and lab management system for a vocational high school's IT department: 2D lab layouts, barcode/QR labels, stock alerts and a five-role user model. Built in PHP 8 + MySQL starting in 2023; migration to Node.js, Express 5 and MongoDB is in progress, with the PHP version kept on a branch.
+- **Role**: Lead Architect & Developer (2023–)
+- **Tech**: PHP 8 · MySQL · Node.js · Express · MongoDB (Mongoose)
 - **URL**: https://github.com/barissalihbabacan/IT-Department-Resource-Management-System
-
-### World Clock
-- **Description**: Interactive Geographic Timezone & Solar Terminator Projection.
-- **Role**: Lead Developer @ Garage.ist
-- **Tech**: React 18 · D3.js · TopoJSON · Vite SSG / Prerender
-- **URL**: https://worldclock.info
+- **Page**: https://babacan.me/en/projects/itrms
 
 ### Q-PASS
-- **Description**: IoT RFID Campus Access Control & Verification Hardware System.
-- **Role**: Systems Engineer
-- **Tech**: Arduino (C++) · Python Serial Bridge · PHP 8 · MySQL
+- **Description**: RFID access control and meal tracking with custom 3D-printed readers. C++ firmware bridged over serial to a Python service and a PHP/MySQL dashboard. Ran at Haydarpaşa MTAL for three school years, serving 120–150 people a day. No longer in use.
+- **Role**: System Architect
+- **Tech**: Arduino (C++) · Python · PHP · MySQL · RFID
 - **URL**: https://github.com/barissalihbabacan/Q-PASS-RFID-Access-Control
+- **Page**: https://babacan.me/en/projects/qpass
 
-## Commercial Projects @ Garage.ist
+## Garage.ist Projects
 
-### Sortify & Sortify Web
-- **Description**: Game-based learning app for children aged 3–13 with parent and teacher tools (SwiftUI, iOS/iPadOS, v2.1 on the App Store), plus its React + HTML5 Canvas web client.
-- **Role**: CTO & Lead Developer @ Garage.ist
+### Sortify
+- **Description**: Game-based learning app for children aged 3–13, with supervision tools for parents and teachers. Native SwiftUI on iOS/iPadOS, six in-house Swift packages, Firebase, server-side StoreKit 2 verification. v2.1 on the App Store, 540+ commits.
+- **Role**: CTO & Lead Developer
+- **Page**: https://babacan.me/en/projects/sortify
 
-### Gayrimenkul Dünyası & +TV & Spor Sayfası
-- **Description**: Real estate data ingestion and CRM platform; +TV, an Android TV remote and screen-mirroring app (10K+ downloads on Google Play; Samsung via the Tizen SDK, LG via ConnectSDK, Philips via its reverse-engineered JointSpace API); and an automated sports news portal.
-- **Role**: Backend Integration & Firebase Cloud Infrastructure @ Garage.ist
+### Sortify Web
+- **Description**: Browser client of Sortify, porting the iOS game logic to React 19 + TypeScript + HTML5 Canvas.
+- **Role**: Lead Developer
+- **Page**: https://babacan.me/en/projects/playsortify
 
-## Publications & Literary Works
+### +TV
+- **Description**: Android TV remote, cast and screen-mirroring app with 10K+ downloads on Google Play, built with a fellow developer. Samsung via the Tizen SDK, LG via ConnectSDK. He wrote the Philips integration alone by reverse-engineering the undocumented JointSpace API (CatLog logs, Wireshark traffic): HTTP Digest auth over a 401 challenge–response, PIN pairing as a state machine, self-signed TLS.
+- **Role**: Co-developer · Philips integration
+- **Page**: https://babacan.me/en/projects/plus-tv
+
+### World Clock
+- **Description**: Interactive time zone map with D3 orthographic projections, solar terminator and a meeting planner, prerendered for SEO.
+- **Role**: Lead Developer
+- **Tech**: React 18 · D3.js · TopoJSON · Vite
+- **URL**: https://worldclock.info
+- **Page**: https://babacan.me/en/projects/worldclock
+
+### Gayrimenkul Dünyası
+- **Description**: Real estate data collection and CRM platform (Next.js, Playwright, Cloud Firestore).
+- **Role**: Backend Integration & Firebase Infrastructure
+- **Page**: https://babacan.me/en/projects/gayrimenkuldunyasi
+
+### Spor Sayfası
+- **Description**: Sports news portal (Next.js). His part: Firebase infrastructure, hosting, record persistence and news-ingestion fixes.
+- **Role**: Infrastructure & Backend Integration
+- **Page**: https://babacan.me/en/projects/sporsayfasi
+
+### RuleSort and Block Nest
+- **Description**: Two additional iOS games shipped to the App Store.
+
+## Publications
 
 ### Babaların Günahları (The Sins of the Fathers)
-- **Format**: Novel (Psychological Fiction / Drama)
-- **Status**: Under Publication Review (Yayın Değerlendirmesinde — Submitted for Everest First Novel Award)
-- **Summary**: A three-generation family saga stretching from the haunted streets of Scotland to the soulless towers of Los Angeles. Tracing ancestral sins, moral responsibility, and man's reckoning with his own conscience.
+- **Format**: Novel (psychological fiction / drama)
+- **Status**: Under review, submitted to the Everest First Novel Award
+- **Summary**: A three-generation family saga from the streets of Scotland to the towers of Los Angeles, about inherited guilt, moral responsibility and conscience.
 - **Official Site**: https://thesinsofthefathers.com
 
-## Optional & Further Reading
-- [Full LLM Document](https://babacan.me/llms-full.txt): Extended technical overview and details.
+## Further Reading
+- [Full LLM Document](https://babacan.me/llms-full.txt): longer technical notes on each project.
+- [Sitemap](https://babacan.me/sitemap.xml): every English and Turkish page.

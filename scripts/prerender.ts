@@ -101,7 +101,7 @@ function bodyFallback(route: ParsedRoute): string {
   const otherLang: Lang = isTr ? "en" : "tr";
   const otherPath = routePath({ ...route, lang: otherLang }) ?? `/${otherLang}`;
   const directory = `/${lang}/${projectsSegment(lang)}`;
-  const nav = `<nav aria-label="${isTr ? "Gezinme" : "Navigation"}"><a href="/${lang}">babacan.me</a> | <a href="${directory}">${isTr ? "Projeler" : "Projects"}</a> | <a href="${otherPath}" hreflang="${otherLang}">${isTr ? "English" : "Türkçe"}</a></nav>`;
+  const nav = `<nav aria-label="${isTr ? "Gezinme" : "Navigation"}"><a href="/${lang}">babacan.me</a> | <a href="${directory}">${isTr ? "Projeler" : "Projects"}</a> | <a href="${otherPath}" hreflang="${otherLang}">${isTr ? "English" : "Türkçe"}</a> | <a href="/cv/Baris_Salih_Babacan_CV_${isTr ? "TR" : "EN"}.pdf">CV (PDF)</a></nav>`;
 
   if (route.type === "project_detail" && route.projectSlug) {
     const p = PROJECT_DATA[route.projectSlug];

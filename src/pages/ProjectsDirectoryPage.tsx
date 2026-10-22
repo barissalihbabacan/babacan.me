@@ -5,17 +5,26 @@ import Link from "../components/Link.tsx";
 import ProjectCover from "../components/ProjectCover.tsx";
 import LatinText from "../components/LatinText.tsx";
 
-type FilterCategory = "all" | "p2p" | "web" | "hardware";
+const FILTERS = ["all", "shipped", "p2p", "web", "hardware"] as const;
+type FilterCategory = (typeof FILTERS)[number];
+
+/** Ana sayfadaki "yayinlanan urun" linki dizini ?filter=shipped ile acar. */
+function initialFilter(): FilterCategory {
+  if (typeof window === "undefined") return "all";
+  const value = new URLSearchParams(window.location.search).get("filter");
+  return (FILTERS as readonly string[]).includes(value ?? "") ? (value as FilterCategory) : "all";
+}
 
 export default function ProjectsDirectoryPage() {
   const { lang, t } = useLanguage();
-  const [filter, setFilter] = useState<FilterCategory>("all");
+  const [filter, setFilter] = useState<FilterCategory>(initialFilter);
   const isTr = lang === "tr";
 
   const keys = Object.keys(PROJECT_DATA) as ProjectKey[];
 
   const filteredKeys = keys.filter((key) => {
     const p = PROJECT_DATA[key];
+    if (filter === "shipped") return Boolean(p.shipped);
     if (filter === "p2p")
       return p.tech.includes("P2P") || p.tech.includes("Tauri") || p.tech.includes("Rust");
     if (filter === "web")
@@ -57,6 +66,7 @@ export default function ProjectsDirectoryPage() {
       <div className="flex flex-wrap gap-3 mb-10 border-b border-primary/20 pb-4">
         {[
           { id: "all", label: isTr ? "Tüm Projeler" : "All Projects" },
+          { id: "shipped", label: isTr ? "Yayınlananlar" : "Shipped" },
           { id: "p2p", label: isTr ? "Rust & Yerel-Öncelikli" : "Rust & Local-First" },
           { id: "web", label: isTr ? "Kurumsal & Web" : "Commercial & Web" },
           { id: "hardware", label: isTr ? "Donanım & IoT" : "Hardware / IoT" },
@@ -64,7 +74,16 @@ export default function ProjectsDirectoryPage() {
           <button
             key={tab.id}
             type="button"
-            onClick={() => setFilter(tab.id as FilterCategory)}
+            onClick={() => {
+              const next = tab.id as FilterCategory;
+              setFilter(next);
+              // Filtre adreste kalsin: paylasilabilir ve yenilemede korunur.
+              const url =
+                next === "all"
+                  ? window.location.pathname
+                  : `${window.location.pathname}?filter=${next}`;
+              window.history.replaceState(window.history.state, "", url);
+            }}
             className={`font-label-mono text-xs uppercase tracking-widest px-4 py-2 border transition-all cursor-pointer ${
               filter === tab.id
                 ? "border-primary text-primary bg-primary/10 font-bold"
@@ -139,7 +158,7 @@ export default function ProjectsDirectoryPage() {
                     to={`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`}
                     className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
                   >
-                    <span>{isTr ? "Detaylı İncele" : "Explore Technical Documentation"}</span>
+                    <span>{isTr ? "Projeyi İncele" : "View Project"}</span>
                     <span aria-hidden="true">→</span>
                   </Link>
                 </article>

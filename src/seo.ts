@@ -71,8 +71,8 @@ export function getPageMeta(route: ParsedRoute, currentPath: string): PageMeta {
     const projTitle = proj.title[lang] ?? proj.title.en;
     const projDesc = proj.description[lang] ?? proj.description.en;
     title = isTr
-      ? `${projTitle} — Mühendislik Dokümantasyonu | Barış Salih Babacan`
-      : `${projTitle} — Engineering Documentation | Barış Salih Babacan`;
+      ? `${projTitle} — Proje | Barış Salih Babacan`
+      : `${projTitle} — Project | Barış Salih Babacan`;
     description = `${projTitle}: ${projDesc.substring(0, 150)}...`;
   } else if (route.type === "projects_directory") {
     title = isTr ? "Projeler — Barış Salih Babacan" : "Projects — Barış Salih Babacan";
