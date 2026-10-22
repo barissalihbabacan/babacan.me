@@ -57,39 +57,26 @@ export default function GithubActivity() {
 
         <div className="flex flex-col gap-8">
           <div className="space-y-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
-                  {t("github.publicRepos")}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {(
+                [
+                  ["github.publicRepos", stats?.repos],
+                  ["github.organizations", stats?.orgs],
+                  ["github.yearContributions", stats?.contributions],
+                ] as const
+              ).map(([labelKey, value]) => (
+                <div
+                  key={labelKey}
+                  className="border border-primary/20 p-4 bg-surface-container/10"
+                >
+                  <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
+                    {t(labelKey)}
+                  </div>
+                  <div className="text-3xl font-bold text-on-surface">
+                    {statsLoading || value === undefined ? "—" : value.toLocaleString(lang)}
+                  </div>
                 </div>
-                <div className="text-3xl font-bold text-on-surface">
-                  {statsLoading ? "—" : stats.repos}
-                </div>
-              </div>
-              <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
-                  {t("github.totalStars")}
-                </div>
-                <div className="text-3xl font-bold text-on-surface">
-                  {statsLoading ? "—" : stats.stars}
-                </div>
-              </div>
-              <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
-                  {t("github.totalForks")}
-                </div>
-                <div className="text-3xl font-bold text-on-surface">
-                  {statsLoading ? "—" : stats.forks}
-                </div>
-              </div>
-              <div className="border border-primary/20 p-4 bg-surface-container/10">
-                <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
-                  {t("github.followers")}
-                </div>
-                <div className="text-3xl font-bold text-on-surface">
-                  {statsLoading ? "—" : stats.followers}
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="border border-primary/20 p-6 md:p-8 bg-surface-container/10 w-full overflow-hidden">
@@ -113,7 +100,9 @@ export default function GithubActivity() {
                     return (
                       <div key={langName}>
                         <div className="flex justify-between font-label-mono text-[10px] mb-1">
-                          <span className="text-on-surface uppercase">{langName}</span>
+                          <span className="text-on-surface uppercase" lang="en">
+                            {langName}
+                          </span>
                           <span className="text-primary">{pct}%</span>
                         </div>
                         <div className="h-1 bg-surface-container/50 w-full overflow-hidden">

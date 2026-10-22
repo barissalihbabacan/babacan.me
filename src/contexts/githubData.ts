@@ -8,8 +8,11 @@ export interface ContributionDay {
 }
 
 export interface GithubData {
-  user?: { followers: number };
-  repos?: { language: string | null; stargazers_count: number; forks_count: number }[];
+  /** Kisisel hesap + organizasyonlardaki fork olmayan repolar. */
+  repoCount?: number;
+  orgCount?: number;
+  /** Dil -> bayt; HTML/CSS gibi isaretleme dilleri haric. */
+  languages?: Record<string, number>;
   contributions?: { days: ContributionDay[]; total: number };
   timestamp: number;
 }
