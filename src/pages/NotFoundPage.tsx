@@ -3,13 +3,13 @@ import { useLanguage } from "../contexts/language.ts";
 import Link from "../components/Link.tsx";
 
 export default function NotFoundPage() {
-  const { lang } = useLanguage();
+  const { lang, t } = useLanguage();
   const isTr = lang === "tr";
 
   return (
     <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
       <nav
-        aria-label="Breadcrumb"
+        aria-label={t("nav.breadcrumb")}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
         <Link

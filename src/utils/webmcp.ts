@@ -7,7 +7,8 @@ import { PROJECT_DATA } from "../data/projectsData";
 export function initWebMCP() {
   if (typeof window === "undefined") return;
 
-  const modelContext = (document as any).modelContext;
+  // Chrome ve polyfill'ler navigator.modelContext kullaniyor; daha yeni taslaklar document'a tasiyor.
+  const modelContext = (navigator as any).modelContext ?? (document as any).modelContext;
   if (!modelContext || typeof modelContext.registerTool !== "function") {
     return;
   }

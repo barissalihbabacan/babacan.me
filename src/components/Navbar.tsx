@@ -11,11 +11,11 @@ export default function Navbar() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-surface font-label-mono text-xs uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-primary"
       >
-        Skip to main content
+        {t("nav.skipToContent")}
       </a>
       <nav
         className="fixed top-0 left-0 w-full z-50 h-16 border-b border-primary/30 bg-surface/92 backdrop-blur-sm"
-        aria-label="Main Navigation"
+        aria-label={t("nav.mainNav")}
       >
         <div className="max-w-container-max mx-auto px-margin-desktop h-full flex items-center justify-between">
           <Link
@@ -33,7 +33,7 @@ export default function Navbar() {
               type="button"
               className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer border border-primary/30 px-2 py-1 text-[11px]"
               onClick={toggleLanguage}
-              aria-label={`Switch language to ${lang === "tr" ? "English" : "Turkish"}`}
+              aria-label={t("nav.switchLang")}
             >
               {lang === "tr" ? "EN" : "TR"}
             </button>
