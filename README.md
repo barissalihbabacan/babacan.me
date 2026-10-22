@@ -1,151 +1,64 @@
 <p align="center">
-  <img src="./assets/readme/hero.svg" width="100%" alt="babacan.me — Systems Builder & Full-Stack Developer Portfolio">
+  <img src="./assets/readme/hero.svg" width="100%" alt="babacan.me: Barış Salih Babacan's bilingual portfolio, a React 19 single-page app prerendered into one static page per route">
 </p>
 
 <p align="center">
-  <a href="https://babacan.me"><img src="https://img.shields.io/badge/Production-babacan.me-c5a059?style=for-the-badge&logo=googlechrome&logoColor=111214" alt="Production URL"></a>
-  <a href="https://github.com/barissalihbabacan/babacan.me/actions"><img src="https://img.shields.io/github/actions/workflow/status/barissalihbabacan/babacan.me/firebase-hosting-merge.yml?branch=main&style=for-the-badge&label=CI%2FCD&color=10b981&logo=githubactions&logoColor=ffffff" alt="Build Status"></a>
-  <a href="https://viteplus.dev"><img src="https://img.shields.io/badge/Toolchain-Vite%2B%20(vp)-3a2d18?style=for-the-badge&logo=vite&logoColor=e5cba3" alt="Vite+ Toolchain"></a>
-  <a href="https://react.dev"><img src="https://img.shields.io/badge/React-19.2-1b1d20?style=for-the-badge&logo=react&logoColor=61dafb" alt="React 19"></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-6.0-1b1d20?style=for-the-badge&logo=typescript&logoColor=3178c6" alt="TypeScript"></a>
+  <a href="https://babacan.me"><img src="https://img.shields.io/badge/live-babacan.me-c5a059?style=flat-square&labelColor=111214" alt="Live site: babacan.me"></a>
+  <a href="https://github.com/barissalihbabacan/babacan.me/actions"><img src="https://img.shields.io/github/actions/workflow/status/barissalihbabacan/babacan.me/firebase-hosting-merge.yml?branch=main&style=flat-square&label=deploy&labelColor=111214" alt="Deploy status"></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-a0a5ab?style=flat-square&labelColor=111214" alt="MIT License"></a>
 </p>
-
----
-
-## 🏛️ Overview
-
-**[babacan.me](https://babacan.me)** is the personal engineering portfolio of **Barış Salih Babacan** — Systems Builder & Full-Stack Developer.
-
-Engineered with an **Editorial Minimalism** philosophy (_Kingsman Gold_ aesthetic), the project combines high-performance WebGL 3D graphics, full bilingual support (English/Turkish), automated GitHub statistics integration, and zero-config deployment.
-
----
-
-## ⚡ System Architecture
 
 <p align="center">
-  <img src="./assets/readme/architecture.svg" width="100%" alt="babacan.me Architecture Diagram">
+  <img src="./assets/readme/showcase.webp" width="100%" alt="The site's English home page at desktop width next to the Turkish Osmos project page on a 390px phone">
 </p>
 
-### Key Highlights
+**[babacan.me](https://babacan.me)** is the personal site of Barış Salih Babacan, a systems engineer. It covers experience, projects and GitHub activity, and every page exists in English and Turkish.
 
-- 🎨 **Editorial Minimalism Design System**: Custom Charcoal (`#111214`) and Kingsman Gold (`#C5A059`) palette defined with Tailwind CSS v4 design tokens (`@theme`).
-- 🌐 **Interactive 3D Topology**: Custom WebGL canvas built on Three.js (`@react-three/fiber` & `@react-three/drei`) with fallback error boundaries.
-- ⚡ **Unified Toolchain (`Vite+ / vp`)**: Powered by Vite+, integrating Vite, Rolldown bundling, Oxlint static analysis, and Oxfmt formatting.
-- 🌐 **Bilingual (EN / TR)**: Instant context-driven language switching via `LanguageContext` without page reloads.
-- 🤖 **Automated Data Fetching**: Build-time script (`scripts/fetch-github-data.js`) fetching live GitHub user stats and repositories into `public/github-data.json`.
-- 🚀 **Continuous Delivery**: GitHub Actions workflows for production merge deployments and temporary PR preview channels on Firebase Hosting.
+It's a React 19 single-page app with no router or i18n library. At build time each route is also written out as its own static HTML file, so link previews, crawlers and clients without JavaScript get the right title, language and content for that page.
 
----
+## How it works
 
-## 🛠️ Technology Stack
+<p align="center">
+  <img src="./assets/readme/architecture.svg" width="100%" alt="Build pipeline: fetch GitHub data, vp build, prerender one HTML file per route, deploy to Firebase Hosting. src/seo.ts feeds metadata to both the app and the prerender step.">
+</p>
 
-| Domain                | Technology                       | Purpose                                           |
-| :-------------------- | :------------------------------- | :------------------------------------------------ |
-| **Core Framework**    | React 19.2 + TypeScript 6.0      | Strict type-safe UI architecture                  |
-| **3D & Graphics**     | Three.js + React Three Fiber     | Real-time WebGL network topology background       |
-| **Styling System**    | Tailwind CSS v4 + JetBrains Mono | Tokenized styling, editorial typography           |
-| **Toolchain & Build** | Vite+ (`vp`)                     | Rolldown bundler, fast HMR, Oxlint                |
-| **Hosting & Edge**    | Firebase Hosting                 | Global CDN, SPA rewrites, immutable asset caching |
-| **CI/CD Pipeline**    | GitHub Actions (Node 24)         | Automated linting, build, and hosting deployment  |
+- **URLs carry the language.** Every page lives under `/en` or `/tr` (`/en/projects/osmos`, `/tr/projeler/osmos`). A small History API router in `src/contexts/` turns the path into a page and a language; switching language moves you to the matching URL.
+- **One metadata source.** `src/seo.ts` builds titles, descriptions, canonical and hreflang links, and JSON-LD. The app renders it through `react-helmet-async`; `scripts/prerender.ts` writes the same tags into each static page and generates `sitemap.xml`.
+- **Static hosting only.** Firebase serves the prerendered files as they are. There is no SPA catch-all rewrite, so an unknown URL returns a real `404`, and alternate spellings like `/tr/projects/*` are 301 redirects.
+- **GitHub data is baked in.** Before each build, `scripts/fetch-github-data.js` collects repositories, languages and the contribution calendar for the personal account and the `Osmos-App`, `Mythos-IDE` and `joinchorus` orgs into `github-data.json`. The browser never calls the GitHub API with a token.
+- **No 3D library.** The hero dodecahedron is projected by hand and drawn with Canvas 2D. It only mounts on wide screens, pauses offscreen and stays still under `prefers-reduced-motion`.
 
----
+## Run locally
 
-## 📁 Repository Structure
-
-```text
-babacan.me/
-├── .github/workflows/       # GitHub Actions (Firebase hosting merge & PR preview)
-├── assets/readme/           # Repository SVG visual assets (Hero & Architecture)
-├── public/                  # Static assets & generated github-data.json
-├── scripts/                 # Pre-build data fetch script (fetch-github-data.js)
-├── src/
-│   ├── components/          # React components (Hero, Experience, Projects, NetworkGraphic)
-│   ├── contexts/            # LanguageContext & i18n translation engine
-│   ├── data/                # Project & experience data contracts
-│   ├── styles/              # Tailwind CSS v4 design tokens (@theme)
-│   ├── types/               # TypeScript interfaces & type definitions
-│   ├── App.tsx              # Root application component & WebGL Boundary
-│   └── main.tsx             # Application entry point
-├── AGENTS.md                # AI Agent guidelines & Vite+ toolchain review checklist
-├── DESIGN.md                # Design System Specification (Kingsman Gold)
-├── tsconfig.json            # TypeScript configuration
-└── package.json             # Project dependencies & devEngines contract
-```
-
----
-
-## 🚀 Local Development
-
-This project uses **Vite+**, a unified web toolchain. Execute tasks via `vp`:
-
-### Prerequisites
-
-- **Node.js**: `24.x` or higher
-- **npm**: `>= 11.0.0`
-
-### Optional: GitHub API token
-
-The build fetches live GitHub stats via `scripts/fetch-github-data.js`. For public
-data no token is required, but a token raises the GitHub API rate limit. Copy
-`.env.example` to `.env.local` and set `GITHUB_TOKEN` (a classic token with the
-`public_repo` scope is enough).
-
-The token is read **only** by the prebuild step and is never shipped to the
-browser. Do not rename it to a `VITE_`-prefixed variable: Vite exposes `VITE_*`
-variables to client code, which would leak the token to every visitor. Never
-commit it, and rotate it immediately if it is ever exposed.
-
-### 1. Clone & Install
+Requires Node 24 and npm 11+. The toolchain is [Vite+](https://viteplus.dev) (`vp`).
 
 ```bash
 git clone https://github.com/barissalihbabacan/babacan.me.git
 cd babacan.me
 vp install
+npm run dev        # http://localhost:5173
 ```
-
-### 2. Development Server
-
-Start local dev server with HMR:
 
 ```bash
-npm run dev      # Runs: vp dev (http://localhost:5173)
+vp check           # format, lint and type check (no test suite)
+npm run build      # GitHub data → vp build → prerender into public/
+npm run preview    # serve the production build
 ```
 
-### 3. Check & Test
+**Optional GitHub token.** The GitHub data step works without a token, but unauthenticated requests are quickly rate-limited. Copy `.env.example` to `.env.local` and set `GITHUB_TOKEN` (a classic token with the `public_repo` scope is enough); the prebuild step loads `.env.local` itself. The token is read only at build time and never reaches the browser. Don't give it a `VITE_` prefix, since Vite exposes `VITE_*` variables to client code. If the fetch fails, the build keeps the existing `github-data.json` and carries on.
 
-Run formatting, linting (Oxlint), and type checks:
+## Where things live
 
-```bash
-vp check         # Format, lint, and type check
-vp check --fix   # Automatically fix formatting/lint issues
-```
+| To change                               | Edit                                                      |
+| :-------------------------------------- | :-------------------------------------------------------- |
+| UI text (EN + TR)                       | `src/data/i18nData.ts`                                    |
+| Projects and project pages              | `src/data/projectsData.ts`                                |
+| Page titles, descriptions, JSON-LD      | `src/seo.ts`                                              |
+| CVs, diagrams, `robots.txt`, `llms.txt` | `src/public/`                                             |
+| Colors and type tokens                  | `src/styles/main.css`, spec in [`DESIGN.md`](./DESIGN.md) |
 
-### 4. Build & Preview
+The build writes to `public/` at the repo root, which is what Firebase serves; don't edit it by hand. Pushes to `main` deploy to the live site, and pull requests get a preview channel.
 
-```bash
-npm run build    # Pre-builds GitHub data & bundles via vp build
-npm run preview  # Previews production bundle locally
-```
+## License
 
----
-
-## 🎨 Design System ("Kingsman Gold")
-
-| Token                 | Hex       | Role                                        |
-| :-------------------- | :-------- | :------------------------------------------ |
-| **Background**        | `#111214` | Bespoke Charcoal atmospheric base           |
-| **Surface**           | `#181A1C` | Raised content canvas                       |
-| **Primary Accent**    | `#C5A059` | Kingsman Gold / Brass active states & links |
-| **Primary Container** | `#3A2D18` | Deep Brass button containers                |
-| **Text Primary**      | `#F1F3F5` | Crisp high-contrast text                    |
-| **Text Secondary**    | `#A0A5AB` | Muted metadata text                         |
-
-> For complete color system and typography specs, see [`DESIGN.md`](./DESIGN.md).
-
----
-
-## 📄 License
-
-Distributed under the **MIT License**. See [`LICENSE`](./LICENSE) for details.
-
-Developed with precision by **[Barış Salih Babacan](https://github.com/barissalihbabacan)**.
+[MIT](./LICENSE) © Barış Salih Babacan

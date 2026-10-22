@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Personal portfolio site (babacan.me) — a React 19 + TypeScript SPA, bilingual EN/TR, hosted on Firebase Hosting. See `AGENTS.md` for the Vite+ toolchain checklist and `DESIGN.md` for the "Kingsman Gold" design system spec.
+Personal portfolio site (babacan.me) — a React 19 + TypeScript SPA, bilingual EN/TR, hosted on Firebase Hosting. See `AGENTS.md` for the Vite+ toolchain checklist and `DESIGN.md` for the "Kingsman Gold" design system spec. `README.md` is the public overview; its images live in `assets/readme/` (`hero.svg` and `architecture.svg` are hand-written SVG, `showcase.webp` is a composed screenshot of the built site), so update them when the pipeline or look changes.
 
 ## Commands
 
@@ -43,7 +43,7 @@ npm run preview     # preview the production bundle
 - `/{en|tr}/{projects|projeler}/<slug>` → `ProjectDetailPage` if `slug` is a key of `PROJECT_DATA`, otherwise falls back to the directory
 - anything else → `NotFoundPage`
 
-For internal navigation use `components/Link.tsx` (`<Link to="/en/projects">`): it renders a real `<a href>` (crawlable, opens in new tab) and uses the client router on plain left-click. Use `navigate()` directly only for non-link actions.
+For internal navigation use `components/Link.tsx` (`<Link to="/en/projects">`): it renders a real `<a href>` (crawlable, opens in new tab) and uses the client router on plain left-click. Use `navigate()` directly only for non-link actions. Links may carry a hash (`/en#contact`); `RouterProvider` owns all scrolling: hash target or top on navigation, the saved `history.state.scrollY` on back/forward and reload (`scrollRestoration` is `manual`). Don't add `window.scrollTo` calls in pages.
 
 Hosting has **no SPA catch-all rewrite**. Every valid URL is a static file produced by the prerender step, `trailingSlash: false` serves `en/projects/osmos/index.html` at `/en/projects/osmos`, and anything else gets `404.html` with a real 404 status (`404.html` is a standalone static page, not the React app). Alternate segment spellings (`/en/projeler/*`, `/tr/projects/*`) are 301 redirects in `firebase.json`. A new route type therefore needs: `parseLocation` + `routePath`/`allRoutes` in `src/seo.ts` (so it gets prerendered) + a no-cache header entry if it's outside `/en/**`, `/tr/**`. Test hosting behavior locally with `firebase emulators:start --only hosting` after a build.
 
@@ -56,7 +56,7 @@ Contexts are split into a hook/types module (`language.ts`, `router.ts`) and a p
 Two content sources:
 
 - **UI strings**: `src/data/i18nData.ts`, a nested tree whose leaves are `{ en, tr }`. Read via `t("section.key")`; a missing key returns the path string itself. Some values contain HTML and are rendered with `dangerouslySetInnerHTML`.
-- **Projects**: `src/data/projectsData.ts`, `PROJECT_DATA: Record<ProjectKey, ProjectData>` with `LocalizedText` fields. Adding a project requires extending the `ProjectKey` union (it is then prerendered automatically). Project data is also consumed by `src/seo.ts` (meta + JSON-LD), `scripts/prerender.ts` and `utils/webmcp.ts` (WebMCP `search-projects` tool for browser AI agents).
+- **Projects**: `src/data/projectsData.ts`, `PROJECT_DATA: Record<ProjectKey, ProjectData>` with `LocalizedText` fields. Adding a project requires extending the `ProjectKey` union (it is then prerendered automatically). The optional `cover` field (`COVERS` in `projectsData.ts`): `webp`/`webp2x` are 1200/2400px images hosted in Firebase Storage (not in the repo) that `ProjectCover.tsx` renders as a srcset; `og` is a ~45 KB 1200x627 JPEG in `src/public/og/` that `seo.ts` uses as that project's `og:image`/JSON-LD image (falling back to the site OG image). Keep share images small: the original 2400px PNGs (600–950 KB) are too large for some link-preview clients. Project data is also consumed by `src/seo.ts` (meta + JSON-LD), `scripts/prerender.ts` and `utils/webmcp.ts` (WebMCP `search-projects` tool for browser AI agents).
 
 Every user-visible string needs both `en` and `tr`.
 
@@ -66,7 +66,7 @@ Every user-visible string needs both `en` and `tr`.
 
 ### GitHub data
 
-The prebuild script writes a trimmed `/github-data.json` (only the fields typed in `src/contexts/githubData.ts`; contribution days sorted by date because the calendar chunks them into 7-day weeks). `loadGithubData()` fetches it once for both `useGithubStats` and `CustomGithubCalendar`; stats fall back to the public GitHub API, the calendar shows an "unavailable" message. Client code must **never** read a GitHub token from `import.meta.env` (`VITE_*` vars are bundled into the client); the token is only used by the prebuild script.
+The prebuild script writes a trimmed `/github-data.json` (only the fields typed in `src/contexts/githubData.ts`; contribution days sorted by date because the calendar chunks them into 7-day weeks). It covers the personal account plus the `Osmos-App`, `Mythos-IDE` and `joinchorus` orgs, skips forks, and sums language bytes per repo (HTML/CSS and similar are excluded). `loadGithubData()` fetches it once for both `useGithubStats` and `CustomGithubCalendar`; there is no live-API fallback (the user repos endpoint includes forks and misses org repos), so stats show dashes and the calendar an "unavailable" message if the file is missing. Client code must **never** read a GitHub token from `import.meta.env` (`VITE_*` vars are bundled into the client); the token is only used by the prebuild script. Locally, put `GITHUB_TOKEN` in `.env.local` (template: `.env.example`); the `prebuild` script loads it with `node --env-file-if-exists`. `VITE_GITHUB_TOKEN` is still read for backward compatibility but shouldn't be used.
 
 ### Other
 
