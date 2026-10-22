@@ -49,8 +49,8 @@ _Product studio building consumer iOS and Android applications._
 - **Q-PASS — RFID access control** | _C++, Arduino, Python, PHP, MySQL_
   Delivered an end-to-end hardware and software system for a public institution: C++ microcontroller firmware bridged to a web backend over serial, in custom 3D-printed reader enclosures. **Served 120–150 people daily for three academic years**, handling cafeteria access and meal tracking.
 
-- **IT-RMS — IT resource management** | _Node.js, Express, MongoDB, EJS_
-  Built the IT asset system for my vocational high school's IT department across 249 commits, starting in 2023 during the third year of high school: multi-branch inventory with barcode generation, PDF reporting, audit logging and a five-role user model. Returned to it in 2026 to **migrate the production codebase from PHP/MySQL to Express 5 + MongoDB**, preserving the legacy version on a branch and restructuring into an MVC layout with linting, input validation and security headers.
+- **IT-RMS — IT resource management** | _PHP, MySQL, Node.js, Express, MongoDB_
+  Built the IT asset system for my vocational high school's IT department across 249 commits, starting in 2023 during the third year of high school: multi-branch inventory with barcode generation, PDF reporting, audit logging and a five-role user model. Returned to it in 2026 and am **migrating the production codebase from PHP/MySQL to Express 5 + MongoDB**, keeping the legacy version on a branch and restructuring it into an MVC layout with linting, input validation and security headers.
 
 ### EDUCATION
 

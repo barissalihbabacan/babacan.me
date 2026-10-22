@@ -1,6 +1,6 @@
 # Barış Salih Babacan
 
-**Sistem Mühendisi — Rust · Go · Swift**
+**Sistem Yazılımı Geliştiricisi — Rust · Go · Swift**
 
 İstanbul, Türkiye (uzaktan çalışmaya açık, AB/ABD saat dilimi örtüşmesi) | +90 543 897 5759 | barissalih@babacan.me
 linkedin.com/in/barissalihbabacan | github.com/barissalihbabacan | babacan.me
@@ -9,7 +9,7 @@ linkedin.com/in/barissalihbabacan | github.com/barissalihbabacan | babacan.me
 
 ### ÖZET
 
-Rust ile yerel-öncelikli altyapı geliştiren; gömülü sistemler, ağ protokolü tersine mühendisliği ve native uygulamalar alanlarında üretim deneyimi olan sistem mühendisi. App Store'da 2.1 sürümüne ulaşan oyun temelli öğrenme platformu Sortify'ı yayına aldı; 10 binden fazla indirilen Android kumanda uygulaması +TV için Philips TV'lerin belgelenmemiş JointSpace API'sini tersine mühendislikle çözdü; üç eğitim-öğretim yılı boyunca günlük 120–150 kullanıcıya hizmet veren donanımlı bir geçiş kontrol sistemi teslim etti.
+Rust ile yerel-öncelikli altyapı geliştiren; gömülü sistemler, ağ protokolü tersine mühendisliği ve native uygulamalar alanlarında üretim deneyimi olan sistem yazılımı geliştiricisi. App Store'da 2.1 sürümüne ulaşan oyun temelli öğrenme platformu Sortify'ı yayına aldı; 10 binden fazla indirilen Android kumanda uygulaması +TV için Philips TV'lerin belgelenmemiş JointSpace API'sini tersine mühendislikle çözdü; üç eğitim-öğretim yılı boyunca günlük 120–150 kullanıcıya hizmet veren donanımlı bir geçiş kontrol sistemi teslim etti.
 
 ### YETKİNLİKLER
 
@@ -49,8 +49,8 @@ _Tüketiciye yönelik iOS ve Android uygulamaları geliştiren ürün stüdyosu.
 - **Q-PASS — RFID geçiş kontrol sistemi** | _C++, Arduino, Python, PHP, MySQL_
   Bir kamu kurumu için uçtan uca donanım-yazılım sistemi teslim ettim: özel tasarım 3D baskı okuyucu üniteleri içinde, seri iletişim üzerinden web arka ucuna bağlanan C++ mikrodenetleyici yazılımı. **Üç eğitim-öğretim yılı boyunca günlük 120–150 kişiye hizmet vererek** kantin geçişi ve yemek takibini sağladı.
 
-- **IT-RMS — BT kaynak yönetim sistemi** | _Node.js, Express, MongoDB, EJS_
-  Mezun olduğum meslek lisesinin BT bölümü için varlık yönetim sistemini, lise 3. sınıfta 2023'te başlayarak 249 commit boyunca geliştirdim: çok şubeli envanter ve barkod üretimi, PDF raporlama, denetim kaydı ve beş rollü kullanıcı modeli. 2026'da projeye dönerek **üretimdeki kod tabanını PHP/MySQL'den Express 5 + MongoDB'ye taşıdım**; eski sürümü ayrı bir dalda koruyarak yapıyı lint, girdi doğrulama ve güvenlik başlıkları içeren MVC mimarisine dönüştürdüm.
+- **IT-RMS — BT kaynak yönetim sistemi** | _PHP, MySQL, Node.js, Express, MongoDB_
+  Mezun olduğum meslek lisesinin BT bölümü için varlık yönetim sistemini, lise 3. sınıfta 2023'te başlayarak 249 commit boyunca geliştirdim: çok şubeli envanter ve barkod üretimi, PDF raporlama, denetim kaydı ve beş rollü kullanıcı modeli. 2026'da projeye döndüm ve **üretimdeki kod tabanını PHP/MySQL'den Express 5 + MongoDB'ye taşıyorum**; eski sürümü ayrı bir dalda koruyarak yapıyı lint, girdi doğrulama ve güvenlik başlıkları içeren MVC mimarisine dönüştürüyorum.
 
 ### EĞİTİM
 

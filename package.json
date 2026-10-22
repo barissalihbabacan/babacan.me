@@ -21,6 +21,7 @@
     "build": "vp build",
     "postbuild": "node scripts/prerender.ts",
     "preview": "vp preview",
+    "cv": "node scripts/build-cv.mjs",
     "deploy": "firebase deploy",
     "prepare": "vp config",
     "lint": "oxlint"
