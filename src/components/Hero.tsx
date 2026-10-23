@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLanguage } from "../contexts/language.ts";
 import LatinText from "./LatinText.tsx";
 import Link from "./Link.tsx";
+import Icon from "./Icon.tsx";
 import { PROJECT_DATA } from "../data/projectsData.ts";
 import NetworkGraphic from "./NetworkGraphic.tsx";
 
@@ -68,6 +69,7 @@ export default function Hero() {
                 className="bg-primary text-surface px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
               >
                 <span dangerouslySetInnerHTML={{ __html: t("hero.viewWork") }} />
+                <Icon name="arrow_forward" className="w-4 h-4" />
               </a>
               <a
                 href="#contact"

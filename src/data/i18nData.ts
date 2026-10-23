@@ -38,8 +38,8 @@ export const i18nData: I18nNode = {
       tr: "Rust ile yerel-öncelikli altyapı yazan bir sistem yazılımı geliştiricisi. Üretim deneyimim gömülü sistemler, ağ protokolü tersine mühendisliği ve native iOS uygulamalarını kapsıyor.",
     },
     viewWork: {
-      en: "Explore Work →",
-      tr: "Çalışmaları İncele →",
+      en: "Explore Work",
+      tr: "Çalışmaları İncele",
     },
     getInTouch: {
       en: "Contact",

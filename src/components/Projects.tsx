@@ -3,6 +3,7 @@ import { useLanguage } from "../contexts/language.ts";
 import type { Lang } from "../contexts/router.ts";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData.ts";
 import Link from "./Link.tsx";
+import Icon from "./Icon.tsx";
 import ProjectCover from "./ProjectCover.tsx";
 import LatinText from "./LatinText.tsx";
 
@@ -60,7 +61,7 @@ export default function Projects() {
             className="mt-4 inline-flex items-center gap-2 py-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
           >
             <span>{isTr ? "Tüm projeler" : "All projects"}</span>
-            <span aria-hidden="true">→</span>
+            <Icon name="arrow_forward" className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -159,7 +160,7 @@ function ProjectCard({
         </div>
         <span className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform">
           <span>{lang === "tr" ? "İncele" : "Explore"}</span>
-          <span aria-hidden="true">→</span>
+          <Icon name="arrow_forward" className="w-3.5 h-3.5" />
         </span>
       </div>
     </Link>

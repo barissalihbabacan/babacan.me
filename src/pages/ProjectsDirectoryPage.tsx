@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
 import Link from "../components/Link.tsx";
+import Icon from "../components/Icon.tsx";
 import ProjectCover from "../components/ProjectCover.tsx";
 import LatinText from "../components/LatinText.tsx";
 
@@ -162,7 +163,7 @@ export default function ProjectsDirectoryPage() {
                     className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 py-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
                   >
                     <span>{isTr ? "Projeyi İncele" : "View Project"}</span>
-                    <span aria-hidden="true">→</span>
+                    <Icon name="arrow_forward" className="w-3.5 h-3.5" />
                   </Link>
                 </article>
               );

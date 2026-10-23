@@ -1,5 +1,6 @@
 import React from "react";
 import { useLanguage } from "../contexts/language.ts";
+import Icon from "./Icon.tsx";
 
 // Material Icons yollari; dort ikon icin tum ikon fontunu yuklemiyoruz.
 const ICON_PATHS = {
@@ -106,12 +107,10 @@ export default function Contact() {
                   </div>
                 </div>
                 {item.href && (
-                  <span
-                    className="font-label-mono text-on-surface-variant/50 group-hover:text-primary transition-colors shrink-0"
-                    aria-hidden="true"
-                  >
-                    {item.external ? "↗" : "→"}
-                  </span>
+                  <Icon
+                    name={item.external ? "north_east" : "chevron_right"}
+                    className="w-5 h-5 text-on-surface-variant/50 group-hover:text-primary transition-colors"
+                  />
                 )}
               </>
             );
