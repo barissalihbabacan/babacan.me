@@ -287,8 +287,11 @@ function draw(
   }
 }
 
-export default function NetworkGraphic() {
+export default function NetworkGraphic({ paused = false }: { paused?: boolean }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const pausedRef = useRef(paused);
+  // Ana efektin start/stop'una disaridan erisim (durdur butonu).
+  const controlsRef = useRef<{ start: () => void; stop: () => void } | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -322,7 +325,7 @@ export default function NetworkGraphic() {
     };
 
     const start = () => {
-      if (reducedMotion || frame) return;
+      if (reducedMotion || pausedRef.current || frame) return;
       last = null;
       frame = requestAnimationFrame(tick);
     };
@@ -351,6 +354,7 @@ export default function NetworkGraphic() {
     });
     intersectionObserver.observe(canvas);
 
+    controlsRef.current = { start, stop };
     resize();
     start();
 
@@ -359,8 +363,15 @@ export default function NetworkGraphic() {
       window.removeEventListener("pointermove", onPointerMove);
       resizeObserver.disconnect();
       intersectionObserver.disconnect();
+      controlsRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    pausedRef.current = paused;
+    if (paused) controlsRef.current?.stop();
+    else controlsRef.current?.start();
+  }, [paused]);
 
   return (
     <div className="relative w-full aspect-square max-w-125 flex items-center justify-center">

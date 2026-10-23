@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { loadGithubData, type ContributionDay } from "../contexts/githubData.ts";
 
+// Bos hucreye (#181a1c) karsi kontrast: 3.04 / 4.34 / 5.76 / 7.1. WCAG 1.4.11 icin
+// her dolu seviye en az 3:1 olmali; eski 1. ve 2. seviye 1.14 ve 1.66'da kaliyordu.
 const LEVEL_COLORS = [
   "#181a1c", // level 0 - empty
-  "#2d2417", // level 1 - light
-  "#4f3c1b", // level 2 - medium
-  "#8b682b", // level 3 - high
+  "#7a6331", // level 1 - light
+  "#9a7a3c", // level 2 - medium
+  "#b38f45", // level 3 - high
   "#c5a059", // level 4 - max
 ];
 
@@ -46,6 +48,13 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
   const [days, setDays] = useState<ContributionDay[]>([]);
   const [loading, setLoading] = useState(true);
   const [totalContributions, setTotalContributions] = useState<number | null>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  // Dar ekranda takvim yatay kayar; en guncel haftalar gorunsun diye en saga kaydir.
+  useEffect(() => {
+    const scroller = rootRef.current?.parentElement;
+    if (scroller && days.length) scroller.scrollLeft = scroller.scrollWidth;
+  }, [days]);
 
   useEffect(() => {
     let cancelled = false;
@@ -96,7 +105,7 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
 
   if (loading) {
     return (
-      <div className="w-full py-12 flex items-center justify-center font-label-mono text-xs text-primary animate-pulse">
+      <div className="w-full py-12 flex items-center justify-center font-label-mono text-xs text-primary motion-safe:animate-pulse">
         {lang === "tr" ? "Katkı haritası yükleniyor..." : "Loading contribution graph..."}
       </div>
     );
@@ -112,61 +121,84 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
     );
   }
 
-  return (
-    <div className="w-full flex flex-col gap-4 font-label-mono">
-      {/* Month Labels Header */}
-      <div
-        className="gap-1 w-full text-label-xs text-on-surface-variant/70 min-w-[700px]"
-        style={{ display: "grid", gridTemplateColumns: "repeat(53, minmax(0, 1fr))" }}
-      >
-        {Array.from({ length: 53 }).map((_, weekIdx) => {
-          const label = monthLabels.find((m) => m.weekIndex === weekIdx);
-          return (
-            <div key={weekIdx} className="text-center font-mono overflow-visible whitespace-nowrap">
-              {label ? label.name : ""}
-            </div>
-          );
-        })}
-      </div>
+  const isTr = lang === "tr";
+  const activeDays = days.filter((day) => day.level > 0).length;
+  const totalText = totalContributions !== null ? totalContributions.toLocaleString(lang) : null;
+  // Izgara yalnizca renkle bilgi verir; ekran okuyucuya tek bir ozet okunur.
+  const summary = isTr
+    ? `Son bir yılın katkı haritası: ${totalText ?? "?"} katkı, ${activeDays} aktif gün.`
+    : `Contribution map for the last year: ${totalText ?? "?"} contributions on ${activeDays} active days.`;
 
-      {/* Main 53 Column Grid */}
-      <div
-        className="gap-1 md:gap-1.5 w-full min-w-[700px]"
-        style={{ display: "grid", gridTemplateColumns: "repeat(53, minmax(0, 1fr))" }}
-      >
-        {weeks.map((week, weekIdx) => (
-          <div key={weekIdx} className="flex flex-col gap-1 md:gap-1.5">
-            {week.map((day) => (
+  return (
+    <div ref={rootRef} className="w-full flex flex-col gap-4 font-label-mono">
+      <div role="img" aria-label={summary} className="flex flex-col gap-4">
+        {/* Month Labels Header */}
+        <div
+          aria-hidden="true"
+          className="gap-1 w-full text-label-xs text-on-surface-variant/70 min-w-[700px]"
+          style={{ display: "grid", gridTemplateColumns: "repeat(53, minmax(0, 1fr))" }}
+        >
+          {Array.from({ length: 53 }).map((_, weekIdx) => {
+            const label = monthLabels.find((m) => m.weekIndex === weekIdx);
+            return (
               <div
-                key={day.date}
-                title={`${day.date}: ${day.level > 0 ? `${day.level} activity` : "No activity"}`}
-                className="w-full aspect-square rounded-[2px] transition-all hover:scale-125 hover:z-10 cursor-pointer"
-                style={{
-                  backgroundColor: LEVEL_COLORS[day.level] || LEVEL_COLORS[0],
-                  border:
+                key={weekIdx}
+                className="text-center font-mono overflow-visible whitespace-nowrap"
+              >
+                {label ? label.name : ""}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Main 53 Column Grid */}
+        <div
+          aria-hidden="true"
+          className="gap-1 md:gap-1.5 w-full min-w-[700px]"
+          style={{ display: "grid", gridTemplateColumns: "repeat(53, minmax(0, 1fr))" }}
+        >
+          {weeks.map((week, weekIdx) => (
+            <div key={weekIdx} className="flex flex-col gap-1 md:gap-1.5">
+              {week.map((day) => (
+                <div
+                  key={day.date}
+                  title={`${day.date}: ${
                     day.level > 0
-                      ? "1px solid rgba(197, 160, 89, 0.2)"
-                      : "1px solid rgba(255, 255, 255, 0.05)",
-                }}
-              />
-            ))}
-          </div>
-        ))}
+                      ? isTr
+                        ? `${day.level}. seviye katkı`
+                        : `activity level ${day.level}`
+                      : isTr
+                        ? "Katkı yok"
+                        : "No activity"
+                  }`}
+                  className="w-full aspect-square rounded-[2px] transition-all hover:scale-125 hover:z-10 cursor-pointer"
+                  style={{
+                    backgroundColor: LEVEL_COLORS[day.level] || LEVEL_COLORS[0],
+                    border:
+                      day.level > 0
+                        ? "1px solid rgba(197, 160, 89, 0.2)"
+                        : "1px solid rgba(255, 255, 255, 0.05)",
+                  }}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Footer Legend */}
-      <div className="flex items-center justify-between text-label-sm text-on-surface-variant/70 pt-2 border-t border-primary/10">
+      <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-label-sm text-on-surface-variant/70 pt-2 border-t border-primary/10">
         <div>
-          {totalContributions !== null && (
+          {totalText !== null && (
             <span>
-              {totalContributions}{" "}
+              {totalText}{" "}
               {lang === "tr"
                 ? "son 1 yıldaki toplam katkı"
                 : "total contributions in the last year"}
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" aria-hidden="true">
           <span>{lang === "tr" ? "Az" : "Less"}</span>
           <div className="flex items-center gap-1">
             {LEVEL_COLORS.map((color, idx) => (

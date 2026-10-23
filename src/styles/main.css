@@ -158,7 +158,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     /* 1280px'e kadar tarayicinin varsayilani (genelde 16px); ustunde 20px'e kadar buyur.
        rem tabanli tum yazi ve bosluklar (Tailwind dahil) ekranla birlikte olceklenir.
        rem birimi kullanicinin tarayici yazi boyutu ayarina da uyar. */
@@ -174,6 +173,30 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+  }
+
+  /* Tek odak gostergesi: acik renk cerceve, ogenin disinda bosluklu.
+     Altin butonlarda altin halka gorunmuyordu (1:1 kontrast). */
+  :focus-visible {
+    outline: 2px solid var(--color-on-surface);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Hareketi azalt: gecisler ve animasyonlar aninda biter (hover kaymalari, pulse dahil). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   ::selection {
@@ -207,6 +230,13 @@
     pointer-events: none;
     z-index: 0;
     user-select: none;
+  }
+
+  /* Mobilde -5% ust kayma numarayi onceki bolumun cizgisine tasiyordu. */
+  @media (max-width: 767px) {
+    .section-ghost-number {
+      top: 0;
+    }
   }
 
   .accent-card {
@@ -305,6 +335,7 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .animate-scroll-drop {
-    animation: scrollDrop 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    /* Sonsuz degil: birkac tur yeter, sonra durur (WCAG 2.2.2). */
+    animation: scrollDrop 1.8s cubic-bezier(0.65, 0, 0.35, 1) 4;
   }
 }

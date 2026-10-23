@@ -12,10 +12,7 @@ export default function NotFoundPage() {
         aria-label={t("nav.breadcrumb")}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <Link
-          to={`/${lang}`}
-          className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-        >
+        <Link to={`/${lang}`} className="hover:text-primary transition-colors">
           {isTr ? "Ana Sayfa" : "Home"}
         </Link>
         <span aria-hidden="true">/</span>

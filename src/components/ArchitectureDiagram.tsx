@@ -6,6 +6,8 @@ interface Props {
   label: string;
   /** Render edilemezse gosterilecek kaynak metin (mermaid tanimi) */
   source?: string;
+  /** Diyagrami metinle anlatan ogenin id'si (aria-describedby) */
+  describedBy?: string;
 }
 
 /**
@@ -18,7 +20,7 @@ interface Props {
  * Kaynak tanim projectsData.ts icindeki mermaidDiagram alanidir; diyagram
  * degisirse SVG yeniden uretilmelidir.
  */
-export default function ArchitectureDiagram({ slug, label, source }: Props) {
+export default function ArchitectureDiagram({ slug, label, source, describedBy }: Props) {
   const kap = useRef<HTMLDivElement>(null);
   const [hata, setHata] = useState(false);
 
@@ -56,6 +58,7 @@ export default function ArchitectureDiagram({ slug, label, source }: Props) {
         ref={kap}
         role="img"
         aria-label={label}
+        aria-describedby={describedBy}
         className="overflow-x-auto [&_svg]:mx-auto [&_svg]:h-auto [&_svg]:max-w-full"
       />
     </div>

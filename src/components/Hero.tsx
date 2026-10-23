@@ -11,6 +11,12 @@ const SHIPPED_COUNT = Object.values(PROJECT_DATA).filter((p) => p.shipped).lengt
 export default function Hero() {
   const { lang, t } = useLanguage();
   const [isDesktop, setIsDesktop] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
@@ -82,7 +88,18 @@ export default function Hero() {
 
           {/* Right Graphic / Photo */}
           <div className="hidden lg:flex justify-center items-center relative w-full opacity-90 pointer-events-none">
-            {isDesktop ? <NetworkGraphic /> : null}
+            {isDesktop ? <NetworkGraphic paused={paused} /> : null}
+            {/* WCAG 2.2.2: 5 saniyeden uzun suren hareket durdurulabilmeli. */}
+            {isDesktop && !reducedMotion ? (
+              <button
+                type="button"
+                onClick={() => setPaused((value) => !value)}
+                aria-pressed={paused}
+                className="pointer-events-auto absolute bottom-0 right-0 font-label-mono text-label-xs uppercase tracking-widest text-on-surface-variant hover:text-primary border border-primary/30 hover:border-primary/60 px-3 min-h-9 transition-colors"
+              >
+                {paused ? t("hero.playAnim") : t("hero.pauseAnim")}
+              </button>
+            ) : null}
           </div>
         </div>
 
@@ -91,7 +108,7 @@ export default function Hero() {
           {/* Hangi urunler oldugu sayilabilsin: dizini o filtreyle acar. */}
           <Link
             to={`/${lang}/${lang === "tr" ? "projeler" : "projects"}?filter=shipped`}
-            className="group focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+            className="group"
           >
             <div className="text-2xl font-bold text-on-surface font-display-lg group-hover:text-primary transition-colors">
               {SHIPPED_COUNT}
@@ -129,7 +146,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <a
-        href="#experience"
+        href="#projects"
         aria-label={t("hero.scroll")}
         className="absolute bottom-6 left-3/4 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
       >
@@ -142,7 +159,7 @@ export default function Hero() {
         </div>
         {/* Bouncing down chevron icon */}
         <svg
-          className="w-4 h-4 fill-current text-primary/80 group-hover:text-primary motion-safe:animate-bounce shrink-0"
+          className="w-4 h-4 fill-current text-primary/80 group-hover:text-primary motion-safe:animate-bounce [animation-iteration-count:4] shrink-0"
           viewBox="0 0 24 24"
           aria-hidden="true"
         >

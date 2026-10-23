@@ -4,7 +4,7 @@ import Link from "./Link.tsx";
 
 // Sosyal linkler hemen ustteki Iletisim bolumunde; footer yalnizca site ici gezinme sunar.
 const LINK_CLASS =
-  "inline-flex items-center min-h-9 text-on-surface-variant hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary";
+  "inline-flex items-center min-h-9 text-on-surface-variant hover:text-primary transition-colors";
 
 export default function Footer() {
   const { t, lang } = useLanguage();

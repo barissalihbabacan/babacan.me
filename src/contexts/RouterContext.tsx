@@ -21,7 +21,7 @@ function storeLang(lang: Lang) {
 }
 
 /** Gezinmeden sonra nereye kaydirilacagi: hash hedefi, kayitli konum ya da en ust. */
-type ScrollTarget = { hash: string } | { y: number } | null;
+type ScrollTarget = (({ hash: string } | { y: number }) & { focus?: boolean }) | null;
 
 /** Ilk yuklemede: adres bir bolume isaret ediyorsa oraya, yenilemede eski konuma. */
 function initialScrollTarget(): ScrollTarget {
@@ -34,18 +34,27 @@ function initialScrollTarget(): ScrollTarget {
 // main.css html'e "scroll-behavior: smooth" veriyor; gezinmede animasyon istemiyoruz.
 const INSTANT = "instant" as ScrollBehavior;
 
+/** Istemci tarafi gezinmede odak eski linkte kalmasin; ekran okuyucu yeni icerigi okusun. */
+function moveFocus(el: HTMLElement | null) {
+  if (!el) return;
+  if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+  el.focus({ preventScroll: true });
+}
+
 function scrollToTarget(target: ScrollTarget) {
   if (!target) return;
   if ("hash" in target) {
     const el = document.getElementById(decodeURIComponent(target.hash.slice(1)));
     if (el) {
       el.scrollIntoView({ behavior: INSTANT });
+      if (target.focus) moveFocus(el);
       return;
     }
     window.scrollTo({ top: 0, behavior: INSTANT });
     return;
   }
   window.scrollTo({ top: target.y, behavior: INSTANT });
+  if (target.focus) moveFocus(document.getElementById("main-content"));
 }
 
 export function RouterProvider({ children }: { children: ReactNode }) {
@@ -111,7 +120,7 @@ export function RouterProvider({ children }: { children: ReactNode }) {
     window.history.replaceState({ ...window.history.state, scrollY: window.scrollY }, "");
     window.history.pushState({}, "", url.pathname + url.search + url.hash);
     setRoute(parseLocation(url.pathname));
-    setScrollTarget(url.hash ? { hash: url.hash } : { y: 0 });
+    setScrollTarget(url.hash ? { hash: url.hash, focus: true } : { y: 0, focus: true });
   };
 
   const setLang = (newLang: Lang) => {
