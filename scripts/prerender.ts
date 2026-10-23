@@ -14,7 +14,7 @@
  */
 import fs from "node:fs";
 import path from "node:path";
-import { PROJECT_DATA } from "../src/data/projectsData.ts";
+import { PROJECT_DATA, liveLinkLabel } from "../src/data/projectsData.ts";
 import { i18nData } from "../src/data/i18nData.ts";
 import {
   allRoutes,
@@ -109,7 +109,7 @@ function bodyFallback(route: ParsedRoute): string {
     const links = [
       p.githubUrl ? `<a href="${escapeHtml(p.githubUrl)}">GitHub</a>` : "",
       p.liveUrl
-        ? `<a href="${escapeHtml(p.liveUrl)}">${isTr ? "Canlı site" : "Live site"}</a>`
+        ? `<a href="${escapeHtml(p.liveUrl)}">${escapeHtml(liveLinkLabel(p.liveUrl, lang))}</a>`
         : "",
     ].filter(Boolean);
     return `<header>${nav}<h1>${escapeHtml(p.title[lang])}</h1><p>${escapeHtml(p.category[lang])} · ${escapeHtml(p.year[lang])} · ${escapeHtml(p.role[lang])}</p></header>

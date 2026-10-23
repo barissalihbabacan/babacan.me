@@ -69,6 +69,7 @@
 ### +TV
 - **Description**: Android TV remote, cast and screen-mirroring app with 10K+ downloads on Google Play, built with a fellow developer. Samsung via the Tizen SDK, LG via ConnectSDK. He wrote the Philips integration alone by reverse-engineering the undocumented JointSpace API (CatLog logs, Wireshark traffic): HTTP Digest auth over a 401 challenge–response, PIN pairing as a state machine, self-signed TLS.
 - **Role**: Co-developer · Philips integration
+- **URL**: https://play.google.com/store/apps/details?id=com.plus.plustvv001
 - **Page**: https://babacan.me/en/projects/plus-tv
 
 ### World Clock

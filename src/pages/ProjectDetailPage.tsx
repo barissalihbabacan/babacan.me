@@ -1,5 +1,5 @@
 import React from "react";
-import { PROJECT_DATA, type ProjectKey } from "../data/projectsData";
+import { PROJECT_DATA, liveLinkLabel, type ProjectKey } from "../data/projectsData";
 import { useLanguage } from "../contexts/language.ts";
 import Link from "../components/Link.tsx";
 import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
@@ -121,7 +121,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
               rel="noopener noreferrer"
               className="border border-primary/40 text-primary px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-2"
             >
-              <span>{t("projects.visitLive")}</span>
+              <span>{liveLinkLabel(project.liveUrl, lang)}</span>
               <svg
                 className="w-3.5 h-3.5 fill-current shrink-0"
                 viewBox="0 0 24 24"

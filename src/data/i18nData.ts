@@ -106,7 +106,6 @@ export const i18nData: I18nNode = {
     personalTitle: { en: "PERSONAL & OPEN SOURCE", tr: "KİŞİSEL & AÇIK KAYNAK" },
     highlights: { en: "Key Highlights", tr: "Öne Çıkan Özellikler" },
     techStack: { en: "Technologies & Stack", tr: "Kullanılan Teknolojiler" },
-    visitLive: { en: "Visit Live", tr: "Canlı Siteyi Gör" },
   },
   github: {
     sectionLabel: { en: "03 / Open Source", tr: "03 / Açık Kaynak" },

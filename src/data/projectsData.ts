@@ -78,6 +78,16 @@ const COVERS = {
   },
 } satisfies Record<string, ProjectCover>;
 
+/** liveUrl dugmesinin metni: magaza linkleri magaza adiyla gosterilir. */
+export function liveLinkLabel(url: string, lang: "en" | "tr"): string {
+  const host = new URL(url).hostname;
+  if (host === "play.google.com")
+    return lang === "tr" ? "Google Play'de Gör" : "View on Google Play";
+  if (host === "apps.apple.com")
+    return lang === "tr" ? "App Store'da Gör" : "View on the App Store";
+  return lang === "tr" ? "Canlı Siteyi Gör" : "Visit Live";
+}
+
 export type ProjectKey =
   | "mythos"
   | "osmos"
@@ -412,8 +422,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["Kotlin", "Java", "Android", "Wireshark", "HTTP Digest", "ConnectSDK"],
-    liveUrl:
-      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+    liveUrl: "https://play.google.com/store/apps/details?id=com.plus.plustvv001",
     cover: COVERS.plusTv,
   },
   playsortify: {
