@@ -62,6 +62,8 @@ Two content sources:
 
 Every user-visible string needs both `en` and `tr`.
 
+The site introduces the owner and his projects; it is not a hire-me page (see `DESIGN.md` → Brand & Style). Home order is Hero → Projects → Open Source → Publications → About → Contact; every project has a plain-language `summary` shown on cards and at the top of its page. Focus styling is one global `:focus-visible` outline in `main.css` (don't add `focus-visible:outline-none` or same-color rings), and motion must stop under `prefers-reduced-motion` and be pausable if it runs longer than five seconds (the hero graphic has a pause button).
+
 ### Architecture diagrams
 
 `ProjectData.mermaidDiagram` is the source definition, but diagrams are **not** rendered with mermaid at runtime. They're pre-rendered SVGs at `src/public/diagrams/<slug>.svg`, fetched and inlined by `ArchitectureDiagram.tsx` (inline because the SVGs use `<foreignObject>`). There is no script that regenerates them — if a `mermaidDiagram` changes, the SVG must be regenerated manually.
