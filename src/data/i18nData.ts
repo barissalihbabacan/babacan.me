@@ -64,12 +64,12 @@ export const i18nData: I18nNode = {
     sectionLabel: { en: "04 / About", tr: "04 / Hakkımda" },
     title: { en: "About", tr: "Hakkımda" },
     intro: {
-      en: "I'm Barış, a software developer in Istanbul. Since October 2024 I've been CTO at Garage.ist, a small product studio, where I build iOS and Android apps with one other developer. Outside the studio I write local-first tools in Rust and Go and publish them as open source, and I like taking undocumented protocols apart until they make sense. I study computer programming at Istanbul University, and I've written a novel that is now under review.",
-      tr: "Ben Barış; İstanbul'da yaşayan bir yazılım geliştiricisiyim. Ekim 2024'ten beri küçük bir ürün stüdyosu olan Garage.ist'in CTO'suyum; burada bir geliştirici arkadaşımla iOS ve Android uygulamaları geliştiriyorum. Stüdyo dışında Rust ve Go ile yerel-öncelikli araçlar yazıp açık kaynak olarak yayınlıyorum ve belgelenmemiş protokolleri anlaşılır hâle gelene kadar kurcalamayı seviyorum. İstanbul Üniversitesi'nde bilgisayar programcılığı okuyorum; şu an değerlendirmede olan bir roman yazdım.",
+      en: "I'm Barış, a software developer in Istanbul, and what I enjoy most is building things: apps, websites, tools, whatever the idea needs. Since October 2024 I've been CTO at Garage.ist, a small product studio, where I make iOS and Android apps with one other developer. On my own time I write local-first tools in Rust and Go and publish them as open source, and when something has no documentation, I take it apart until I understand it. I study computer programming at Istanbul University, and I've written a novel that is now under review.",
+      tr: "Ben Barış; İstanbul'da yaşayan bir yazılım geliştiricisiyim ve en çok bir şeyler yapmayı seviyorum: uygulama, web sitesi, araç; fikir ne gerektiriyorsa. Ekim 2024'ten beri küçük bir ürün stüdyosu olan Garage.ist'in CTO'suyum; burada bir geliştirici arkadaşımla iOS ve Android uygulamaları yapıyorum. Kendi zamanımda Rust ve Go ile yerel-öncelikli araçlar yazıp açık kaynak olarak yayınlıyorum; belgesi olmayan bir sistemle karşılaşınca da nasıl çalıştığını anlayana kadar kurcalıyorum. İstanbul Üniversitesi'nde bilgisayar programcılığı okuyorum ve şu an değerlendirmede olan bir roman yazdım.",
     },
     purpose: {
-      en: "This page is here to show what I'm building. If you want to talk about a project, contribute, or just say hello, write to me.",
-      tr: "Bu sayfa üzerinde çalıştıklarımı göstermek için var. Bir proje hakkında konuşmak, katkı vermek ya da sadece merhaba demek isterseniz yazın.",
+      en: "If you'd like to talk about a project, build something together, or contribute to one of my open-source repositories, write to me. You're welcome to write just to chat, too.",
+      tr: "Bir proje hakkında konuşmak, birlikte bir şey yapmak ya da açık kaynak projelerimden birine katkı vermek isterseniz yazın. Sadece sohbet etmek için de yazabilirsiniz.",
     },
     focusTitle: { en: "What I work on", tr: "Neyle uğraşıyorum" },
     item1_title: {
