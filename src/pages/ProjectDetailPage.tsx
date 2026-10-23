@@ -262,7 +262,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                     lang="en"
                     className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
                   >
-                    {tItem}
+                    <LatinText text={tItem} />
                   </span>
                 ))}
               </div>

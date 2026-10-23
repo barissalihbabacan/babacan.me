@@ -96,6 +96,8 @@ export type ProjectKey =
   | "sortify"
   | "plus-tv"
   | "playsortify"
+  | "rulesort"
+  | "blocknest"
   | "sporsayfasi"
   | "worldclock"
   | "qpass"
@@ -365,8 +367,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["SwiftUI", "Swift", "Firebase", "Cloud Functions", "StoreKit 2", "mDNS"],
-    liveUrl:
-      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=sortify_project",
+    liveUrl: "https://apps.apple.com/app/id6759790866",
     cover: COVERS.sortify,
   },
   "plus-tv": {
@@ -472,6 +473,75 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     tech: ["React 19", "TypeScript", "Vite", "HTML5 Canvas", "Firebase", "Tailwind CSS"],
     liveUrl:
       "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+  },
+  // Magaza bilgilerinden (App Store, Ekim 2026); ayni yayinci hesabinda Sortify ile birlikte.
+  rulesort: {
+    shipped: true,
+    title: { en: "Rule Sort", tr: "Rule Sort" },
+    category: { en: "Mobile · iOS Game", tr: "Mobil · iOS Oyunu" },
+    categoryColor: "text-secondary border-secondary/20",
+    status: { en: "Launched", tr: "Yayında" },
+    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
+    year: { en: "Garage.ist", tr: "Garage.ist" },
+    role: { en: "Developer · App Store release", tr: "Geliştirici · App Store yayını" },
+    description: {
+      en: "Rule Sort is an endless reflex game for iPhone and iPad. Objects fall one by one and a rule card decides which side each one goes: warm or cool, round or angular, small or big. The rule can flip in the middle of a run, and sometimes the controls flip with it.",
+      tr: "Rule Sort, iPhone ve iPad için sonsuz bir refleks oyunudur. Nesneler tek tek düşer ve bir kural kartı her birinin hangi tarafa gideceğini belirler: sıcak ya da soğuk, yuvarlak ya da köşeli, küçük ya da büyük. Kural oyunun ortasında değişebilir, bazen kontroller de onunla birlikte ters döner.",
+    },
+    executiveSummary: {
+      en: "Each run is a swipe-left, swipe-right sort against the current rule. A wrong swipe costs a heart; storms double the points in fast bursts, and mines must be left to fall. Easy, Medium and Hard levels speed up the falls and add trickier rules, while Legendary is a memory mode where you sort by what you remember seeing. Players unlock new rules, complete missions and protect a daily streak. Everyone gets the same Daily Challenge, ranked on a global Game Center leaderboard, and a weekly Weekend Sprint adds new mutations to the rules.",
+      tr: "Her oyun, o anki kurala göre sola ya da sağa kaydırarak yapılan bir sıralamadır. Yanlış kaydırma bir can götürür; fırtınalar kısa ve hızlı dalgalarla puanı ikiye katlar, mayınlar ise düşmeye bırakılmalıdır. Kolay, Orta ve Zor seviyeleri düşüşü hızlandırıp kuralları zorlaştırır; Efsane ise görüleni hatırlayarak sıralanan bir hafıza modudur. Oyuncular yeni kurallar açar, görevleri tamamlar ve günlük serilerini korur. Herkes aynı Günlük Meydan Okuma'yı oynar ve Game Center'daki küresel sıralamada yarışır; haftalık Weekend Sprint ise kurallara yeni varyasyonlar ekler.",
+    },
+    highlights: {
+      en: [
+        "Endless reflex sorting where the active rule, and sometimes the controls, flip mid-run.",
+        "Easy, Medium and Hard levels plus Legendary, a memory-based mode.",
+        "Shared Daily Challenge with a global Game Center leaderboard, and a rotating Weekend Sprint.",
+        "Unlockable rules, missions and daily streaks with freezes; free with a rewarded-ad revive or a Premium upgrade.",
+      ],
+      tr: [
+        "Etkin kuralın, bazen de kontrollerin oyun ortasında değiştiği sonsuz refleks sıralaması.",
+        "Kolay, Orta ve Zor seviyeleri ile hafızaya dayalı Efsane modu.",
+        "Herkese aynı Günlük Meydan Okuma, Game Center'da küresel sıralama ve dönüşümlü Weekend Sprint.",
+        "Açılabilir kurallar, görevler ve dondurmalı günlük seriler; ücretsiz, ödüllü reklamla canlanma ya da Premium yükseltme.",
+      ],
+    },
+    tech: ["iOS", "Game Center", "In-App Purchase", "Rewarded Ads"],
+    liveUrl: "https://apps.apple.com/app/id6807764876",
+  },
+  blocknest: {
+    shipped: true,
+    title: { en: "Block Nest", tr: "Block Nest" },
+    category: { en: "Mobile · iOS Game", tr: "Mobil · iOS Oyunu" },
+    categoryColor: "text-secondary border-secondary/20",
+    status: { en: "Launched", tr: "Yayında" },
+    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
+    year: { en: "Garage.ist", tr: "Garage.ist" },
+    role: { en: "Developer · App Store release", tr: "Geliştirici · App Store yayını" },
+    description: {
+      en: "Block Nest is a block-fitting puzzle for iPhone and iPad on an 8×8 grid: drag blocks onto the board, clear full rows and columns, and chain combos. Three twists change the classic formula: Karo Mode tilts the board 45° into a diamond, the Gravity Wheel reshuffles the board in a new direction, and diagonal pieces break the usual grid shapes.",
+      tr: "Block Nest, iPhone ve iPad için 8×8'lik bir tahtada oynanan blok yerleştirme bulmacasıdır: blokları tahtaya sürükleyin, dolan satır ve sütunları temizleyin, kombolar zincirleyin. Klasik formülü üç yenilik değiştirir: Karo Modu tahtayı 45° döndürüp karo biçimine getirir, Yerçekimi Çarkı tahtayı yeni bir yöne karıştırır, çapraz parçalar da alışılmış ızgara şekillerini bozar.",
+    },
+    executiveSummary: {
+      en: "Block Nest plays fully offline, including in airplane mode. A Casual Mode removes countdowns and offers and keeps combos from breaking. Scores and achievements such as Perfect Clears go to Game Center leaderboards, and players can challenge a friend to clear more lines. Rewarded ads can rotate a stuck piece or grant a Karo Mode or Gravity Wheel boost. The game is localized into 13 languages, including Turkish, Arabic, Japanese and Chinese.",
+      tr: "Block Nest uçak modu dahil tamamen çevrimdışı oynanır. Rahat Mod geri sayımları ve teklifleri kaldırır, komboların bozulmasını engeller. Skorlar ve Perfect Clear gibi başarımlar Game Center sıralamalarına gider; oyuncular bir arkadaşına daha çok satır temizleme meydan okuması gönderebilir. Ödüllü reklamlar takılan bir parçayı döndürmeye ya da Karo Modu veya Yerçekimi Çarkı desteği almaya yarar. Oyun Türkçe, Arapça, Japonca ve Çince dahil 13 dile yerelleştirilmiştir.",
+    },
+    highlights: {
+      en: [
+        "8×8 block-fitting puzzle with Karo Mode (a 45° diamond board), a Gravity Wheel and diagonal pieces.",
+        "Fully offline play, plus a Casual Mode without timers or offers.",
+        "Game Center leaderboards, achievements and friend challenges.",
+        "Localized into 13 languages.",
+      ],
+      tr: [
+        "Karo Modu (45° döndürülmüş tahta), Yerçekimi Çarkı ve çapraz parçalarla 8×8 blok yerleştirme bulmacası.",
+        "Tamamen çevrimdışı oyun ve süre ya da teklif içermeyen Rahat Mod.",
+        "Game Center sıralamaları, başarımlar ve arkadaşla meydan okuma.",
+        "13 dile yerelleştirme.",
+      ],
+    },
+    tech: ["iOS", "Game Center", "In-App Purchase", "Localization"],
+    liveUrl: "https://apps.apple.com/app/id6808679766",
   },
   sporsayfasi: {
     title: { en: "Spor Sayfası", tr: "Spor Sayfası" },

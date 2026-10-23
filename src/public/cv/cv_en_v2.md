@@ -9,7 +9,7 @@ linkedin.com/in/barissalihbabacan | github.com/barissalihbabacan | babacan.me
 
 ### SUMMARY
 
-Systems engineer building local-first infrastructure in Rust, with production experience spanning embedded systems, network protocol reverse engineering, and native applications. Shipped Sortify, an iOS/iPadOS game-based learning platform now at version 2.1 on the App Store; reverse-engineered Philips' undocumented JointSpace API for +TV, a shipped Android TV remote with 10K+ downloads; and delivered a hardware access-control system that served 120–150 users a day for three academic years.
+Systems engineer building local-first infrastructure in Rust, with production experience spanning embedded systems, network protocol reverse engineering, and native applications. Shipped Sortify, an iOS/iPadOS game-based learning platform now at version 2.3 on the App Store; reverse-engineered Philips' undocumented JointSpace API for +TV, a shipped Android TV remote with 10K+ downloads; and delivered a hardware access-control system that served 120–150 users a day for three academic years.
 
 ### SKILLS
 
@@ -24,12 +24,12 @@ Systems engineer building local-first infrastructure in Rust, with production ex
 **CTO & Lead Developer** | _Garage.ist_ | Oct 2024 – Present
 _Product studio building consumer iOS and Android applications._
 
-- Lead development of **Sortify**, a game-based learning app for ages 3–13 with parent and teacher supervision tools (SwiftUI + MVVM + Firebase), now at **v2.1 on the App Store** across 540+ commits.
+- Lead development of **Sortify**, a game-based learning app for ages 3–13 with parent and teacher supervision tools (SwiftUI + MVVM + Firebase), now at **v2.3 on the App Store** across 540+ commits.
 - Split the codebase into six in-house Swift packages for core, auth, education, games, subscription and chessboard; integrated subscriptions, push notifications and analytics.
 - Led development with a two-developer team and enforced review discipline through CI that blocks direct pushes to main and self-merged pull requests.
 - Co-built **+TV**, a shipped Android TV remote, with a fellow developer, integrating Samsung through the Tizen SDK and LG through ConnectSDK.
 - Wrote the Philips integration myself where no SDK existed, reverse-engineering the undocumented JointSpace API from Philips' own remote app (logs via CatLog, traffic via Wireshark): HTTP Digest authentication over a 401 challenge–response flow, PIN-based device pairing as an explicit state machine, and TLS handling for self-signed certificates.
-- Shipped two additional iOS games (RuleSort, Block Nest) to the App Store.
+- Shipped two additional iOS games (Rule Sort, Block Nest) to the App Store.
 
 **IT & Systems Integration Intern** | _ENLOG, Istanbul_ | Sep 2023 – Jun 2024
 
