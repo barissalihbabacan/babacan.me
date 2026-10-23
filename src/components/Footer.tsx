@@ -16,9 +16,9 @@ export default function Footer() {
           </span>
           babacan.me
         </Link>
-        <div className="flex flex-wrap gap-6 font-label-mono text-[10px] uppercase tracking-widest">
+        <div className="flex flex-wrap justify-center gap-x-6 font-label-mono text-label-xs uppercase tracking-widest">
           <a
-            className="text-on-surface-variant hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
+            className="inline-flex items-center min-h-9 text-on-surface-variant hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
             href="https://github.com/barissalihbabacan"
             target="_blank"
             rel="noopener noreferrer"
@@ -27,7 +27,7 @@ export default function Footer() {
             GitHub
           </a>
           <a
-            className="text-on-surface-variant hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
+            className="inline-flex items-center min-h-9 text-on-surface-variant hover:text-secondary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
             href="https://linkedin.com/in/barissalihbabacan"
             target="_blank"
             rel="noopener noreferrer"
@@ -36,7 +36,7 @@ export default function Footer() {
             LinkedIn
           </a>
           <a
-            className="text-on-surface-variant hover:text-tertiary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
+            className="inline-flex items-center min-h-9 text-on-surface-variant hover:text-tertiary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
             href="https://thesinsofthefathers.com/"
             target="_blank"
             rel="noopener noreferrer"
@@ -45,13 +45,13 @@ export default function Footer() {
           </a>
           {/* Iletisim bolumu yalnizca ana sayfada; diger sayfalardan oraya gider. */}
           <Link
-            className="text-on-surface-variant hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
+            className="inline-flex items-center min-h-9 text-on-surface-variant hover:text-primary transition-colors focus-visible:ring-2 focus-visible:ring-primary"
             to={`/${lang}#contact`}
           >
             {t("nav.contact")}
           </Link>
         </div>
-        <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest">
+        <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest">
           © 2026 Barış Salih Babacan
         </div>
       </div>

@@ -116,7 +116,7 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
     <div className="w-full flex flex-col gap-4 font-label-mono">
       {/* Month Labels Header */}
       <div
-        className="gap-1 w-full text-[10px] text-on-surface-variant/70 min-w-[700px]"
+        className="gap-1 w-full text-label-xs text-on-surface-variant/70 min-w-[700px]"
         style={{ display: "grid", gridTemplateColumns: "repeat(53, minmax(0, 1fr))" }}
       >
         {Array.from({ length: 53 }).map((_, weekIdx) => {
@@ -155,7 +155,7 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
       </div>
 
       {/* Footer Legend */}
-      <div className="flex items-center justify-between text-[11px] text-on-surface-variant/70 pt-2 border-t border-primary/10">
+      <div className="flex items-center justify-between text-label-sm text-on-surface-variant/70 pt-2 border-t border-primary/10">
         <div>
           {totalContributions !== null && (
             <span>

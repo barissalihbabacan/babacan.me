@@ -20,7 +20,7 @@ export default function GithubActivity() {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-[4vh]">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-4">
-              <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+              <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
                 {t("github.sectionLabel")}
               </span>
               <div className="h-px flex-1 bg-primary/20 max-w-xs"></div>
@@ -69,7 +69,7 @@ export default function GithubActivity() {
                   key={labelKey}
                   className="border border-primary/20 p-4 bg-surface-container/10"
                 >
-                  <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-2">
+                  <div className="font-label-mono text-label-xs text-primary uppercase tracking-widest mb-2">
                     {t(labelKey)}
                   </div>
                   <div className="text-3xl font-bold text-on-surface">
@@ -90,7 +90,7 @@ export default function GithubActivity() {
             </div>
 
             <div className="border border-primary/20 p-6 bg-surface-container/10">
-              <div className="font-label-mono text-[10px] text-primary uppercase tracking-widest mb-4">
+              <div className="font-label-mono text-label-xs text-primary uppercase tracking-widest mb-4">
                 {t("github.langDist")}
               </div>
               {totalLangs > 0 ? (
@@ -99,7 +99,7 @@ export default function GithubActivity() {
                     const pct = Math.round((count / totalLangs) * 100);
                     return (
                       <div key={langName}>
-                        <div className="flex justify-between font-label-mono text-[10px] mb-1">
+                        <div className="flex justify-between font-label-mono text-label-xs mb-1">
                           <span className="text-on-surface uppercase" lang="en">
                             {langName}
                           </span>
@@ -113,7 +113,7 @@ export default function GithubActivity() {
                   })}
                 </div>
               ) : (
-                <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest py-4">
+                <div className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest py-4">
                   {t("github.noLangData")}
                 </div>
               )}

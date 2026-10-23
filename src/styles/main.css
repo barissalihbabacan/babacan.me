@@ -122,9 +122,10 @@
   --radius-full: 0.75rem;
 
   --spacing-margin-mobile: 12px;
-  --spacing-margin-desktop: 30px;
-  --spacing-section-gap: 120px;
-  --spacing-gutter: 24px;
+  /* Telefonda 16px, genis ekranda 40px; aradaki genisliklerde orantili. */
+  --spacing-margin-desktop: clamp(1rem, 3vw, 2.5rem);
+  --spacing-section-gap: 7.5rem;
+  --spacing-gutter: 1.5rem;
   --spacing-container-max: 1860px;
   --spacing-unit: 8px;
 
@@ -137,12 +138,16 @@
   --font-body-md: Inter;
   --font-display-lg-mobile: Inter;
 
-  --text-display-lg: 64px;
-  --text-label-mono: 14px;
-  --text-headline-md: 32px;
-  --text-body-lg: 18px;
-  --text-body-md: 16px;
-  --text-display-lg-mobile: 40px;
+  /* rem: kok yazi boyutuyla (asagidaki html kurali) birlikte olceklenir. */
+  --text-display-lg: 4rem;
+  --text-label-mono: 0.875rem;
+  --text-headline-md: 2rem;
+  --text-body-lg: 1.125rem;
+  --text-body-md: 1rem;
+  --text-display-lg-mobile: 2.5rem;
+  /* Mono etiketler: eskiden 10px/11px sabitti; telefonda okunur, genis ekranda buyur. */
+  --text-label-xs: 0.6875rem;
+  --text-label-sm: 0.75rem;
 }
 
 @layer base {
@@ -154,6 +159,10 @@
 
   html {
     scroll-behavior: smooth;
+    /* 1280px'e kadar tarayicinin varsayilani (genelde 16px); ustunde 20px'e kadar buyur.
+       rem tabanli tum yazi ve bosluklar (Tailwind dahil) ekranla birlikte olceklenir.
+       rem birimi kullanicinin tarayici yazi boyutu ayarina da uyar. */
+    font-size: clamp(1rem, 0.6rem + 0.5vw, 1.25rem);
   }
 
   body {

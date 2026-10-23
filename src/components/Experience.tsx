@@ -12,7 +12,7 @@ export default function Experience() {
       <div className="section-ghost-number">01</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[5vh]">
-          <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {t("experience.sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-primary/20"></div>
@@ -27,32 +27,32 @@ export default function Experience() {
 
         {/* Horizontal expertise rows */}
         <div className="divide-y divide-primary/30">
-          <div className="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
-              <span className="font-label-mono text-[10px] text-on-surface-variant/70">01</span>
+              <span className="font-label-mono text-label-xs text-on-surface-variant/70">01</span>
               <h3 className="text-on-surface font-semibold text-lg">
                 {t("experience.item1_title")}
               </h3>
             </div>
             <p
-              className="font-body-md text-on-surface-variant text-sm leading-relaxed"
+              className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
               dangerouslySetInnerHTML={{ __html: t("experience.item1_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 Swift
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 SwiftUI
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 Firebase
@@ -60,32 +60,32 @@ export default function Experience() {
             </div>
           </div>
 
-          <div className="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
-              <span className="font-label-mono text-[10px] text-on-surface-variant/70">02</span>
+              <span className="font-label-mono text-label-xs text-on-surface-variant/70">02</span>
               <h3 className="text-on-surface font-semibold text-lg">
                 {t("experience.item2_title")}
               </h3>
             </div>
             <p
-              className="font-body-md text-on-surface-variant text-sm leading-relaxed"
+              className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
               dangerouslySetInnerHTML={{ __html: t("experience.item2_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 Rust
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 Go
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 C++
@@ -93,62 +93,62 @@ export default function Experience() {
             </div>
           </div>
 
-          <div className="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
-              <span className="font-label-mono text-[10px] text-on-surface-variant/70">03</span>
+              <span className="font-label-mono text-label-xs text-on-surface-variant/70">03</span>
               <h3 className="text-on-surface font-semibold text-lg">
                 {t("experience.item3_title")}
               </h3>
             </div>
             <p
-              className="font-body-md text-on-surface-variant text-sm leading-relaxed"
+              className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
               dangerouslySetInnerHTML={{ __html: t("experience.item3_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 BLAKE3
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 SQLite
               </span>
-              <span className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase">
+              <span className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase">
                 {t("experience.tags.localFirst")}
               </span>
             </div>
           </div>
 
-          <div className="group py-[3vh] grid grid-cols-1 md:grid-cols-[260px_1fr_auto] gap-6 md:gap-12 items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
-              <span className="font-label-mono text-[10px] text-on-surface-variant/70">04</span>
+              <span className="font-label-mono text-label-xs text-on-surface-variant/70">04</span>
               <h3 className="text-on-surface font-semibold text-lg">
                 {t("experience.item4_title")}
               </h3>
             </div>
             <p
-              className="font-body-md text-on-surface-variant text-sm leading-relaxed"
+              className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
               dangerouslySetInnerHTML={{ __html: t("experience.item4_desc") }}
             ></p>
             <div className="flex flex-wrap gap-2">
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 {t("experience.tags.wireshark")}
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 {t("experience.tags.httpDigest")}
               </span>
               <span
-                className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                 lang="en"
               >
                 {t("experience.tags.tls")}

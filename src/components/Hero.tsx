@@ -42,7 +42,7 @@ export default function Hero() {
             {/* Label */}
             <div className="flex items-center gap-4 mb-[4vh]">
               <div className="h-px w-12 bg-primary shrink-0"></div>
-              <span className="font-label-mono text-[11px] text-primary uppercase tracking-widest">
+              <span className="font-label-mono text-label-sm text-primary uppercase tracking-widest">
                 <LatinText text={t("hero.roles")} />
               </span>
             </div>
@@ -50,14 +50,14 @@ export default function Hero() {
             {/* Headline */}
             <h1
               className="text-on-surface font-bold leading-[0.88] mb-[4vh] tracking-tight"
-              style={{ fontSize: "clamp(48px, 8.5vw, 128px)" }}
+              style={{ fontSize: "clamp(3rem, 8.5vw, 8rem)" }}
               dangerouslySetInnerHTML={{ __html: t("hero.title") }}
             ></h1>
 
             {/* Tagline */}
             {/* 50vw siniri yalnizca iki sutunlu masaustu duzeni icin; mobilde metni daraltiyordu. */}
             <p
-              className="font-body-lg text-on-surface-variant mb-[5vh] max-w-140 lg:max-w-[min(560px,50vw)]"
+              className="font-body-lg text-on-surface-variant mb-[5vh] max-w-140 lg:max-w-[min(35rem,50vw)]"
               dangerouslySetInnerHTML={{ __html: t("hero.subtitle") }}
             ></p>
 
@@ -94,7 +94,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg group-hover:text-primary transition-colors">
               {SHIPPED_COUNT}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line underline decoration-primary/40 underline-offset-4 group-hover:text-primary transition-colors">
+            <div className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line underline decoration-primary/40 underline-offset-4 group-hover:text-primary transition-colors">
               {t("hero.stat1_lbl")}
             </div>
           </Link>
@@ -102,7 +102,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat2_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
+            <div className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat2_lbl")}
             </div>
           </div>
@@ -110,7 +110,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat3_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
+            <div className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat3_lbl")}
             </div>
           </div>
@@ -118,7 +118,7 @@ export default function Hero() {
             <div className="text-2xl font-bold text-on-surface font-display-lg">
               {t("hero.stat4_val")}
             </div>
-            <div className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
+            <div className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest mt-1 whitespace-pre-line">
               {t("hero.stat4_lbl")}
             </div>
           </div>
@@ -131,7 +131,7 @@ export default function Hero() {
         aria-label={t("hero.scroll")}
         className="absolute bottom-6 left-3/4 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
       >
-        <span className="font-label-mono text-[10px] uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
+        <span className="font-label-mono text-label-xs uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
           {t("hero.scroll")}
         </span>
         {/* Animated capsule mouse pill */}

@@ -29,7 +29,7 @@ export default function Contact() {
       <div className="section-ghost-number">05</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-6">
-          <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {t("contact.sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-primary/20"></div>
@@ -57,7 +57,7 @@ export default function Contact() {
               className="text-on-surface-variant/40 group-hover:text-primary transition-colors shrink-0"
             />
             <div>
-              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
+              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
                 {lang === "tr" ? "E-posta" : "Email"}
               </div>
               <div className="font-label-mono text-sm text-on-surface group-hover:text-primary transition-colors">
@@ -68,7 +68,7 @@ export default function Contact() {
           <div className="border border-primary/30 p-5 flex items-center gap-4">
             <ContactIcon name="location_on" className="text-on-surface-variant/40 shrink-0" />
             <div>
-              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
+              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
                 {t("contact.location")}
               </div>
               <div className="font-label-mono text-sm text-on-surface">
@@ -88,7 +88,7 @@ export default function Contact() {
             />
             <div>
               <div
-                className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
+                className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
                 lang="en"
               >
                 GitHub
@@ -110,7 +110,7 @@ export default function Contact() {
             />
             <div>
               <div
-                className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
+                className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
                 lang="en"
               >
                 LinkedIn

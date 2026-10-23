@@ -18,7 +18,7 @@ export default function Projects() {
       <div className="section-ghost-number">02</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[2vh]">
-          <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {t("projects.sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-primary/20"></div>
@@ -57,7 +57,7 @@ export default function Projects() {
           {/* Diger Garage.ist isleri (katkinin sinirli oldugu web projeleri) yalnizca dizinde. */}
           <Link
             to={`/${lang}/${isTr ? "projeler" : "projects"}`}
-            className="mt-6 inline-flex items-center gap-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+            className="mt-4 inline-flex items-center gap-2 py-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
           >
             <span>{isTr ? "Tüm projeler" : "All projects"}</span>
             <span aria-hidden="true">→</span>
@@ -124,12 +124,12 @@ function ProjectCard({
         )}
         <div className="flex items-center justify-between gap-2 mb-3">
           <span
-            className={`font-label-mono text-[10px] uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
+            className={`font-label-mono text-label-xs uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
           >
             <LatinText text={data.category[lang] ?? data.category.en} />
           </span>
           <span
-            className={`font-label-mono text-[10px] uppercase tracking-widest px-2 py-0.5 ${data.statusColor}`}
+            className={`font-label-mono text-label-xs uppercase tracking-widest px-2 py-0.5 ${data.statusColor}`}
           >
             {data.status[lang] ?? data.status.en}
           </span>
@@ -151,7 +151,7 @@ function ProjectCard({
           {data.tech.slice(0, 4).map((tItem) => (
             <span
               key={tItem}
-              className="font-label-mono text-[10px] text-on-surface-variant/80 border border-outline-variant/40 px-2 py-0.5"
+              className="font-label-mono text-label-xs text-on-surface-variant/80 border border-outline-variant/40 px-2 py-0.5"
             >
               {tItem}
             </span>

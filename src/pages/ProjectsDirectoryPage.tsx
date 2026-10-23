@@ -102,7 +102,10 @@ export default function ProjectsDirectoryPage() {
       ]
         .filter((group) => group.length > 0)
         .map((group) => (
-          <div key={group[0]} className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <div
+            key={group[0]}
+            className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-8 mb-8"
+          >
             {group.map((slug) => {
               const p = PROJECT_DATA[slug];
               const title = p.title[lang] ?? p.title.en;
@@ -124,12 +127,12 @@ export default function ProjectsDirectoryPage() {
                     )}
                     <div className="flex items-center justify-between mb-4">
                       <span
-                        className={`font-label-mono text-[10px] uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
+                        className={`font-label-mono text-label-xs uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
                       >
                         <LatinText text={category} />
                       </span>
                       <span
-                        className={`font-label-mono text-[10px] uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
+                        className={`font-label-mono text-label-xs uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
                       >
                         {status}
                       </span>
@@ -146,7 +149,7 @@ export default function ProjectsDirectoryPage() {
                       {p.tech.map((tItem) => (
                         <span
                           key={tItem}
-                          className="font-label-mono text-[10px] border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
+                          className="font-label-mono text-label-xs border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
                         >
                           {tItem}
                         </span>
@@ -156,7 +159,7 @@ export default function ProjectsDirectoryPage() {
 
                   <Link
                     to={`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`}
-                    className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
+                    className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 py-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
                   >
                     <span>{isTr ? "Projeyi İncele" : "View Project"}</span>
                     <span aria-hidden="true">→</span>

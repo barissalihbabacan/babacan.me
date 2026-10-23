@@ -75,13 +75,13 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
       {/* Header Section */}
       <header className="border-b border-primary/30 pb-10 mb-12">
         <div className="flex flex-wrap gap-3 mb-4">
-          <span className="font-label-mono text-[10px] text-primary border border-primary/30 px-2.5 py-1 uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-primary border border-primary/30 px-2.5 py-1 uppercase tracking-widest">
             <LatinText text={category} />
           </span>
-          <span className="font-label-mono text-[10px] text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
             {status}
           </span>
-          <span className="font-label-mono text-[10px] text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
             <LatinText text={year} />
           </span>
         </div>
@@ -145,8 +145,9 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
       )}
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-12 items-start">
-        <div className="space-y-12">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-12 items-start">
+        {/* Genis ekranda okunabilir satir uzunlugu */}
+        <div className="space-y-12 max-w-[46rem]">
           {/* Overview */}
           {summary && (
             <section className="space-y-4">
@@ -245,14 +246,14 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         <aside className="space-y-8">
           <div className="border border-primary/20 p-6 bg-surface-container/10 space-y-6">
             <div>
-              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-1">
+              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-1">
                 {isTr ? "Rol" : "Role"}
               </div>
               <div className="font-label-mono text-sm text-on-surface font-semibold">{role}</div>
             </div>
 
             <div>
-              <div className="font-label-mono text-[10px] text-on-surface-variant/70 uppercase tracking-widest mb-2">
+              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-2">
                 {t("projects.techStack")}
               </div>
               <div className="flex flex-wrap gap-2">
@@ -260,7 +261,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                   <span
                     key={idx}
                     lang="en"
-                    className="font-label-mono text-[10px] text-primary border border-primary/20 px-2 py-0.5 uppercase"
+                    className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
                   >
                     <LatinText text={tItem} />
                   </span>

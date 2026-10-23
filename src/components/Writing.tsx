@@ -13,7 +13,7 @@ export default function Writing() {
       <div className="section-ghost-number">04</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[5vh]">
-          <span className="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">
+          <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {t("writing.sectionLabel")}
           </span>
           <div className="h-px flex-1 bg-primary/20"></div>
@@ -59,7 +59,7 @@ export default function Writing() {
                 ></div>
                 <div
                   className="font-label-mono uppercase tracking-[0.25em] mb-3"
-                  style={{ fontSize: "9px", color: "rgba(255, 255, 255, 0.6)" }}
+                  style={{ fontSize: "0.5625rem", color: "rgba(255, 255, 255, 0.6)" }}
                 >
                   {isTr ? "Babaların" : "The Sins of"}
                 </div>
@@ -79,7 +79,11 @@ export default function Writing() {
                 ></div>
                 <div
                   className="font-label-mono uppercase tracking-[0.2em]"
-                  style={{ fontSize: "8px", color: "rgba(255, 255, 255, 0.4)", lineHeight: "1.8" }}
+                  style={{
+                    fontSize: "0.5rem",
+                    color: "rgba(255, 255, 255, 0.4)",
+                    lineHeight: "1.8",
+                  }}
                 >
                   {t("writing.book.genre").split(" / ")[0]}
                   <br />
@@ -87,20 +91,20 @@ export default function Writing() {
                 </div>
                 <div
                   className="absolute bottom-7 font-label-mono uppercase tracking-widest"
-                  style={{ fontSize: "8px", color: "rgba(255, 255, 255, 0.2)" }}
+                  style={{ fontSize: "0.5rem", color: "rgba(255, 255, 255, 0.2)" }}
                 >
                   Barış Salih Babacan
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-[10px] uppercase tracking-widest shadow-md">
+            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-label-xs uppercase tracking-widest shadow-md">
               {t("writing.book.status")}
             </div>
           </div>
 
           {/* Book info */}
           <div className="space-y-6 pt-2">
-            <span className="font-label-mono text-[10px] text-tertiary uppercase tracking-widest">
+            <span className="font-label-mono text-label-xs text-tertiary uppercase tracking-widest">
               {t("writing.book.genre")}
             </span>
 
