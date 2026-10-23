@@ -65,6 +65,7 @@
 ### Sortify Web
 - **Description**: Browser client of Sortify, porting the iOS game logic to React 19 + TypeScript + HTML5 Canvas.
 - **Role**: Lead Developer
+- **URL**: https://play.sortify.com
 - **Page**: https://babacan.me/en/projects/playsortify
 
 ### +TV
@@ -83,11 +84,13 @@
 ### Gayrimenkul Dünyası
 - **Description**: Real estate data collection and CRM platform (Next.js, Playwright, Cloud Firestore).
 - **Role**: Backend Integration & Firebase Infrastructure
+- **URL**: https://gayrimenkuldunyasi.com
 - **Page**: https://babacan.me/en/projects/gayrimenkuldunyasi
 
 ### Spor Sayfası
 - **Description**: Sports news portal (Next.js). His part: Firebase infrastructure, hosting, record persistence and news-ingestion fixes.
 - **Role**: Infrastructure & Backend Integration
+- **URL**: https://sporsayfasi.com
 - **Page**: https://babacan.me/en/projects/sporsayfasi
 
 ### Rule Sort

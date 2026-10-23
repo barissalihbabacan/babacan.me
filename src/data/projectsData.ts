@@ -311,8 +311,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["Next.js", "Playwright Stealth", "Firestore", "TypeScript", "XML Parser"],
-    liveUrl:
-      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+    liveUrl: "https://gayrimenkuldunyasi.com",
   },
   sortify: {
     shipped: true,
@@ -471,8 +470,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["React 19", "TypeScript", "Vite", "HTML5 Canvas", "Firebase", "Tailwind CSS"],
-    liveUrl:
-      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+    liveUrl: "https://play.sortify.com",
   },
   // Magaza bilgilerinden (App Store, Ekim 2026); ayni yayinci hesabinda Sortify ile birlikte.
   rulesort: {
@@ -586,8 +584,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["Firebase", "Next.js", "TypeScript", "REST API", "Node.js"],
-    liveUrl:
-      "https://garage.ist/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=garage_project",
+    liveUrl: "https://sporsayfasi.com",
   },
   worldclock: {
     shipped: true,
