@@ -6,10 +6,10 @@ export default function Experience() {
 
   return (
     <section
-      id="experience"
+      id="about"
       className="scroll-reveal relative min-h-[70vh] border-t border-primary/30 py-[10vh] overflow-hidden"
     >
-      <div className="section-ghost-number">01</div>
+      <div className="section-ghost-number">04</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[5vh]">
           <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
@@ -25,14 +25,28 @@ export default function Experience() {
           {t("experience.title")}
         </h2>
 
+        {/* Kisa tanitim; is gecmisi CV'de. */}
+        <div className="max-w-[70ch] space-y-4 mb-[6vh]">
+          <p className="font-body-lg text-on-surface text-lg leading-relaxed">
+            {t("experience.intro")}
+          </p>
+          <p className="font-body-md text-on-surface-variant leading-relaxed">
+            {t("experience.purpose")}
+          </p>
+        </div>
+
+        <h3 className="font-label-mono text-label-sm text-primary uppercase tracking-widest mb-2">
+          {t("experience.focusTitle")}
+        </h3>
+
         {/* Horizontal expertise rows */}
         <div className="divide-y divide-primary/30">
           <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">01</span>
-              <h3 className="text-on-surface font-semibold text-lg">
+              <h4 className="text-on-surface font-semibold text-lg">
                 {t("experience.item1_title")}
-              </h3>
+              </h4>
             </div>
             <p
               className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
@@ -63,9 +77,9 @@ export default function Experience() {
           <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">02</span>
-              <h3 className="text-on-surface font-semibold text-lg">
+              <h4 className="text-on-surface font-semibold text-lg">
                 {t("experience.item2_title")}
-              </h3>
+              </h4>
             </div>
             <p
               className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
@@ -96,9 +110,9 @@ export default function Experience() {
           <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">03</span>
-              <h3 className="text-on-surface font-semibold text-lg">
+              <h4 className="text-on-surface font-semibold text-lg">
                 {t("experience.item3_title")}
-              </h3>
+              </h4>
             </div>
             <p
               className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"
@@ -126,9 +140,9 @@ export default function Experience() {
           <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">04</span>
-              <h3 className="text-on-surface font-semibold text-lg">
+              <h4 className="text-on-surface font-semibold text-lg">
                 {t("experience.item4_title")}
-              </h3>
+              </h4>
             </div>
             <p
               className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]"

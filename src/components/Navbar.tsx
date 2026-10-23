@@ -20,7 +20,7 @@ export default function Navbar() {
         <div className="max-w-container-max mx-auto px-margin-desktop h-full flex items-center justify-between">
           <Link
             to={`/${lang}`}
-            className="font-label-mono text-label-mono text-on-surface tracking-tighter flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer"
+            className="font-label-mono text-label-mono text-on-surface tracking-tighter flex items-center gap-2 cursor-pointer"
           >
             <span className="text-primary text-xs" aria-hidden="true">
               ■
@@ -31,7 +31,7 @@ export default function Navbar() {
           <div className="flex items-center gap-gutter">
             <button
               type="button"
-              className="nav-link focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary cursor-pointer border border-primary/30 px-2.5 min-h-9 min-w-9 inline-flex items-center justify-center text-label-sm"
+              className="nav-link cursor-pointer border border-primary/30 px-2.5 min-h-9 min-w-9 inline-flex items-center justify-center text-label-sm"
               onClick={toggleLanguage}
               aria-label={t("nav.switchLang")}
             >
@@ -45,7 +45,7 @@ export default function Navbar() {
                   : "/cv/Baris_Salih_Babacan_CV_EN.pdf"
               }
               download
-              className="bg-primary text-surface px-3 min-h-9 font-label-mono text-label-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              className="border border-primary/40 text-primary px-3 min-h-9 font-label-mono text-label-xs uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-1.5"
             >
               <svg
                 className="w-3.5 h-3.5 fill-current shrink-0"

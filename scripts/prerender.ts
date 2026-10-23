@@ -90,7 +90,7 @@ function headTags(route: ParsedRoute, routeUrlPath: string): string {
 function projectList(lang: Lang): string {
   const items = Object.entries(PROJECT_DATA).map(([slug, p]) => {
     const href = `/${lang}/${projectsSegment(lang)}/${slug}`;
-    return `<li><a href="${href}">${escapeHtml(p.title[lang])}</a> — ${escapeHtml(p.description[lang])}</li>`;
+    return `<li><a href="${href}">${escapeHtml(p.title[lang])}</a> — ${escapeHtml(p.summary[lang])}</li>`;
   });
   return `<ul>${items.join("")}</ul>`;
 }
@@ -113,7 +113,7 @@ function bodyFallback(route: ParsedRoute): string {
         : "",
     ].filter(Boolean);
     return `<header>${nav}<h1>${escapeHtml(p.title[lang])}</h1><p>${escapeHtml(p.category[lang])} · ${escapeHtml(p.year[lang])} · ${escapeHtml(p.role[lang])}</p></header>
-      <main><p>${escapeHtml(p.description[lang])}</p>${summary ? `<p>${escapeHtml(summary)}</p>` : ""}
+      <main><p>${escapeHtml(p.summary[lang])}</p><p>${escapeHtml(p.description[lang])}</p>${summary ? `<p>${escapeHtml(summary)}</p>` : ""}
       <h2>${text("projects.highlights", lang)}</h2><ul>${p.highlights[lang].map((h) => `<li>${escapeHtml(h)}</li>`).join("")}</ul>
       <p>${escapeHtml(p.tech.join(" · "))}</p>${links.length ? `<p>${links.join(" | ")}</p>` : ""}</main>`;
   }
@@ -123,8 +123,15 @@ function bodyFallback(route: ParsedRoute): string {
       <main>${projectList(lang)}</main>`;
   }
 
-  return `<header>${nav}<h1>Barış Salih Babacan</h1><p>${text("hero.roles", lang)}</p><p>${text("hero.subtitle", lang)}</p></header>
+  // Ana sayfanin JS ile cizilen "insan" kisimlari (sayilar, roman, hakkimda) JS'siz okura da gorunsun.
+  const shipped = Object.values(PROJECT_DATA).filter((p) => p.shipped).length;
+  const stats = isTr
+    ? `${shipped} yayınlanan ürün · +TV için 10K+ indirme · Q-PASS ile 3 eğitim yılı boyunca günde 120–150 kullanıcı · 3 açık kaynak proje`
+    : `${shipped} shipped products · 10K+ +TV downloads · 120–150 daily Q-PASS users over 3 school years · 3 open-source projects`;
+  return `<header>${nav}<h1>Barış Salih Babacan</h1><p>${text("hero.roles", lang)}</p><p>${text("hero.subtitle", lang)}</p><p>${stats}</p></header>
       <main><section><h2>${text("projects.title", lang)}</h2>${projectList(lang)}</section>
+      <section><h2>${text("writing.title", lang)}</h2><p><a href="https://thesinsofthefathers.com">${isTr ? "Babaların Günahları" : "The Sins of the Fathers"}</a> — ${text("writing.book.genre", lang)} · ${text("writing.book.status", lang)}</p><p>${text("writing.book.desc", lang)}</p></section>
+      <section><h2>${text("experience.title", lang)}</h2><p>${text("experience.intro", lang)}</p><p>${text("experience.purpose", lang)}</p></section>
       <section><h2>${text("contact.title", lang)}</h2><ul><li><a href="mailto:barissalih&#64;babacan.me">barissalih&#64;babacan.me</a></li><li><a href="https://github.com/barissalihbabacan">GitHub</a></li><li><a href="https://linkedin.com/in/barissalihbabacan">LinkedIn</a></li></ul></section></main>`;
 }
 

@@ -65,7 +65,7 @@ export default function App() {
 
       <Navbar />
 
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1} className="outline-none">
         {route.type === "project_detail" && route.projectSlug ? (
           <ProjectDetailPage slug={route.projectSlug} />
         ) : route.type === "projects_directory" ? (
@@ -75,10 +75,10 @@ export default function App() {
         ) : (
           <>
             <Hero />
-            <Experience />
             <Projects />
             <GithubActivity />
             <Writing />
+            <Experience />
             <Contact />
           </>
         )}

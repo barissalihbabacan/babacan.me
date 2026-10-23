@@ -103,7 +103,7 @@ spacing:
 
 ## Brand & Style
 
-The design system is engineered for a high-end engineering portfolio, projecting technical competence, reliability, and architectural depth. The target audience includes CTOs, VPs of Engineering, and technical recruiters who value clarity over decoration.
+The design system is built for a personal site that introduces Barış Salih Babacan and his open-source and studio projects. It is not a job application page: the projects and the person come first, and the CV is a secondary download. The audience is developers and the open-source community, people curious about the projects, and occasional recruiters; all of them value clarity over decoration. Lead with what each project does in plain language, then the technical depth.
 
 The aesthetic is **Editorial Minimalism** with deep bespoke charcoal suit tones and Kingsman gold/brass accents — structural integrity through thin border lines, ghost section numbers, and high-contrast monospaced typography. Visual interest is generated through tonal layering within the charcoal family rather than illustrative elements. The emotional response should be "quiet confidence" anchored in dark, premium atmosphere.
 
@@ -117,7 +117,7 @@ The palette is built around a monochromatic accent family: Kingsman Gold/Brass. 
 - **Surface (`#181A1C`):** Slightly raised from background — used for the main content canvas.
 - **Surface Container (`#1B1D20` → `#26282D`):** Tonal stepping for cards, modals, and layered panels.
 - **On-Surface (`#F1F3F5`):** Crisp White Shirt. High-contrast, slightly warmer than pure white — reduces eye fatigue on dark backgrounds.
-- **On-Surface Variant (`#A0A5AB`):** Muted grey. Used for secondary text, labels, and metadata.
+- **On-Surface Variant (`#B8BDC4`):** Muted grey. Used for secondary text, labels, and metadata.
 - **Outline Variant (`#26282D`):** Dark charcoal outline. Border color for cards and dividers — visible but not distracting.
 
 ## Typography

@@ -16,7 +16,7 @@ export default function Projects() {
       id="projects"
       className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
     >
-      <div className="section-ghost-number">02</div>
+      <div className="section-ghost-number">01</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[2vh]">
           <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
@@ -58,7 +58,7 @@ export default function Projects() {
           {/* Diger Garage.ist isleri (katkinin sinirli oldugu web projeleri) yalnizca dizinde. */}
           <Link
             to={`/${lang}/${isTr ? "projeler" : "projects"}`}
-            className="mt-4 inline-flex items-center gap-2 py-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+            className="mt-4 inline-flex items-center gap-2 py-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform"
           >
             <span>{isTr ? "Tüm projeler" : "All projects"}</span>
             <Icon name="arrow_forward" className="w-3.5 h-3.5" />
@@ -102,7 +102,7 @@ function ProjectCard({
   return (
     <Link
       to={`/${lang}/${segment}/${projectKey}`}
-      className={`project-card w-full text-left accent-card group relative flex flex-col justify-between cursor-pointer border border-primary/20 hover:border-primary/50 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+      className={`project-card w-full text-left accent-card group relative flex flex-col justify-between cursor-pointer border border-primary/20 hover:border-primary/50 transition-all ${
         isFeatured ? "p-8 min-h-60" : "p-6 min-h-52"
       }`}
       aria-label={
@@ -142,8 +142,8 @@ function ProjectCard({
           {data.title[lang] ?? data.title.en}
         </h4>
 
-        <p className="font-body-md text-on-surface-variant text-xs leading-relaxed mb-4 line-clamp-2">
-          {data.description[lang] ?? data.description.en}
+        <p className="font-body-md text-on-surface-variant text-sm leading-relaxed mb-4">
+          {data.summary[lang] ?? data.summary.en}
         </p>
       </div>
 

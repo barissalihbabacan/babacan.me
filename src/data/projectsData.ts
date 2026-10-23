@@ -5,6 +5,8 @@ export interface LocalizedText {
 
 export interface ProjectData {
   title: LocalizedText;
+  /** Teknik olmayan okur icin tek cumle: proje ne ise yariyor. Kartlarda ve detay sayfasinin basinda. */
+  summary: LocalizedText;
   category: LocalizedText;
   categoryColor: string;
   status: LocalizedText;
@@ -107,6 +109,10 @@ export type ProjectKey =
 export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   osmos: {
     title: { en: "Osmos", tr: "Osmos" },
+    summary: {
+      en: "Version control for your own files that runs entirely on your machine; syncing between devices comes next.",
+      tr: "Dosyalarınızın sürümlerini tamamen kendi bilgisayarınızda tutan bir sürüm kontrol aracı; cihazlar arası senkronizasyon sırada.",
+    },
     category: { en: "Local-First · Version Control", tr: "Yerel-Öncelikli · Sürüm Kontrolü" },
     categoryColor: "text-primary border-primary/20",
     status: { en: "Alpha", tr: "Alpha" },
@@ -162,6 +168,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   mythos: {
     title: { en: "Mythos", tr: "Mythos" },
+    summary: {
+      en: "A writing app for novelists that keeps characters, places and chapters organized in plain files they own.",
+      tr: "Romancıların karakterleri, mekânları ve bölümleri kendilerine ait düz dosyalarda düzenlediği bir yazım uygulaması.",
+    },
     category: { en: "App · Tooling", tr: "Uygulama · Araçlar" },
     categoryColor: "text-primary border-primary/20",
     status: { en: "In Development", tr: "Geliştirme Aşamasında" },
@@ -217,6 +227,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   qpass: {
     shipped: true,
     title: { en: "Q-PASS", tr: "Q-PASS" },
+    summary: {
+      en: "Card-based entry and meal tracking I built for my vocational high school; it served 120–150 people a day for three school years.",
+      tr: "Mezun olduğum meslek lisesi için yaptığım kartlı geçiş ve yemek takip sistemi; üç eğitim yılı boyunca her gün 120–150 kişiye hizmet verdi.",
+    },
     category: { en: "Hardware · IoT", tr: "Donanım · IoT" },
     categoryColor: "text-tertiary border-tertiary/20",
     status: { en: "Completed", tr: "Tamamlandı" },
@@ -268,6 +282,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   gayrimenkuldunyasi: {
     title: { en: "Gayrimenkul Dünyası", tr: "Gayrimenkul Dünyası" },
+    summary: {
+      en: "Real estate news and listings gathered from many sources into one place.",
+      tr: "Farklı kaynaklardaki gayrimenkul haberlerini ve ilanlarını tek yerde toplayan bir platform.",
+    },
     category: { en: "Web · Full-Stack", tr: "Web · Full-Stack" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
@@ -317,6 +335,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   sortify: {
     shipped: true,
     title: { en: "Sortify", tr: "Sortify" },
+    summary: {
+      en: "Learning games for children aged 3–13, with tools for parents and teachers to follow their progress.",
+      tr: "3–13 yaş arası çocuklar için öğrenme oyunları; ebeveynler ve öğretmenler ilerlemeyi takip edebiliyor.",
+    },
     category: { en: "Mobile · iOS & Systems", tr: "Mobil · iOS & Sistemler" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
@@ -373,6 +395,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   "plus-tv": {
     shipped: true,
     title: { en: "+TV", tr: "+TV" },
+    summary: {
+      en: "Turns an Android phone into a remote, cast and mirroring tool for Samsung, LG and Philips TVs; 10K+ downloads.",
+      tr: "Android telefonu Samsung, LG ve Philips TV'ler için kumanda, yayın ve ekran yansıtma aracına çeviriyor; 10 binden fazla indirme.",
+    },
     category: { en: "Mobile · Android & Protocols", tr: "Mobil · Android & Protokoller" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
@@ -428,6 +454,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   playsortify: {
     title: { en: "Sortify Web", tr: "Sortify Web" },
+    summary: {
+      en: "Sortify's games in the browser, for classrooms and devices without the app.",
+      tr: "Uygulamanın olmadığı sınıflar ve cihazlar için Sortify oyunlarının tarayıcı sürümü.",
+    },
     category: { en: "Web · Front-End & Canvas", tr: "Web · Önyüz & Canvas" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
@@ -477,6 +507,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   rulesort: {
     shipped: true,
     title: { en: "Rule Sort", tr: "Rule Sort" },
+    summary: {
+      en: "A fast reflex game: sort falling objects by a rule that keeps changing.",
+      tr: "Hızlı bir refleks oyunu: düşen nesneleri sürekli değişen bir kurala göre ayırın.",
+    },
     category: { en: "Mobile · iOS Game", tr: "Mobil · iOS Oyunu" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
@@ -511,6 +545,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   blocknest: {
     shipped: true,
     title: { en: "Block Nest", tr: "Block Nest" },
+    summary: {
+      en: "A block puzzle with a twist: tilt the board into a diamond or spin it with a gravity wheel.",
+      tr: "Farklı bir blok bulmacası: tahtayı karo biçimine döndürün ya da yerçekimi çarkıyla karıştırın.",
+    },
     category: { en: "Mobile · iOS Game", tr: "Mobil · iOS Oyunu" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
@@ -544,6 +582,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   sporsayfasi: {
     title: { en: "Spor Sayfası", tr: "Spor Sayfası" },
+    summary: {
+      en: "A sports news site with scores and stats.",
+      tr: "Skorlar, istatistikler ve spor haberleri sunan bir spor sitesi.",
+    },
     category: { en: "Web · Infrastructure & Backend", tr: "Web · Altyapı & Arka Uç" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
@@ -589,6 +631,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   garageist: {
     title: { en: "Garage.ist Website", tr: "Garage.ist Web Sitesi" },
+    summary: {
+      en: "The studio's home page, showing its apps and where to get them.",
+      tr: "Stüdyonun uygulamalarını ve nereden indirileceklerini gösteren tanıtım sitesi.",
+    },
     category: { en: "Web · Studio Site", tr: "Web · Stüdyo Sitesi" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Live", tr: "Yayında" },
@@ -617,6 +663,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   worldclock: {
     shipped: true,
     title: { en: "World Clock", tr: "World Clock" },
+    summary: {
+      en: "See the time anywhere on a live day-and-night map and find meeting times across cities.",
+      tr: "Canlı gece-gündüz haritasında her yerin saatini görün, şehirler arası toplantı saati bulun.",
+    },
     category: { en: "Web · Front-End & Geo", tr: "Web · Önyüz & Geo" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
@@ -664,6 +714,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   itrms: {
     title: { en: "IT-RMS", tr: "IT-RMS" },
+    summary: {
+      en: "Inventory and lab management for a school IT department: what is where, who has it, and what is running low.",
+      tr: "Bir okul BT bölümü için envanter ve laboratuvar yönetimi: hangi cihaz nerede, kimde ve hangi malzeme azalıyor.",
+    },
     category: { en: "Web · Full-Stack & Systems", tr: "Web · Full-Stack & Sistemler" },
     categoryColor: "text-primary border-primary/20",
     status: { en: "Migration in Progress", tr: "Geçiş Sürüyor" },
@@ -710,6 +764,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
   },
   chorus: {
     title: { en: "Chorus", tr: "Chorus" },
+    summary: {
+      en: "An anonymous discussion board with no accounts, where every message is saved as a Git commit.",
+      tr: "Hesap gerektirmeyen, her mesajın bir Git commit'i olarak saklandığı anonim bir tartışma platformu.",
+    },
     category: { en: "Open Source · Discussion Platform", tr: "Açık Kaynak · Tartışma Platformu" },
     categoryColor: "text-primary border-primary/20",
     status: { en: "Early Development", tr: "Erken Geliştirme" },

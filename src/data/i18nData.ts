@@ -11,7 +11,7 @@ export const i18nData: I18nNode = {
     footer: { en: "Footer", tr: "Alt bilgi" },
     skipToContent: { en: "Skip to main content", tr: "Ana içeriğe geç" },
     mainNav: { en: "Main navigation", tr: "Ana gezinme" },
-    switchLang: { en: "Switch language to Turkish", tr: "Dili İngilizceye çevir" },
+    switchLang: { en: "TR – Switch language to Turkish", tr: "EN – Dili İngilizceye çevir" },
     breadcrumb: { en: "Breadcrumb", tr: "Sayfa konumu" },
   },
   seo: {
@@ -20,8 +20,8 @@ export const i18nData: I18nNode = {
       tr: "Barış Salih Babacan | İstanbul'da Sistem Yazılımı Geliştiricisi & CTO",
     },
     description: {
-      en: "Barış Salih Babacan | Systems Engineer and CTO in Istanbul. Local-first infrastructure in Rust, network protocol reverse engineering, and native iOS applications.",
-      tr: "Barış Salih Babacan | İstanbul merkezli Sistem Yazılımı Geliştiricisi & CTO. Rust ile yerel-öncelikli altyapı, ağ protokolü tersine mühendisliği ve native iOS uygulamaları.",
+      en: "Barış Salih Babacan | Systems Engineer and CTO in Istanbul. Local-first infrastructure in Rust, network protocol reverse engineering, and native mobile apps.",
+      tr: "Barış Salih Babacan | İstanbul merkezli Sistem Yazılımı Geliştiricisi & CTO. Rust ile yerel-öncelikli altyapı, ağ protokolü tersine mühendisliği ve native mobil uygulamalar.",
     },
   },
   hero: {
@@ -34,8 +34,8 @@ export const i18nData: I18nNode = {
       tr: 'Barış Salih<br /><em class="text-on-surface-variant font-normal not-italic">Babacan</em>',
     },
     subtitle: {
-      en: "Systems engineer building local-first infrastructure in Rust. Production work spans embedded systems, network protocol reverse engineering, and native iOS applications.",
-      tr: "Rust ile yerel-öncelikli altyapı yazan bir sistem yazılımı geliştiricisi. Üretim deneyimim gömülü sistemler, ağ protokolü tersine mühendisliği ve native iOS uygulamalarını kapsıyor.",
+      en: "Systems engineer building local-first infrastructure in Rust. Production work spans embedded systems, network protocol reverse engineering, and native mobile apps.",
+      tr: "Rust ile yerel-öncelikli altyapı yazan bir sistem yazılımı geliştiricisi. Üretim deneyimim gömülü sistemler, ağ protokolü tersine mühendisliği ve native mobil uygulamaları kapsıyor.",
     },
     viewWork: {
       en: "Explore Work",
@@ -57,10 +57,21 @@ export const i18nData: I18nNode = {
     stat4_lbl: { en: "OPEN-SOURCE\nPROJECTS", tr: "AÇIK KAYNAK\nPROJE" },
     downloadCV: { en: "Download CV", tr: "CV İndir" },
     scroll: { en: "SCROLL", tr: "KAYDIR" },
+    pauseAnim: { en: "Pause animation", tr: "Animasyonu durdur" },
+    playAnim: { en: "Play animation", tr: "Animasyonu oynat" },
   },
   experience: {
-    sectionLabel: { en: "01 / Experience", tr: "01 / Deneyim" },
-    title: { en: "Engineering & Leadership", tr: "Mühendislik & Liderlik" },
+    sectionLabel: { en: "04 / About", tr: "04 / Hakkımda" },
+    title: { en: "About", tr: "Hakkımda" },
+    intro: {
+      en: "I'm Barış, a software developer in Istanbul. Since October 2024 I've been CTO at Garage.ist, a small product studio, where I build iOS and Android apps with one other developer. Outside the studio I write local-first tools in Rust and Go and publish them as open source, and I like taking undocumented protocols apart until they make sense. I study computer programming at Istanbul University, and I've written a novel that is now under review.",
+      tr: "Ben Barış; İstanbul'da yaşayan bir yazılım geliştiricisiyim. Ekim 2024'ten beri küçük bir ürün stüdyosu olan Garage.ist'in CTO'suyum; burada bir geliştirici arkadaşımla iOS ve Android uygulamaları geliştiriyorum. Stüdyo dışında Rust ve Go ile yerel-öncelikli araçlar yazıp açık kaynak olarak yayınlıyorum ve belgelenmemiş protokolleri anlaşılır hâle gelene kadar kurcalamayı seviyorum. İstanbul Üniversitesi'nde bilgisayar programcılığı okuyorum; şu an değerlendirmede olan bir roman yazdım.",
+    },
+    purpose: {
+      en: "This page is here to show what I'm building. If you want to talk about a project, contribute, or just say hello, write to me.",
+      tr: "Bu sayfa üzerinde çalıştıklarımı göstermek için var. Bir proje hakkında konuşmak, katkı vermek ya da sadece merhaba demek isterseniz yazın.",
+    },
+    focusTitle: { en: "What I work on", tr: "Neyle uğraşıyorum" },
     item1_title: {
       en: "Technical Leadership & CTO",
       tr: "Teknik Liderlik & CTO",
@@ -101,7 +112,7 @@ export const i18nData: I18nNode = {
     },
   },
   projects: {
-    sectionLabel: { en: "02 / Projects", tr: "02 / Projeler" },
+    sectionLabel: { en: "01 / Projects", tr: "01 / Projeler" },
     title: { en: "Selected Works", tr: "Seçilmiş Çalışmalar" },
     garageTitle: { en: "GARAGE.IST PROJECTS", tr: "GARAGE.IST PROJELERİ" },
     personalTitle: { en: "PERSONAL & OPEN SOURCE", tr: "KİŞİSEL & AÇIK KAYNAK" },
@@ -109,8 +120,10 @@ export const i18nData: I18nNode = {
     techStack: { en: "Technologies & Stack", tr: "Kullanılan Teknolojiler" },
   },
   github: {
-    sectionLabel: { en: "03 / Open Source", tr: "03 / Açık Kaynak" },
-    title: { en: "Terminal", tr: "Terminal" },
+    sectionLabel: { en: "02 / GitHub", tr: "02 / GitHub" },
+    title: { en: "Open Source", tr: "Açık Kaynak" },
+    featured: { en: "Open-source projects", tr: "Açık kaynak projeler" },
+    viewRepo: { en: "View on GitHub", tr: "GitHub'da gör" },
     contributionsLabel: { en: "CONTRIBUTIONS", tr: "KATKILAR" },
     publicRepos: { en: "PUBLIC REPOS", tr: "AÇIK REPOLAR" },
     organizations: { en: "GITHUB ORGANIZATIONS", tr: "GITHUB ORGANİZASYONU" },
@@ -120,7 +133,7 @@ export const i18nData: I18nNode = {
     noLangData: { en: "No language data available", tr: "Dil verisi bulunamadı" },
   },
   writing: {
-    sectionLabel: { en: "04 / Publications", tr: "04 / Yayınlar" },
+    sectionLabel: { en: "03 / Publications", tr: "03 / Yayınlar" },
     title: { en: "Publications", tr: "Yayınlar" },
     book: {
       genre: { en: "Psychological Fiction / Drama", tr: "Psikolojik Kurgu / Drama" },
@@ -145,6 +158,7 @@ export const i18nData: I18nNode = {
         en: "Novel · Under Review (Everest First Novel Award)",
         tr: "Roman · Değerlendirmede (Everest İlk Roman Ödülü)",
       },
+      badge: { en: "Under review", tr: "Değerlendirmede" },
     },
   },
   contact: {

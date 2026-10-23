@@ -40,10 +40,7 @@ export default function ProjectsDirectoryPage() {
         aria-label={t("nav.breadcrumb")}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <Link
-          to={`/${lang}`}
-          className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-        >
+        <Link to={`/${lang}`} className="hover:text-primary transition-colors">
           {isTr ? "Ana Sayfa" : "Home"}
         </Link>
         <span aria-hidden="true">/</span>
@@ -75,6 +72,7 @@ export default function ProjectsDirectoryPage() {
           <button
             key={tab.id}
             type="button"
+            aria-pressed={filter === tab.id}
             onClick={() => {
               const next = tab.id as FilterCategory;
               setFilter(next);
@@ -96,6 +94,13 @@ export default function ProjectsDirectoryPage() {
         ))}
       </div>
 
+      {/* Filtre degisince sonuc sayisi ekran okuyucuya duyurulur. */}
+      <p className="sr-only" aria-live="polite">
+        {isTr
+          ? `${filteredKeys.length} proje gösteriliyor`
+          : `Showing ${filteredKeys.length} projects`}
+      </p>
+
       {/* Kapakli projeler ustte; kapaksizlarla ayni satirda bos alan kalmasin. */}
       {[
         filteredKeys.filter((slug) => PROJECT_DATA[slug].cover),
@@ -112,7 +117,7 @@ export default function ProjectsDirectoryPage() {
               const title = p.title[lang] ?? p.title.en;
               const category = p.category[lang] ?? p.category.en;
               const status = p.status[lang] ?? p.status.en;
-              const desc = p.description[lang] ?? p.description.en;
+              const desc = p.summary[lang] ?? p.summary.en;
 
               return (
                 <article
@@ -160,7 +165,7 @@ export default function ProjectsDirectoryPage() {
 
                   <Link
                     to={`/${lang}/${isTr ? "projeler" : "projects"}/${slug}`}
-                    className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 py-2 group-hover:translate-x-1 transition-transform focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary w-fit cursor-pointer"
+                    className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 py-2 group-hover:translate-x-1 transition-transform w-fit cursor-pointer"
                   >
                     <span>{isTr ? "Projeyi İncele" : "View Project"}</span>
                     <Icon name="arrow_forward" className="w-3.5 h-3.5" />

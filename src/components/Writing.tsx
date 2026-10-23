@@ -10,7 +10,7 @@ export default function Writing() {
       id="writing"
       className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
     >
-      <div className="section-ghost-number">04</div>
+      <div className="section-ghost-number">03</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex items-center gap-4 mb-[5vh]">
           <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
@@ -28,7 +28,8 @@ export default function Writing() {
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 md:gap-20 items-start">
           {/* Book cover */}
-          <div className="relative max-w-xs">
+          {/* Kapak cizimi dekoratif: ayni bilgi yandaki baslikta. */}
+          <div className="relative max-w-xs" aria-hidden="true">
             <div
               className="relative border border-primary/30 overflow-hidden rounded-sm"
               style={{ aspectRatio: "3/4" }}
@@ -90,22 +91,22 @@ export default function Writing() {
                   {t("writing.book.genre").split(" / ")[1]}
                 </div>
                 <div
-                  className="absolute bottom-7 font-label-mono uppercase tracking-widest"
-                  style={{ fontSize: "0.5rem", color: "rgba(255, 255, 255, 0.2)" }}
+                  className="absolute bottom-10 font-label-mono uppercase tracking-widest"
+                  style={{ fontSize: "0.5625rem", color: "rgba(255, 255, 255, 0.45)" }}
                 >
                   Barış Salih Babacan
                 </div>
               </div>
             </div>
             <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-label-xs uppercase tracking-widest shadow-md">
-              {t("writing.book.status")}
+              {t("writing.book.badge")}
             </div>
           </div>
 
           {/* Book info */}
           <div className="space-y-6 pt-2">
             <span className="font-label-mono text-label-xs text-tertiary uppercase tracking-widest">
-              {t("writing.book.genre")}
+              {t("writing.book.genre")} · {t("writing.book.status")}
             </span>
 
             <h3
@@ -154,7 +155,7 @@ export default function Writing() {
                 href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary text-surface px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                className="bg-primary text-surface px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
               >
                 <span>
                   {t("writing.book.visitSite") ||

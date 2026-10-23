@@ -2,6 +2,12 @@ import React from "react";
 import CustomGithubCalendar from "./CustomGithubCalendar.tsx";
 import { useGithubStats } from "../contexts/useGithubStats.ts";
 import { useLanguage } from "../contexts/language.ts";
+import { PROJECT_DATA, type ProjectKey } from "../data/projectsData.ts";
+import Icon from "./Icon.tsx";
+import LatinText from "./LatinText.tsx";
+
+// Kodu herkese acik projeler; kartlari Projeler bolumunde, burada yalnizca repo linkleri.
+const OPEN_SOURCE: ProjectKey[] = ["osmos", "mythos", "chorus", "qpass", "itrms"];
 
 export default function GithubActivity() {
   const { t, lang } = useLanguage();
@@ -15,13 +21,13 @@ export default function GithubActivity() {
       id="opensource"
       className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
     >
-      <div className="section-ghost-number">03</div>
+      <div className="section-ghost-number">02</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-[4vh]">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-4">
               <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
-                {t("github.sectionLabel")}
+                <LatinText text={t("github.sectionLabel")} />
               </span>
               <div className="h-px flex-1 bg-primary/20 max-w-xs"></div>
             </div>
@@ -57,6 +63,31 @@ export default function GithubActivity() {
 
         <div className="flex flex-col gap-8">
           <div className="space-y-8">
+            <div>
+              <h3 className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest mb-3">
+                {t("github.featured")}
+              </h3>
+              <ul className="flex flex-wrap gap-3">
+                {OPEN_SOURCE.map((slug) => {
+                  const url = PROJECT_DATA[slug].githubUrl ?? "";
+                  return (
+                    <li key={slug}>
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${url.replace("https://github.com/", "")} — ${t("github.viewRepo")}`}
+                        className="inline-flex items-center gap-2 min-h-9 px-3 border border-primary/30 hover:border-primary/60 font-label-mono text-xs text-on-surface hover:text-primary transition-colors"
+                      >
+                        <span lang="en">{url.replace("https://github.com/", "")}</span>
+                        <Icon name="north_east" className="w-3.5 h-3.5 text-on-surface-variant" />
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {(
                 [

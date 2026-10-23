@@ -5,6 +5,7 @@ import Link from "../components/Link.tsx";
 import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
 import ProjectCover from "../components/ProjectCover.tsx";
 import LatinText from "../components/LatinText.tsx";
+import Icon from "../components/Icon.tsx";
 import { projectsSegment } from "../seo.ts";
 
 interface ProjectDetailPageProps {
@@ -37,6 +38,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const status = project.status[lang] ?? project.status.en;
   const year = project.year[lang] ?? project.year.en;
   const role = project.role[lang] ?? project.role.en;
+  const oneLiner = project.summary[lang] ?? project.summary.en;
   const description = project.description[lang] ?? project.description.en;
   const summary = project.executiveSummary?.[lang] ?? project.executiveSummary?.en;
   const problem = project.problem?.[lang] ?? project.problem?.en;
@@ -53,16 +55,13 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         aria-label={t("nav.breadcrumb")}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <Link
-          to={`/${lang}`}
-          className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
-        >
+        <Link to={`/${lang}`} className="hover:text-primary transition-colors">
           {isTr ? "Ana Sayfa" : "Home"}
         </Link>
         <span aria-hidden="true">/</span>
         <Link
           to={`/${lang}/${isTr ? "projeler" : "projects"}`}
-          className="hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-primary"
+          className="hover:text-primary transition-colors"
         >
           {isTr ? "Projeler" : "Projects"}
         </Link>
@@ -90,47 +89,42 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
           {title}
         </h1>
 
+        <p className="text-on-surface text-xl leading-snug max-w-3xl mb-4">{oneLiner}</p>
         <p className="font-body-lg text-on-surface-variant text-lg max-w-3xl leading-relaxed">
           {description}
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-primary text-surface px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
-            >
-              <span>
-                <LatinText text={isTr ? "GitHub Deposu" : "GitHub Repository"} />
-              </span>
-              <svg
-                className="w-3.5 h-3.5 fill-current shrink-0"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
-              </svg>
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-primary/40 text-primary px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-2"
-            >
-              <span>{liveLinkLabel(project.liveUrl, lang)}</span>
-              <svg
-                className="w-3.5 h-3.5 fill-current shrink-0"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
-              </svg>
-            </a>
-          )}
+          {/* Tek birincil eylem: urun yayindaysa o, degilse kaynak kodu. */}
+          {[
+            project.liveUrl && {
+              href: project.liveUrl,
+              label: liveLinkLabel(project.liveUrl, lang),
+            },
+            project.githubUrl && {
+              href: project.githubUrl,
+              label: <LatinText text={isTr ? "GitHub Deposu" : "GitHub Repository"} />,
+            },
+          ]
+            .filter((action) => action !== undefined && action !== "")
+            .map((action, idx) =>
+              action ? (
+                <a
+                  key={action.href}
+                  href={action.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`px-6 py-3 font-label-mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 ${
+                    idx === 0
+                      ? "bg-primary text-surface hover:bg-primary/85"
+                      : "border border-primary/40 text-primary hover:bg-primary/10"
+                  }`}
+                >
+                  <span>{action.label}</span>
+                  <Icon name="north_east" className="w-3.5 h-3.5" />
+                </a>
+              ) : null,
+            )}
         </div>
       </header>
 
@@ -193,7 +187,10 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                 {isTr ? "Sistem Mimarisi" : "System Architecture"}
               </h2>
               {architecture && (
-                <p className="font-body-md text-on-surface-variant leading-relaxed text-base">
+                <p
+                  id="architecture-text"
+                  className="font-body-md text-on-surface-variant leading-relaxed text-base"
+                >
                   {architecture}
                 </p>
               )}
@@ -201,6 +198,7 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
                 <ArchitectureDiagram
                   slug={slug}
                   source={diagram}
+                  describedBy={architecture ? "architecture-text" : undefined}
                   label={
                     isTr
                       ? `${title} sistem mimarisi diyagramı`
@@ -243,7 +241,8 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
         </div>
 
         {/* Sidebar Info */}
-        <aside className="space-y-8">
+        {/* Mobilde rol ve teknolojiler once gelsin; masaustunde sag sutun. */}
+        <aside className="space-y-8 order-first lg:order-none">
           <div className="border border-primary/20 p-6 bg-surface-container/10 space-y-6">
             <div>
               <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-1">
