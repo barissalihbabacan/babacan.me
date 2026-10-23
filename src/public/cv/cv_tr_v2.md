@@ -29,7 +29,7 @@ _Tüketiciye yönelik iOS ve Android uygulamaları geliştiren ürün stüdyosu.
 - İki kişilik geliştirici ekibiyle geliştirmeyi yönettim; main dalına doğrudan push'u ve kendi PR'ını merge etmeyi engelleyen CI kuralları ile code review disiplinini işlettim.
 - Yayına alınan Android kumanda uygulaması **+TV**'yi bir geliştirici arkadaşımla birlikte geliştirdim; Samsung'u Tizen SDK, LG'yi ConnectSDK ile entegre ettim.
 - Hazır SDK bulunmayan Philips entegrasyonunu tek başıma yazdım; Philips'in kendi kumanda uygulamasının loglarını CatLog, ağ trafiğini Wireshark ile inceleyerek belgelenmemiş JointSpace API'sini çözdüm: 401 challenge–response akışı üzerinden HTTP Digest kimlik doğrulama, durum makinesi olarak modellenmiş PIN tabanlı cihaz eşleştirme ve kendinden imzalı sertifikalar için TLS yönetimi.
-- İki ek iOS oyununu (Rule Sort, Block Nest) App Store'da yayına aldım.
+- Swift ve SwiftUI ile yazılan, App Store'da yayında olan iki iOS oyununu (Rule Sort, Block Nest) ortak geliştirdim.
 
 **IT ve Sistem Entegrasyon Stajyeri** | _ENLOG, İstanbul_ | Eyl 2023 – Haz 2024
 

@@ -483,10 +483,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Developer · App Store release", tr: "Geliştirici · App Store yayını" },
+    role: { en: "Co-developer", tr: "Ortak geliştirici" },
     description: {
-      en: "Rule Sort is an endless reflex game for iPhone and iPad. Objects fall one by one and a rule card decides which side each one goes: warm or cool, round or angular, small or big. The rule can flip in the middle of a run, and sometimes the controls flip with it.",
-      tr: "Rule Sort, iPhone ve iPad için sonsuz bir refleks oyunudur. Nesneler tek tek düşer ve bir kural kartı her birinin hangi tarafa gideceğini belirler: sıcak ya da soğuk, yuvarlak ya da köşeli, küçük ya da büyük. Kural oyunun ortasında değişebilir, bazen kontroller de onunla birlikte ters döner.",
+      en: "Rule Sort is an endless reflex game for iPhone and iPad, written in Swift and SwiftUI. Objects fall one by one and a rule card decides which side each one goes: warm or cool, round or angular, small or big. The rule can flip in the middle of a run, and sometimes the controls flip with it.",
+      tr: "Rule Sort, iPhone ve iPad için Swift ve SwiftUI ile yazılmış sonsuz bir refleks oyunudur. Nesneler tek tek düşer ve bir kural kartı her birinin hangi tarafa gideceğini belirler: sıcak ya da soğuk, yuvarlak ya da köşeli, küçük ya da büyük. Kural oyunun ortasında değişebilir, bazen kontroller de onunla birlikte ters döner.",
     },
     executiveSummary: {
       en: "Each run is a swipe-left, swipe-right sort against the current rule. A wrong swipe costs a heart; storms double the points in fast bursts, and mines must be left to fall. Easy, Medium and Hard levels speed up the falls and add trickier rules, while Legendary is a memory mode where you sort by what you remember seeing. Players unlock new rules, complete missions and protect a daily streak. Everyone gets the same Daily Challenge, ranked on a global Game Center leaderboard, and a weekly Weekend Sprint adds new mutations to the rules.",
@@ -506,7 +506,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
         "Açılabilir kurallar, görevler ve dondurmalı günlük seriler; ücretsiz, ödüllü reklamla canlanma ya da Premium yükseltme.",
       ],
     },
-    tech: ["iOS", "Game Center", "In-App Purchase", "Rewarded Ads"],
+    tech: ["Swift", "SwiftUI", "iOS", "Game Center", "In-App Purchase", "Rewarded Ads"],
     liveUrl: "https://apps.apple.com/app/id6807764876",
   },
   blocknest: {
@@ -517,10 +517,10 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Developer · App Store release", tr: "Geliştirici · App Store yayını" },
+    role: { en: "Co-developer", tr: "Ortak geliştirici" },
     description: {
-      en: "Block Nest is a block-fitting puzzle for iPhone and iPad on an 8×8 grid: drag blocks onto the board, clear full rows and columns, and chain combos. Three twists change the classic formula: Karo Mode tilts the board 45° into a diamond, the Gravity Wheel reshuffles the board in a new direction, and diagonal pieces break the usual grid shapes.",
-      tr: "Block Nest, iPhone ve iPad için 8×8'lik bir tahtada oynanan blok yerleştirme bulmacasıdır: blokları tahtaya sürükleyin, dolan satır ve sütunları temizleyin, kombolar zincirleyin. Klasik formülü üç yenilik değiştirir: Karo Modu tahtayı 45° döndürüp karo biçimine getirir, Yerçekimi Çarkı tahtayı yeni bir yöne karıştırır, çapraz parçalar da alışılmış ızgara şekillerini bozar.",
+      en: "Block Nest is a block-fitting puzzle for iPhone and iPad, written in Swift and SwiftUI and played on an 8×8 grid: drag blocks onto the board, clear full rows and columns, and chain combos. Three twists change the classic formula: Karo Mode tilts the board 45° into a diamond, the Gravity Wheel reshuffles the board in a new direction, and diagonal pieces break the usual grid shapes.",
+      tr: "Block Nest, iPhone ve iPad için Swift ve SwiftUI ile yazılmış, 8×8'lik bir tahtada oynanan blok yerleştirme bulmacasıdır: blokları tahtaya sürükleyin, dolan satır ve sütunları temizleyin, kombolar zincirleyin. Klasik formülü üç yenilik değiştirir: Karo Modu tahtayı 45° döndürüp karo biçimine getirir, Yerçekimi Çarkı tahtayı yeni bir yöne karıştırır, çapraz parçalar da alışılmış ızgara şekillerini bozar.",
     },
     executiveSummary: {
       en: "Block Nest plays fully offline, including in airplane mode. A Casual Mode removes countdowns and offers and keeps combos from breaking. Scores and achievements such as Perfect Clears go to Game Center leaderboards, and players can challenge a friend to clear more lines. Rewarded ads can rotate a stuck piece or grant a Karo Mode or Gravity Wheel boost. The game is localized into 13 languages, including Turkish, Arabic, Japanese and Chinese.",
@@ -540,7 +540,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
         "13 dile yerelleştirme.",
       ],
     },
-    tech: ["iOS", "Game Center", "In-App Purchase", "Localization"],
+    tech: ["Swift", "SwiftUI", "iOS", "Game Center", "In-App Purchase", "Localization"],
     liveUrl: "https://apps.apple.com/app/id6808679766",
   },
   sporsayfasi: {
