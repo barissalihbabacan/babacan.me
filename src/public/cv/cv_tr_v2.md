@@ -24,7 +24,7 @@ Rust ile yerel-öncelikli altyapı geliştiren; gömülü sistemler, ağ protoko
 **CTO & Baş Geliştirici** | _Garage.ist_ | Eki 2024 – Devam ediyor
 _Tüketiciye yönelik iOS ve Android uygulamaları geliştiren ürün stüdyosu._
 
-- 3–13 yaş arası çocuklar için veli ve öğretmen gözetim araçları içeren oyun temelli öğrenme uygulaması **Sortify**'ın geliştirilmesini yönetiyorum (SwiftUI + MVVM + Firebase); 540'ı aşkın commit ile **App Store'da v2.3** sürümünde.
+- 3–13 yaş arası çocuklar için veli ve öğretmen gözetim araçları içeren oyun temelli öğrenme uygulaması **Sortify**'ın geliştirilmesini yönetiyorum (SwiftUI + MVVM + Firebase); uygulama **App Store'da v2.3** sürümünde ve **550'yi aşkın commit'in 450'den fazlası bana ait**.
 - Kod tabanını core, auth, education, games, subscription ve chessboard olmak üzere altı şirket içi Swift paketine ayırdım; abonelik, push bildirim ve analitik entegrasyonlarını kurdum.
 - İki kişilik geliştirici ekibiyle geliştirmeyi yönettim; main dalına doğrudan push'u ve kendi PR'ını merge etmeyi engelleyen CI kuralları ile code review disiplinini işlettim.
 - Yayına alınan Android kumanda uygulaması **+TV**'yi bir geliştirici arkadaşımla birlikte geliştirdim; Samsung'u Tizen SDK, LG'yi ConnectSDK ile entegre ettim.

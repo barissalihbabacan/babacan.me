@@ -57,7 +57,7 @@
 ## Garage.ist Projects
 
 ### Sortify
-- **Description**: Game-based learning app for children aged 3–13, with supervision tools for parents and teachers. Native SwiftUI on iOS/iPadOS, six in-house Swift packages, Firebase, server-side StoreKit 2 verification. v2.3 on the App Store, 540+ commits.
+- **Description**: Game-based learning app for children aged 3–13, with supervision tools for parents and teachers. Native SwiftUI on iOS/iPadOS, six in-house Swift packages, Firebase, server-side StoreKit 2 verification. v2.3 on the App Store; he wrote 450+ of its 550+ commits.
 - **Role**: CTO & Lead Developer
 - **URL**: https://apps.apple.com/app/id6759790866
 - **Page**: https://babacan.me/en/projects/sortify

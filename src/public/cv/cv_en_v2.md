@@ -24,7 +24,7 @@ Systems engineer building local-first infrastructure in Rust, with production ex
 **CTO & Lead Developer** | _Garage.ist_ | Oct 2024 – Present
 _Product studio building consumer iOS and Android applications._
 
-- Lead development of **Sortify**, a game-based learning app for ages 3–13 with parent and teacher supervision tools (SwiftUI + MVVM + Firebase), now at **v2.3 on the App Store** across 540+ commits.
+- Lead development of **Sortify**, a game-based learning app for ages 3–13 with parent and teacher supervision tools (SwiftUI + MVVM + Firebase), now at **v2.3 on the App Store**; I wrote **450+ of its 550+ commits**.
 - Split the codebase into six in-house Swift packages for core, auth, education, games, subscription and chessboard; integrated subscriptions, push notifications and analytics.
 - Led development with a two-developer team and enforced review discipline through CI that blocks direct pushes to main and self-merged pull requests.
 - Co-built **+TV**, a shipped Android TV remote, with a fellow developer, integrating Samsung through the Tizen SDK and LG through ConnectSDK.
