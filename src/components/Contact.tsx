@@ -19,8 +19,43 @@ function ContactIcon({ name, className }: { name: keyof typeof ICON_PATHS; class
   );
 }
 
+interface ContactItem {
+  icon: keyof typeof ICON_PATHS;
+  /** Marka adlari cevrilmez; digerleri i18n anahtariyla gelir. */
+  label?: string;
+  labelKey?: string;
+  value?: string;
+  valueKey?: string;
+  href?: string;
+  external?: boolean;
+}
+
+const CONTACT_ITEMS: ContactItem[] = [
+  {
+    icon: "mail",
+    labelKey: "contact.email",
+    value: "barissalih@babacan.me",
+    href: "mailto:barissalih@babacan.me",
+  },
+  { icon: "location_on", labelKey: "contact.location", valueKey: "contact.locationValue" },
+  {
+    icon: "terminal",
+    label: "GitHub",
+    value: "barissalihbabacan",
+    href: "https://github.com/barissalihbabacan",
+    external: true,
+  },
+  {
+    icon: "link",
+    label: "LinkedIn",
+    value: "barissalihbabacan",
+    href: "https://linkedin.com/in/barissalihbabacan",
+    external: true,
+  },
+];
+
 export default function Contact() {
-  const { lang, t } = useLanguage();
+  const { t } = useLanguage();
   return (
     <section
       id="contact"
@@ -47,79 +82,55 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a
-            href="mailto:barissalih@babacan.me"
-            className="border border-primary/30 p-5 flex items-center gap-4 hover:border-primary/40 transition-colors group"
-          >
-            <ContactIcon
-              name="mail"
-              className="text-on-surface-variant/40 group-hover:text-primary transition-colors shrink-0"
-            />
-            <div>
-              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
-                {lang === "tr" ? "E-posta" : "Email"}
-              </div>
-              <div className="font-label-mono text-sm text-on-surface group-hover:text-primary transition-colors">
-                barissalih@babacan.me
-              </div>
-            </div>
-          </a>
-          <div className="border border-primary/30 p-5 flex items-center gap-4">
-            <ContactIcon name="location_on" className="text-on-surface-variant/40 shrink-0" />
-            <div>
-              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5">
-                {t("contact.location")}
-              </div>
-              <div className="font-label-mono text-sm text-on-surface">
-                {t("contact.locationValue")}
-              </div>
-            </div>
-          </div>
-          <a
-            href="https://github.com/barissalihbabacan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-primary/30 p-5 flex items-center gap-4 hover:border-secondary/40 transition-colors group"
-          >
-            <ContactIcon
-              name="terminal"
-              className="text-on-surface-variant/40 group-hover:text-secondary transition-colors shrink-0"
-            />
-            <div>
-              <div
-                className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
-                lang="en"
+        {/* Mobilde tek cerceveli liste (satirlar arasi cizgi), genis ekranda ayri kartlar.
+            Sagdaki ok bosluga anlam verir ve satirin tiklanabilir oldugunu gosterir. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 sm:gap-4 border border-primary/30 divide-y divide-primary/20 sm:border-0 sm:divide-y-0">
+          {CONTACT_ITEMS.map((item) => {
+            const label = item.label ?? t(item.labelKey ?? "");
+            const value = item.value ?? t(item.valueKey ?? "");
+            const body = (
+              <>
+                <ContactIcon
+                  name={item.icon}
+                  className="text-on-surface-variant/40 group-hover:text-primary transition-colors shrink-0"
+                />
+                <div className="min-w-0 flex-1">
+                  <div
+                    className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
+                    lang={item.label ? "en" : undefined}
+                  >
+                    {label}
+                  </div>
+                  <div className="font-label-mono text-sm text-on-surface group-hover:text-primary transition-colors break-all">
+                    {value}
+                  </div>
+                </div>
+                {item.href && (
+                  <span
+                    className="font-label-mono text-on-surface-variant/50 group-hover:text-primary transition-colors shrink-0"
+                    aria-hidden="true"
+                  >
+                    {item.external ? "↗" : "→"}
+                  </span>
+                )}
+              </>
+            );
+            const className = "p-5 flex items-center gap-4 sm:border sm:border-primary/30";
+            return item.href ? (
+              <a
+                key={item.icon}
+                href={item.href}
+                {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className={`${className} hover:bg-surface-container/30 sm:hover:bg-transparent sm:hover:border-primary/40 transition-colors group`}
               >
-                GitHub
+                {body}
+              </a>
+            ) : (
+              <div key={item.icon} className={className}>
+                {body}
               </div>
-              <div className="font-label-mono text-sm text-on-surface group-hover:text-secondary transition-colors">
-                barissalihbabacan
-              </div>
-            </div>
-          </a>
-          <a
-            href="https://linkedin.com/in/barissalihbabacan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-primary/30 p-5 flex items-center gap-4 hover:border-primary/40 transition-colors group"
-          >
-            <ContactIcon
-              name="link"
-              className="text-on-surface-variant/40 group-hover:text-primary transition-colors shrink-0"
-            />
-            <div>
-              <div
-                className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-0.5"
-                lang="en"
-              >
-                LinkedIn
-              </div>
-              <div className="font-label-mono text-sm text-on-surface group-hover:text-primary transition-colors">
-                barissalihbabacan
-              </div>
-            </div>
-          </a>
+            );
+          })}
         </div>
       </div>
     </section>
