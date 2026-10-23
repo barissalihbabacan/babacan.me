@@ -100,6 +100,7 @@ export type ProjectKey =
   | "blocknest"
   | "sporsayfasi"
   | "worldclock"
+  | "garageist"
   | "qpass"
   | "itrms";
 
@@ -586,6 +587,33 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     tech: ["Firebase", "Next.js", "TypeScript", "REST API", "Node.js"],
     liveUrl: "https://sporsayfasi.com",
   },
+  garageist: {
+    title: { en: "Garage.ist Website", tr: "Garage.ist Web Sitesi" },
+    category: { en: "Web · Studio Site", tr: "Web · Stüdyo Sitesi" },
+    categoryColor: "text-secondary border-secondary/20",
+    status: { en: "Live", tr: "Yayında" },
+    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
+    year: { en: "Garage.ist", tr: "Garage.ist" },
+    role: { en: "Developer", tr: "Geliştirici" },
+    description: {
+      en: "The public website of Garage.ist, the product studio behind Sortify, +TV, World Clock, Gayrimenkul Dünyası and Spor Sayfası. A hand-written static site in HTML, CSS and vanilla JavaScript that presents the studio's active and earlier projects with links to each product, served from Firebase Hosting.",
+      tr: "Sortify, +TV, World Clock, Gayrimenkul Dünyası ve Spor Sayfası'nın arkasındaki ürün stüdyosu Garage.ist'in web sitesi. Stüdyonun güncel ve önceki projelerini, her ürüne giden linklerle tanıtan; HTML, CSS ve sade JavaScript ile elle yazılmış, Firebase Hosting üzerinden sunulan statik bir site.",
+    },
+    highlights: {
+      en: [
+        "Hand-written static site with no framework or build step: HTML, CSS and vanilla JavaScript.",
+        "Project showcase linking to each Garage.ist product, including the +TV Google Play listing.",
+        "Firebase Hosting with clean URLs, plus robots.txt and a sitemap for search engines.",
+      ],
+      tr: [
+        "Çatı ya da derleme adımı olmadan elle yazılmış statik site: HTML, CSS ve sade JavaScript.",
+        "Her Garage.ist ürününe, +TV için Google Play sayfasına bağlanan proje vitrini.",
+        "Temiz URL'lerle Firebase Hosting; arama motorları için robots.txt ve site haritası.",
+      ],
+    },
+    tech: ["HTML", "CSS", "JavaScript", "Firebase Hosting"],
+    liveUrl: "https://garage.ist",
+  },
   worldclock: {
     shipped: true,
     title: { en: "World Clock", tr: "World Clock" },
@@ -594,13 +622,13 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Lead Developer", tr: "Baş Geliştirici" },
+    role: { en: "Co-Lead Developer (first version)", tr: "Ortak Baş Geliştirici (ilk sürüm)" },
     description: {
-      en: "World Clock is an interactive timezone, geographic visualization, and SEO-driven city directory application developed under Garage.ist using React 18, Vite, and D3.js. It pairs a D3 projection rendering engine with an SSG/Prerender pipeline, solar terminator calculations, and multi-city meeting planner tools.",
-      tr: "World Clock; Garage.ist bünyesinde React 18, Vite ve D3.js ile geliştirilen etkileşimli zaman dilimi, coğrafi görselleştirme ve SEO odaklı şehir rehberi uygulamasıdır. D3 tabanlı projeksiyon altyapısını SSG/Prerender motoru, güneş terminatörü hesaplamaları ve çoklu şehir toplantı planlama araçlarıyla birleştirir.",
+      en: "World Clock is an interactive timezone, geographic visualization, and SEO-driven city directory application developed under Garage.ist using React 18, Vite, and D3.js. It pairs a D3 projection rendering engine with an SSG/Prerender pipeline, solar terminator calculations, and multi-city meeting planner tools. I co-led the first version; another developer at the startup has carried it on since.",
+      tr: "World Clock; Garage.ist bünyesinde React 18, Vite ve D3.js ile geliştirilen etkileşimli zaman dilimi, coğrafi görselleştirme ve SEO odaklı şehir rehberi uygulamasıdır. D3 tabanlı projeksiyon altyapısını SSG/Prerender motoru, güneş terminatörü hesaplamaları ve çoklu şehir toplantı planlama araçlarıyla birleştirir. İlk sürümün ortak baş geliştiricisiydim; sonrasında girişimden başka bir geliştirici projeyi sürdürdü.",
     },
     executiveSummary: {
-      en: "Developed with React, D3.js, and Vite, World Clock utilizes a D3 projection rendering pipeline on HTML5 Canvas alongside an SSG/Prerender architecture for SEO optimization. The visualization morphs seamlessly between an orthographic globe view and a flat map projection, supported by real-time solar position calculations, timezone offsets, DST rules, and prerendered static city directory pages.",
+      en: "Developed with React, D3.js, and Vite, World Clock utilizes a D3 projection rendering pipeline on HTML5 Canvas alongside an SSG/Prerender architecture for SEO optimization. The visualization morphs between an orthographic globe view and a flat map projection, supported by real-time solar position calculations, timezone offsets, DST rules, and prerendered static city directory pages.",
       tr: "React, D3.js ve Vite ile geliştirilen World Clock, HTML5 Canvas üzerinde coğrafi verileri işleyen özel bir projeksiyon altyapısı ve arama motoru optimizasyonu için SSG/Prerender mimarisi kullanır. Ortografik küre görünümü ile düz harita arasında dönüşebilen görselleştirme katmanı; anlık güneş konumu, zaman dilimi, DST hesaplamaları ve statik pre-render edilen şehir sayfalarıyla desteklenir.",
     },
     problem: {
