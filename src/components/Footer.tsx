@@ -11,10 +11,10 @@ export default function Footer() {
   const isTr = lang === "tr";
   return (
     <footer className="border-t border-primary/30 py-10">
-      <div className="max-w-container-max mx-auto px-margin-desktop flex flex-col items-start md:flex-row md:items-center md:justify-between gap-4 md:gap-6">
+      <div className="max-w-container-max mx-auto px-margin-desktop flex flex-col items-center text-center md:flex-row md:items-center md:justify-between md:text-left gap-6">
         <Link
           to={`/${lang}`}
-          className="font-label-mono text-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center gap-2 min-h-9"
+          className="font-label-mono text-sm text-on-surface-variant hover:text-on-surface transition-colors flex items-center justify-center gap-2 min-h-9"
         >
           <span className="text-primary text-xs" aria-hidden="true">
             ■
@@ -23,7 +23,7 @@ export default function Footer() {
         </Link>
         <nav
           aria-label={t("nav.footer")}
-          className="flex flex-wrap gap-x-6 font-label-mono text-label-xs uppercase tracking-widest"
+          className="flex flex-wrap justify-center gap-x-6 gap-y-2 font-label-mono text-label-xs uppercase tracking-widest"
         >
           <Link className={LINK_CLASS} to={`/${lang}/${isTr ? "projeler" : "projects"}`}>
             {t("nav.projects")}

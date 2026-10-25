@@ -37,9 +37,10 @@ export default function Projects() {
             </h3>
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <ProjectCard projectKey="osmos" lang={lang} isFeatured />
             <ProjectCard projectKey="mythos" lang={lang} isFeatured />
+            <ProjectCard projectKey="chorus" lang={lang} isFeatured />
           </div>
         </div>
 
@@ -55,12 +56,16 @@ export default function Projects() {
             <ProjectCard projectKey="sortify" lang={lang} wide />
             <ProjectCard projectKey="plus-tv" lang={lang} wide />
           </div>
-          {/* Diger Garage.ist isleri (katkinin sinirli oldugu web projeleri) yalnizca dizinde. */}
+          {/* Diger Garage.ist isleri (katkinin sinirli oldugu web projeleri) dizinde filtrelenmis olarak acilir. */}
           <Link
-            to={`/${lang}/${isTr ? "projeler" : "projects"}`}
+            to={`/${lang}/${isTr ? "projeler" : "projects"}?filter=garage`}
             className="mt-4 inline-flex items-center gap-2 py-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform"
           >
-            <span>{isTr ? "Tüm projeler" : "All projects"}</span>
+            <span>
+              {isTr
+                ? "Diğer Garage.ist projeleri (7 proje daha)"
+                : "More Garage.ist projects (7 more)"}
+            </span>
             <Icon name="arrow_forward" className="w-3.5 h-3.5" />
           </Link>
         </div>
@@ -73,11 +78,25 @@ export default function Projects() {
             </h3>
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <ProjectCard projectKey="qpass" lang={lang} />
-            <ProjectCard projectKey="itrms" lang={lang} />
-            <ProjectCard projectKey="chorus" lang={lang} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ProjectCard projectKey="qpass" lang={lang} wide />
+            <ProjectCard projectKey="itrms" lang={lang} wide />
           </div>
+        </div>
+
+        {/* Tum projeler katalogu baglantisi */}
+        <div className="mt-14 pt-8 border-t border-primary/20 flex justify-center">
+          <Link
+            to={`/${lang}/${isTr ? "projeler" : "projects"}`}
+            className="inline-flex items-center gap-3 px-8 py-3.5 border border-primary/40 hover:border-primary text-primary font-label-mono text-xs uppercase tracking-widest hover:bg-primary/10 transition-all"
+          >
+            <span>
+              {isTr
+                ? "Tüm Projeler Kataloğunu İncele (14 Proje)"
+                : "Explore Full Projects Catalog (14 Projects)"}
+            </span>
+            <Icon name="arrow_forward" className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </section>
@@ -103,7 +122,7 @@ function ProjectCard({
     <Link
       to={`/${lang}/${segment}/${projectKey}`}
       className={`project-card w-full text-left accent-card group relative flex flex-col justify-between cursor-pointer border border-primary/20 hover:border-primary/50 transition-all ${
-        isFeatured ? "p-8 min-h-60" : "p-6 min-h-52"
+        isFeatured ? "p-6 lg:p-7 min-h-60" : "p-6 min-h-52"
       }`}
       aria-label={
         lang === "tr"
@@ -116,7 +135,7 @@ function ProjectCard({
           <ProjectCover
             cover={data.cover}
             sizes={
-              isFeatured || wide
+              wide
                 ? "(min-width: 768px) 50vw, 100vw"
                 : "(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             }

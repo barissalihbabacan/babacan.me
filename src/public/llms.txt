@@ -44,14 +44,12 @@
 - **Description**: IT asset, inventory and lab management system for a vocational high school's IT department: 2D lab layouts, barcode/QR labels, stock alerts and a five-role user model. Built in PHP 8 + MySQL starting in 2023; migration to Node.js, Express 5 and MongoDB is in progress, with the PHP version kept on a branch.
 - **Role**: Lead Architect & Developer (2023–)
 - **Tech**: PHP 8 · MySQL · Node.js · Express · MongoDB (Mongoose)
-- **URL**: https://github.com/barissalihbabacan/IT-Department-Resource-Management-System
 - **Page**: https://babacan.me/en/projects/itrms
 
 ### Q-PASS
 - **Description**: RFID access control and meal tracking with custom 3D-printed readers. C++ firmware bridged over serial to a Python service and a PHP/MySQL dashboard. Ran at Haydarpaşa MTAL for three school years, serving 120–150 people a day. No longer in use.
 - **Role**: System Architect
 - **Tech**: Arduino (C++) · Python · PHP · MySQL · RFID
-- **URL**: https://github.com/barissalihbabacan/Q-PASS-RFID-Access-Control
 - **Page**: https://babacan.me/en/projects/qpass
 
 ## Garage.ist Projects
@@ -64,7 +62,7 @@
 
 ### Sortify Web
 - **Description**: Browser client of Sortify, porting the iOS game logic to React 19 + TypeScript + HTML5 Canvas.
-- **Role**: Lead Developer
+- **Role**: Web Foundation & Firebase Infrastructure, Maintenance & Moderation
 - **URL**: https://play.sortify.com
 - **Page**: https://babacan.me/en/projects/playsortify
 
@@ -83,13 +81,13 @@
 
 ### Gayrimenkul Dünyası
 - **Description**: Real estate data collection and CRM platform (Next.js, Playwright, Cloud Firestore).
-- **Role**: Backend Integration & Firebase Infrastructure
+- **Role**: Web Foundation & Firebase Infrastructure, Maintenance & Moderation
 - **URL**: https://gayrimenkuldunyasi.com
 - **Page**: https://babacan.me/en/projects/gayrimenkuldunyasi
 
 ### Spor Sayfası
-- **Description**: Sports news portal (Next.js). His part: Firebase infrastructure, hosting, record persistence and news-ingestion fixes.
-- **Role**: Infrastructure & Backend Integration
+- **Description**: Sports news and live scores portal (Next.js). Web foundation, Firebase infrastructure, record persistence, and external sports API integration.
+- **Role**: Web Foundation, Firebase Infrastructure & Sports API Integration
 - **URL**: https://sporsayfasi.com
 - **Page**: https://babacan.me/en/projects/sporsayfasi
 
@@ -101,13 +99,13 @@
 
 ### Rule Sort
 - **Description**: Endless reflex game for iPhone and iPad: swipe each falling object left or right by the current rule (warm/cool, round/angular, small/big); the rule, and sometimes the controls, flip mid-run. Daily Challenge with a global Game Center leaderboard, Legendary memory mode.
-- **Role**: Co-developer (Swift, SwiftUI)
+- **Role**: iOS Foundation, Firebase Infrastructure & AdMob Integration
 - **URL**: https://apps.apple.com/app/id6807764876
 - **Page**: https://babacan.me/en/projects/rulesort
 
 ### Block Nest
 - **Description**: 8×8 block-fitting puzzle for iPhone and iPad with Karo Mode (45° diamond board), a Gravity Wheel and diagonal pieces. Fully offline, Game Center leaderboards, localized into 13 languages.
-- **Role**: Co-developer (Swift, SwiftUI)
+- **Role**: iOS Developer (Swift, SwiftUI)
 - **URL**: https://apps.apple.com/app/id6808679766
 - **Page**: https://babacan.me/en/projects/blocknest
 

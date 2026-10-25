@@ -29,7 +29,7 @@ _Product studio building consumer iOS and Android applications._
 - Led development with a two-developer team and enforced review discipline through CI that blocks direct pushes to main and self-merged pull requests.
 - Co-built **+TV**, a shipped Android TV remote, with a fellow developer, integrating Samsung through the Tizen SDK and LG through ConnectSDK.
 - Wrote the Philips integration myself where no SDK existed, reverse-engineering the undocumented JointSpace API from Philips' own remote app (logs via CatLog, traffic via Wireshark): HTTP Digest authentication over a 401 challenge–response flow, PIN-based device pairing as an explicit state machine, and TLS handling for self-signed certificates.
-- Co-developed two additional iOS games in Swift and SwiftUI, Rule Sort and Block Nest, both live on the App Store.
+- Developed two shipped iOS games in Swift and SwiftUI, **Block Nest** and **Rule Sort**; built Block Nest's complete gameplay mechanics and engineered Rule Sort's foundation, Firebase, and AdMob integration.
 
 **IT & Systems Integration Intern** | _ENLOG, Istanbul_ | Sep 2023 – Jun 2024
 

@@ -7,7 +7,7 @@ import Icon from "./Icon.tsx";
 import LatinText from "./LatinText.tsx";
 
 // Kodu herkese acik projeler; kartlari Projeler bolumunde, burada yalnizca repo linkleri.
-const OPEN_SOURCE: ProjectKey[] = ["osmos", "mythos", "chorus", "qpass", "itrms"];
+const OPEN_SOURCE: ProjectKey[] = ["osmos", "mythos", "chorus"];
 
 export default function GithubActivity() {
   const { t, lang } = useLanguage();

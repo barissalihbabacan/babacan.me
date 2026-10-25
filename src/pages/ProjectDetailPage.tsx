@@ -6,7 +6,9 @@ import ArchitectureDiagram from "../components/ArchitectureDiagram.tsx";
 import ProjectCover from "../components/ProjectCover.tsx";
 import LatinText from "../components/LatinText.tsx";
 import Icon from "../components/Icon.tsx";
+import ProjectScreenshots from "../components/ProjectScreenshots.tsx";
 import { projectsSegment } from "../seo.ts";
+import { FILTERS, FILTER_LABELS, type FilterCategory } from "./ProjectsDirectoryPage.tsx";
 
 interface ProjectDetailPageProps {
   slug: ProjectKey;
@@ -16,6 +18,26 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const { lang, t } = useLanguage();
   const project = PROJECT_DATA[slug];
 
+  const activeFilter: FilterCategory | null = (() => {
+    if (typeof window === "undefined") return null;
+    const fromUrl = new URLSearchParams(window.location.search).get("filter");
+    if (fromUrl && (FILTERS as readonly string[]).includes(fromUrl)) {
+      return fromUrl as FilterCategory;
+    }
+    try {
+      const fromSession = sessionStorage.getItem("babacan_projects_filter");
+      if (fromSession && (FILTERS as readonly string[]).includes(fromSession)) {
+        return fromSession as FilterCategory;
+      }
+    } catch {}
+    return null;
+  })();
+
+  const filterParam = activeFilter && activeFilter !== "all" ? `?filter=${activeFilter}` : "";
+  const projectsPath = `/${lang}/${projectsSegment(lang)}${filterParam}`;
+  const filterLabel =
+    activeFilter && activeFilter !== "all" ? FILTER_LABELS[activeFilter]?.[lang] : null;
+
   if (!project) {
     return (
       <div className="min-h-screen pt-24 px-margin-desktop text-center">
@@ -23,10 +45,11 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
           {lang === "tr" ? "Proje bulunamadı" : "Project Not Found"}
         </h1>
         <Link
-          to={`/${lang}/${projectsSegment(lang)}`}
-          className="mt-4 text-primary hover:underline font-label-mono text-xs uppercase"
+          to={projectsPath}
+          className="mt-4 text-primary hover:underline font-label-mono text-xs uppercase inline-flex items-center gap-1.5"
         >
-          {lang === "tr" ? "Projelere dön" : "Return to Projects"}
+          <Icon name="chevron_left" className="w-3.5 h-3.5" />
+          <span>{lang === "tr" ? "Projelere dön" : "Return to Projects"}</span>
         </Link>
       </div>
     );
@@ -48,28 +71,46 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
   const diagram = project.mermaidDiagram;
   const highlights = project.highlights[lang] ?? project.highlights.en;
 
+  const backButtonText = filterLabel
+    ? isTr
+      ? `${filterLabel} Projelerine Dön`
+      : `Back to ${filterLabel}`
+    : isTr
+      ? "Projelere Dön"
+      : "Back to Projects";
+
   return (
     <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
-      {/* Breadcrumb Navigation */}
-      <nav
-        aria-label={t("nav.breadcrumb")}
-        className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
-      >
-        <Link to={`/${lang}`} className="hover:text-primary transition-colors">
-          {isTr ? "Ana Sayfa" : "Home"}
-        </Link>
-        <span aria-hidden="true">/</span>
-        <Link
-          to={`/${lang}/${isTr ? "projeler" : "projects"}`}
-          className="hover:text-primary transition-colors"
+      {/* Breadcrumb Navigation & Back Chevron Action */}
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <nav
+          aria-label={t("nav.breadcrumb")}
+          className="font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2 flex-wrap"
         >
-          {isTr ? "Projeler" : "Projects"}
+          <Link to={`/${lang}`} className="hover:text-primary transition-colors">
+            {isTr ? "Ana Sayfa" : "Home"}
+          </Link>
+          <span aria-hidden="true">/</span>
+          <Link to={projectsPath} className="hover:text-primary transition-colors">
+            {isTr ? "Projeler" : "Projects"}
+          </Link>
+          <span aria-hidden="true">/</span>
+          <span className="text-primary">
+            <LatinText text={title} />
+          </span>
+        </nav>
+
+        <Link
+          to={projectsPath}
+          className="font-label-mono text-xs text-on-surface-variant/80 hover:text-primary uppercase tracking-widest flex items-center gap-1.5 py-1.5 px-3 border border-primary/20 hover:border-primary/50 transition-colors group cursor-pointer"
+        >
+          <Icon
+            name="chevron_left"
+            className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform"
+          />
+          <span>{backButtonText}</span>
         </Link>
-        <span aria-hidden="true">/</span>
-        <span className="text-primary">
-          <LatinText text={title} />
-        </span>
-      </nav>
+      </div>
 
       {/* Header Section */}
       <header className="border-b border-primary/30 pb-10 mb-12">
@@ -238,6 +279,25 @@ export default function ProjectDetailPage({ slug }: ProjectDetailPageProps) {
               </ul>
             </section>
           )}
+
+          {/* Uygulama Ekran Goruntuleri Vitrini */}
+          {project.screenshots && project.screenshots.length > 0 && (
+            <ProjectScreenshots screenshots={project.screenshots} lang={lang} />
+          )}
+
+          {/* Projelere geri donus alt eylemi */}
+          <div className="pt-8 border-t border-primary/20">
+            <Link
+              to={projectsPath}
+              className="inline-flex items-center gap-2 font-label-mono text-xs text-primary uppercase tracking-widest py-2.5 px-4 border border-primary/30 hover:border-primary hover:bg-primary/5 transition-all group cursor-pointer"
+            >
+              <Icon
+                name="chevron_left"
+                className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform"
+              />
+              <span>{backButtonText}</span>
+            </Link>
+          </div>
         </div>
 
         {/* Sidebar Info */}

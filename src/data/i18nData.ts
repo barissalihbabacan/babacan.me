@@ -115,7 +115,7 @@ export const i18nData: I18nNode = {
     sectionLabel: { en: "01 / Projects", tr: "01 / Projeler" },
     title: { en: "Selected Works", tr: "Seçilmiş Çalışmalar" },
     garageTitle: { en: "GARAGE.IST PROJECTS", tr: "GARAGE.IST PROJELERİ" },
-    personalTitle: { en: "PERSONAL & OPEN SOURCE", tr: "KİŞİSEL & AÇIK KAYNAK" },
+    personalTitle: { en: "SCHOOL & INSTITUTIONAL SYSTEMS", tr: "OKUL & KURUMSAL SİSTEMLER" },
     highlights: { en: "Key Highlights", tr: "Öne Çıkan Özellikler" },
     techStack: { en: "Technologies & Stack", tr: "Kullanılan Teknolojiler" },
   },

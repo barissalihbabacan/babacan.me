@@ -25,8 +25,16 @@ export interface ProjectData {
   githubUrl?: string;
   liveUrl?: string;
   cover?: ProjectCover;
+  screenshots?: ProjectScreenshot[];
   /** Gercek kullaniciya ulasan urun; ana sayfadaki "yayinlanan urun" sayisi bundan hesaplanir. */
   shipped?: boolean;
+}
+
+export interface ProjectScreenshot {
+  src: string;
+  fullSrc?: string;
+  alt: LocalizedText;
+  caption?: LocalizedText;
 }
 
 /** 1200x627 kapak: `webp`/`webp2x` sayfada (srcset); `og` paylasim onizlemesi icin
@@ -77,6 +85,16 @@ const COVERS = {
     webp: `${STORAGE_BASE}itrms-featured-1200.webp?alt=media&token=98e7fbd6-97b4-462d-b5d9-6ee35eb37895`,
     webp2x: `${STORAGE_BASE}itrms-featured-2400.webp?alt=media&token=7abfcaad-63e8-46cd-8c9d-0e273e84074e`,
     og: "/og/itrms.jpg",
+  },
+  rulesort: {
+    webp: "/covers/rulesort-1200.webp",
+    webp2x: "/covers/rulesort-2400.webp",
+    og: "/og/rulesort.jpg",
+  },
+  blocknest: {
+    webp: "/covers/blocknest-1200.webp",
+    webp2x: "/covers/blocknest-2400.webp",
+    og: "/og/blocknest.jpg",
   },
 } satisfies Record<string, ProjectCover>;
 
@@ -277,7 +295,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["C++ / Arduino", "Python", "PHP", "MySQL", "RFID", "Serial Protocol"],
-    githubUrl: "https://github.com/barissalihbabacan/Q-PASS-RFID-Access-Control",
     cover: COVERS.qpass,
   },
   gayrimenkuldunyasi: {
@@ -292,12 +309,12 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
-      en: "Backend Integration & Firebase Infrastructure",
-      tr: "Backend Entegrasyonu & Firebase Altyapısı",
+      en: "Web Foundation & Firebase Infrastructure, Maintenance & Moderation",
+      tr: "Web Proje Temeli & Firebase Altyapısı, Bakımı ve Moderasyonu",
     },
     description: {
-      en: "Gayrimenkul Dünyası is a real estate data ingestion, normalization, and CRM platform. Built with Next.js App Router and TypeScript, it combines Playwright Stealth automated data collection pipelines with Google News XML/RSS parsers connected to Cloud Firestore.",
-      tr: "Gayrimenkul Dünyası; gayrimenkul verilerini toplamak, yapılandırmak ve CRM süreçlerine taşımak için geliştirilen bir veri toplama ve yönetim platformudur. Next.js App Router ve TypeScript ile geliştirilen altyapı, Playwright Stealth otomatik veri toplama hatlarını Google News XML/RSS ayrıştırıcıları ile birleştirerek Cloud Firestore veritabanına bağlar.",
+      en: "Gayrimenkul Dünyası is a real estate data ingestion, normalization, and CRM platform. Built with Next.js App Router and TypeScript, it combines Playwright Stealth automated data collection pipelines with Google News XML/RSS parsers connected to Cloud Firestore. My responsibilities centered on establishing the web project foundation, building and securing the Firebase infrastructure, and handling ongoing maintenance, data moderation, and platform stability.",
+      tr: "Gayrimenkul Dünyası; gayrimenkul verilerini toplamak, yapılandırmak ve CRM süreçlerine taşımak için geliştirilen bir veri toplama ve yönetim platformudur. Next.js App Router ve TypeScript ile geliştirilen altyapı, Playwright Stealth otomatik veri toplama hatlarını Google News XML/RSS ayrıştırıcıları ile birleştirerek Cloud Firestore veritabanına bağlar. Projede web proje temelinin oluşturulması, Firebase altyapı bağlantısı ve korunması, sistem moderasyonu ve veri akışı sürekliliği tarafımdan üstlenilmiştir.",
     },
     executiveSummary: {
       en: "Designed to automatically aggregate real estate listings, sector news, and market signals, the system ingests data across heterogeneous sources. Automated collection jobs utilize Playwright Stealth for browser-based sources while pairing with structured XML/RSS parser pipelines for news feeds.",
@@ -317,19 +334,21 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     highlights: {
       en: [
+        "Web project scaffolding, architectural foundation, and system moderation.",
         "Application architecture built on Next.js App Router and React Server Components.",
         "Automated data ingestion pipeline using Playwright Stealth for browser automation.",
         "Structured parsing pipeline for Google News XML/RSS data feeds.",
-        "Query-optimized Cloud Firestore schema designed for database cost efficiency.",
+        "Query-optimized Cloud Firestore schema designed for database cost efficiency and data security.",
       ],
       tr: [
+        "Web proje temelinin oluşturulması, mimari kurulumu ve sistem moderasyonu.",
         "Next.js App Router ve React Server Components tabanlı uygulama mimarisi.",
         "Playwright Stealth destekli tarayıcı otomasyonu ile otomatik veri toplama altyapısı.",
         "Google News XML/RSS kaynakları için yapılandırılmış veri ayrıştırma hattı.",
-        "Firestore okuma/yazma maliyetlerini gözeten, sorgu odaklı veri şeması.",
+        "Firestore okuma/yazma maliyetlerini gözeten, sorgu odaklı ve güvenli veri şeması.",
       ],
     },
-    tech: ["Next.js", "Playwright Stealth", "Firestore", "TypeScript", "XML Parser"],
+    tech: ["Next.js", "Firebase", "Playwright Stealth", "Firestore", "TypeScript", "XML Parser"],
     liveUrl: "https://gayrimenkuldunyasi.com",
   },
   sortify: {
@@ -391,6 +410,44 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     tech: ["SwiftUI", "Swift", "Firebase", "Cloud Functions", "StoreKit 2", "mDNS"],
     liveUrl: "https://apps.apple.com/app/id6759790866",
     cover: COVERS.sortify,
+    screenshots: [
+      {
+        src: "/screenshots/sortify/iphone_1.webp",
+        fullSrc: "/screenshots/sortify/iphone_1.png",
+        alt: {
+          en: "Sortify - Everything kids love, in one app",
+          tr: "Sortify - Çocukların sevdiği her şey tek bir uygulamada",
+        },
+        caption: {
+          en: "Everything kids love, in one app.",
+          tr: "Çocukların sevdiği her şey tek bir uygulamada.",
+        },
+      },
+      {
+        src: "/screenshots/sortify/iphone_2.webp",
+        fullSrc: "/screenshots/sortify/iphone_2.png",
+        alt: {
+          en: "Sortify - A universe of learning",
+          tr: "Sortify - Uçsuz bucaksız bir öğrenme evreni",
+        },
+        caption: {
+          en: "A universe of learning",
+          tr: "Uçsuz bucaksız bir öğrenme evreni",
+        },
+      },
+      {
+        src: "/screenshots/sortify/iphone_3.webp",
+        fullSrc: "/screenshots/sortify/iphone_3.png",
+        alt: {
+          en: "Sortify - One home for the whole family",
+          tr: "Sortify - Tüm aile için tek bir çatı",
+        },
+        caption: {
+          en: "One home for the whole family.",
+          tr: "Tüm aile için tek bir çatı.",
+        },
+      },
+    ],
   },
   "plus-tv": {
     shipped: true,
@@ -451,6 +508,80 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     tech: ["Kotlin", "Java", "Android", "Wireshark", "HTTP Digest", "ConnectSDK"],
     liveUrl: "https://play.google.com/store/apps/details?id=com.plus.plustvv001",
     cover: COVERS.plusTv,
+    screenshots: [
+      {
+        src: "/screenshots/plustv/screen_1.webp",
+        fullSrc: "/screenshots/plustv/screen_1.png",
+        alt: {
+          en: "+TV - Connect TV and app integration",
+          tr: "+TV - TV bağlantısı ve uygulama entegrasyonu",
+        },
+        caption: {
+          en: "Connect TV and app integration.",
+          tr: "TV ve uygulama entegrasyonu.",
+        },
+      },
+      {
+        src: "/screenshots/plustv/screen_2.webp",
+        fullSrc: "/screenshots/plustv/screen_2.png",
+        alt: {
+          en: "+TV - The hub of your TV experience",
+          tr: "+TV - TV deneyiminizin merkezi",
+        },
+        caption: {
+          en: "The hub of your TV experience",
+          tr: "TV deneyiminizin merkezi",
+        },
+      },
+      {
+        src: "/screenshots/plustv/screen_3.webp",
+        fullSrc: "/screenshots/plustv/screen_3.png",
+        alt: {
+          en: "+TV - Customize your app experience",
+          tr: "+TV - Uygulama deneyiminizi özelleştirin",
+        },
+        caption: {
+          en: "Customize your app experience.",
+          tr: "Uygulama deneyiminizi özelleştirin.",
+        },
+      },
+      {
+        src: "/screenshots/plustv/screen_4.webp",
+        fullSrc: "/screenshots/plustv/screen_4.png",
+        alt: {
+          en: "+TV - Touchpad and intuitive navigation",
+          tr: "+TV - Dokunmatik yönlendirme alanı ve kontroller",
+        },
+        caption: {
+          en: "Touchpad & intuitive navigation",
+          tr: "Dokunmatik touchpad ve sezgisel kontrol",
+        },
+      },
+      {
+        src: "/screenshots/plustv/screen_5.webp",
+        fullSrc: "/screenshots/plustv/screen_5.png",
+        alt: {
+          en: "+TV - Simple and secure cross-platform file transfer",
+          tr: "+TV - Güvenli ve basit çapraz platform dosya aktarımı",
+        },
+        caption: {
+          en: "Simple and Secure Cross-Platform File Transfer",
+          tr: "Basit ve güvenli platformlar arası dosya aktarımı",
+        },
+      },
+      {
+        src: "/screenshots/plustv/screen_6.webp",
+        fullSrc: "/screenshots/plustv/screen_6.png",
+        alt: {
+          en: "+TV - Discover and manage your favorite apps and channels",
+          tr: "+TV - Favori uygulama ve kanalları keşfedin ve yönetin",
+        },
+        caption: {
+          en: "Discover and manage your favorite apps and channels.",
+          tr: "Favori uygulama ve kanallarınızı keşfedin ve yönetin.",
+        },
+      },
+    ],
   },
   playsortify: {
     title: { en: "Sortify Web", tr: "Sortify Web" },
@@ -463,10 +594,13 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Lead Developer", tr: "Baş Geliştirici" },
+    role: {
+      en: "Web Foundation & Firebase Infrastructure, Maintenance & Moderation",
+      tr: "Web Proje Temeli & Firebase Altyapısı, Bakımı ve Moderasyonu",
+    },
     description: {
-      en: "Sortify Web is the browser client of the Sortify educational platform. Built with React 19, TypeScript, and Vite, the application brings native iOS game logic into web browsers using an HTML5 Canvas rendering architecture and responsive controls.",
-      tr: "Sortify Web; Sortify eğitim platformunun web tarayıcıları için geliştirilmiş istemcisidir. React 19, TypeScript ve Vite ile geliştirilen uygulama, native iOS oyun mantığını HTML5 Canvas tabanlı bir çizim altyapısı ve duyarlı kontrollerle web ortamına taşır.",
+      en: "Sortify Web is the browser client of the Sortify educational platform. Built with React 19, TypeScript, and Vite, the application brings native iOS game logic into web browsers using an HTML5 Canvas rendering architecture and responsive controls. I established the web project foundation, built and secured the Firebase connection infrastructure, and maintained platform stability, security, and content moderation.",
+      tr: "Sortify Web; Sortify eğitim platformunun web tarayıcıları için geliştirilmiş istemcisidir. React 19, TypeScript ve Vite ile geliştirilen uygulama, native iOS oyun mantığını HTML5 Canvas tabanlı bir çizim altyapısı ve duyarlı kontrollerle web ortamına taşır. Projede web proje temelinin kurulması, Firebase bağlantı altyapısının inşası, sistemin korunması, sürekliliği ve moderasyonu tarafımdan yürütülmüştür.",
     },
     executiveSummary: {
       en: "Sortify Web adopts a rendering architecture that decouples live game state from React UI state while porting native iOS game mechanics to the web. Operating over a requestAnimationFrame loop, mutable game state persists in refs while score, streak, and UI components are managed via React state, maintaining behavioral parity with the native Swift iOS client.",
@@ -486,18 +620,20 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     highlights: {
       en: [
+        "Web project foundation, architectural setup, and continuous moderation/maintenance.",
         "Native Swift game logic ported directly to TypeScript.",
         "Canvas-based game loop leveraging requestAnimationFrame and mutable ref state.",
         "Decoupled React UI layer from the real-time canvas game rendering loop.",
         "Responsive game interface supporting both touch and mouse control inputs.",
-        "Firebase Auth and Cloud Firestore integration.",
+        "Firebase Auth and Cloud Firestore infrastructure integration and security.",
       ],
       tr: [
+        "Web proje temeli ve mimari kurulumunun yapılması, sürekli moderasyon ve sistem bakımı.",
         "Native iOS oyun mantığının TypeScript'e port edilmesi.",
         "requestAnimationFrame ve mutable ref state kullanan Canvas tabanlı oyun döngüsü.",
         "React UI katmanı ile gerçek zamanlı oyun render katmanının ayrıştırılması.",
         "Dokunmatik ve fare girdilerini destekleyen responsive oyun arayüzü.",
-        "Firebase Auth ve Cloud Firestore entegrasyonu.",
+        "Firebase Auth ve Cloud Firestore altyapı entegrasyonu ve güvenliği.",
       ],
     },
     tech: ["React 19", "TypeScript", "Vite", "HTML5 Canvas", "Firebase", "Tailwind CSS"],
@@ -516,10 +652,13 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Co-developer", tr: "Ortak geliştirici" },
+    role: {
+      en: "iOS Foundation, Firebase Infrastructure & AdMob Integration",
+      tr: "iOS Proje Temeli, Firebase Altyapısı & AdMob Entegrasyonu",
+    },
     description: {
-      en: "Rule Sort is an endless reflex game for iPhone and iPad, written in Swift and SwiftUI. Objects fall one by one and a rule card decides which side each one goes: warm or cool, round or angular, small or big. The rule can flip in the middle of a run, and sometimes the controls flip with it.",
-      tr: "Rule Sort, iPhone ve iPad için Swift ve SwiftUI ile yazılmış sonsuz bir refleks oyunudur. Nesneler tek tek düşer ve bir kural kartı her birinin hangi tarafa gideceğini belirler: sıcak ya da soğuk, yuvarlak ya da köşeli, küçük ya da büyük. Kural oyunun ortasında değişebilir, bazen kontroller de onunla birlikte ters döner.",
+      en: "Rule Sort is an endless reflex game for iPhone and iPad, written in Swift and SwiftUI. Objects fall one by one and a rule card decides which side each one goes: warm or cool, round or angular, small or big. I established the iOS project foundation, built and maintained the Firebase backend infrastructure, and integrated Google AdMob with complete Ad Unit ID configuration and rewarded-ad monetization flows.",
+      tr: "Rule Sort, iPhone ve iPad için Swift ve SwiftUI ile yazılmış sonsuz bir refleks oyunudur. Nesneler tek tek düşer ve bir kural kartı her birinin hangi tarafa gideceğini belirler: sıcak ya da soğuk, yuvarlak ya da köşeli, küçük ya da büyük. Projede iOS proje temelinin oluşturulması, Firebase altyapı bağlantısı ve korunması, Google AdMob kurulumu, reklam ID'lerinin ayarlanması ve gelir modeli entegrasyonu tarafımdan üstlenilmiştir.",
     },
     executiveSummary: {
       en: "Each run is a swipe-left, swipe-right sort against the current rule. A wrong swipe costs a heart; storms double the points in fast bursts, and mines must be left to fall. Easy, Medium and Hard levels speed up the falls and add trickier rules, while Legendary is a memory mode where you sort by what you remember seeing. Players unlock new rules, complete missions and protect a daily streak. Everyone gets the same Daily Challenge, ranked on a global Game Center leaderboard, and a weekly Weekend Sprint adds new mutations to the rules.",
@@ -527,20 +666,120 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     highlights: {
       en: [
+        "iOS project scaffolding and architectural foundation.",
+        "Firebase infrastructure setup, security, and ongoing maintenance.",
+        "Google AdMob SDK integration, ad unit ID configuration, and rewarded-ad flows.",
         "Endless reflex sorting where the active rule, and sometimes the controls, flip mid-run.",
         "Easy, Medium and Hard levels plus Legendary, a memory-based mode.",
         "Shared Daily Challenge with a global Game Center leaderboard, and a rotating Weekend Sprint.",
-        "Unlockable rules, missions and daily streaks with freezes; free with a rewarded-ad revive or a Premium upgrade.",
       ],
       tr: [
+        "iOS proje temelinin oluşturulması ve mimari altyapının kurulması.",
+        "Firebase altyapı bağlantısı, güvenliği ve sistemin korunması.",
+        "Google AdMob kurulumu, reklam birimi kimliklerinin (Ad Unit ID) ayarlanması ve ödüllü reklam entegrasyonu.",
         "Etkin kuralın, bazen de kontrollerin oyun ortasında değiştiği sonsuz refleks sıralaması.",
         "Kolay, Orta ve Zor seviyeleri ile hafızaya dayalı Efsane modu.",
         "Herkese aynı Günlük Meydan Okuma, Game Center'da küresel sıralama ve dönüşümlü Weekend Sprint.",
-        "Açılabilir kurallar, görevler ve dondurmalı günlük seriler; ücretsiz, ödüllü reklamla canlanma ya da Premium yükseltme.",
       ],
     },
-    tech: ["Swift", "SwiftUI", "iOS", "Game Center", "In-App Purchase", "Rewarded Ads"],
+    tech: [
+      "Swift",
+      "SwiftUI",
+      "iOS",
+      "Firebase",
+      "AdMob",
+      "Game Center",
+      "In-App Purchase",
+      "Rewarded Ads",
+    ],
     liveUrl: "https://apps.apple.com/app/id6807764876",
+    cover: COVERS.rulesort,
+    screenshots: [
+      {
+        src: "/screenshots/rulesort/iphone_1.webp",
+        fullSrc: "/screenshots/rulesort/iphone_1.png",
+        alt: {
+          en: "Rule Sort - Storms double points. Mines: let them fall.",
+          tr: "Rule Sort - Fırtınalarda çifte puan. Mayınları düşmeye bırakın.",
+        },
+        caption: {
+          en: "Storms double points. Mines: let them fall.",
+          tr: "Fırtınalarda çifte puan. Mayınları düşmeye bırakın.",
+        },
+      },
+      {
+        src: "/screenshots/rulesort/iphone_2.webp",
+        fullSrc: "/screenshots/rulesort/iphone_2.png",
+        alt: {
+          en: "Rule Sort - Read the rule. Swipe the object.",
+          tr: "Rule Sort - Kuralı okuyun. Nesneyi kaydırın.",
+        },
+        caption: {
+          en: "Read the rule. Swipe the object.",
+          tr: "Kuralı okuyun. Nesneyi kaydırın.",
+        },
+      },
+      {
+        src: "/screenshots/rulesort/iphone_3.webp",
+        fullSrc: "/screenshots/rulesort/iphone_3.png",
+        alt: {
+          en: "Rule Sort - Build streaks. Multiply your score.",
+          tr: "Rule Sort - Seri yakalayın. Puanınızı katlayın.",
+        },
+        caption: {
+          en: "Build streaks. Multiply your score.",
+          tr: "Seri yakalayın. Puanınızı katlayın.",
+        },
+      },
+      {
+        src: "/screenshots/rulesort/iphone_4.webp",
+        fullSrc: "/screenshots/rulesort/iphone_4.png",
+        alt: {
+          en: "Rule Sort - A new rule every few seconds",
+          tr: "Rule Sort - Her birkaç saniyede bir yeni kural",
+        },
+        caption: {
+          en: "A new rule every few seconds",
+          tr: "Her birkaç saniyede bir yeni kural",
+        },
+      },
+      {
+        src: "/screenshots/rulesort/iphone_5.webp",
+        fullSrc: "/screenshots/rulesort/iphone_5.png",
+        alt: {
+          en: "Rule Sort - Beat your best. Train your reflexes.",
+          tr: "Rule Sort - En iyi skorunuzu geçin. Reflekslerinizi geliştirin.",
+        },
+        caption: {
+          en: "Beat your best. Train your reflexes.",
+          tr: "En iyi skorunuzu geçin. Reflekslerinizi geliştirin.",
+        },
+      },
+      {
+        src: "/screenshots/rulesort/iphone_6.webp",
+        fullSrc: "/screenshots/rulesort/iphone_6.png",
+        alt: {
+          en: "Rule Sort - Daily runs, missions, weekend sprints",
+          tr: "Rule Sort - Günlük yarışlar, görevler ve hafta sonu sprintleri",
+        },
+        caption: {
+          en: "Daily runs, missions, weekend sprints",
+          tr: "Günlük yarışlar, görevler, hafta sonu sprintleri",
+        },
+      },
+      {
+        src: "/screenshots/rulesort/iphone_7.webp",
+        fullSrc: "/screenshots/rulesort/iphone_7.png",
+        alt: {
+          en: "Rule Sort - Three levels. Plus a memory mode.",
+          tr: "Rule Sort - Üç farklı zorluk seviyesi ve hafıza modu.",
+        },
+        caption: {
+          en: "Three levels. Plus a memory mode.",
+          tr: "Üç farklı seviye. Artı bir hafıza modu.",
+        },
+      },
+    ],
   },
   blocknest: {
     shipped: true,
@@ -554,79 +793,147 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     status: { en: "Launched", tr: "Yayında" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Co-developer", tr: "Ortak geliştirici" },
+    role: { en: "iOS Developer", tr: "iOS Geliştirici" },
     description: {
-      en: "Block Nest is a block-fitting puzzle for iPhone and iPad, written in Swift and SwiftUI and played on an 8×8 grid: drag blocks onto the board, clear full rows and columns, and chain combos. Three twists change the classic formula: Karo Mode tilts the board 45° into a diamond, the Gravity Wheel reshuffles the board in a new direction, and diagonal pieces break the usual grid shapes.",
-      tr: "Block Nest, iPhone ve iPad için Swift ve SwiftUI ile yazılmış, 8×8'lik bir tahtada oynanan blok yerleştirme bulmacasıdır: blokları tahtaya sürükleyin, dolan satır ve sütunları temizleyin, kombolar zincirleyin. Klasik formülü üç yenilik değiştirir: Karo Modu tahtayı 45° döndürüp karo biçimine getirir, Yerçekimi Çarkı tahtayı yeni bir yöne karıştırır, çapraz parçalar da alışılmış ızgara şekillerini bozar.",
+      en: "Block Nest is a native block-fitting puzzle game for iPhone and iPad, written in Swift and SwiftUI. Played on an 8×8 grid, it introduces three unique gameplay twists: Karo Mode tilts the board 45° into a diamond, the Gravity Wheel reshuffles the board dynamically, and custom diagonal pieces challenge spatial reasoning.",
+      tr: "Block Nest, iPhone ve iPad için Swift ve SwiftUI ile geliştirilen native bir blok yerleştirme bulmaca oyunudur. 8×8'lik ızgara üzerinde oynanan oyun, klasik formüle üç özgün mekanik getirir: Tahtayı 45° döndüren Karo Modu, parçaları yeni bir yöne savuran Yerçekimi Çarkı ve alışılagelmiş ızgara düzenini bozan özel çapraz bloklar.",
     },
     executiveSummary: {
-      en: "Block Nest plays fully offline, including in airplane mode. A Casual Mode removes countdowns and offers and keeps combos from breaking. Scores and achievements such as Perfect Clears go to Game Center leaderboards, and players can challenge a friend to clear more lines. Rewarded ads can rotate a stuck piece or grant a Karo Mode or Gravity Wheel boost. The game is localized into 13 languages, including Turkish, Arabic, Japanese and Chinese.",
-      tr: "Block Nest uçak modu dahil tamamen çevrimdışı oynanır. Rahat Mod geri sayımları ve teklifleri kaldırır, komboların bozulmasını engeller. Skorlar ve Perfect Clear gibi başarımlar Game Center sıralamalarına gider; oyuncular bir arkadaşına daha çok satır temizleme meydan okuması gönderebilir. Ödüllü reklamlar takılan bir parçayı döndürmeye ya da Karo Modu veya Yerçekimi Çarkı desteği almaya yarar. Oyun Türkçe, Arapça, Japonca ve Çince dahil 13 dile yerelleştirilmiştir.",
+      en: "Block Nest operates completely offline without network requirements. It features custom grid algorithms, a smooth touch interaction engine, and a Casual Mode without time limits. The game integrates Game Center leaderboards and achievements, rewarded-ad boosts, and full localization into 13 languages including Turkish, Arabic, Japanese, and Chinese.",
+      tr: "Block Nest, uçak modu dahil tamamen çevrimdışı çalışabilen bağımsız bir mimariye sahiptir. Özel ızgara algoritmaları, dokunmatik etkileşim motoru ve zaman kısıtlamasız Rahat Mod sıfırdan tasarlandı. Oyun; Game Center küresel sıralamaları, başarımlar, ödüllü reklam destekleri ve Türkçe, Arapça, Japonca ve Çince dahil 13 dile tam yerelleştirme içerir.",
     },
     highlights: {
       en: [
+        "Native iOS puzzle game designed and built with Swift and SwiftUI.",
         "8×8 block-fitting puzzle with Karo Mode (a 45° diamond board), a Gravity Wheel and diagonal pieces.",
         "Fully offline play, plus a Casual Mode without timers or offers.",
         "Game Center leaderboards, achievements and friend challenges.",
-        "Localized into 13 languages.",
+        "Complete internationalization localized into 13 languages.",
       ],
       tr: [
+        "Swift ve SwiftUI ile uçtan uca tasarlanan ve geliştirilen native iOS oyunu.",
         "Karo Modu (45° döndürülmüş tahta), Yerçekimi Çarkı ve çapraz parçalarla 8×8 blok yerleştirme bulmacası.",
         "Tamamen çevrimdışı oyun ve süre ya da teklif içermeyen Rahat Mod.",
         "Game Center sıralamaları, başarımlar ve arkadaşla meydan okuma.",
-        "13 dile yerelleştirme.",
+        "13 dile eksiksiz yerelleştirme altyapısı.",
       ],
     },
     tech: ["Swift", "SwiftUI", "iOS", "Game Center", "In-App Purchase", "Localization"],
     liveUrl: "https://apps.apple.com/app/id6808679766",
+    cover: COVERS.blocknest,
+    screenshots: [
+      {
+        src: "/screenshots/blocknest/iphone_1.webp",
+        fullSrc: "/screenshots/blocknest/iphone_1.png",
+        alt: {
+          en: "Block Nest - Tilt & Spin Bonuses",
+          tr: "Block Nest - Eğim ve Döndürme Bonusları",
+        },
+        caption: {
+          en: "Tilt & Spin Bonuses",
+          tr: "Eğim ve Döndürme Bonusları",
+        },
+      },
+      {
+        src: "/screenshots/blocknest/iphone_2.webp",
+        fullSrc: "/screenshots/blocknest/iphone_2.png",
+        alt: {
+          en: "Block Nest - Rotate Any Piece",
+          tr: "Block Nest - İstediğin Parçayı Döndür",
+        },
+        caption: {
+          en: "Rotate Any Piece",
+          tr: "İstediğin Parçayı Döndür",
+        },
+      },
+      {
+        src: "/screenshots/blocknest/iphone_3.webp",
+        fullSrc: "/screenshots/blocknest/iphone_3.png",
+        alt: {
+          en: "Block Nest - Clear the Lines",
+          tr: "Block Nest - Satırları Temizle",
+        },
+        caption: {
+          en: "Clear the Lines",
+          tr: "Satırları Temizle",
+        },
+      },
+      {
+        src: "/screenshots/blocknest/iphone_4.webp",
+        fullSrc: "/screenshots/blocknest/iphone_4.png",
+        alt: {
+          en: "Block Nest - Beat Your Best",
+          tr: "Block Nest - Kendi En İyi Skorunu Geç",
+        },
+        caption: {
+          en: "Beat Your Best",
+          tr: "Kendi En İyi Skorunu Geç",
+        },
+      },
+      {
+        src: "/screenshots/blocknest/iphone_5.webp",
+        fullSrc: "/screenshots/blocknest/iphone_5.png",
+        alt: {
+          en: "Block Nest - Challenge a Friend",
+          tr: "Block Nest - Bir Arkadaşına Meydan Oku",
+        },
+        caption: {
+          en: "Challenge a Friend",
+          tr: "Bir Arkadaşına Meydan Oku",
+        },
+      },
+    ],
   },
   sporsayfasi: {
     title: { en: "Spor Sayfası", tr: "Spor Sayfası" },
     summary: {
-      en: "A sports news site with scores and stats.",
-      tr: "Skorlar, istatistikler ve spor haberleri sunan bir spor sitesi.",
+      en: "A sports news site with scores, stats and live data feeds.",
+      tr: "Skorlar, istatistikler ve canlı veri akışlarıyla spor haberleri sunan bir spor portalı.",
     },
-    category: { en: "Web · Infrastructure & Backend", tr: "Web · Altyapı & Arka Uç" },
+    category: { en: "Web · Full-Stack", tr: "Web · Full-Stack" },
     categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
     statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
-    role: { en: "Infrastructure & Backend Integration", tr: "Altyapı & Backend Entegrasyonu" },
+    role: {
+      en: "Web Foundation, Firebase Infrastructure & Sports API Integration",
+      tr: "Web Proje Temeli, Firebase Altyapısı & Spor API Entegrasyonu",
+    },
     description: {
-      en: "Spor Sayfası is a sports news portal developed under Garage.ist using Next.js App Router and TypeScript. My engineering contributions centered on configuring the Firebase infrastructure, hosting setup, database record persistence, and debugging news ingestion API integrations.",
-      tr: "Spor Sayfası; Garage.ist bünyesinde Next.js App Router ve TypeScript ile geliştirilen bir spor haber portalıdır. Projede Firebase altyapısı, Hosting kurulumu, veritabanı kayıt süreçleri ve haber toplama API entegrasyonu tarafımdan yapılandırılmıştır.",
+      en: "Spor Sayfası is a sports news and live scores portal developed under Garage.ist using Next.js App Router and TypeScript. Sharing the same architectural foundation as Gayrimenkul Dünyası, I established the web project scaffolding and Firebase infrastructure, while additionally implementing external sports data and scores REST API integrations with database persistence and ongoing system maintenance.",
+      tr: "Spor Sayfası; Garage.ist bünyesinde Next.js App Router ve TypeScript ile geliştirilen bir spor haber ve canlı skor portalıdır. Gayrimenkul Dünyası ile aynı mimari temeli paylaşır: Web proje temelinin kurulması, Firebase altyapı bağlantısı, korunması ve sürekliliği tarafımdan üstlenilmiş; bunlara ek olarak dış spor haberleri ve skorları çeken REST API entegrasyonu ile veritabanı kayıt süreçleri yapılandırılmıştır.",
     },
     executiveSummary: {
-      en: "Acting as the infrastructure & backend integration lead on the project, I established the Firebase Hosting deployment pipeline and resolved data synchronization errors within the sports news ingestion APIs, securing database persistence for parsed sports content.",
-      tr: "Proje genelinde altyapı ve backend entegrasyonu sorumluluğu üstlenilerek, uygulamanın Firebase Hosting üzerinde sorunsuz yayınlanması sağlandı. Haber çekme API'lerindeki senkronizasyon ve veri işleme hataları giderilmiş, veritabanı kayıt ve veri sürekliliği altyapısı yapılandırılmıştır.",
+      en: "Sharing architectural patterns with Gayrimenkul Dünyası, the platform is built on Next.js App Router and Firebase. In addition to setting up the project baseline and Firebase Hosting/Firestore pipeline, I integrated third-party sports news and scores APIs, resolved synchronization issues, and ensured reliable database persistence and system moderation.",
+      tr: "Gayrimenkul Dünyası ile benzer mimari yapıyı paylaşan platform, Next.js App Router ve Firebase üzerine kuruludur. Web proje temelinin ve Firebase Hosting/Firestore hattının kurulmasına ek olarak; dış kaynaklı spor haberleri ve skor API'lerinin entegrasyonunu gerçekleştirdim, senkronizasyon hatalarını giderdim ve veritabanı kayıt sürekliliği ile sistem moderasyonunu sağladım.",
     },
     problem: {
-      en: "During project deployment, data ingestion bugs in external sports APIs and unconfigured database persistence routines caused content stream interruptions for the web application.",
-      tr: "Uygulamanın canlıya alınması sürecinde dış spor API'lerinden haber çekme akışlarında meydana gelen hatalar ve veritabanı kayıt süreçlerindeki eksiklikler, içeriklerin kesintisiz sunulmasını engelliyordu.",
+      en: "Real-time sports content and score feeds require dependable external API ingestion paired with reliable database caching to prevent service interruptions during match traffic spikes.",
+      tr: "Canlı spor içerikleri ve skor akışları, maç yoğunluğu anlarında kesinti yaşanmaması için güvenilir bir dış API entegrasyonu ve kararlı bir veritabanı önbellekleme/kayıt altyapısı gerektiriyordu.",
     },
     solution: {
-      en: "Data fetching errors in the news collection API were debugged and resolved, database persistence pipelines were configured for incoming sports records, and deployment was automated via Firebase Hosting.",
-      tr: "Haber toplama API'sindeki veri çekme hataları çözülerek veri sürekliliği sağlandı; içeriklerin veritabanına sorunsuz kaydedilmesi için veri katmanı yapılandırıldı ve uygulama Firebase Hosting üzerinde canlıya alındı.",
+      en: "Built a solid Next.js web foundation with Firebase infrastructure, integrated live sports REST APIs with resilient error handling, and configured Firestore database persistence for incoming sports records.",
+      tr: "Firebase altyapısı üzerine kurulu sağlam bir Next.js web temeli oluşturuldu, hata toleranslı canlı spor REST API entegrasyonu eklendi ve gelen spor verilerinin Firestore veritabanına kesintisiz kaydedilmesi sağlandı.",
     },
     architectureText: {
-      en: "Built on Next.js App Router, the application interfaces with news collection API services and a structured database persistence layer, backed by Firebase Hosting deployment.",
-      tr: "Next.js App Router mimarisine sahip uygulama; dış haber API'lerini işleyen servis katmanı ve veri kayıt mekanizması üzerine kurulmuştur. Yayın altyapısı Firebase Hosting ile desteklenmiştir.",
+      en: "Built on Next.js App Router and Firebase. The data layer integrates external sports REST APIs with automated ingestion and Cloud Firestore persistence, deployed and served via Firebase Hosting.",
+      tr: "Next.js App Router ve Firebase mimarisi üzerine inşa edilmiştir. Veri katmanı, dış spor REST API'lerini otomatik veri toplama hattı ve Cloud Firestore veritabanı ile birleştirir; yayın altyapısı Firebase Hosting ile sağlanır.",
     },
     highlights: {
       en: [
-        "Configuration of Firebase infrastructure and hosting deployment pipelines.",
-        "Debugging and resolution of data fetching errors in the sports news collection API.",
-        "Backend integration of database persistence for ingested sports news records.",
-        "Infrastructure support for the Next.js App Router sports web portal.",
+        "Web project scaffolding, architectural foundation, and system moderation.",
+        "Firebase infrastructure setup, hosting deployment, and security.",
+        "External sports news and live scores REST API integration and synchronization.",
+        "Structured Cloud Firestore persistence pipeline for parsed sports content.",
       ],
       tr: [
-        "Firebase altyapısı ve Hosting canlıya alım süreçlerinin yapılandırılması.",
-        "Spor haberleri toplama API'sindeki veri çekme ve senkronizasyon hatalarının çözülmesi.",
-        "İçeriklerin veritabanına sorunsuz kaydedilmesi için veri katmanı entegrasyonu.",
-        "Next.js App Router tabanlı web portalı altyapı desteği.",
+        "Web proje temelinin oluşturulması, mimari kurulumu ve sistem moderasyonu.",
+        "Firebase altyapı bağlantısı, Hosting kurulumu ve sistemin korunması.",
+        "Dış spor haberleri ve canlı skorlar REST API entegrasyonu ve senkronizasyonu.",
+        "Spor içerikleri ve skor verileri için yapılandırılmış Cloud Firestore kayıt hattı.",
       ],
     },
-    tech: ["Firebase", "Next.js", "TypeScript", "REST API", "Node.js"],
+    tech: ["Next.js", "Firebase", "TypeScript", "REST API", "Firestore"],
     liveUrl: "https://sporsayfasi.com",
   },
   garageist: {
@@ -759,7 +1066,6 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "PHP", "MySQL", "QR Code", "RBAC"],
-    githubUrl: "https://github.com/barissalihbabacan/IT-Department-Resource-Management-System",
     cover: COVERS.itrms,
   },
   chorus: {
