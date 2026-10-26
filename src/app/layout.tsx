@@ -4,6 +4,7 @@ import { inter, jetbrainsMono } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://babacan.me"),
   title: "Barış Salih Babacan",
   description: "Kişisel portfolyo ve sistem yazılımı projeleri.",
 };
