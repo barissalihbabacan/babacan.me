@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://babacan.me/sitemap.xml
-
-# LLM Standard: https://llmstxt.org
-# LLM Context: https://babacan.me/llms.txt
