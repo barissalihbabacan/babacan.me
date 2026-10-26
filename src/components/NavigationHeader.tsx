@@ -3,19 +3,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type Locale } from "@/i18n";
-import { NAV_ITEMS, UI_DICTIONARY } from "@/data/i18nData";
+import { UI_DICTIONARY } from "@/data/i18nData";
 
 interface NavigationHeaderProps {
   readonly currentLocale: Locale;
 }
 
 /**
- * Üst gezinme çubuğu (Header) bileşeni.
- * 64px sabit yükseklik, buzlu cam zemin ve çift dilli geçiş butonuna sahiptir.
+ * Üst gezinme çubuğu (Navbar) bileşeni.
+ * Eski sitedeki özgün tasarımı birebir yansıtır:
+ * - "■ babacan.me" monospace marka logosu
+ * - Dil değiştirici buton (TR <-> EN)
+ * - Doğrudan dil bazlı PDF CV indirme bağlantısı
  */
 export default function NavigationHeader({ currentLocale }: NavigationHeaderProps) {
   const pathname = usePathname() || `/${currentLocale}`;
   const targetLocale: Locale = currentLocale === "tr" ? "en" : "tr";
+  const { nav, hero } = UI_DICTIONARY;
 
   // Mevcut yolun dil önekini hedef dille değiştirir (/tr/... -> /en/...)
   const switchLocalePath = pathname.startsWith(`/${currentLocale}`)
@@ -30,61 +34,61 @@ export default function NavigationHeader({ currentLocale }: NavigationHeaderProp
     }
   };
 
+  const cvHref =
+    currentLocale === "tr"
+      ? "/cv/Baris_Salih_Babacan_CV_TR.pdf"
+      : "/cv/Baris_Salih_Babacan_CV_EN.pdf";
+
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-[#26282d] bg-[#181a1c]/75 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-382.5 items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Sol: Logo / İsim */}
-        <Link
-          href={`/${currentLocale}`}
-          className="group flex items-center gap-2 text-sm font-semibold tracking-tight text-[#f1f3f5] transition-colors hover:text-[#c5a059]"
-        >
-          <span className="flex h-7 w-7 items-center justify-center rounded-xs border border-[#33373d] bg-[#1b1d20] font-mono text-xs text-[#c5a059] transition-colors group-hover:border-[#c5a059]">
-            B
-          </span>
-          <span className="hidden font-mono tracking-wide sm:inline-block">
-            babacan<span className="text-[#c5a059]">.me</span>
-          </span>
-        </Link>
-
-        {/* Sağ: Gezinme Bağlantıları ve Dil Değiştirici */}
-        <nav aria-label="Main Navigation" className="flex items-center gap-1 sm:gap-4">
-          <ul className="flex items-center gap-1 sm:gap-2">
-            {NAV_ITEMS.map((item) => {
-              const itemHref = `/${currentLocale}${item.href}`;
-              const isActive = pathname === itemHref || pathname.startsWith(`${itemHref}/`);
-
-              return (
-                <li key={item.id}>
-                  <Link
-                    href={itemHref}
-                    className={`inline-flex min-h-9 items-center rounded-xs px-3 font-mono text-xs uppercase tracking-wider transition-colors ${
-                      isActive
-                        ? "text-[#c5a059]"
-                        : "text-[#b8bdc4] hover:text-[#f1f3f5]"
-                    }`}
-                  >
-                    {item.label[currentLocale]}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          {/* Dikey ayırıcı çizgi */}
-          <div className="h-4 w-px bg-[#26282d]" aria-hidden="true" />
-
-          {/* Dil Değiştirici Buton */}
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-surface font-label-mono text-xs uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        {nav.skipToContent[currentLocale]}
+      </a>
+      <header
+        className="fixed top-0 left-0 w-full z-50 h-16 border-b border-primary/30 bg-surface/92 backdrop-blur-sm"
+        aria-label={nav.mainNav[currentLocale]}
+      >
+        <div className="max-w-container-max mx-auto px-margin-desktop h-full flex items-center justify-between">
           <Link
-            href={switchLocalePath}
-            onClick={handleLanguageSwitch}
-            aria-label={UI_DICTIONARY.nav.switchLangAria[currentLocale]}
-            className="inline-flex min-h-9 items-center gap-1.5 rounded-xs border border-[#33373d] bg-[#1b1d20] px-2.5 font-mono text-xs uppercase tracking-wider text-[#f1f3f5] transition-all hover:border-[#c5a059] hover:text-[#c5a059]"
+            href={`/${currentLocale}`}
+            className="font-label-mono text-label-mono text-on-surface tracking-tighter flex items-center gap-2 cursor-pointer"
           >
-            <span className="text-[#c5a059]">/</span>
-            <span>{targetLocale.toUpperCase()}</span>
+            <span className="text-primary text-xs" aria-hidden="true">
+              ■
+            </span>
+            babacan.me
           </Link>
-        </nav>
-      </div>
-    </header>
+
+          <div className="flex items-center gap-gutter">
+            <Link
+              href={switchLocalePath}
+              onClick={handleLanguageSwitch}
+              className="nav-link cursor-pointer border border-primary/30 px-2.5 min-h-9 min-w-9 inline-flex items-center justify-center text-label-sm"
+              aria-label={nav.switchLang[currentLocale]}
+            >
+              {currentLocale === "tr" ? "EN" : "TR"}
+            </Link>
+
+            <a
+              href={cvHref}
+              download
+              className="border border-primary/40 text-primary px-3 min-h-9 font-label-mono text-label-xs uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-1.5"
+            >
+              <svg
+                className="w-3.5 h-3.5 fill-current shrink-0"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+              </svg>
+              {hero.downloadCV[currentLocale]}
+            </a>
+          </div>
+        </div>
+      </header>
+    </>
   );
 }
