@@ -54,29 +54,12 @@ export interface ProjectData {
   readonly shipped?: boolean;
 }
 
+import type { ProjectKey } from "@/data/projectsData";
+
 /**
  * Desteklenen projelerin benzersiz tanımlayıcı (slug) anahtarları.
  */
-export type ProjectKey =
-  | "mythos"
-  | "osmos"
-  | "chorus"
-  | "gayrimenkuldunyasi"
-  | "sortify"
-  | "plus-tv"
-  | "playsortify"
-  | "rulesort"
-  | "blocknest"
-  | "sporsayfasi"
-  | "worldclock"
-  | "garageist"
-  | "qpass"
-  | "itrms"
-  | "butler-alfred"
-  | "dervisoglu"
-  | "dervisoglu-admin"
-  | "privilegedev"
-  | "sehirtv";
+export type { ProjectKey };
 
 /**
  * Tüm projelerin veri sözlüğü tipi.
