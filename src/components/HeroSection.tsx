@@ -21,12 +21,12 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
       {/* Bölüm Hayalet Numarası (Ghost Number) - Keskin Inter tipografisi ve ayrık rakamlar */}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute top-0 right-4 select-none font-sans text-[20vw] font-black leading-none tracking-normal tabular-nums text-[#f1f3f5]/[0.025] sm:right-8 sm:text-[18vw] lg:right-12"
+        className="pointer-events-none absolute top-0 right-4 select-none font-sans text-[20vw] font-black leading-none tracking-normal tabular-nums text-[#f1f3f5]/2.5 sm:right-8 sm:text-[18vw] lg:right-12"
       >
         01
       </span>
 
-      <div className="relative mx-auto max-w-[1530px] px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-382.5 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           {/* Rol / Ünvan Rozeti */}
           <div className="mb-6 inline-flex items-center gap-2 rounded-xs border border-[#33373d] bg-[#1b1d20] px-3 py-1 font-mono text-xs uppercase tracking-widest text-[#c5a059]">
@@ -52,14 +52,14 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <Link
               href={`/${currentLocale}#projects`}
-              className="inline-flex min-h-[44px] items-center justify-center rounded-xs border border-[#c5a059] bg-[#3a2d18] px-6 font-mono text-xs font-medium uppercase tracking-wider text-[#e5cba3] transition-all hover:bg-[#c5a059] hover:text-[#111214]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xs border border-[#c5a059] bg-[#3a2d18] px-6 font-mono text-xs font-medium uppercase tracking-wider text-[#e5cba3] transition-all hover:bg-[#c5a059] hover:text-[#111214]"
             >
               {common.exploreWork[currentLocale]}
             </Link>
 
             <Link
               href={`/${currentLocale}#contact`}
-              className="inline-flex min-h-[44px] items-center justify-center rounded-xs border border-[#33373d] bg-[#181a1c] px-6 font-mono text-xs font-medium uppercase tracking-wider text-[#f1f3f5] transition-all hover:border-[#c5a059] hover:text-[#c5a059]"
+              className="inline-flex min-h-11 items-center justify-center rounded-xs border border-[#33373d] bg-[#181a1c] px-6 font-mono text-xs font-medium uppercase tracking-wider text-[#f1f3f5] transition-all hover:border-[#c5a059] hover:text-[#c5a059]"
             >
               {common.getInTouch[currentLocale]}
             </Link>
