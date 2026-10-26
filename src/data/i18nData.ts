@@ -24,6 +24,22 @@ export const UI_DICTIONARY = {
     sourceCode: { tr: "Kaynak Kodu", en: "Source Code" },
     livePreview: { tr: "Canlı Önizleme", en: "Live Preview" },
   },
+  hero: {
+    roles: {
+      tr: "Garage.ist CTO'su · Sistem Yazılımı Geliştiricisi",
+      en: "CTO @ Garage.ist · Systems Engineer",
+    },
+    titlePrefix: { tr: "Barış Salih", en: "Barış Salih" },
+    titleSuffix: { tr: "Babacan", en: "Babacan" },
+    subtitle: {
+      tr: "Yerel-öncelikli altyapı, ağ protokolleri, gömülü sistemler ve native mobil uygulamalar geliştiren bir sistem yazılımı mühendisi.",
+      en: "Systems engineer building local-first infrastructure, network protocols, embedded systems, and native mobile apps.",
+    },
+    statShippedLabel: { tr: "Yayınlanan Ürün", en: "Shipped Products" },
+    statShippedValue: { tr: "6+", en: "6+" },
+    statActiveLabel: { tr: "Aktif Proje", en: "Active Projects" },
+    statActiveValue: { tr: "15+", en: "15+" },
+  },
 } as const satisfies Record<string, Record<string, LocalizedText>>;
 
 /**
