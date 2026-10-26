@@ -1,0 +1,27 @@
+# Bağımlılıklar
+/node_modules
+
+# Next.js derleme ve statik çıktı dizinleri
+/.next/
+/out/
+/build
+
+# Çevre değişkenleri
+.env*.local
+.env
+
+# Hata ayıklama ve günlükler
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Firebase önbelleği
+.firebase/
+
+# İşletim sistemi ve editör dosyaları
+.DS_Store
+*.pem
