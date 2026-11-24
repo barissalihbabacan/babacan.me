@@ -9,3 +9,6 @@ export * from "./CornerRoundness";
 export * from "./Typography";
 export * from "./Elevation";
 export * from "./Motion";
+export * from "./Opacity";
+export * from "./Variants";
+export * from "./DesignTokens";

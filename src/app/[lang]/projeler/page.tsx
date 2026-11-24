@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { LOCALES, resolveLocale, type Locale } from "@/i18n";
-import ProjectsDirectoryView from "@/components/ProjectsDirectoryView";
+import { LOCALES, resolveLocale, type Locale } from "@/I18n";
+import { pageMetadata, projectsSegment } from "@/Utils/seo";
+import ProjectsDirectoryView from "@/Components/ProjectsDirectoryView";
 
 export function generateStaticParams(): readonly { readonly lang: Locale }[] {
   return LOCALES.map((lang) => ({ lang }));
@@ -12,16 +13,19 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { lang } = await params;
-  const isTr = resolveLocale(lang) === "tr";
+  const currentLocale = resolveLocale(lang);
+  const isTr = currentLocale === "tr";
 
-  return {
+  return pageMetadata({
+    lang: currentLocale,
+    pathFor: (l) => `/${projectsSegment(l)}`,
     title: isTr
       ? "Projeler Kataloğu | Barış Salih Babacan"
       : "Projects Catalog | Barış Salih Babacan",
     description: isTr
       ? "Barış Salih Babacan tarafından geliştirilen sistem yazılımları, yerel-öncelikli motorlar ve mobil projeler kataloğu."
       : "Catalog of systems software, local-first engines, and mobile applications by Barış Salih Babacan.",
-  };
+  });
 }
 
 export default async function ProjelerPage({ params }: PageProps) {

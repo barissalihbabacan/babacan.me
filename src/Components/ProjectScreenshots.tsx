@@ -1,8 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
-import type { ProjectScreenshot } from "@/data/projectsData";
-import { type Locale } from "@/i18n";
+import type { ProjectScreenshot } from "@/Data/projectsData";
+import { type Locale } from "@/I18n";
 import Icon from "./Icon";
 
 export interface ProjectScreenshotsProps {
@@ -82,7 +82,7 @@ export default function ProjectScreenshots({ screenshots, lang }: ProjectScreens
               className="snap-start shrink-0 flex flex-col items-center group cursor-pointer"
               onClick={() => setActiveModalIdx(idx)}
             >
-              <div className="p-2 rounded-2xl bg-surface-container/30 border border-primary/20 group-hover:border-primary/60 group-hover:shadow-[0_0_24px_rgba(197,160,89,0.15)] transition-all overflow-hidden">
+              <div className="p-2 rounded-2xl bg-surface-container/30 border border-primary/20 group-hover:border-primary/60 group-hover:shadow-[0_0_24px_var(--color-glow-primary)] transition-all overflow-hidden">
                 <img
                   src={item.src}
                   alt={altText}

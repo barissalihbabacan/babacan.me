@@ -1,4 +1,4 @@
-import type { LocalizedText } from "@/i18n";
+import type { LocalizedText } from "@/I18n";
 
 /**
  * Gezinme çubuğu (navigation) menü öğesi modeli.

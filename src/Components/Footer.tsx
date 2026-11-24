@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
 
 export interface FooterProps {
   readonly currentLocale: Locale;

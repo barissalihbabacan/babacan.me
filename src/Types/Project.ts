@@ -1,4 +1,4 @@
-import type { LocalizedText } from "@/i18n";
+import type { LocalizedText } from "@/I18n";
 
 /**
  * Bir projenin uygulama içi ekran görüntüsü modeli.
@@ -29,9 +29,7 @@ export interface ProjectData {
   /** Teknik olmayan okurlar için tek cümlelik sade özet (kartlarda ve detay sayfasının başında gösterilir). */
   readonly summary: LocalizedText;
   readonly category: LocalizedText;
-  readonly categoryColor: string;
   readonly status: LocalizedText;
-  readonly statusColor: string;
   readonly year: LocalizedText;
   readonly role: LocalizedText;
   readonly description: LocalizedText;
@@ -54,7 +52,7 @@ export interface ProjectData {
   readonly shipped?: boolean;
 }
 
-import type { ProjectKey } from "@/data/projectsData";
+import type { ProjectKey } from "@/Data/projectsData";
 
 /**
  * Desteklenen projelerin benzersiz tanımlayıcı (slug) anahtarları.

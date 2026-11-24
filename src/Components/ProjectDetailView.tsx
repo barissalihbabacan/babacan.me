@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { PROJECT_DATA, liveLinkLabel, type ProjectKey } from "@/data/projectsData";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { PROJECT_DATA, liveLinkLabel, type ProjectKey } from "@/Data/projectsData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
 import ArchitectureDiagram from "./ArchitectureDiagram";
 import ProjectCover from "./ProjectCover";
 import LatinText from "./LatinText";
 import Icon from "./Icon";
 import ProjectScreenshots from "./ProjectScreenshots";
+import Button from "./Button";
+import { ButtonSize, ButtonVariant } from "@/DesignSystem";
 
 export interface ProjectDetailViewProps {
   readonly slug: ProjectKey;
@@ -28,13 +30,16 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
         <h1 className="text-2xl font-bold text-on-surface">
           {isTr ? "Proje bulunamadı" : "Project Not Found"}
         </h1>
-        <Link
+        <Button
           href={projectsPath}
-          className="mt-4 text-primary hover:underline font-label-mono text-xs uppercase inline-flex items-center gap-1.5"
+          variant={ButtonVariant.Text}
+          size={ButtonSize.Medium}
+          className="mt-4"
+          iconPosition="start"
+          icon={<Icon name="chevron_left" className="w-3.5 h-3.5" />}
         >
-          <Icon name="chevron_left" className="w-3.5 h-3.5" />
-          <span>{isTr ? "Projelere dön" : "Return to Projects"}</span>
-        </Link>
+          {isTr ? "Projelere dön" : "Return to Projects"}
+        </Button>
       </div>
     );
   }
@@ -77,16 +82,15 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
           </span>
         </nav>
 
-        <Link
+        <Button
           href={projectsPath}
-          className="font-label-mono text-xs text-on-surface-variant/80 hover:text-primary uppercase tracking-widest flex items-center gap-1.5 py-1.5 px-3 border border-primary/20 hover:border-primary/50 transition-colors group cursor-pointer"
+          variant={ButtonVariant.Subtle}
+          size={ButtonSize.Small}
+          iconPosition="start"
+          icon={<Icon name="chevron_left" className="w-3.5 h-3.5" />}
         >
-          <Icon
-            name="chevron_left"
-            className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform"
-          />
-          <span>{backButtonText}</span>
-        </Link>
+          {backButtonText}
+        </Button>
       </div>
 
       {/* Başlık Alanı */}
@@ -115,26 +119,26 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
         {/* Canlı Demo & GitHub Bağlantıları */}
         <div className="mt-8 flex flex-wrap gap-4">
           {project.liveUrl && (
-            <a
+            <Button
               href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 font-label-mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 bg-primary text-surface hover:bg-primary/85"
+              external
+              variant={ButtonVariant.Filled}
+              size={ButtonSize.Medium}
+              icon={<Icon name="north_east" className="w-3.5 h-3.5" />}
             >
-              <span>{liveLinkLabel(project.liveUrl, currentLocale)}</span>
-              <Icon name="north_east" className="w-3.5 h-3.5" />
-            </a>
+              {liveLinkLabel(project.liveUrl, currentLocale)}
+            </Button>
           )}
           {project.githubUrl && (
-            <a
+            <Button
               href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 font-label-mono text-xs uppercase tracking-widest transition-colors flex items-center gap-2 border border-primary/40 text-primary hover:bg-primary/10"
+              external
+              variant={ButtonVariant.Outline}
+              size={ButtonSize.Medium}
+              icon={<Icon name="north_east" className="w-3.5 h-3.5" />}
             >
               <LatinText text={isTr ? "GitHub Deposu" : "GitHub Repository"} />
-              <Icon name="north_east" className="w-3.5 h-3.5" />
-            </a>
+            </Button>
           )}
         </div>
       </header>
@@ -256,16 +260,15 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
 
           {/* Geri Dönüş Butonu */}
           <div className="pt-8 border-t border-primary/20">
-            <Link
+            <Button
               href={projectsPath}
-              className="inline-flex items-center gap-2 font-label-mono text-xs text-primary uppercase tracking-widest py-2.5 px-4 border border-primary/30 hover:border-primary hover:bg-primary/5 transition-all group cursor-pointer"
+              variant={ButtonVariant.Outline}
+              size={ButtonSize.Medium}
+              iconPosition="start"
+              icon={<Icon name="chevron_left" className="w-3.5 h-3.5" />}
             >
-              <Icon
-                name="chevron_left"
-                className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform"
-              />
-              <span>{backButtonText}</span>
-            </Link>
+              {backButtonText}
+            </Button>
           </div>
         </div>
 

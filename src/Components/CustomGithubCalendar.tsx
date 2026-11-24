@@ -1,16 +1,17 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { loadGithubData, type ContributionDay } from "@/utils/githubData";
-import { type Locale } from "@/i18n";
+import { loadGithubData, type ContributionDay } from "@/Utils/githubData";
+import { type Locale } from "@/I18n";
+import { Colors, ContributionColors } from "@/DesignSystem";
 
-// Boş hücreye (#181a1c) karşı kontrast: 3.04 / 4.34 / 5.76 / 7.1. WCAG 1.4.11 uyumlu.
+// Katkı basamakları: boş, açık, orta, parlak altın ve en yüksek (kontrast notları ContributionColors'ta)
 const LEVEL_COLORS: readonly string[] = [
-  "#181a1c", // level 0 - boş
-  "#7a6331", // level 1 - açık altın
-  "#9a7a3c", // level 2 - orta altın
-  "#b38f45", // level 3 - parlak altın
-  "#c5a059", // level 4 - en yüksek altın
+  Colors.Surface,
+  ContributionColors.Low,
+  ContributionColors.Medium,
+  ContributionColors.High,
+  Colors.Primary,
 ];
 
 const MONTH_NAMES_TR: readonly string[] = [
@@ -107,7 +108,7 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
 
         {/* Lejant */}
         <div className="flex items-center gap-1.5">
-          <span className="text-[10px] text-on-surface-variant/70 uppercase tracking-wider">
+          <span className="text-label-2xs text-on-surface-variant/70 uppercase tracking-wider">
             {lang === "tr" ? "Az" : "Less"}
           </span>
           {LEVEL_COLORS.map((color, index) => (
@@ -117,7 +118,7 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
               style={{ backgroundColor: color }}
             />
           ))}
-          <span className="text-[10px] text-on-surface-variant/70 uppercase tracking-wider">
+          <span className="text-label-2xs text-on-surface-variant/70 uppercase tracking-wider">
             {lang === "tr" ? "Çok" : "More"}
           </span>
         </div>
@@ -127,7 +128,7 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
       <div className="overflow-x-auto pb-2 scrollbar-thin">
         <div className="min-w-[720px] flex flex-col gap-1">
           {/* Ay Başlıkları */}
-          <div className="flex text-[10px] font-label-mono text-on-surface-variant/60 h-4 relative">
+          <div className="flex text-label-2xs font-label-mono text-on-surface-variant/60 h-4 relative">
             {monthLabels.map((m, idx) => (
               <span
                 key={idx}

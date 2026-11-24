@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
-import { PROJECT_DATA } from "@/data/projectsData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
+import { PROJECT_DATA } from "@/Data/projectsData";
 import LatinText from "./LatinText";
 import Icon from "./Icon";
 import NetworkGraphic from "./NetworkGraphic";
+import Button from "./Button";
+import { ButtonSize, ButtonVariant, FontSize } from "@/DesignSystem";
 
 const SHIPPED_COUNT = Object.values(PROJECT_DATA).filter((p) => p.shipped).length;
 
@@ -67,8 +69,8 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
 
             {/* Manşet Başlığı */}
             <h1
-              className="text-on-surface font-bold leading-[0.88] mb-3 lg:mb-4 tracking-tight"
-              style={{ fontSize: "clamp(2.75rem, 6.5vw, 6.5rem)" }}
+              className="text-on-surface font-bold leading-compressed mb-3 lg:mb-4 tracking-tight"
+              style={{ fontSize: FontSize.HeroNameFluid }}
               dangerouslySetInnerHTML={{ __html: hero.title[currentLocale] }}
             />
 
@@ -80,19 +82,17 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
 
             {/* Hızlı Eylem Butonları (CTA) */}
             <div className="flex flex-wrap gap-4 mb-6 lg:mb-0">
-              <a
+              <Button
                 href="#projects"
-                className="bg-primary text-surface px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
+                variant={ButtonVariant.Filled}
+                size={ButtonSize.Large}
+                icon={<Icon name="arrow_forward" className="w-4 h-4" />}
               >
-                <span>{hero.viewWork[currentLocale]}</span>
-                <Icon name="arrow_forward" className="w-4 h-4" />
-              </a>
-              <a
-                href="#contact"
-                className="border border-on-surface-variant/30 text-on-surface-variant px-8 py-4 font-label-mono text-label-mono uppercase tracking-widest hover:border-primary hover:text-primary transition-all"
-              >
+                {hero.viewWork[currentLocale]}
+              </Button>
+              <Button href="#contact" variant={ButtonVariant.Muted} size={ButtonSize.Large}>
                 {hero.getInTouch[currentLocale]}
-              </a>
+              </Button>
             </div>
           </div>
 
@@ -161,7 +161,7 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
               aria-label={hero.scroll[currentLocale]}
               className="flex flex-col items-center gap-1.5 text-on-surface/60 hover:text-primary transition-colors group cursor-pointer"
             >
-              <span className="font-label-mono text-label-xs uppercase tracking-[0.25em] text-on-surface-variant group-hover:text-primary transition-colors">
+              <span className="font-label-mono text-label-xs uppercase tracking-cover text-on-surface-variant group-hover:text-primary transition-colors">
                 {hero.scroll[currentLocale]}
               </span>
               <div className="w-[18px] h-[28px] rounded-full border border-primary/40 flex justify-center p-1 group-hover:border-primary transition-colors">

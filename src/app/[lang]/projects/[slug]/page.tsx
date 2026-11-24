@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { LOCALES, resolveLocale, type Locale } from "@/i18n";
-import { PROJECT_DATA, type ProjectKey } from "@/data/projectsData";
-import ProjectDetailView from "@/components/ProjectDetailView";
+import { LOCALES, resolveLocale, type Locale } from "@/I18n";
+import { pageMetadata, projectsSegment } from "@/Utils/seo";
+import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
+import ProjectDetailView from "@/Components/ProjectDetailView";
 
 export function generateStaticParams(): readonly { readonly lang: Locale; readonly slug: string }[] {
   const slugs = Object.keys(PROJECT_DATA) as ProjectKey[];
@@ -35,15 +36,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = project.title[currentLocale] ?? project.title.en;
   const summary = project.summary[currentLocale] ?? project.summary.en;
 
-  return {
+  return pageMetadata({
+    lang: currentLocale,
+    pathFor: (l) => `/${projectsSegment(l)}/${slug}`,
     title: `${title} | Barış Salih Babacan`,
     description: summary,
-    openGraph: {
-      title: `${title} | Barış Salih Babacan`,
-      description: summary,
-      images: project.cover ? [project.cover.webp] : undefined,
-    },
-  };
+    image: project.cover?.webp,
+  });
 }
 
 export default async function ProjectsSlugPage({ params }: PageProps) {

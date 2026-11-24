@@ -67,7 +67,7 @@ export const i18nData = {
       en: "Q-PASS DAILY USERS\n3 SCHOOL YEARS",
       tr: "Q-PASS GÜNLÜK\nKULLANICI · 3 YIL",
     },
-    stat4_val: { en: "3", tr: "3" },
+    stat4_val: { en: "2", tr: "2" },
     stat4_lbl: { en: "OPEN-SOURCE\nPROJECTS", tr: "AÇIK KAYNAK\nPROJE" },
     downloadCV: { en: "Download CV", tr: "CV İndir" },
     scroll: { en: "SCROLL", tr: "KAYDIR" },

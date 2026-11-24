@@ -3,12 +3,14 @@
 import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { PROJECT_DATA, type ProjectKey } from "@/data/projectsData";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
 import Icon from "./Icon";
 import ProjectCover from "./ProjectCover";
 import LatinText from "./LatinText";
+import Tag from "./Tag";
+import { TagSize, TagVariant } from "@/DesignSystem";
 
 export const FILTERS = ["all", "shipped", "garage", "p2p", "web", "hardware"] as const;
 export type FilterCategory = (typeof FILTERS)[number];
@@ -162,16 +164,12 @@ function ProjectsDirectoryContent({ currentLocale }: ProjectsDirectoryViewProps)
                   />
                 )}
                 <div className="flex items-center justify-between mb-4">
-                  <span
-                    className={`font-label-mono text-label-xs uppercase tracking-widest border px-2.5 py-1 ${p.categoryColor}`}
-                  >
+                  <Tag variant={TagVariant.Category} size={TagSize.Medium}>
                     <LatinText text={category} />
-                  </span>
-                  <span
-                    className={`font-label-mono text-label-xs uppercase tracking-widest px-2.5 py-1 ${p.statusColor}`}
-                  >
+                  </Tag>
+                  <Tag variant={TagVariant.Status} size={TagSize.Medium}>
                     {status}
-                  </span>
+                  </Tag>
                 </div>
 
                 <h2 className="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors mb-3">

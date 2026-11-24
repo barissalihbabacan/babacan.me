@@ -1,6 +1,7 @@
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
 import Icon from "./Icon";
+import { FontSize } from "@/DesignSystem";
 
 const ICON_PATHS = {
   mail: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z",
@@ -73,8 +74,8 @@ export default function Contact({ currentLocale }: ContactProps) {
 
         <div className="max-w-2xl">
           <h2
-            className="text-on-surface font-bold leading-[1.05] mb-4"
-            style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+            className="text-on-surface font-bold leading-display mb-4"
+            style={{ fontSize: FontSize.SectionTitleFluid }}
           >
             {contact.title[currentLocale]}
           </h2>

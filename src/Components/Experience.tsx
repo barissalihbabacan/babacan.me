@@ -1,5 +1,6 @@
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
+import { FontSize } from "@/DesignSystem";
 
 export interface ExperienceProps {
   readonly currentLocale: Locale;
@@ -15,11 +16,11 @@ export default function Experience({ currentLocale }: ExperienceProps) {
   return (
     <section
       id="about"
-      className="scroll-reveal relative min-h-[70vh] border-t border-primary/30 py-[10vh] overflow-hidden"
+      className="scroll-reveal relative min-h-[70vh] border-t border-primary/30 py-section-y overflow-hidden"
     >
       <div className="section-ghost-number">04</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
-        <div className="flex items-center gap-4 mb-[5vh]">
+        <div className="flex items-center gap-4 mb-vh-5">
           <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {experience.sectionLabel[currentLocale]}
           </span>
@@ -27,14 +28,14 @@ export default function Experience({ currentLocale }: ExperienceProps) {
         </div>
 
         <h2
-          className="text-on-surface font-bold mb-[5vh]"
-          style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+          className="text-on-surface font-bold mb-vh-5"
+          style={{ fontSize: FontSize.SectionTitleFluid }}
         >
           {experience.title[currentLocale]}
         </h2>
 
         {/* Kısa Tanıtım */}
-        <div className="max-w-[70ch] space-y-4 mb-[6vh]">
+        <div className="max-w-prose space-y-4 mb-vh-6">
           <p className="font-body-lg text-on-surface text-lg leading-relaxed">
             {experience.intro[currentLocale]}
           </p>
@@ -50,14 +51,14 @@ export default function Experience({ currentLocale }: ExperienceProps) {
         {/* Yatay Uzmanlık Satırları */}
         <div className="divide-y divide-primary/30">
           {/* 01: CTO & Technical Leadership */}
-          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-vh-3 grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">01</span>
               <h4 className="text-on-surface font-semibold text-lg">
                 {experience.item1_title[currentLocale]}
               </h4>
             </div>
-            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]">
+            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-prose">
               {experience.item1_desc[currentLocale]}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -74,14 +75,14 @@ export default function Experience({ currentLocale }: ExperienceProps) {
           </div>
 
           {/* 02: Systems & Local-First */}
-          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-vh-3 grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">02</span>
               <h4 className="text-on-surface font-semibold text-lg">
                 {experience.item2_title[currentLocale]}
               </h4>
             </div>
-            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]">
+            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-prose">
               {experience.item2_desc[currentLocale]}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -98,14 +99,14 @@ export default function Experience({ currentLocale }: ExperienceProps) {
           </div>
 
           {/* 03: Hardware & Production Systems */}
-          <div className="group py-[3vh] grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
+          <div className="group py-vh-3 grid grid-cols-1 lg:grid-cols-[16.25rem_1fr_auto] gap-4 lg:gap-12 lg:items-center hover:bg-surface-container/20 transition-colors -mx-4 px-4 cursor-default">
             <div className="flex items-baseline gap-3">
               <span className="font-label-mono text-label-xs text-on-surface-variant/70">03</span>
               <h4 className="text-on-surface font-semibold text-lg">
                 {experience.item3_title[currentLocale]}
               </h4>
             </div>
-            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-[70ch]">
+            <p className="font-body-md text-on-surface-variant text-sm leading-relaxed max-w-prose">
               {experience.item3_desc[currentLocale]}
             </p>
             <div className="flex flex-wrap gap-2">
@@ -127,7 +128,7 @@ export default function Experience({ currentLocale }: ExperienceProps) {
           <h3 className="font-label-mono text-label-sm text-primary uppercase tracking-widest mb-2">
             {experience.protocolsTitle[currentLocale]}
           </h3>
-          <p className="font-body-md text-on-surface-variant text-sm leading-relaxed mb-6 max-w-[70ch]">
+          <p className="font-body-md text-on-surface-variant text-sm leading-relaxed mb-6 max-w-prose">
             {experience.protocolsDesc[currentLocale]}
           </p>
 

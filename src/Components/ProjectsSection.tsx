@@ -1,8 +1,12 @@
-import Link from "next/link";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
 import ProjectCard from "./ProjectCard";
 import Icon from "./Icon";
+import Button from "./Button";
+import { ButtonSize, ButtonVariant } from "@/DesignSystem";
+import { PROJECT_DATA } from "@/Data/projectsData";
+
+const PROJECT_COUNT = Object.keys(PROJECT_DATA).length;
 
 export interface ProjectsSectionProps {
   readonly currentLocale: Locale;
@@ -12,7 +16,7 @@ export interface ProjectsSectionProps {
  * Ana sayfa Projeler (Projects) bölümü.
  * Eski sitedeki yapıyı birebir yansıtır:
  * 1. Bölüm hayalet numarası: 01
- * 2. Öne Çıkan Sistemler & Mimari Çalışmalar (osmos, mythos, chorus)
+ * 2. Öne Çıkan Sistemler & Mimari Çalışmalar (osmos, mythos)
  * 3. Garage.ist Projeleri (sortify, plus-tv) + 7 proje daha bağlantısı
  * 4. Okul & Kurumsal Sistemler (qpass, itrms)
  * 5. Tüm Projeler Kataloğu bağlantısı (14 Proje)
@@ -24,18 +28,18 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
   return (
     <section
       id="projects"
-      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
+      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
       <div className="section-ghost-number">01</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
-        <div className="flex items-center gap-4 mb-[2vh]">
+        <div className="flex items-center gap-4 mb-vh-2">
           <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {projects.sectionLabel[currentLocale]}
           </span>
           <div className="h-px flex-1 bg-primary/20"></div>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl font-bold text-on-surface tracking-tight mb-[4vh]">
+        <h2 className="text-3xl sm:text-4xl font-bold text-on-surface tracking-tight mb-vh-4">
           {projects.title[currentLocale]}
         </h2>
 
@@ -47,10 +51,9 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
             </h3>
             <div className="h-px flex-1 bg-primary/20"></div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectCard projectKey="osmos" lang={currentLocale} isFeatured />
             <ProjectCard projectKey="mythos" lang={currentLocale} isFeatured />
-            <ProjectCard projectKey="chorus" lang={currentLocale} isFeatured />
           </div>
         </div>
 
@@ -67,17 +70,15 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
             <ProjectCard projectKey="plus-tv" lang={currentLocale} wide />
           </div>
           {/* Diğer Garage.ist işleri */}
-          <Link
+          <Button
             href={`/${currentLocale}/${isTr ? "projeler" : "projects"}?filter=garage`}
-            className="mt-4 inline-flex items-center gap-2 py-2 font-label-mono text-xs text-primary uppercase tracking-widest hover:translate-x-1 transition-transform"
+            variant={ButtonVariant.Text}
+            size={ButtonSize.Medium}
+            className="mt-4"
+            icon={<Icon name="arrow_forward" className="w-3.5 h-3.5" />}
           >
-            <span>
-              {isTr
-                ? "Diğer Garage.ist projeleri (7 proje daha)"
-                : "More Garage.ist projects (7 more)"}
-            </span>
-            <Icon name="arrow_forward" className="w-3.5 h-3.5" />
-          </Link>
+            {isTr ? "Diğer Garage.ist projeleri (7 proje daha)" : "More Garage.ist projects (7 more)"}
+          </Button>
         </div>
 
         {/* Okul & Kurumsal Sistemler */}
@@ -96,17 +97,16 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
 
         {/* Tüm projeler kataloğu bağlantısı */}
         <div className="mt-14 pt-8 border-t border-primary/20 flex justify-center">
-          <Link
+          <Button
             href={`/${currentLocale}/${isTr ? "projeler" : "projects"}`}
-            className="inline-flex items-center gap-3 px-8 py-3.5 border border-primary/40 hover:border-primary text-primary font-label-mono text-xs uppercase tracking-widest hover:bg-primary/10 transition-all"
+            variant={ButtonVariant.Outline}
+            size={ButtonSize.Large}
+            icon={<Icon name="arrow_forward" className="w-4 h-4" />}
           >
-            <span>
-              {isTr
-                ? "Tüm Projeler Kataloğunu İncele (14 Proje)"
-                : "Explore Full Projects Catalog (14 Projects)"}
-            </span>
-            <Icon name="arrow_forward" className="w-4 h-4" />
-          </Link>
+            {isTr
+              ? `Tüm Projeler Kataloğunu İncele (${PROJECT_COUNT} Proje)`
+              : `Explore Full Projects Catalog (${PROJECT_COUNT} Projects)`}
+          </Button>
         </div>
       </div>
     </section>

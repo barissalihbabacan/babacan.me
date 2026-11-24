@@ -8,9 +8,7 @@ export interface ProjectData {
   /** Teknik olmayan okur icin tek cumle: proje ne ise yariyor. Kartlarda ve detay sayfasinin basinda. */
   summary: LocalizedText;
   category: LocalizedText;
-  categoryColor: string;
   status: LocalizedText;
-  statusColor: string;
   year: LocalizedText;
   role: LocalizedText;
   description: LocalizedText;
@@ -61,11 +59,6 @@ const COVERS = {
     webp2x: `${STORAGE_BASE}mythos-featured-2400.webp?alt=media&token=979d1694-eeca-49a4-85a5-8264348303cc`,
     og: "/og/mythos.jpg",
   },
-  chorus: {
-    webp: `${STORAGE_BASE}chorus-featured-1200.webp?alt=media&token=fdf0aa39-2a30-4626-b9de-47e81da20e6d`,
-    webp2x: `${STORAGE_BASE}chorus-featured-2400.webp?alt=media&token=f0d9ea2a-2278-4df7-a67b-5cff91d9b80a`,
-    og: "/og/chorus.jpg",
-  },
   sortify: {
     webp: `${STORAGE_BASE}sortify-featured-1200.webp?alt=media&token=7ae596d0-590f-4997-889a-c63730309981`,
     webp2x: `${STORAGE_BASE}sortify-featured-2400.webp?alt=media&token=fb093bc2-fcd6-4282-9a72-e8973020a1aa`,
@@ -111,7 +104,6 @@ export function liveLinkLabel(url: string, lang: "en" | "tr"): string {
 export type ProjectKey =
   | "mythos"
   | "osmos"
-  | "chorus"
   | "gayrimenkuldunyasi"
   | "sortify"
   | "plus-tv"
@@ -132,9 +124,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Dosyalarınızın sürümlerini tamamen kendi bilgisayarınızda tutan bir sürüm kontrol aracı; cihazlar arası senkronizasyon sırada.",
     },
     category: { en: "Local-First · Version Control", tr: "Yerel-Öncelikli · Sürüm Kontrolü" },
-    categoryColor: "text-primary border-primary/20",
     status: { en: "Alpha", tr: "Alpha" },
-    statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026–", tr: "2026–" },
     role: { en: "Founder & Lead Developer", tr: "Kurucu & Baş Geliştirici" },
     description: {
@@ -191,9 +181,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Romancıların karakterleri, mekânları ve bölümleri kendilerine ait düz dosyalarda düzenlediği bir yazım uygulaması.",
     },
     category: { en: "App · Tooling", tr: "Uygulama · Araçlar" },
-    categoryColor: "text-primary border-primary/20",
     status: { en: "In Development", tr: "Geliştirme Aşamasında" },
-    statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2026", tr: "2026" },
     role: { en: "Creator & Developer", tr: "Kurucu & Geliştirici" },
     description: {
@@ -239,7 +227,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       ],
     },
     tech: ["Tauri", "Rust", "React", "TypeScript"],
-    githubUrl: "https://github.com/Mythos-IDE/mythoside-core",
+    githubUrl: "https://github.com/mythoside/mythoside-core",
     cover: COVERS.mythos,
   },
   qpass: {
@@ -250,9 +238,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Mezun olduğum meslek lisesi için yaptığım kartlı geçiş ve yemek takip sistemi; üç eğitim yılı boyunca her gün 120–150 kişiye hizmet verdi.",
     },
     category: { en: "Hardware · IoT", tr: "Donanım · IoT" },
-    categoryColor: "text-tertiary border-tertiary/20",
     status: { en: "Completed", tr: "Tamamlandı" },
-    statusColor: "bg-tertiary/20 border border-tertiary/30 text-tertiary",
     year: { en: "3 School Years", tr: "3 Eğitim Yılı" },
     role: { en: "System Architect", tr: "Sistem Mimarı" },
     description: {
@@ -304,9 +290,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Farklı kaynaklardaki gayrimenkul haberlerini ve ilanlarını tek yerde toplayan bir platform.",
     },
     category: { en: "Web · Full-Stack", tr: "Web · Full-Stack" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
       en: "Web Foundation & Firebase Infrastructure, Maintenance & Moderation",
@@ -359,9 +343,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "3–13 yaş arası çocuklar için öğrenme oyunları; ebeveynler ve öğretmenler ilerlemeyi takip edebiliyor.",
     },
     category: { en: "Mobile · iOS & Systems", tr: "Mobil · iOS & Sistemler" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
       en: "CTO · Lead Developer",
@@ -457,9 +439,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Android telefonu Samsung, LG ve Philips TV'ler için kumanda, yayın ve ekran yansıtma aracına çeviriyor; 10 binden fazla indirme.",
     },
     category: { en: "Mobile · Android & Protocols", tr: "Mobil · Android & Protokoller" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
       en: "Co-developer · Philips integration",
@@ -590,9 +570,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Uygulamanın olmadığı sınıflar ve cihazlar için Sortify oyunlarının tarayıcı sürümü.",
     },
     category: { en: "Web · Front-End & Canvas", tr: "Web · Önyüz & Canvas" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
       en: "Web Foundation & Firebase Infrastructure, Maintenance & Moderation",
@@ -648,9 +626,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Hızlı bir refleks oyunu: düşen nesneleri sürekli değişen bir kurala göre ayırın.",
     },
     category: { en: "Mobile · iOS Game", tr: "Mobil · iOS Oyunu" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
       en: "iOS Foundation, Firebase Infrastructure & AdMob Integration",
@@ -789,9 +765,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Farklı bir blok bulmacası: tahtayı karo biçimine döndürün ya da yerçekimi çarkıyla karıştırın.",
     },
     category: { en: "Mobile · iOS Game", tr: "Mobil · iOS Oyunu" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "iOS Developer", tr: "iOS Geliştirici" },
     description: {
@@ -891,9 +865,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Skorlar, istatistikler ve canlı veri akışlarıyla spor haberleri sunan bir spor portalı.",
     },
     category: { en: "Web · Full-Stack", tr: "Web · Full-Stack" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Active", tr: "Aktif" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: {
       en: "Web Foundation, Firebase Infrastructure & Sports API Integration",
@@ -943,9 +915,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Stüdyonun uygulamalarını ve nereden indirileceklerini gösteren tanıtım sitesi.",
     },
     category: { en: "Web · Studio Site", tr: "Web · Stüdyo Sitesi" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Live", tr: "Yayında" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Developer", tr: "Geliştirici" },
     description: {
@@ -975,9 +945,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Canlı gece-gündüz haritasında her yerin saatini görün, şehirler arası toplantı saati bulun.",
     },
     category: { en: "Web · Front-End & Geo", tr: "Web · Önyüz & Geo" },
-    categoryColor: "text-secondary border-secondary/20",
     status: { en: "Launched", tr: "Yayında" },
-    statusColor: "bg-secondary/20 border border-secondary/30 text-secondary",
     year: { en: "Garage.ist", tr: "Garage.ist" },
     role: { en: "Co-Lead Developer (first version)", tr: "Ortak Baş Geliştirici (ilk sürüm)" },
     description: {
@@ -1026,9 +994,7 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
       tr: "Bir okul BT bölümü için envanter ve laboratuvar yönetimi: hangi cihaz nerede, kimde ve hangi malzeme azalıyor.",
     },
     category: { en: "Web · Full-Stack & Systems", tr: "Web · Full-Stack & Sistemler" },
-    categoryColor: "text-primary border-primary/20",
     status: { en: "Migration in Progress", tr: "Geçiş Sürüyor" },
-    statusColor: "bg-primary/20 border border-primary/30 text-primary",
     year: { en: "2023–", tr: "2023–" },
     role: { en: "Lead Architect & Developer", tr: "Baş Mimar & Geliştirici" },
     description: {
@@ -1067,56 +1033,5 @@ export const PROJECT_DATA: Record<ProjectKey, ProjectData> = {
     },
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "PHP", "MySQL", "QR Code", "RBAC"],
     cover: COVERS.itrms,
-  },
-  chorus: {
-    title: { en: "Chorus", tr: "Chorus" },
-    summary: {
-      en: "An anonymous discussion board with no accounts, where every message is saved as a Git commit.",
-      tr: "Hesap gerektirmeyen, her mesajın bir Git commit'i olarak saklandığı anonim bir tartışma platformu.",
-    },
-    category: { en: "Open Source · Discussion Platform", tr: "Açık Kaynak · Tartışma Platformu" },
-    categoryColor: "text-primary border-primary/20",
-    status: { en: "Early Development", tr: "Erken Geliştirme" },
-    statusColor: "bg-primary/20 border border-primary/30 text-primary",
-    year: { en: "2026–", tr: "2026–" },
-    role: { en: "Founding Engineer", tr: "Kurucu Geliştirici" },
-    description: {
-      en: "Chorus is an open-source, anonymous discussion engine built with a Go backend and a React frontend. Instead of persistent accounts, profiles, and ranking algorithms, it assigns thread-scoped temporary identities and persists every thread and message as cryptographically verifiable Git commits.",
-      tr: "Chorus; Go arka ucu ve React önyüzü ile geliştirilen açık kaynaklı, anonim bir tartışma motorudur. Kalıcı hesaplar, profiller ve sıralama algoritmaları yerine, her konuya özgü geçici kimlikler atar ve her konu/mesajı kriptografik olarak doğrulanabilir Git commit'leri olarak saklar.",
-    },
-    executiveSummary: {
-      en: "Chorus replaces conventional social mechanics (accounts, likes, followers, algorithmic feeds) with chronological, thread-scoped anonymous discourse. Every thread creation and message append is written as a native Git commit, substituting traditional opaque databases with an audit-proof, cryptographically verifiable object history.",
-      tr: "Chorus, geleneksel sosyal medya mekaniklerini (hesaplar, beğeniler, takipçiler, algoritmik akışlar) kronolojik ve konuya özgü anonim tartışmayla değiştirir. Her konu oluşturma ve mesaj ekleme işlemi doğrudan Git commit'i olarak yazılır; böylece veri modeli geleneksel opak veritabanları yerine denetlenebilir ve doğrulanabilir bir nesne geçmişine dönüştürülür.",
-    },
-    problem: {
-      en: "Conventional discussion platforms shape user behavior through persistent user identities, social graphs, upvote mechanics, and algorithmic feed loops. This prioritizes profile engagement and echo chambers over authentic topic-centric content.",
-      tr: "Geleneksel tartışma platformları kalıcı kullanıcı kimlikleri, sosyal grafikler, oy sistemleri ve algoritmik sıralama üzerinden kullanıcı davranışını şekillendirir. Bu durum, içerik kalitesi yerine profil etkileşimini ve algoritmik yankı odalarını öne çıkarır.",
-    },
-    solution: {
-      en: "Chorus decouples identity from persistent user profiles down to individual thread scopes. Thread and message histories are backed by native Git commit objects, turning conversation state into a database-independent, cryptographically verifiable history.",
-      tr: "Chorus, kullanıcı kimliğini platform genelinde kalıcı hale getirmek yerine konu kapsamına indirger. Konu ve mesaj geçmişi Git commit modeliyle temsil edilerek tartışma geçmişi veritabanı bağımlılığından bağımsız, doğrulanabilir bir geçmişe dönüştürülür.",
-    },
-    architectureText: {
-      en: "The Go (1.22+) backend uses native local Git repository operations and file-system JSON structures for persistence. The frontend is a React 19, TypeScript, and Vite SPA communicating with the Go engine via TanStack Query.",
-      tr: "Go (1.22+) ile yazılan arka uç servisi, veri kalıcılığı için doğrudan yerel Git deposu komutlarını ve dosya sistemini kullanır. Önyüz tarafı React 19, TypeScript ve Vite üzerine kurulu bir SPA olup, API iletişimini TanStack Query üzerinden yürütür.",
-    },
-    highlights: {
-      en: [
-        "Zero persistent accounts — temporary identities scoped exclusively to individual threads.",
-        "Persistence engine leveraging Git's content-addressable and cryptographically verifiable commit history model.",
-        "No likes, upvotes, follower counts, or feed ranking algorithms — pure chronological discourse.",
-        "Open-source architecture built with Go 1.22 and React 19 / TypeScript.",
-      ],
-      tr: [
-        "Kalıcı hesap veya kayıt yok — kimlikler her konuya özgü geçici takma adlardır.",
-        "Git'in içerik adresli ve kriptografik olarak doğrulanabilir geçmiş modelini kullanan kalıcılık motoru.",
-        "Beğeni, upvote, takipçi veya sıralama algoritması yok — saf kronolojik tartışma akışı.",
-        "Go (1.22+) ve React 19 / TypeScript ile geliştirilmiş açık kaynaklı mimari.",
-      ],
-    },
-    tech: ["Go", "React", "Git", "TypeScript", "Vite"],
-    githubUrl: "https://github.com/joinchorus/chorus",
-    liveUrl: "https://joinchorus.app",
-    cover: COVERS.chorus,
   },
 };

@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from "react";
 import CustomGithubCalendar from "./CustomGithubCalendar";
-import { loadGithubData, type GithubData } from "@/utils/githubData";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
-import { PROJECT_DATA, type ProjectKey } from "@/data/projectsData";
+import { loadGithubData, type GithubData } from "@/Utils/githubData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
+import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
 import Icon from "./Icon";
 import LatinText from "./LatinText";
+import { FontSize } from "@/DesignSystem";
 
 // Kodu herkese açık projeler; kartları Projeler bölümünde, burada repo linkleri yer alır
-const OPEN_SOURCE: readonly ProjectKey[] = ["osmos", "mythos", "chorus"];
+const OPEN_SOURCE: readonly ProjectKey[] = ["osmos", "mythos"];
 
 export interface GithubActivityProps {
   readonly currentLocale: Locale;
@@ -34,11 +35,11 @@ export default function GithubActivity({ currentLocale }: GithubActivityProps) {
   return (
     <section
       id="opensource"
-      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
+      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
       <div className="section-ghost-number">02</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-[4vh]">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-vh-4">
           <div className="flex-1">
             <div className="flex items-center gap-4 mb-4">
               <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
@@ -48,7 +49,7 @@ export default function GithubActivity({ currentLocale }: GithubActivityProps) {
             </div>
             <h2
               className="text-on-surface font-bold mb-2"
-              style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+              style={{ fontSize: FontSize.SectionTitleFluid }}
             >
               {github.title[currentLocale]}
             </h2>

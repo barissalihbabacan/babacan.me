@@ -1,10 +1,13 @@
-import { LOCALES, resolveLocale, type Locale } from "@/i18n";
-import HeroSection from "@/components/HeroSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import GithubActivity from "@/components/GithubActivity";
-import Writing from "@/components/Writing";
-import Experience from "@/components/Experience";
-import Contact from "@/components/Contact";
+import type { Metadata } from "next";
+import { LOCALES, resolveLocale, type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
+import { pageMetadata } from "@/Utils/seo";
+import HeroSection from "@/Components/HeroSection";
+import ProjectsSection from "@/Components/ProjectsSection";
+import GithubActivity from "@/Components/GithubActivity";
+import Writing from "@/Components/Writing";
+import Experience from "@/Components/Experience";
+import Contact from "@/Components/Contact";
 
 export function generateStaticParams(): readonly { readonly lang: Locale }[] {
   return LOCALES.map((lang) => ({ lang }));
@@ -12,6 +15,16 @@ export function generateStaticParams(): readonly { readonly lang: Locale }[] {
 
 interface LangPageProps {
   readonly params: Promise<{ readonly lang: string }>;
+}
+
+export async function generateMetadata({ params }: LangPageProps): Promise<Metadata> {
+  const lang = resolveLocale((await params).lang);
+  return pageMetadata({
+    lang,
+    pathFor: () => "",
+    title: UI_DICTIONARY.seo.title[lang],
+    description: UI_DICTIONARY.seo.description[lang],
+  });
 }
 
 /**

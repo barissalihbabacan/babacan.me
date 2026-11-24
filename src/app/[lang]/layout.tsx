@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
-import { LOCALES, resolveLocale, type Locale } from "@/i18n";
-import NavigationHeader from "@/components/NavigationHeader";
-import Footer from "@/components/Footer";
-import JsonLd from "@/components/JsonLd";
+import { LOCALES, resolveLocale, type Locale } from "@/I18n";
+import NavigationHeader from "@/Components/NavigationHeader";
+import Footer from "@/Components/Footer";
+import JsonLd from "@/Components/JsonLd";
 
 export function generateStaticParams(): readonly { readonly lang: Locale }[] {
   return LOCALES.map((lang) => ({ lang }));

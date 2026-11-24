@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
+import { ButtonSize, ButtonVariant } from "@/DesignSystem";
+import Button from "./Button";
 
 interface NavigationHeaderProps {
   readonly currentLocale: Locale;
@@ -72,20 +74,20 @@ export default function NavigationHeader({ currentLocale }: NavigationHeaderProp
               {currentLocale === "tr" ? "EN" : "TR"}
             </Link>
 
-            <a
+            <Button
               href={cvHref}
               download
-              className="border border-primary/40 text-primary px-3 min-h-9 font-label-mono text-label-xs uppercase tracking-widest hover:bg-primary/10 transition-colors flex items-center gap-1.5"
+              variant={ButtonVariant.Outline}
+              size={ButtonSize.Small}
+              iconPosition="start"
+              icon={
+                <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
+                </svg>
+              }
             >
-              <svg
-                className="w-3.5 h-3.5 fill-current shrink-0"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-              </svg>
               {hero.downloadCV[currentLocale]}
-            </a>
+            </Button>
           </div>
         </div>
       </header>

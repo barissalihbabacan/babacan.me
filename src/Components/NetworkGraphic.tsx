@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { ColorChannels } from "@/DesignSystem";
 
 /**
  * Hero'daki donen dodekahedron ag grafigi.
@@ -14,8 +15,8 @@ import { useEffect, useRef } from "react";
  * boyunca dolasan veri paketleri ve isiyan dugumler.
  */
 
-const PRIMARY = "197, 160, 89"; // #c5a059
-const BRIGHT = "243, 215, 154";
+const PRIMARY = ColorChannels.Primary;
+const BRIGHT = ColorChannels.Bright;
 const RADIUS = 3.5 * 1.1; // DodecahedronGeometry(3.5) * group scale 1.1
 const CORE_RADIUS = RADIUS * 0.42;
 const NODE_RADIUS = 0.15 * 1.1;
@@ -368,7 +369,7 @@ export default function NetworkGraphic({ paused = false }: { paused?: boolean })
         ctx.fill();
 
         // Cekirdek
-        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.fillStyle = `rgba(${ColorChannels.White}, ${alpha})`;
         ctx.beginPath();
         ctx.arc(proj.x, proj.y, Math.max(1, r * 0.6), 0, Math.PI * 2);
         ctx.fill();

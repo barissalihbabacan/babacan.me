@@ -1,4 +1,4 @@
-import type { ProjectCover as Cover } from "@/types";
+import type { ProjectCover as Cover } from "@/Types";
 
 interface ProjectCoverProps {
   readonly cover: Cover;
@@ -30,7 +30,7 @@ export default function ProjectCover({
       loading={priority ? "eager" : "lazy"}
       fetchPriority={priority ? "high" : "auto"}
       decoding="async"
-      className={`block w-full h-auto bg-[#1b1d20] ${className}`}
+      className={`block w-full h-auto bg-surface-container ${className}`}
     />
   );
 }

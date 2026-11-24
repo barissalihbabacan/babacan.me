@@ -2,7 +2,6 @@
  * DESIGN.md ve RULES.md içerisindeki hareket, animasyon süreleri ve ivmelenme eğrileri.
  * prefers-reduced-motion kuralına tam uyum hedeflenmiştir.
  */
-
 export enum MotionDuration {
   Instant = "0.01ms",
   Fast = "150ms",

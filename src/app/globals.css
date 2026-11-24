@@ -1,58 +1,21 @@
 @import "tailwindcss";
 
+/*
+ * Bu dosyada sabit renk, boşluk, yuvarlaklık veya yazı değeri yoktur.
+ * Her `--*-val` değişkenini `src/DesignSystem/DesignTokens.ts` enumlardan üretir
+ * ve kök şablon `:root` kuralı olarak sayfaya basar.
+ */
 @theme {
-  /* Kingsman Gold / Brass */
-  --color-primary-val: #c5a059;
-  --color-primary-container-val: #3a2d18;
-  --color-primary-fixed-val: #e5cba3;
-  --color-primary-fixed-dim-val: #c5a059;
-  --color-on-primary-val: #111214;
-  --color-on-primary-container-val: #e5cba3;
-
-  /* Monochromatic: All accents use the same Gold */
-  --color-secondary-val: #c5a059;
-  --color-secondary-container-val: #3a2d18;
-  --color-secondary-fixed-val: #e5cba3;
-  --color-secondary-fixed-dim-val: #c5a059;
-  --color-on-secondary-val: #111214;
-  --color-on-secondary-container-val: #e5cba3;
-
-  --color-tertiary-val: #c5a059;
-  --color-tertiary-container-val: #3a2d18;
-
-  /* Surface & Background: Bespoke Charcoal Suit */
-  --color-surface-val: #181a1c;
-  --color-surface-dim-val: #141517;
-  --color-surface-bright-val: #222428;
-  --color-surface-container-val: #1b1d20;
-  --color-surface-container-low-val: #151618;
-  --color-surface-container-high-val: #202225;
-  --color-surface-container-highest-val: #26282d;
-  --color-surface-container-lowest-val: #0d0e10;
-  --color-surface-variant-val: #222428;
-  --color-background-val: #111214;
-
-  /* Text Colors: Crisp White Shirt */
-  --color-on-surface-val: #f1f3f5;
-  --color-on-surface-variant-val: #b8bdc4;
-  --color-on-background-val: #f1f3f5;
-  --color-inverse-surface-val: #f1f3f5;
-  --color-inverse-on-surface-val: #111214;
-
-  --color-outline-val: #33373d;
-  --color-outline-variant-val: #26282d;
-
-  /* Subtle organic overlays */
-  --bg-image-gradient: radial-gradient(at 50% 0%, rgba(197, 160, 89, 0.05) 0px, transparent 60%);
-  --color-scrollbar-track: #111214;
-  --color-scrollbar-thumb: #33373d;
-  --color-card-hover-bg: rgba(34, 36, 40, 0.6);
-  --color-card-hover-shadow: rgba(0, 0, 0, 0.4);
-  --color-glow-primary: rgba(197, 160, 89, 0.15);
-  --color-glow-secondary: rgba(197, 160, 89, 0.15);
-  --color-glow-tertiary: rgba(197, 160, 89, 0.15);
-  --color-ghost-number: rgba(241, 243, 245, 0.025);
-  --color-tab-active-bg: rgba(241, 243, 245, 0.05);
+  --bg-image-gradient: var(--bg-image-gradient-val);
+  --color-scrollbar-track: var(--color-scrollbar-track-val);
+  --color-scrollbar-thumb: var(--color-scrollbar-thumb-val);
+  --color-card-hover-bg: var(--color-card-hover-bg-val);
+  --color-card-hover-shadow: var(--color-card-hover-shadow-val);
+  --color-glow-primary: var(--color-glow-val);
+  --color-glow-secondary: var(--color-glow-val);
+  --color-glow-tertiary: var(--color-glow-val);
+  --color-ghost-number: var(--color-ghost-number-val);
+  --color-tab-active-bg: var(--color-tab-active-bg-val);
 
   /* ── Primary ── */
   --color-primary: var(--color-primary-val);
@@ -110,44 +73,54 @@
   --color-outline-variant: var(--color-outline-variant-val);
 
   /* ── Error ── */
-  --color-error: #f87171;
-  --color-error-container: #7f1d1d;
-  --color-on-error: #7f1d1d;
-  --color-on-error-container: #fecaca;
+  --color-error: var(--color-error-val);
+  --color-error-container: var(--color-error-container-val);
+  --color-on-error: var(--color-on-error-val);
+  --color-on-error-container: var(--color-on-error-container-val);
 
-  /* ── Spacing & Layout ── */
-  --radius-DEFAULT: 0.125rem;
-  --radius-lg: 0.25rem;
-  --radius-xl: 0.5rem;
-  --radius-full: 0.75rem;
+  /* ── Köşe yuvarlaklığı ── */
+  --radius-DEFAULT: var(--radius-default-val);
+  --radius-lg: var(--radius-lg-val);
+  --radius-xl: var(--radius-xl-val);
+  --radius-full: var(--radius-full-val);
 
-  --spacing-margin-mobile: 12px;
-  /* Telefonda 16px, geniş ekranda 40px; aradaki genişliklerde orantılı */
-  --spacing-margin-desktop: clamp(1rem, 3vw, 2.5rem);
-  --spacing-section-gap: 7.5rem;
-  --spacing-gutter: 1.5rem;
-  --spacing-container-max: 1860px;
-  --spacing-unit: 8px;
+  /* ── Boşluk ve yerleşim ── */
+  --spacing-margin-mobile: var(--spacing-margin-mobile-val);
+  --spacing-margin-desktop: var(--spacing-margin-desktop-val);
+  --spacing-section-gap: var(--spacing-section-gap-val);
+  --spacing-gutter: var(--spacing-gutter-val);
+  --spacing-container-max: var(--spacing-container-max-val);
+  --spacing-unit: var(--spacing-unit-val);
+  --spacing-section-y: var(--spacing-section-y-val);
+  --spacing-vh-2: var(--spacing-vh-2-val);
+  --spacing-vh-3: var(--spacing-vh-3-val);
+  --spacing-vh-4: var(--spacing-vh-4-val);
+  --spacing-vh-5: var(--spacing-vh-5-val);
+  --spacing-vh-6: var(--spacing-vh-6-val);
+  --container-prose: var(--container-prose-val);
 
-  /* ── Typography ── */
-  --font-display-lg: var(--font-inter), "Inter", sans-serif;
-  --font-label-mono: var(--font-jetbrains-mono), "JetBrains Mono", monospace;
-  --font-headline-md: var(--font-inter), "Inter", sans-serif;
-  --font-body-lg: var(--font-inter), "Inter", sans-serif;
-  --font-body-md: var(--font-inter), "Inter", sans-serif;
-  --font-display-lg-mobile: var(--font-inter), "Inter", sans-serif;
-  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+  /* ── Tipografi ── */
+  --font-display-lg: var(--font-sans-val);
+  --font-label-mono: var(--font-mono-val);
+  --font-headline-md: var(--font-sans-val);
+  --font-body-lg: var(--font-sans-val);
+  --font-body-md: var(--font-sans-val);
+  --font-display-lg-mobile: var(--font-sans-val);
+  --font-sans: var(--font-sans-val);
+  --font-mono: var(--font-mono-val);
 
-  /* rem: kök yazı boyutuyla birlikte ölçeklenir */
-  --text-display-lg: 4rem;
-  --text-label-mono: 0.875rem;
-  --text-headline-md: 2rem;
-  --text-body-lg: 1.125rem;
-  --text-body-md: 1rem;
-  --text-display-lg-mobile: 2.5rem;
-  --text-label-xs: 0.6875rem;
-  --text-label-sm: 0.75rem;
+  --text-display-lg: var(--text-display-lg-val);
+  --text-label-mono: var(--text-label-mono-val);
+  --text-headline-md: var(--text-headline-md-val);
+  --text-body-lg: var(--text-body-lg-val);
+  --text-body-md: var(--text-body-md-val);
+  --text-display-lg-mobile: var(--text-display-lg-mobile-val);
+  --text-label-xs: var(--text-label-xs-val);
+  --text-label-sm: var(--text-label-sm-val);
+  --text-label-2xs: var(--text-label-2xs-val);
+  --leading-compressed: var(--leading-compressed-val);
+  --leading-display: var(--leading-display-val);
+  --tracking-cover: var(--tracking-cover-val);
 }
 
 @layer base {
@@ -159,7 +132,7 @@
 
   html {
     /* 1280px'e kadar tarayıcının varsayılanı (16px); üstünde 20px'e kadar büyür */
-    font-size: clamp(1rem, 0.6rem + 0.5vw, 1.25rem);
+    font-size: var(--text-root-val);
   }
 
   body {
@@ -188,19 +161,19 @@
     *,
     *::before,
     *::after {
-      animation-duration: 0.01ms !important;
+      animation-duration: var(--motion-instant-val) !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
+      transition-duration: var(--motion-instant-val) !important;
       scroll-behavior: auto !important;
     }
   }
 
   ::selection {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--color-selection-val);
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: var(--scrollbar-width-val);
   }
 
   ::-webkit-scrollbar-track {
@@ -209,7 +182,7 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--color-scrollbar-thumb);
-    border-radius: 4px;
+    border-radius: var(--scrollbar-radius-val);
   }
 }
 
@@ -218,7 +191,7 @@
     position: absolute;
     top: -5%;
     right: -2%;
-    font-size: 30vw;
+    font-size: var(--text-ghost-number-val);
     font-family: var(--font-sans);
     font-weight: 900;
     line-height: 1;
@@ -243,9 +216,9 @@
     border: 1px solid color-mix(in srgb, var(--color-primary) 8%, transparent);
     overflow: hidden;
     transition:
-      border-color 300ms,
-      transform 300ms,
-      box-shadow 300ms;
+      border-color var(--motion-standard-val),
+      transform var(--motion-standard-val),
+      box-shadow var(--motion-standard-val);
   }
 
   .accent-card::before {
@@ -257,21 +230,21 @@
   }
 
   .accent-card:hover {
-    transform: translateY(-4px);
+    transform: var(--transform-card-lift-val);
   }
 
   .project-card,
   div[class*="border-primary/30"][class*="hover:border-"],
   a[class*="border-primary/30"][class*="hover:border-"] {
-    transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition: all var(--motion-standard-val) var(--ease-out-expo-val) !important;
   }
 
   .project-card:hover,
   div[class*="border-primary/30"][class*="hover:border-"]:hover,
   a[class*="border-primary/30"][class*="hover:border-"]:hover {
-    transform: translateY(-4px);
+    transform: var(--transform-card-lift-val);
     background-color: var(--color-card-hover-bg) !important;
-    box-shadow: 0 12px 35px -10px var(--color-card-hover-shadow) !important;
+    box-shadow: var(--shadow-card-hover-val) !important;
   }
 
   /* Scroll-driven reveal animasyonu */
@@ -280,11 +253,11 @@
       @keyframes fade-in-up {
         from {
           opacity: 0;
-          transform: translateY(40px);
+          transform: var(--transform-reveal-offset-val);
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: var(--transform-none-val);
         }
       }
 
@@ -301,9 +274,9 @@
   font-family: var(--font-label-mono);
   font-size: var(--text-label-mono);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--tracking-wide-mono-val);
   color: var(--color-on-surface-variant);
-  transition: color 300ms;
+  transition: color var(--motion-standard-val);
   &:hover {
     color: var(--color-primary);
   }
@@ -328,6 +301,6 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .animate-scroll-drop {
-    animation: scrollDrop 1.8s cubic-bezier(0.65, 0, 0.35, 1) 4;
+    animation: scrollDrop var(--motion-scroll-cycle-val) var(--ease-in-out-cubic-val) 4;
   }
 }

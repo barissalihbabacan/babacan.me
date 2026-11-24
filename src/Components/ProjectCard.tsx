@@ -1,9 +1,11 @@
 import Link from "next/link";
-import { type Locale } from "@/i18n";
-import { PROJECT_DATA, type ProjectKey } from "@/data/projectsData";
+import { type Locale } from "@/I18n";
+import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
 import Icon from "./Icon";
 import ProjectCover from "./ProjectCover";
 import LatinText from "./LatinText";
+import Tag from "./Tag";
+import { TagVariant } from "@/DesignSystem";
 
 export interface ProjectCardProps {
   readonly projectKey: ProjectKey;
@@ -59,16 +61,10 @@ export default function ProjectCard({
           />
         )}
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span
-            className={`font-label-mono text-label-xs uppercase tracking-widest border px-2 py-0.5 ${data.categoryColor}`}
-          >
+          <Tag variant={TagVariant.Category}>
             <LatinText text={categoryText} />
-          </span>
-          <span
-            className={`font-label-mono text-label-xs uppercase tracking-widest px-2 py-0.5 ${data.statusColor}`}
-          >
-            {statusText}
-          </span>
+          </Tag>
+          <Tag variant={TagVariant.Status}>{statusText}</Tag>
         </div>
 
         <h4
@@ -87,12 +83,9 @@ export default function ProjectCard({
       <div className="flex items-center justify-between mt-4 border-t border-primary/10 pt-3">
         <div className="flex flex-wrap gap-1.5">
           {data.tech.slice(0, 4).map((techItem) => (
-            <span
-              key={techItem}
-              className="font-label-mono text-label-xs text-on-surface-variant/80 border border-outline-variant/40 px-2 py-0.5"
-            >
+            <Tag key={techItem} variant={TagVariant.Tech}>
               {techItem}
-            </span>
+            </Tag>
           ))}
         </div>
         <span className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-1 group-hover:translate-x-1 transition-transform">

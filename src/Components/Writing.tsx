@@ -1,5 +1,29 @@
-import { type Locale } from "@/i18n";
-import { UI_DICTIONARY } from "@/data/i18nData";
+import { type Locale } from "@/I18n";
+import { UI_DICTIONARY } from "@/Data/i18nData";
+import Button from "./Button";
+import Tag from "./Tag";
+import {
+  AspectRatio,
+  ButtonSize,
+  ButtonVariant,
+  Colors,
+  DotPattern,
+  FontSize,
+  LayoutWidth,
+  LetterSpacing,
+  LineHeight,
+  Opacity,
+  TagSize,
+  TagVariant,
+  withOpacity,
+} from "@/DesignSystem";
+
+/** Kapak gradyanı: aydınlıktan en koyu yüzeye */
+const COVER_GRADIENT = `linear-gradient(160deg, ${Colors.SurfaceBright} 0%, ${Colors.SurfaceContainerHigh} 30%, ${Colors.SurfaceContainer} 60%, ${Colors.SurfaceContainerLowest} 100%)`;
+
+/** 20px karoda tek beyaz nokta; DotPattern.TileSize ile döşenir */
+const DOT_TEXTURE =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='1' cy='1' r='1' fill='white'/%3E%3C/svg%3E\")";
 
 export interface WritingProps {
   readonly currentLocale: Locale;
@@ -17,11 +41,11 @@ export default function Writing({ currentLocale }: WritingProps) {
   return (
     <section
       id="writing"
-      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-[10vh] overflow-hidden"
+      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
       <div className="section-ghost-number">03</div>
       <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
-        <div className="flex items-center gap-4 mb-[5vh]">
+        <div className="flex items-center gap-4 mb-vh-5">
           <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
             {writing.sectionLabel[currentLocale]}
           </span>
@@ -29,8 +53,8 @@ export default function Writing({ currentLocale }: WritingProps) {
         </div>
 
         <h2
-          className="text-on-surface font-bold mb-[5vh]"
-          style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+          className="text-on-surface font-bold mb-vh-5"
+          style={{ fontSize: FontSize.SectionTitleFluid }}
         >
           {writing.title[currentLocale]}
         </h2>
@@ -40,58 +64,46 @@ export default function Writing({ currentLocale }: WritingProps) {
           <div className="relative max-w-xs" aria-hidden="true">
             <div
               className="relative border border-primary/30 overflow-hidden rounded-sm"
-              style={{ aspectRatio: "3/4" }}
+              style={{ aspectRatio: AspectRatio.BookCover }}
             >
               {/* Gradyan Kapak */}
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(160deg, var(--color-surface-bright) 0%, var(--color-surface-container-high) 30%, var(--color-surface-container) 60%, var(--color-surface-container-lowest) 100%)",
-                }}
-              />
+              <div className="absolute inset-0" style={{ background: COVER_GRADIENT }} />
               {/* Noktalı Doku */}
               <div
                 className="absolute inset-0"
-                style={{
-                  backgroundImage:
-                    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Ccircle cx='1' cy='1' r='1' fill='white'/%3E%3C/svg%3E\")",
-                  backgroundSize: "20px 20px",
-                  opacity: "0.04",
-                }}
+                style={{ backgroundImage: DOT_TEXTURE, backgroundSize: DotPattern.TileSize, opacity: DotPattern.Opacity }}
               />
               {/* Kapak İçeriği */}
               <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                <div className="w-6 h-px mb-6" style={{ background: withOpacity(Colors.White, Opacity.Medium) }} />
                 <div
-                  className="w-6 h-px mb-6"
-                  style={{ background: "rgba(255, 255, 255, 0.3)" }}
-                />
-                <div
-                  className="font-label-mono uppercase tracking-[0.25em] mb-3"
-                  style={{ fontSize: "0.5625rem", color: "rgba(255, 255, 255, 0.6)" }}
+                  className="font-label-mono uppercase mb-3"
+                  style={{
+                    fontSize: FontSize.BookCoverCaption,
+                    letterSpacing: LetterSpacing.Widest,
+                    color: withOpacity(Colors.White, Opacity.Visible),
+                  }}
                 >
                   {isTr ? "Babaların" : "The Sins of"}
                 </div>
                 <div
                   className="font-bold leading-tight"
                   style={{
-                    fontSize: "clamp(20px, 2.8vw, 28px)",
-                    color: "#ffffff",
-                    letterSpacing: "-0.02em",
+                    fontSize: FontSize.BookCoverTitleFluid,
+                    color: Colors.White,
+                    letterSpacing: LetterSpacing.Tight,
                   }}
                 >
                   {isTr ? "Günahları" : "the Fathers"}
                 </div>
+                <div className="w-10 h-px my-5" style={{ background: withOpacity(Colors.White, Opacity.Soft) }} />
                 <div
-                  className="w-10 h-px my-5"
-                  style={{ background: "rgba(255, 255, 255, 0.2)" }}
-                />
-                <div
-                  className="font-label-mono uppercase tracking-[0.2em]"
+                  className="font-label-mono uppercase"
                   style={{
-                    fontSize: "0.5rem",
-                    color: "rgba(255, 255, 255, 0.4)",
-                    lineHeight: "1.8",
+                    fontSize: FontSize.BookCoverMicro,
+                    letterSpacing: LetterSpacing.Spaced,
+                    color: withOpacity(Colors.White, Opacity.Strong),
+                    lineHeight: LineHeight.Loose,
                   }}
                 >
                   {book.genre[currentLocale].split(" / ")[0]}
@@ -100,15 +112,15 @@ export default function Writing({ currentLocale }: WritingProps) {
                 </div>
                 <div
                   className="absolute bottom-10 font-label-mono uppercase tracking-widest"
-                  style={{ fontSize: "0.5625rem", color: "rgba(255, 255, 255, 0.45)" }}
+                  style={{ fontSize: FontSize.BookCoverCaption, color: withOpacity(Colors.White, Opacity.Moderate) }}
                 >
                   Barış Salih Babacan
                 </div>
               </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-primary text-surface px-4 py-1.5 font-label-mono text-label-xs uppercase tracking-widest shadow-md">
+            <Tag variant={TagVariant.Solid} size={TagSize.Medium} className="absolute -bottom-2 -right-2 shadow-md">
               {book.badge[currentLocale]}
-            </div>
+            </Tag>
           </div>
 
           {/* Kitap Bilgileri */}
@@ -118,8 +130,8 @@ export default function Writing({ currentLocale }: WritingProps) {
             </span>
 
             <h3
-              className="text-on-surface font-bold leading-[1.05]"
-              style={{ fontSize: "clamp(28px, 3.5vw, 48px)" }}
+              className="text-on-surface font-bold"
+              style={{ fontSize: FontSize.BookTitleFluid, lineHeight: LineHeight.Tight }}
             >
               {isTr ? (
                 <>
@@ -138,7 +150,7 @@ export default function Writing({ currentLocale }: WritingProps) {
 
             <p
               className="font-body-lg text-on-surface-variant leading-relaxed"
-              style={{ maxWidth: "42ch" }}
+              style={{ maxWidth: LayoutWidth.ReadingMeasure }}
             >
               {book.desc[currentLocale]}
             </p>
@@ -159,21 +171,19 @@ export default function Writing({ currentLocale }: WritingProps) {
             </div>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <a
+              <Button
                 href="https://thesinsofthefathers.com/?utm_source=babacan.me&utm_medium=portfolio&utm_campaign=portfolio_direct"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary text-surface px-6 py-3 font-label-mono text-xs uppercase tracking-widest hover:bg-primary/85 transition-colors flex items-center gap-2"
+                external
+                variant={ButtonVariant.Filled}
+                size={ButtonSize.Medium}
+                icon={
+                  <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
+                  </svg>
+                }
               >
-                <span>{book.visitSite[currentLocale]}</span>
-                <svg
-                  className="w-3.5 h-3.5 fill-current shrink-0"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path d="M14 3h7v7h-2V6.41l-9.29 9.3-1.42-1.42L17.59 5H14V3zM5 5h6v2H5v12h12v-6h2v8H3V5h2z" />
-                </svg>
-              </a>
+                {book.visitSite[currentLocale]}
+              </Button>
             </div>
           </div>
         </div>

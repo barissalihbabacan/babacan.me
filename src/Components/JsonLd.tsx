@@ -1,5 +1,5 @@
-import { type Locale } from "@/i18n";
-import { PROJECT_DATA, type ProjectKey } from "@/data/projectsData";
+import { type Locale } from "@/I18n";
+import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
 
 export const BASE_URL = "https://babacan.me";
 
@@ -26,8 +26,7 @@ export default function JsonLd({ lang, selectedProjectSlug }: JsonLdProps) {
       "https://github.com/barissalihbabacan",
       "https://linkedin.com/in/barissalihbabacan",
       "https://github.com/Osmos-App",
-      "https://github.com/Mythos-IDE",
-      "https://github.com/joinchorus",
+      "https://github.com/mythoside",
       "https://thesinsofthefathers.com",
     ],
     knowsAbout: [
