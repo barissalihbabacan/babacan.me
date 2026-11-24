@@ -37,13 +37,10 @@ _Tüketiciye yönelik iOS ve Android uygulamaları geliştiren ürün stüdyosu.
 
 ### PROJELER
 
-- **Chorus — anonim tartışma motoru** | _Go, React, Git_ | github.com/joinchorus/chorus
-  Her konu ve mesajı değişmez bir Git commit'i olarak saklayan, bağımlılıklarında hiçbir veritabanı bulunmayan açık kaynaklı bir forum geliştirdim ve sürdürüyorum. Kullanıcı hesapları yerine konuya özgü geçici kimlikler kullanılıyor. `v0.1.0-alpha` sürümünde uç nokta bazında ayarlanmış IP token-bucket rate limiting, loglar ve hata yanıtları boyunca `X-Request-ID` korelasyonu ve devam eden Git yazma işlemlerini kesmeyen 10 saniyelik graceful shutdown yer alıyor. 24 test ve Git tabanlı depolamanın maliyetini ölçen 5 benchmark.
-
 - **Osmos — yerel-öncelikli sürüm kontrol motoru** | _Rust, Tauri, React_ | github.com/Osmos-App/osmos-core
   Üç crate'lik bir Rust workspace tasarladım: BLAKE3 ile anahtarlanan içerik-adresli nesne deposu ve akış tabanlı dosya hash'leme, SQLite destekli ağaç indeksi ve init, status, branch, switch, merge ve commit dahil on komutu UUID ile eşleştirilen tipli bir istek/yanıt protokolü üzerinden sunan bir Unix-socket daemon'ı. **Sıfır `unsafe` blok.** Tauri/React masaüstü istemcisi erken aşamada; eşler arası senkronizasyon planlandı, transport crate'i hazırlandı ancak henüz uygulanmadı.
 
-- **Mythos — romancılar için yerel-öncelikli IDE** | _Rust, Tauri, TypeScript_ | github.com/Mythos-IDE/mythoside-core
+- **Mythos — romancılar için yerel-öncelikli IDE** | _Rust, Tauri, TypeScript_ | github.com/mythoside/mythoside-core
   Altı crate'e yayılan, taslakları diskte Markdown + YAML olarak modelleyen ve stdio üzerinden 13 JSON-RPC metodu sunan bağımsız bir Rust motoru geliştirdim; Tauri/React istemcisi bu motoru sidecar süreç olarak yönetiyor. Tipler Rust'tan TypeScript'e üretiliyor, böylece IPC sınırı tip güvenli kalıyor. **82 test.**
 
 - **Q-PASS — RFID geçiş kontrol sistemi** | _C++, Arduino, Python, PHP, MySQL_

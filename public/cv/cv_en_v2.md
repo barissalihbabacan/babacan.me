@@ -37,13 +37,10 @@ _Product studio building consumer iOS and Android applications._
 
 ### PROJECTS
 
-- **Chorus — anonymous discussion engine** | _Go, React, Git_ | github.com/joinchorus/chorus
-  Built and maintain an open-source forum that stores every thread and message as an immutable Git commit, with no database in the dependency tree. Thread-scoped ephemeral identities replace user accounts. Shipped `v0.1.0-alpha` with IP token-bucket rate limiting tuned per endpoint, `X-Request-ID` correlation across logs and error payloads, and a 10-second graceful shutdown that never interrupts an in-flight Git write. 24 tests and 5 benchmarks measuring the cost of Git-as-storage.
-
 - **Osmos — local-first version control engine** | _Rust, Tauri, React_ | github.com/Osmos-App/osmos-core
   Designed a three-crate Rust workspace: content-addressable object store keyed by BLAKE3 with streaming file hashing, a SQLite-backed tree index, and a Unix-socket daemon exposing ten typed commands, among them init, status, branch, switch, merge and commit, over a UUID-correlated request/response protocol. **Zero `unsafe` blocks.** Early-stage Tauri/React client; peer-to-peer sync is planned, with the transport crate scaffolded and not yet implemented.
 
-- **Mythos — local-first IDE for novelists** | _Rust, Tauri, TypeScript_ | github.com/Mythos-IDE/mythoside-core
+- **Mythos — local-first IDE for novelists** | _Rust, Tauri, TypeScript_ | github.com/mythoside/mythoside-core
   Built a standalone Rust engine across six crates that models manuscripts as Markdown + YAML on disk and exposes 13 JSON-RPC methods over stdio, run by a Tauri/React client as a managed sidecar. Types are generated from Rust into TypeScript so the IPC boundary stays type-safe. **82 tests.**
 
 - **Q-PASS — RFID access control** | _C++, Arduino, Python, PHP, MySQL_

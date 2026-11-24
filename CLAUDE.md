@@ -32,7 +32,7 @@ npm run cv          # Markdown kaynaklarından (cv_{en,tr}_v2.md) A4 PDF CV üre
 - **Next.js Statik Çıktı (`output: "export"`):** Tüm rotalar derleme zamanında (`generateStaticParams`) tam statik HTML dosyaları olarak üretilir.
 - **Statik Varlıklar:** CV PDF'leri, mimari diyagramlar (`diagrams/*.svg`), kapak görselleri (`covers/*.webp`), ekran görüntüleri (`screenshots/<slug>/*.webp`), OG görselleri (`og/*.jpg`), `robots.txt`, `llms.txt` ve `llms-full.txt` statik varlık dizininde yer alır.
 - **Derleme Çıktısı:** Firebase Hosting tarafından sunulan statik çıktı dizini `.gitignore` içindedir; bu dizindeki dosyalar asla elle düzenlenmez.
-- **GitHub Verisi (`prebuild`):** `scripts/fetch-github-data.js` derleme öncesinde çalışarak statik `github-data.json` dosyasını üretir.
+- **GitHub Verisi (`prebuild`):** `scripts/fetch-github-data.mjs` derleme öncesinde çalışarak statik `github-data.json` dosyasını üretir.
 - **LLM Bağlam Dosyaları:** `llms.txt` ve `llms-full.txt` dosyaları el ile güncellenir; site içeriği, proje listesi ve CV ile her zaman tutarlı tutulmalıdır.
 - **CV PDF Üretimi:** `scripts/build-cv.mjs` (headless Firefox, WebDriver BiDi `browsingContext.print`) Markdown kaynaklarını (`cv_en_v2.md`, `cv_tr_v2.md`) A4 PDF'e dönüştürür. Güncelleme yapıldığında önce `.md` dosyası düzenlenir, `npm run cv` çalıştırılır ve üretilen PDF metin katmanı `pdftotext` ile doğrulanır (Inter fontunun `calt` özelliği `+` karakterini düşürerek ATS tarayıcılarında `"C++"` ifadesini `"C"` yaptığı için script içinde `calt` devre dışı bırakılmıştır).
 - **Site Haritası (`sitemap.xml`):** Tüm statik rotalardan otomatik üretilir, elle düzenlenmez.
@@ -45,7 +45,10 @@ npm run cv          # Markdown kaynaklarından (cv_{en,tr}_v2.md) A4 PDF CV üre
 
 - **Strict TypeScript (`any` Yasağı):** Kod tabanında açık veya örtük `any` tipi, `as any` dönüşümü ve `@ts-ignore` kullanımı kesinlikle yasaktır.
 - **PascalCase Zorunluluğu:** Tüm React bileşenleri ve `.tsx` dosyaları (`ProjectCard.tsx`, `ProjectScreenshots.tsx`), tüm `interface` / `type` tanımları (`ProjectData`, `LocalizedText`) ve tüm `enum` isimleri ile üyeleri **PascalCase** olmalıdır.
-- **Tasarım Token Enum'ları:** Bileşenlerde sabit hex renkleri, rastgele piksel boyutları veya keyfi köşe yuvarlaklıkları kullanılmaz. `DESIGN.md` içindeki değerler merkezi TypeScript `enum` yapıları (`Colors`, `Spacing`, `CornerRoundness`, `Typography`, `Elevation`, `Motion`) üzerinden yönetilir ve Tailwind CSS sınıflarıyla eşleştirilir.
+- **Tasarım Token Enum'ları:** Bileşenlerde sabit hex renkleri, rastgele piksel boyutları veya keyfi köşe yuvarlaklıkları kullanılmaz. `DESIGN.md` içindeki değerler `src/DesignSystem/` altındaki `enum` yapıları (`Colors`, `Spacing`, `CornerRoundness`, `Typography`, `Elevation`, `Motion`, `Opacity`) üzerinden yönetilir.
+  - `src/DesignSystem/DesignTokens.ts` her enum değerini bir `--*-val` CSS değişkenine bağlar; kök şablon bunu `:root` kuralı olarak basar ve `globals.css` içindeki `@theme` yalnızca bu değişkenleri okur. Yani `text-primary`, `rounded`, `py-section-y` gibi her Tailwind sınıfının değeri enumdan gelir; `globals.css`'e sabit değer yazılmaz.
+  - Ortak arayüz bileşenleri (`Button`, `Tag`, `InputField`) değerlerini doğrudan enumlardan alır, görünümlerini `ButtonVariant` / `ButtonSize` / `TagVariant` / `TagSize` (`Variants.ts`) belirler. Yeni bir buton ya da etiket elle yazılmaz, bu bileşenler kullanılır.
+  - Sayfalar (`src/app/**/page.tsx`, `not-found.tsx`) kendi işaretlemesini taşımaz; `src/Components` içindeki bileşenleri içe aktarıp kullanır.
 
 ### 2. Rotalama (Next.js App Router & Firebase Hosting)
 
@@ -83,7 +86,7 @@ Site bir "beni işe alın" sayfası değil, sahibini ve geliştirdiği açık ka
 
 ### 5. GitHub Verileri ve Güvenlik
 
-`prebuild` script'i kişisel hesabı ve `Osmos-App`, `Mythos-IDE`, `joinchorus` organizasyonlarını (fork'ları atlayarak) tarar; katkı günlerini tarihe göre sıralanmış şekilde ve repo başına dil baytlarını (HTML/CSS vb. hariç) toplayarak `/github-data.json` dosyasına yazar. İstemci tarafında canlı API yedeklemesi (fallback) yoktur; dosya eksikse istatistikler tire (`-`) ve takvim "kullanılamıyor" mesajı gösterir.
+`prebuild` script'i kişisel hesabı ve `Osmos-App` ve `mythoside` organizasyonlarını (fork'ları atlayarak) tarar; katkı günlerini tarihe göre sıralanmış şekilde ve repo başına dil baytlarını (HTML/CSS vb. hariç) toplayarak `/github-data.json` dosyasına yazar. İstemci tarafında canlı API yedeklemesi (fallback) yoktur; dosya eksikse istatistikler tire (`-`) ve takvim "kullanılamıyor" mesajı gösterir.
 
 - **Güvenlik Kuralı:** İstemci kodu **asla** bir GitHub anahtarını okumamalıdır (`NEXT_PUBLIC_*` değişkenleri istemci paketine gömülür). `GITHUB_TOKEN` yalnızca `prebuild` script'i tarafından derleme zamanında kullanılır (yerelde `.env.local` içinde tanımlanır, şablonu `.env.example` dosyasıdır).
 

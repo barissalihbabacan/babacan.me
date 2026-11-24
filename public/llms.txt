@@ -30,15 +30,8 @@
 - **Description**: Local-first IDE for novelists. The engine (mythoside-core) is a six-crate Rust workspace that models manuscripts as Markdown + YAML on disk and exposes 13 JSON-RPC methods over stdio; a Tauri 2 + React client runs it as a sidecar. 82 tests. A SQLite FTS5 index is planned.
 - **Role**: Creator & Developer (2026)
 - **Tech**: Rust · Tauri · React · TypeScript
-- **URL**: https://github.com/Mythos-IDE/mythoside-core
+- **URL**: https://github.com/mythoside/mythoside-core
 - **Page**: https://babacan.me/en/projects/mythos
-
-### Chorus
-- **Description**: Anonymous discussion engine that stores every thread and message as a Git commit, with thread-scoped temporary identities instead of accounts. v0.1.0-alpha; 24 tests and 5 benchmarks.
-- **Role**: Founding Engineer (2026–)
-- **Tech**: Go 1.22+ · React · TypeScript · Vite · Git
-- **URL**: https://github.com/joinchorus/chorus · https://joinchorus.app
-- **Page**: https://babacan.me/en/projects/chorus
 
 ### IT-RMS (IT Resource Management System)
 - **Description**: IT asset, inventory and lab management system for a vocational high school's IT department: 2D lab layouts, barcode/QR labels, stock alerts and a five-role user model. Built in PHP 8 + MySQL starting in 2023; migration to Node.js, Express 5 and MongoDB is in progress, with the PHP version kept on a branch.

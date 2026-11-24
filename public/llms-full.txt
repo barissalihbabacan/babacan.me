@@ -38,28 +38,21 @@ This document gives AI models and search systems a full-text overview of Barış
 - **What it is**: a local-first IDE for novelists writing multi-book, relational fiction worlds.
 - **Architecture**: mythoside-core is a six-crate Rust workspace (parser, narrative model, workspace, RPC, shared types) with no UI dependencies. Manuscripts live on disk as Markdown + YAML in a Series → Book → Chapter → Scene hierarchy. The engine exposes 13 JSON-RPC methods over stdio and never opens a network port; the Tauri 2 + React client (mythoside-ts) runs it as a managed sidecar, with TypeScript types generated from Rust. 82 tests. A SQLite + FTS5 index for cross-referencing is planned, not built.
 - **Tech**: Rust · Tauri · React · TypeScript
-- **Repository**: https://github.com/Mythos-IDE/mythoside-core
+- **Repository**: https://github.com/mythoside/mythoside-core
 
-### 3.3 Chorus (open source)
-- **Role**: Founding Engineer (2026–) · **Status**: early development, v0.1.0-alpha
-- **What it is**: an anonymous discussion engine without accounts, likes or algorithmic feeds.
-- **Architecture**: every thread and message is written as an immutable Git commit, so there is no database in the dependency tree. Thread-scoped temporary identities replace user accounts. The Go 1.22+ backend has per-endpoint IP token-bucket rate limiting, `X-Request-ID` correlation across logs and error payloads, and a 10-second graceful shutdown that never interrupts an in-flight Git write. 24 tests and 5 benchmarks measure the cost of Git as storage. React 19 + TypeScript + Vite frontend.
-- **Tech**: Go · React · TypeScript · Vite · Git
-- **Repository**: https://github.com/joinchorus/chorus · **Site**: https://joinchorus.app
-
-### 3.4 IT-RMS (school infrastructure / institutional project)
+### 3.3 IT-RMS (school infrastructure / institutional project)
 - **Role**: Lead Architect & Developer (2023–) · **Status**: migration in progress
 - **What it is**: the IT asset system for his vocational high school's IT department.
 - **Architecture**: started in 2023 in PHP 8 + MySQL (Composer, PHPMailer, barcode generation): multi-branch inventory, 2D lab layouts, barcode/QR labels, PDF reporting, audit logging, stock alerts and a five-role user model. In 2026 he returned to it and is migrating it to Node.js, Express 5 and MongoDB (Mongoose) in an MVC layout with linting, input validation and security headers; the PHP version is preserved on a branch.
 - **Tech**: PHP 8 · MySQL · Node.js · Express · MongoDB · Passport · QRCode
 
-### 3.5 Q-PASS (school infrastructure / institutional project)
+### 3.4 Q-PASS (school infrastructure / institutional project)
 - **Role**: System Architect · **Status**: completed, no longer in use
 - **What it is**: RFID access control and meal tracking for a public school (Haydarpaşa MTAL).
 - **Architecture**: custom 3D-printed RFID readers run C++ microcontroller firmware and send structured serial frames over RS-232/USB to a Python service, which validates them against a PHP/MySQL dashboard for access logs and meal quotas. It served 120–150 people a day for three school years.
 - **Tech**: Arduino (C++) · Python · PHP · MySQL · RFID
 
-### 3.6 Garage.ist projects
+### 3.5 Garage.ist projects
 - **Sortify** (CTO & Lead Developer): game-based learning app for children aged 3–13 with supervision tools for parents and teachers. Native SwiftUI + MVVM on iOS/iPadOS, split into six in-house Swift packages (core, auth, education, games, subscription, chessboard); Firebase Auth/Firestore/Functions, server-side StoreKit 2 purchase verification, push notifications, analytics and mDNS device pairing. v2.3 on the App Store; he wrote 450+ of its 550+ commits. CI blocks direct pushes to main and self-merged pull requests. https://apps.apple.com/app/id6759790866
 - **Sortify Web** (Web Foundation & Firebase Infrastructure, Maintenance & Moderation): the browser client, porting the iOS game logic to React 19 + TypeScript + Vite with HTML5 Canvas rendering. https://play.sortify.com
 - **+TV** (Co-developer · Philips integration): Android TV remote, cast and screen-mirroring app with 10K+ downloads on Google Play, built with a fellow developer. Samsung via the Tizen SDK and LG via ConnectSDK. Philips had no SDK, so he reverse-engineered the undocumented JointSpace API from Philips' own remote app (logs via CatLog, traffic via Wireshark) and wrote that integration alone: HTTP Digest auth over a 401 challenge–response with a nonce, PIN pairing as an explicit state machine, nonce expiry handling and self-signed TLS. Working in 2–5 days, fully mapped in about three weeks. https://play.google.com/store/apps/details?id=com.plus.plustvv001
