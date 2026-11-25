@@ -1,4 +1,4 @@
-import LocaleRedirect from "@/Components/LocaleRedirect";
+import LocaleRedirect from "@/Sections/LocaleRedirect";
 
 /**
  * Kök (/) sayfa bileşeni: ziyaretçiyi /tr ya da /en sayfasına yönlendirir.

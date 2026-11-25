@@ -1,9 +1,12 @@
 import { type Locale } from "@/I18n";
 import { UI_DICTIONARY } from "@/Data/i18nData";
 import ProjectCard from "./ProjectCard";
-import Icon from "./Icon";
-import Button from "./Button";
-import { ButtonSize, ButtonVariant } from "@/DesignSystem";
+import Icon from "@/Components/Icon";
+import Button from "@/Components/Button";
+import Box from "@/Components/Box";
+import Heading from "@/Components/Heading";
+import Text from "@/Components/Text";
+import { ButtonSize, ButtonVariant, HeadingVariant, TextVariant } from "@/DesignSystem";
 import { PROJECT_DATA } from "@/Data/projectsData";
 
 const PROJECT_COUNT = Object.keys(PROJECT_DATA).length;
@@ -26,49 +29,50 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
   const { projects } = UI_DICTIONARY;
 
   return (
-    <section
+    <Box
+      as="section"
       id="projects"
       className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
-      <div className="section-ghost-number">01</div>
-      <div className="max-w-container-max mx-auto px-margin-desktop relative z-10">
-        <div className="flex items-center gap-4 mb-vh-2">
-          <span className="font-label-mono text-label-xs text-on-surface-variant uppercase tracking-widest">
+      <Box className="section-ghost-number">01</Box>
+      <Box className="max-w-container-max mx-auto px-margin-desktop relative z-10">
+        <Box className="flex items-center gap-4 mb-vh-2">
+          <Text as="span" variant={TextVariant.Label} className="text-label-xs text-on-surface-variant">
             {projects.sectionLabel[currentLocale]}
-          </span>
-          <div className="h-px flex-1 bg-primary/20"></div>
-        </div>
+          </Text>
+          <Box className="h-px flex-1 bg-primary/20" />
+        </Box>
 
-        <h2 className="text-3xl sm:text-4xl font-bold text-on-surface tracking-tight mb-vh-4">
+        <Heading level={2} variant={HeadingVariant.Display} className="text-3xl sm:text-4xl tracking-tight mb-vh-4">
           {projects.title[currentLocale]}
-        </h2>
+        </Heading>
 
         {/* Öne Çıkan Sistemler & Mimari Çalışmalar */}
-        <div className="mb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <h3 className="font-label-mono text-sm text-primary tracking-widest uppercase">
+        <Box className="mb-16">
+          <Box className="flex items-center gap-4 mb-8">
+            <Heading level={3} variant={HeadingVariant.Eyebrow} className="text-sm text-primary">
               {isTr ? "Öne Çıkan Sistemler & Mimari Çalışmalar" : "Featured Core Systems"}
-            </h3>
-            <div className="h-px flex-1 bg-primary/20"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </Heading>
+            <Box className="h-px flex-1 bg-primary/20" />
+          </Box>
+          <Box className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <ProjectCard projectKey="osmos" lang={currentLocale} isFeatured />
             <ProjectCard projectKey="mythos" lang={currentLocale} isFeatured />
-          </div>
-        </div>
+          </Box>
+        </Box>
 
         {/* Garage.ist Projeleri */}
-        <div className="mb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <h3 className="font-label-mono text-sm text-on-surface tracking-widest uppercase">
+        <Box className="mb-16">
+          <Box className="flex items-center gap-4 mb-8">
+            <Heading level={3} variant={HeadingVariant.Eyebrow} className="text-sm text-on-surface">
               {projects.garageTitle[currentLocale]}
-            </h3>
-            <div className="h-px flex-1 bg-primary/20"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            </Heading>
+            <Box className="h-px flex-1 bg-primary/20" />
+          </Box>
+          <Box className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ProjectCard projectKey="sortify" lang={currentLocale} wide />
             <ProjectCard projectKey="plus-tv" lang={currentLocale} wide />
-          </div>
+          </Box>
           {/* Diğer Garage.ist işleri */}
           <Button
             href={`/${currentLocale}/${isTr ? "projeler" : "projects"}?filter=garage`}
@@ -79,24 +83,24 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
           >
             {isTr ? "Diğer Garage.ist projeleri (7 proje daha)" : "More Garage.ist projects (7 more)"}
           </Button>
-        </div>
+        </Box>
 
         {/* Okul & Kurumsal Sistemler */}
-        <div>
-          <div className="flex items-center gap-4 mb-8">
-            <h3 className="font-label-mono text-sm text-on-surface tracking-widest uppercase">
+        <Box>
+          <Box className="flex items-center gap-4 mb-8">
+            <Heading level={3} variant={HeadingVariant.Eyebrow} className="text-sm text-on-surface">
               {projects.personalTitle[currentLocale]}
-            </h3>
-            <div className="h-px flex-1 bg-primary/20"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            </Heading>
+            <Box className="h-px flex-1 bg-primary/20" />
+          </Box>
+          <Box className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <ProjectCard projectKey="qpass" lang={currentLocale} wide />
             <ProjectCard projectKey="itrms" lang={currentLocale} wide />
-          </div>
-        </div>
+          </Box>
+        </Box>
 
         {/* Tüm projeler kataloğu bağlantısı */}
-        <div className="mt-14 pt-8 border-t border-primary/20 flex justify-center">
+        <Box className="mt-14 pt-8 border-t border-primary/20 flex justify-center">
           <Button
             href={`/${currentLocale}/${isTr ? "projeler" : "projects"}`}
             variant={ButtonVariant.Outline}
@@ -107,8 +111,8 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
               ? `Tüm Projeler Kataloğunu İncele (${PROJECT_COUNT} Proje)`
               : `Explore Full Projects Catalog (${PROJECT_COUNT} Projects)`}
           </Button>
-        </div>
-      </div>
-    </section>
+        </Box>
+      </Box>
+    </Box>
   );
 }

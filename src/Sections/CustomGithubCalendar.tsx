@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { loadGithubData, type ContributionDay } from "@/Utils/githubData";
+import Box from "@/Components/Box";
+import Text from "@/Components/Text";
 import { type Locale } from "@/I18n";
 import { Colors, ContributionColors } from "@/DesignSystem";
 
@@ -90,9 +92,9 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
   });
 
   return (
-    <div ref={rootRef} className="w-full flex flex-col gap-2 select-none">
-      <div className="flex items-center justify-between text-xs text-on-surface-variant font-label-mono mb-2">
-        <span>
+    <Box ref={rootRef} className="w-full flex flex-col gap-2 select-none">
+      <Box className="flex items-center justify-between text-xs text-on-surface-variant font-label-mono mb-2">
+        <Text as="span">
           {loading
             ? lang === "tr"
               ? "Katkı takvimi yükleniyor..."
@@ -104,57 +106,58 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
               : lang === "tr"
                 ? "Katkı takvimi"
                 : "Contribution graph"}
-        </span>
+        </Text>
 
         {/* Lejant */}
-        <div className="flex items-center gap-1.5">
-          <span className="text-label-2xs text-on-surface-variant/70 uppercase tracking-wider">
+        <Box className="flex items-center gap-1.5">
+          <Text as="span" className="text-label-2xs text-on-surface-variant/70 uppercase tracking-wider">
             {lang === "tr" ? "Az" : "Less"}
-          </span>
+          </Text>
           {LEVEL_COLORS.map((color, index) => (
-            <div
+            <Box
               key={index}
               className="w-2.5 h-2.5 rounded-[1px] border border-white/5"
               style={{ backgroundColor: color }}
             />
           ))}
-          <span className="text-label-2xs text-on-surface-variant/70 uppercase tracking-wider">
+          <Text as="span" className="text-label-2xs text-on-surface-variant/70 uppercase tracking-wider">
             {lang === "tr" ? "Çok" : "More"}
-          </span>
-        </div>
-      </div>
+          </Text>
+        </Box>
+      </Box>
 
       {/* Takvim Izgarası */}
-      <div className="overflow-x-auto pb-2 scrollbar-thin">
-        <div className="min-w-[720px] flex flex-col gap-1">
+      <Box className="overflow-x-auto pb-2 scrollbar-thin">
+        <Box className="min-w-[720px] flex flex-col gap-1">
           {/* Ay Başlıkları */}
-          <div className="flex text-label-2xs font-label-mono text-on-surface-variant/60 h-4 relative">
+          <Box className="flex text-label-2xs font-label-mono text-on-surface-variant/60 h-4 relative">
             {monthLabels.map((m, idx) => (
-              <span
+              <Text
+                as="span"
                 key={idx}
                 className="absolute"
                 style={{ left: `${(m.weekIndex / Math.max(weeks.length, 52)) * 100}%` }}
               >
                 {m.name}
-              </span>
+              </Text>
             ))}
-          </div>
+          </Box>
 
           {/* 7 Satırlık Hafta Sütunları */}
-          <div className="flex gap-[3px]">
+          <Box className="flex gap-[3px]">
             {loading && weeks.length === 0 ? (
-              <div className="h-28 w-full flex items-center justify-center border border-primary/20 bg-surface-container/20">
-                <span className="font-label-mono text-xs text-on-surface-variant">
+              <Box className="h-28 w-full flex items-center justify-center border border-primary/20 bg-surface-container/20">
+                <Text as="span" className="font-label-mono text-xs text-on-surface-variant">
                   {lang === "tr" ? "Yükleniyor..." : "Loading..."}
-                </span>
-              </div>
+                </Text>
+              </Box>
             ) : (
               weeks.map((week, wIdx) => (
-                <div key={wIdx} className="flex flex-col gap-[3px]">
+                <Box key={wIdx} className="flex flex-col gap-[3px]">
                   {week.map((day) => {
                     const color = LEVEL_COLORS[day.level] ?? LEVEL_COLORS[0];
                     return (
-                      <div
+                      <Box
                         key={day.date}
                         title={`${day.date}: Level ${day.level}`}
                         className="w-[11px] h-[11px] rounded-[1px] transition-colors hover:scale-125"
@@ -162,12 +165,12 @@ export default function CustomGithubCalendar({ lang = "tr" }: CustomGithubCalend
                       />
                     );
                   })}
-                </div>
+                </Box>
               ))
             )}
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }

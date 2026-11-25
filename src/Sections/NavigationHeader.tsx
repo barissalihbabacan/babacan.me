@@ -1,11 +1,14 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { type Locale } from "@/I18n";
 import { UI_DICTIONARY } from "@/Data/i18nData";
 import { ButtonSize, ButtonVariant } from "@/DesignSystem";
-import Button from "./Button";
+import Button from "@/Components/Button";
+import Box from "@/Components/Box";
+import Text from "@/Components/Text";
+import TextLink from "@/Components/TextLink";
+import NavigationDownloadGlyph from "@/Components/NavigationDownloadGlyph";
 
 interface NavigationHeaderProps {
   readonly currentLocale: Locale;
@@ -43,36 +46,37 @@ export default function NavigationHeader({ currentLocale }: NavigationHeaderProp
 
   return (
     <>
-      <a
+      <TextLink
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-100 focus:px-4 focus:py-2 focus:bg-primary focus:text-surface font-label-mono text-xs uppercase tracking-widest focus:outline-none focus:ring-2 focus:ring-primary"
       >
         {nav.skipToContent[currentLocale]}
-      </a>
-      <header
+      </TextLink>
+      <Box
+        as="header"
         className="fixed top-0 left-0 w-full z-50 h-16 border-b border-primary/30 bg-surface/92 backdrop-blur-sm"
         aria-label={nav.mainNav[currentLocale]}
       >
-        <div className="max-w-container-max mx-auto px-margin-desktop h-full flex items-center justify-between">
-          <Link
+        <Box className="max-w-container-max mx-auto px-margin-desktop h-full flex items-center justify-between">
+          <TextLink
             href={`/${currentLocale}`}
             className="font-label-mono text-label-mono text-on-surface tracking-tighter flex items-center gap-2 cursor-pointer"
           >
-            <span className="text-primary text-xs" aria-hidden="true">
+            <Text as="span" className="text-primary text-xs" aria-hidden="true">
               ■
-            </span>
+            </Text>
             babacan.me
-          </Link>
+          </TextLink>
 
-          <div className="flex items-center gap-gutter">
-            <Link
+          <Box className="flex items-center gap-gutter">
+            <TextLink
               href={switchLocalePath}
               onClick={handleLanguageSwitch}
               className="nav-link cursor-pointer border border-primary/30 px-2.5 min-h-9 min-w-9 inline-flex items-center justify-center text-label-sm"
               aria-label={nav.switchLang[currentLocale]}
             >
               {currentLocale === "tr" ? "EN" : "TR"}
-            </Link>
+            </TextLink>
 
             <Button
               href={cvHref}
@@ -80,17 +84,13 @@ export default function NavigationHeader({ currentLocale }: NavigationHeaderProp
               variant={ButtonVariant.Outline}
               size={ButtonSize.Small}
               iconPosition="start"
-              icon={
-                <svg className="w-3.5 h-3.5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-                </svg>
-              }
+              icon={<NavigationDownloadGlyph />}
             >
               {hero.downloadCV[currentLocale]}
             </Button>
-          </div>
-        </div>
-      </header>
+          </Box>
+        </Box>
+      </Box>
     </>
   );
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { LOCALES, resolveLocale, type Locale } from "@/I18n";
 import { pageMetadata, projectsSegment } from "@/Utils/seo";
-import ProjectsDirectoryView from "@/Components/ProjectsDirectoryView";
+import ProjectsDirectoryView from "@/Sections/ProjectsDirectoryView";
 
 export function generateStaticParams(): readonly { readonly lang: Locale }[] {
   return LOCALES.map((lang) => ({ lang }));

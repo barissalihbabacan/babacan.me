@@ -1,16 +1,21 @@
 "use client";
 
-import Link from "next/link";
 import { PROJECT_DATA, liveLinkLabel, type ProjectKey } from "@/Data/projectsData";
 import { type Locale } from "@/I18n";
 import { UI_DICTIONARY } from "@/Data/i18nData";
-import ArchitectureDiagram from "./ArchitectureDiagram";
-import ProjectCover from "./ProjectCover";
-import LatinText from "./LatinText";
-import Icon from "./Icon";
+import Box from "@/Components/Box";
+import Heading from "@/Components/Heading";
+import List from "@/Components/List";
+import ListItem from "@/Components/ListItem";
+import Text from "@/Components/Text";
+import TextLink from "@/Components/TextLink";
+import ArchitectureDiagram from "@/Components/ArchitectureDiagram";
+import ProjectCover from "@/Components/ProjectCover";
+import LatinText from "@/Components/LatinText";
+import Icon from "@/Components/Icon";
 import ProjectScreenshots from "./ProjectScreenshots";
-import Button from "./Button";
-import { ButtonSize, ButtonVariant } from "@/DesignSystem";
+import Button from "@/Components/Button";
+import { ButtonSize, ButtonVariant, HeadingVariant, TextVariant } from "@/DesignSystem";
 
 export interface ProjectDetailViewProps {
   readonly slug: ProjectKey;
@@ -26,10 +31,10 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
 
   if (!project) {
     return (
-      <div className="min-h-screen pt-24 px-margin-desktop text-center">
-        <h1 className="text-2xl font-bold text-on-surface">
+      <Box className="min-h-screen pt-24 px-margin-desktop text-center">
+        <Heading level={1} variant={HeadingVariant.CardTitle}>
           {isTr ? "Proje bulunamadı" : "Project Not Found"}
-        </h1>
+        </Heading>
         <Button
           href={projectsPath}
           variant={ButtonVariant.Text}
@@ -40,7 +45,7 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
         >
           {isTr ? "Projelere dön" : "Return to Projects"}
         </Button>
-      </div>
+      </Box>
     );
   }
 
@@ -62,25 +67,26 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
   const backButtonText = isTr ? "Projelere Dön" : "Back to Projects";
 
   return (
-    <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
+    <Box className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
       {/* Breadcrumb Gezinme ve Geri Dön Butonu */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <nav
+      <Box className="mb-8 flex flex-wrap items-center justify-between gap-4">
+        <Box
+          as="nav"
           aria-label={nav.breadcrumb[currentLocale]}
           className="font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2 flex-wrap"
         >
-          <Link href={`/${currentLocale}`} className="hover:text-primary transition-colors">
+          <TextLink href={`/${currentLocale}`} className="hover:text-primary transition-colors">
             {isTr ? "Ana Sayfa" : "Home"}
-          </Link>
-          <span aria-hidden="true">/</span>
-          <Link href={projectsPath} className="hover:text-primary transition-colors">
+          </TextLink>
+          <Text as="span" aria-hidden="true">/</Text>
+          <TextLink href={projectsPath} className="hover:text-primary transition-colors">
             {isTr ? "Projeler" : "Projects"}
-          </Link>
-          <span aria-hidden="true">/</span>
-          <span className="text-primary">
+          </TextLink>
+          <Text as="span" aria-hidden="true">/</Text>
+          <Text as="span" className="text-primary">
             <LatinText text={title} />
-          </span>
-        </nav>
+          </Text>
+        </Box>
 
         <Button
           href={projectsPath}
@@ -91,33 +97,45 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
         >
           {backButtonText}
         </Button>
-      </div>
+      </Box>
 
       {/* Başlık Alanı */}
-      <header className="border-b border-primary/30 pb-10 mb-12">
-        <div className="flex flex-wrap gap-3 mb-4">
-          <span className="font-label-mono text-label-xs text-primary border border-primary/30 px-2.5 py-1 uppercase tracking-widest">
+      <Box as="header" className="border-b border-primary/30 pb-10 mb-12">
+        <Box className="flex flex-wrap gap-3 mb-4">
+          <Text
+            as="span"
+            variant={TextVariant.Label}
+            className="text-label-xs text-primary border border-primary/30 px-2.5 py-1"
+          >
             <LatinText text={category} />
-          </span>
-          <span className="font-label-mono text-label-xs text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
+          </Text>
+          <Text
+            as="span"
+            variant={TextVariant.Label}
+            className="text-label-xs text-on-surface-variant/70 border border-primary/20 px-2.5 py-1"
+          >
             {status}
-          </span>
-          <span className="font-label-mono text-label-xs text-on-surface-variant/70 border border-primary/20 px-2.5 py-1 uppercase tracking-widest">
+          </Text>
+          <Text
+            as="span"
+            variant={TextVariant.Label}
+            className="text-label-xs text-on-surface-variant/70 border border-primary/20 px-2.5 py-1"
+          >
             <LatinText text={year} />
-          </span>
-        </div>
+          </Text>
+        </Box>
 
-        <h1 className="text-4xl sm:text-6xl font-bold text-on-surface tracking-tight mb-6">
+        <Heading level={1} variant={HeadingVariant.PageTitle} className="mb-6">
           {title}
-        </h1>
+        </Heading>
 
-        <p className="text-on-surface text-xl leading-snug max-w-3xl mb-4">{oneLiner}</p>
-        <p className="font-body-lg text-on-surface-variant text-lg max-w-3xl leading-relaxed">
+        <Text className="text-on-surface text-xl leading-snug max-w-3xl mb-4">{oneLiner}</Text>
+        <Text variant={TextVariant.Lead} className="max-w-3xl">
           {description}
-        </p>
+        </Text>
 
         {/* Canlı Demo & GitHub Bağlantıları */}
-        <div className="mt-8 flex flex-wrap gap-4">
+        <Box className="mt-8 flex flex-wrap gap-4">
           {project.liveUrl && (
             <Button
               href={project.liveUrl}
@@ -140,8 +158,8 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
               <LatinText text={isTr ? "GitHub Deposu" : "GitHub Repository"} />
             </Button>
           )}
-        </div>
-      </header>
+        </Box>
+      </Box>
 
       {project.cover && (
         <ProjectCover
@@ -154,59 +172,59 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
       )}
 
       {/* Ana İçerik ve Kenar Çubuğu */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-12 items-start">
-        <div className="space-y-12 max-w-[46rem]">
+      <Box className="grid grid-cols-1 lg:grid-cols-[1fr_20rem] gap-12 items-start">
+        <Box className="space-y-12 max-w-[46rem]">
           {/* Genel Bakış */}
           {summary && (
-            <section className="space-y-4">
-              <h2 className="text-2xl font-bold text-on-surface">
+            <Box as="section" className="space-y-4">
+              <Heading level={2} variant={HeadingVariant.CardTitle}>
                 {isTr ? "Genel Bakış" : "Overview"}
-              </h2>
-              <p className="font-body-md text-on-surface-variant leading-relaxed text-base">
+              </Heading>
+              <Text className="font-body-md text-on-surface-variant leading-relaxed text-base">
                 {summary}
-              </p>
-            </section>
+              </Text>
+            </Box>
           )}
 
           {/* Problem & Yaklaşım */}
           {(problem || solution) && (
-            <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-primary/20 pt-8">
+            <Box as="section" className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-primary/20 pt-8">
               {problem && (
-                <div className="space-y-3">
-                  <h3 className="font-label-mono text-xs text-primary uppercase tracking-widest">
+                <Box className="space-y-3">
+                  <Heading level={3} variant={HeadingVariant.Eyebrow} className="text-xs text-primary">
                     Problem
-                  </h3>
-                  <p className="font-body-md text-on-surface-variant text-sm leading-relaxed">
+                  </Heading>
+                  <Text variant={TextVariant.Body}>
                     {problem}
-                  </p>
-                </div>
+                  </Text>
+                </Box>
               )}
               {solution && (
-                <div className="space-y-3">
-                  <h3 className="font-label-mono text-xs text-primary uppercase tracking-widest">
+                <Box className="space-y-3">
+                  <Heading level={3} variant={HeadingVariant.Eyebrow} className="text-xs text-primary">
                     {isTr ? "Yaklaşım" : "Approach"}
-                  </h3>
-                  <p className="font-body-md text-on-surface-variant text-sm leading-relaxed">
+                  </Heading>
+                  <Text variant={TextVariant.Body}>
                     {solution}
-                  </p>
-                </div>
+                  </Text>
+                </Box>
               )}
-            </section>
+            </Box>
           )}
 
           {/* Sistem Mimarisi ve Diyagram */}
           {(architecture || diagram) && (
-            <section className="space-y-4 border-t border-primary/20 pt-8">
-              <h2 className="text-2xl font-bold text-on-surface">
+            <Box as="section" className="space-y-4 border-t border-primary/20 pt-8">
+              <Heading level={2} variant={HeadingVariant.CardTitle}>
                 {isTr ? "Sistem Mimarisi" : "System Architecture"}
-              </h2>
+              </Heading>
               {architecture && (
-                <p
+                <Text
                   id="architecture-text"
                   className="font-body-md text-on-surface-variant leading-relaxed text-base"
                 >
                   {architecture}
-                </p>
+                </Text>
               )}
               {diagram && (
                 <ArchitectureDiagram
@@ -220,37 +238,37 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
                   }
                 />
               )}
-            </section>
+            </Box>
           )}
 
           {/* Mimari Ödünleşimler (Trade-offs) */}
           {tradeoffs && (
-            <section className="space-y-4 border-t border-primary/20 pt-8">
-              <h2 className="text-2xl font-bold text-on-surface">
+            <Box as="section" className="space-y-4 border-t border-primary/20 pt-8">
+              <Heading level={2} variant={HeadingVariant.CardTitle}>
                 {isTr ? "Mimari Ödünleşimler (Trade-offs)" : "Architectural Trade-offs"}
-              </h2>
-              <div className="bg-surface-container/20 border border-primary/20 p-6 font-body-md text-on-surface-variant leading-relaxed text-sm">
+              </Heading>
+              <Box className="bg-surface-container/20 border border-primary/20 p-6 font-body-md text-on-surface-variant leading-relaxed text-sm">
                 {tradeoffs}
-              </div>
-            </section>
+              </Box>
+            </Box>
           )}
 
           {/* Öne Çıkan Özellikler */}
           {highlights && highlights.length > 0 && (
-            <section className="space-y-4 border-t border-primary/20 pt-8">
-              <h2 className="text-2xl font-bold text-on-surface">{projects.highlights[currentLocale]}</h2>
-              <ul className="space-y-3">
+            <Box as="section" className="space-y-4 border-t border-primary/20 pt-8">
+              <Heading level={2} variant={HeadingVariant.CardTitle}>{projects.highlights[currentLocale]}</Heading>
+              <List className="space-y-3">
                 {highlights.map((highlight, idx) => (
-                  <li
+                  <ListItem
                     key={idx}
                     className="flex items-start gap-3 text-on-surface-variant font-body-md text-sm"
                   >
-                    <span className="text-primary mt-1 text-xs">■</span>
-                    <span>{highlight}</span>
-                  </li>
+                    <Text as="span" className="text-primary mt-1 text-xs">■</Text>
+                    <Text as="span">{highlight}</Text>
+                  </ListItem>
                 ))}
-              </ul>
-            </section>
+              </List>
+            </Box>
           )}
 
           {/* Ekran Görüntüleri */}
@@ -259,7 +277,7 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
           )}
 
           {/* Geri Dönüş Butonu */}
-          <div className="pt-8 border-t border-primary/20">
+          <Box className="pt-8 border-t border-primary/20">
             <Button
               href={projectsPath}
               variant={ButtonVariant.Outline}
@@ -269,38 +287,34 @@ export default function ProjectDetailView({ slug, currentLocale }: ProjectDetail
             >
               {backButtonText}
             </Button>
-          </div>
-        </div>
+          </Box>
+        </Box>
 
         {/* Kenar Çubuğu (Rol ve Teknolojiler) */}
-        <aside className="space-y-8 order-first lg:order-none">
-          <div className="border border-primary/20 p-6 bg-surface-container/10 space-y-6">
-            <div>
-              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-1">
+        <Box as="aside" className="space-y-8 order-first lg:order-none">
+          <Box className="border border-primary/20 p-6 bg-surface-container/10 space-y-6">
+            <Box>
+              <Box className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-1">
                 {isTr ? "Rol" : "Role"}
-              </div>
-              <div className="font-label-mono text-sm text-on-surface font-semibold">{role}</div>
-            </div>
+              </Box>
+              <Box className="font-label-mono text-sm text-on-surface font-semibold">{role}</Box>
+            </Box>
 
-            <div>
-              <div className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-2">
+            <Box>
+              <Box className="font-label-mono text-label-xs text-on-surface-variant/70 uppercase tracking-widest mb-2">
                 {projects.techStack[currentLocale]}
-              </div>
-              <div className="flex flex-wrap gap-2">
+              </Box>
+              <Box className="flex flex-wrap gap-2">
                 {project.tech.map((tItem, idx) => (
-                  <span
-                    key={idx}
-                    lang="en"
-                    className="font-label-mono text-label-xs text-primary border border-primary/20 px-2 py-0.5 uppercase"
-                  >
+                  <Text as="span" key={idx} lang="en" variant={TextVariant.Badge}>
                     <LatinText text={tItem} />
-                  </span>
+                  </Text>
                 ))}
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
+              </Box>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 }

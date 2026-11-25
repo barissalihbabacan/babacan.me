@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { LOCALES, resolveLocale, type Locale } from "@/I18n";
 import { pageMetadata, projectsSegment } from "@/Utils/seo";
 import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
-import ProjectDetailView from "@/Components/ProjectDetailView";
+import ProjectDetailView from "@/Sections/ProjectDetailView";
 
 export function generateStaticParams(): readonly { readonly lang: Locale; readonly slug: string }[] {
   const slugs = Object.keys(PROJECT_DATA) as ProjectKey[];

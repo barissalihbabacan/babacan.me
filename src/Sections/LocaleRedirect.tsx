@@ -2,6 +2,9 @@
 
 import { useEffect } from "react";
 import { DEFAULT_LOCALE, isValidLocale } from "@/I18n";
+import Box from "@/Components/Box";
+import Text from "@/Components/Text";
+import TextLink from "@/Components/TextLink";
 
 /**
  * Kök (/) sayfasının içeriği.
@@ -43,13 +46,13 @@ export default function LocaleRedirect() {
       <noscript>
         <meta httpEquiv="refresh" content={`0;url=/${DEFAULT_LOCALE}`} />
       </noscript>
-      <main className="flex min-h-screen items-center justify-center p-8">
-        <p className="text-sm text-on-surface-variant">
-          <a href={`/${DEFAULT_LOCALE}`} className="hover:underline">
+      <Box as="main" className="flex min-h-screen items-center justify-center p-8">
+        <Text className="text-sm text-on-surface-variant">
+          <TextLink href={`/${DEFAULT_LOCALE}`} className="hover:underline">
             Yönlendiriliyorsunuz... / Click here if not redirected
-          </a>
-        </p>
-      </main>
+          </TextLink>
+        </Text>
+      </Box>
     </>
   );
 }

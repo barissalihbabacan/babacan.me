@@ -3,7 +3,13 @@
 import { useRef, useState } from "react";
 import type { ProjectScreenshot } from "@/Data/projectsData";
 import { type Locale } from "@/I18n";
-import Icon from "./Icon";
+import Box from "@/Components/Box";
+import Heading from "@/Components/Heading";
+import Icon from "@/Components/Icon";
+import Img from "@/Components/Img";
+import PlainButton from "@/Components/PlainButton";
+import Text from "@/Components/Text";
+import { HeadingVariant } from "@/DesignSystem";
 
 export interface ProjectScreenshotsProps {
   readonly screenshots: readonly ProjectScreenshot[];
@@ -29,44 +35,42 @@ export default function ProjectScreenshots({ screenshots, lang }: ProjectScreens
   const activeScreenshot = activeModalIdx !== null ? screenshots[activeModalIdx] : null;
 
   return (
-    <section className="space-y-6 border-t border-primary/20 pt-10 my-10">
-      <div className="flex items-end justify-between gap-4">
-        <div>
-          <h2 className="text-2xl font-bold text-on-surface">
+    <Box as="section" className="space-y-6 border-t border-primary/20 pt-10 my-10">
+      <Box className="flex items-end justify-between gap-4">
+        <Box>
+          <Heading level={2} variant={HeadingVariant.CardTitle}>
             {isTr ? "Uygulama Ekranları ve Arayüz" : "Interface & App Screenshots"}
-          </h2>
-          <p className="font-body-md text-on-surface-variant text-sm mt-1">
+          </Heading>
+          <Text className="font-body-md text-on-surface-variant text-sm mt-1">
             {isTr
               ? "App Store ve Google Play üzerinden yayınlanan resmi retina mağaza görselleri."
               : "Official retina store screenshots from the App Store and Google Play releases."}
-          </p>
-        </div>
+          </Text>
+        </Box>
 
         {/* Kaydırma Kontrolleri */}
         {screenshots.length > 2 && (
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              type="button"
+          <Box className="hidden sm:flex items-center gap-2">
+            <PlainButton
               onClick={() => handleScroll("left")}
               aria-label={isTr ? "Önceki ekran görüntüsü" : "Previous screenshot"}
               className="p-2 border border-primary/20 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-colors cursor-pointer"
             >
               <Icon name="chevron_left" className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
+            </PlainButton>
+            <PlainButton
               onClick={() => handleScroll("right")}
               aria-label={isTr ? "Sonraki ekran görüntüsü" : "Next screenshot"}
               className="p-2 border border-primary/20 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-colors cursor-pointer"
             >
               <Icon name="chevron_right" className="w-4 h-4" />
-            </button>
-          </div>
+            </PlainButton>
+          </Box>
         )}
-      </div>
+      </Box>
 
       {/* Yatay Karusel */}
-      <div
+      <Box
         ref={scrollRef}
         tabIndex={0}
         aria-label={isTr ? "Ekran görüntüleri kaydırıcı" : "Screenshots carousel"}
@@ -77,13 +81,13 @@ export default function ProjectScreenshots({ screenshots, lang }: ProjectScreens
           const altText = item.alt[lang] ?? item.alt.en;
 
           return (
-            <div
+            <Box
               key={idx}
               className="snap-start shrink-0 flex flex-col items-center group cursor-pointer"
               onClick={() => setActiveModalIdx(idx)}
             >
-              <div className="p-2 rounded-2xl bg-surface-container/30 border border-primary/20 group-hover:border-primary/60 group-hover:shadow-[0_0_24px_var(--color-glow-primary)] transition-all overflow-hidden">
-                <img
+              <Box className="p-2 rounded-2xl bg-surface-container/30 border border-primary/20 group-hover:border-primary/60 group-hover:shadow-[0_0_24px_var(--color-glow-primary)] transition-all overflow-hidden">
+                <Img
                   src={item.src}
                   alt={altText}
                   width={240}
@@ -92,54 +96,56 @@ export default function ProjectScreenshots({ screenshots, lang }: ProjectScreens
                   decoding="async"
                   className="rounded-xl w-auto h-[360px] sm:h-[420px] object-cover object-top select-none transition-transform group-hover:scale-[1.02]"
                 />
-              </div>
+              </Box>
               {caption && (
-                <span className="font-label-mono text-label-xs text-on-surface-variant/80 group-hover:text-primary transition-colors mt-3 text-center max-w-[240px] line-clamp-2 leading-snug">
+                <Text
+                  as="span"
+                  className="font-label-mono text-label-xs text-on-surface-variant/80 group-hover:text-primary transition-colors mt-3 text-center max-w-[240px] line-clamp-2 leading-snug"
+                >
                   {caption}
-                </span>
+                </Text>
               )}
-            </div>
+            </Box>
           );
         })}
-      </div>
+      </Box>
 
       {/* Lightbox Modalı */}
       {activeScreenshot && (
-        <div
+        <Box
           role="dialog"
           aria-modal="true"
           aria-label={activeScreenshot.alt[lang] ?? activeScreenshot.alt.en}
           className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
           onClick={() => setActiveModalIdx(null)}
         >
-          <div
+          <Box
             className="relative max-w-4xl max-h-[90vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <button
-              type="button"
+            <PlainButton
               onClick={() => setActiveModalIdx(null)}
               aria-label={isTr ? "Kapat" : "Close"}
               className="absolute -top-10 right-0 text-on-surface-variant hover:text-primary font-label-mono text-xs uppercase tracking-widest flex items-center gap-1.5 p-1 cursor-pointer"
             >
-              <span>{isTr ? "Kapat" : "Close"}</span>
-              <span className="text-base leading-none">✕</span>
-            </button>
+              <Text as="span">{isTr ? "Kapat" : "Close"}</Text>
+              <Text as="span" className="text-base leading-none">✕</Text>
+            </PlainButton>
 
-            <img
+            <Img
               src={activeScreenshot.fullSrc ?? activeScreenshot.src}
               alt={activeScreenshot.alt[lang] ?? activeScreenshot.alt.en}
               className="max-h-[80vh] w-auto rounded-xl border border-primary/30 shadow-2xl object-contain"
             />
 
             {activeScreenshot.caption && (
-              <p className="font-label-mono text-xs text-primary mt-4 text-center">
+              <Text className="font-label-mono text-xs text-primary mt-4 text-center">
                 {activeScreenshot.caption[lang] ?? activeScreenshot.caption.en}
-              </p>
+              </Text>
             )}
-          </div>
-        </div>
+          </Box>
+        </Box>
       )}
-    </section>
+    </Box>
   );
 }

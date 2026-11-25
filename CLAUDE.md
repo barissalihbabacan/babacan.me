@@ -48,7 +48,10 @@ npm run cv          # Markdown kaynaklarından (cv_{en,tr}_v2.md) A4 PDF CV üre
 - **Tasarım Token Enum'ları:** Bileşenlerde sabit hex renkleri, rastgele piksel boyutları veya keyfi köşe yuvarlaklıkları kullanılmaz. `DESIGN.md` içindeki değerler `src/DesignSystem/` altındaki `enum` yapıları (`Colors`, `Spacing`, `CornerRoundness`, `Typography`, `Elevation`, `Motion`, `Opacity`) üzerinden yönetilir.
   - `src/DesignSystem/DesignTokens.ts` her enum değerini bir `--*-val` CSS değişkenine bağlar; kök şablon bunu `:root` kuralı olarak basar ve `globals.css` içindeki `@theme` yalnızca bu değişkenleri okur. Yani `text-primary`, `rounded`, `py-section-y` gibi her Tailwind sınıfının değeri enumdan gelir; `globals.css`'e sabit değer yazılmaz.
   - Ortak arayüz bileşenleri (`Button`, `Tag`, `InputField`) değerlerini doğrudan enumlardan alır, görünümlerini `ButtonVariant` / `ButtonSize` / `TagVariant` / `TagSize` (`Variants.ts`) belirler. Yeni bir buton ya da etiket elle yazılmaz, bu bileşenler kullanılır.
-  - Sayfalar (`src/app/**/page.tsx`, `not-found.tsx`) kendi işaretlemesini taşımaz; `src/Components` içindeki bileşenleri içe aktarıp kullanır.
+  - **Klasör ayrımı:** `src/Components` yalnızca tek bir elementi çizen yapı taşlarını tutar: `Box` (div ve bölge etiketleri), `Heading` (h1–h4), `Text` (p, span, em…), `List`/`ListItem`, `TextLink`, `Img`, `LineBreak`, `PlainButton`, ayrıca `Button`, `Tag`, `InputField`, `Icon` ve satır içi SVG grafikleri. Birden çok bileşeni bir araya getiren her dosya (Hero, Projeler, Hakkımda, proje kartı, proje detayı, gezinme, alt bilgi…) `src/Sections` altındadır.
+  - `src/Sections` ve `src/app` içinde ham küçük harfli JSX etiketi (`<div>`, `<h2>`, `<a>`…) yazılmaz; yerine yapı taşı kullanılır. İstisnalar: kök şablondaki `html`/`head`/`body`/`script`/`style`/`noscript`/`iframe` ve `LocaleRedirect`'teki yönlendirme `script`/`noscript`/`meta`'sı.
+  - `Heading` ve `Text` görünümünü `HeadingVariant` / `TextVariant` belirler. Varyant yalnızca tipografi taşır; boşluk (`mb-*`) ve genişlik (`max-w-*`) çağrıldığı yerde `className` ile verilir.
+  - Sayfalar (`src/app/**/page.tsx`, `not-found.tsx`) kendi işaretlemesini taşımaz; `src/Sections` ve `src/Components` içindekileri içe aktarıp kullanır.
 
 ### 2. Rotalama (Next.js App Router & Firebase Hosting)
 

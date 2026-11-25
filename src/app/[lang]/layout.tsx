@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import { LOCALES, resolveLocale, type Locale } from "@/I18n";
-import NavigationHeader from "@/Components/NavigationHeader";
-import Footer from "@/Components/Footer";
+import NavigationHeader from "@/Sections/NavigationHeader";
+import Footer from "@/Sections/Footer";
 import JsonLd from "@/Components/JsonLd";
+import Box from "@/Components/Box";
+import HtmlLang from "@/Components/HtmlLang";
 
 export function generateStaticParams(): readonly { readonly lang: Locale }[] {
   return LOCALES.map((lang) => ({ lang }));
@@ -22,16 +24,17 @@ export default async function LangLayout({ children, params }: LangLayoutProps) 
   const currentLocale = resolveLocale(lang);
 
   return (
-    <div
+    <Box
       className="flex min-h-screen flex-col bg-surface text-on-surface font-body-md antialiased selection:bg-primary/20 selection:text-primary relative"
       lang={currentLocale}
     >
+      <HtmlLang locale={currentLocale} />
       <JsonLd lang={currentLocale} />
       <NavigationHeader currentLocale={currentLocale} />
-      <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
+      <Box as="main" id="main-content" tabIndex={-1} className="flex-1 outline-none">
         {children}
-      </main>
+      </Box>
       <Footer currentLocale={currentLocale} />
-    </div>
+    </Box>
   );
 }

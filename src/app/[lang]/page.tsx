@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import { LOCALES, resolveLocale, type Locale } from "@/I18n";
 import { UI_DICTIONARY } from "@/Data/i18nData";
 import { pageMetadata } from "@/Utils/seo";
-import HeroSection from "@/Components/HeroSection";
-import ProjectsSection from "@/Components/ProjectsSection";
-import GithubActivity from "@/Components/GithubActivity";
-import Writing from "@/Components/Writing";
-import Experience from "@/Components/Experience";
-import Contact from "@/Components/Contact";
+import HeroSection from "@/Sections/HeroSection";
+import ProjectsSection from "@/Sections/ProjectsSection";
+import GithubActivity from "@/Sections/GithubActivity";
+import Writing from "@/Sections/Writing";
+import Experience from "@/Sections/Experience";
+import Contact from "@/Sections/Contact";
 
 export function generateStaticParams(): readonly { readonly lang: Locale }[] {
   return LOCALES.map((lang) => ({ lang }));

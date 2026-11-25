@@ -1,16 +1,20 @@
 "use client";
 
 import { useState, useEffect, Suspense } from "react";
-import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
 import { type Locale } from "@/I18n";
 import { UI_DICTIONARY } from "@/Data/i18nData";
-import Icon from "./Icon";
-import ProjectCover from "./ProjectCover";
-import LatinText from "./LatinText";
-import Tag from "./Tag";
-import { TagSize, TagVariant } from "@/DesignSystem";
+import Box from "@/Components/Box";
+import Heading from "@/Components/Heading";
+import Icon from "@/Components/Icon";
+import PlainButton from "@/Components/PlainButton";
+import Text from "@/Components/Text";
+import TextLink from "@/Components/TextLink";
+import ProjectCover from "@/Components/ProjectCover";
+import LatinText from "@/Components/LatinText";
+import Tag from "@/Components/Tag";
+import { HeadingVariant, TagSize, TagVariant, TextVariant } from "@/DesignSystem";
 
 export const FILTERS = ["all", "shipped", "garage", "p2p", "web", "hardware"] as const;
 export type FilterCategory = (typeof FILTERS)[number];
@@ -72,35 +76,36 @@ function ProjectsDirectoryContent({ currentLocale }: ProjectsDirectoryViewProps)
   });
 
   return (
-    <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
+    <Box className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
       {/* Sayfa Konumu / Breadcrumbs */}
-      <nav
+      <Box
+        as="nav"
         aria-label={nav.breadcrumb[currentLocale]}
         className="mb-8 font-label-mono text-xs text-on-surface-variant/70 uppercase tracking-widest flex items-center gap-2"
       >
-        <Link href={`/${currentLocale}`} className="hover:text-primary transition-colors">
+        <TextLink href={`/${currentLocale}`} className="hover:text-primary transition-colors">
           {isTr ? "Ana Sayfa" : "Home"}
-        </Link>
-        <span aria-hidden="true">/</span>
-        <span className="text-primary">{isTr ? "Projeler" : "Projects"}</span>
-      </nav>
+        </TextLink>
+        <Text as="span" aria-hidden="true">/</Text>
+        <Text as="span" className="text-primary">{isTr ? "Projeler" : "Projects"}</Text>
+      </Box>
 
       {/* Başlık ve Editoryal Özet */}
-      <header className="border-b border-primary/30 pb-10 mb-8">
-        <h1 className="text-4xl sm:text-6xl font-bold text-on-surface tracking-tight mb-4">
+      <Box as="header" className="border-b border-primary/30 pb-10 mb-8">
+        <Heading level={1} variant={HeadingVariant.PageTitle} className="mb-4">
           {isTr
             ? "Mühendislik Projeleri ve Sistemler Kataloğu"
             : "Engineering Projects & Systems Catalog"}
-        </h1>
-        <p className="font-body-lg text-on-surface-variant text-lg max-w-3xl leading-relaxed">
+        </Heading>
+        <Text variant={TextVariant.Lead} className="max-w-3xl">
           {isTr
             ? "Geliştirdiğim yerel-öncelikli motorlar, native uygulamalar, web platformları ve donanım/IoT projeleri."
             : "Catalog of local-first engines, native applications, web platforms, and hardware/IoT systems."}
-        </p>
-      </header>
+        </Text>
+      </Box>
 
       {/* Kategori Filtre Butonları */}
-      <div className="flex flex-wrap gap-3 mb-10 border-b border-primary/20 pb-4">
+      <Box className="flex flex-wrap gap-3 mb-10 border-b border-primary/20 pb-4">
         {(
           [
             { id: "all", label: isTr ? "Tüm Projeler" : "All Projects" },
@@ -111,9 +116,8 @@ function ProjectsDirectoryContent({ currentLocale }: ProjectsDirectoryViewProps)
             { id: "hardware", label: isTr ? "Donanım & IoT" : "Hardware / IoT" },
           ] as const
         ).map((tab) => (
-          <button
+          <PlainButton
             key={tab.id}
-            type="button"
             aria-pressed={filter === tab.id}
             onClick={() => {
               const next = tab.id as FilterCategory;
@@ -131,18 +135,18 @@ function ProjectsDirectoryContent({ currentLocale }: ProjectsDirectoryViewProps)
             }`}
           >
             {tab.label}
-          </button>
+          </PlainButton>
         ))}
-      </div>
+      </Box>
 
-      <p className="sr-only" aria-live="polite">
+      <Text className="sr-only" aria-live="polite">
         {isTr
           ? `${filteredKeys.length} proje gösteriliyor`
           : `Showing ${filteredKeys.length} projects`}
-      </p>
+      </Text>
 
       {/* Projeler Izgarası */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <Box className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {displayKeys.map((slug) => {
           const p = PROJECT_DATA[slug];
           if (!p) return null;
@@ -152,59 +156,65 @@ function ProjectsDirectoryContent({ currentLocale }: ProjectsDirectoryViewProps)
           const desc = p.summary[currentLocale] ?? p.summary.en;
 
           return (
-            <article
+            <Box
+              as="article"
               key={slug}
               className="border border-primary/20 p-8 bg-surface-container/10 hover:border-primary/50 transition-all group flex flex-col justify-between"
             >
-              <div>
+              <Box>
                 {p.cover && (
                   <ProjectCover
                     cover={p.cover}
                     className="mb-6 border border-primary/10 group-hover:border-primary/30 transition-colors"
                   />
                 )}
-                <div className="flex items-center justify-between mb-4">
+                <Box className="flex items-center justify-between mb-4">
                   <Tag variant={TagVariant.Category} size={TagSize.Medium}>
                     <LatinText text={category} />
                   </Tag>
                   <Tag variant={TagVariant.Status} size={TagSize.Medium}>
                     {status}
                   </Tag>
-                </div>
+                </Box>
 
-                <h2 className="text-2xl font-bold text-on-surface group-hover:text-primary transition-colors mb-3">
+                <Heading
+                  level={2}
+                  variant={HeadingVariant.CardTitle}
+                  className="group-hover:text-primary transition-colors mb-3"
+                >
                   {title}
-                </h2>
-                <p className="font-body-md text-on-surface-variant text-sm leading-relaxed mb-6">
+                </Heading>
+                <Text variant={TextVariant.Body} className="mb-6">
                   {desc}
-                </p>
+                </Text>
 
-                <div className="flex flex-wrap gap-2 mb-6">
+                <Box className="flex flex-wrap gap-2 mb-6">
                   {p.tech.map((tItem) => (
-                    <span
+                    <Text
+                      as="span"
                       key={tItem}
                       className="font-label-mono text-label-xs border border-outline-variant/50 px-2 py-0.5 text-on-surface-variant/80"
                     >
                       {tItem}
-                    </span>
+                    </Text>
                   ))}
-                </div>
-              </div>
+                </Box>
+              </Box>
 
-              <Link
+              <TextLink
                 href={`/${currentLocale}/${isTr ? "projeler" : "projects"}/${slug}${
                   filter !== "all" ? `?filter=${filter}` : ""
                 }`}
                 className="font-label-mono text-xs text-primary uppercase tracking-widest flex items-center gap-2 py-2 group-hover:translate-x-1 transition-transform w-fit cursor-pointer"
               >
-                <span>{isTr ? "Projeyi İncele" : "View Project"}</span>
+                <Text as="span">{isTr ? "Projeyi İncele" : "View Project"}</Text>
                 <Icon name="arrow_forward" className="w-3.5 h-3.5" />
-              </Link>
-            </article>
+              </TextLink>
+            </Box>
           );
         })}
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
@@ -212,9 +222,9 @@ export default function ProjectsDirectoryView({ currentLocale }: ProjectsDirecto
   return (
     <Suspense
       fallback={
-        <div className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
-          <div className="h-20 w-48 bg-surface-container/20 animate-pulse" />
-        </div>
+        <Box className="pt-24 pb-20 max-w-container-max mx-auto px-margin-desktop min-h-screen">
+          <Box className="h-20 w-48 bg-surface-container/20 animate-pulse" />
+        </Box>
       }
     >
       <ProjectsDirectoryContent currentLocale={currentLocale} />
