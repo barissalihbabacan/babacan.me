@@ -20,7 +20,7 @@ export interface ProjectCardProps {
 
 /**
  * Tekil proje vitrin kartı bileşeni.
- * Eski sitedeki accent-card ve project-card tasarımını birebir yansıtır.
+ * Eski sitedeki kart tasarımını (üst altın çizgi, buzlu cam zemin, üzerine gelince yükselme) yansıtır.
  */
 export default function ProjectCard({
   projectKey,
@@ -42,7 +42,7 @@ export default function ProjectCard({
   return (
     <TextLink
       href={`/${lang}/${segment}/${projectKey}`}
-      className={`project-card w-full text-left accent-card group relative flex flex-col justify-between cursor-pointer border border-primary/20 hover:border-primary/50 transition-all ${
+      className={`w-full text-left group relative flex flex-col justify-between cursor-pointer border border-primary/20 hover:border-primary/50 bg-surface/50 backdrop-blur-md overflow-hidden transition-all duration-(--motion-standard-val) ease-(--ease-out-expo-val) hover:transform-(--transform-card-lift-val) hover:bg-card-hover-bg hover:shadow-(--shadow-card-hover-val) before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-primary ${
         isFeatured ? "p-6 lg:p-7 min-h-60" : "p-6 min-h-52"
       }`}
       aria-label={

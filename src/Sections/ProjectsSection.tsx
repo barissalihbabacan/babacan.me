@@ -4,6 +4,8 @@ import ProjectCard from "./ProjectCard";
 import Icon from "@/Components/Icon";
 import Button from "@/Components/Button";
 import Box from "@/Components/Box";
+import RevealSection from "@/Components/RevealSection";
+import GhostNumber from "@/Components/GhostNumber";
 import Heading from "@/Components/Heading";
 import Text from "@/Components/Text";
 import { ButtonSize, ButtonVariant, HeadingVariant, TextVariant } from "@/DesignSystem";
@@ -29,12 +31,11 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
   const { projects } = UI_DICTIONARY;
 
   return (
-    <Box
-      as="section"
+    <RevealSection
       id="projects"
-      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
+      className="relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
-      <Box className="section-ghost-number">01</Box>
+      <GhostNumber>01</GhostNumber>
       <Box className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <Box className="flex items-center gap-4 mb-vh-2">
           <Text as="span" variant={TextVariant.Label} className="text-label-xs text-on-surface-variant">
@@ -113,6 +114,6 @@ export default function ProjectsSection({ currentLocale }: ProjectsSectionProps)
           </Button>
         </Box>
       </Box>
-    </Box>
+    </RevealSection>
   );
 }

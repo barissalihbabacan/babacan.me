@@ -34,14 +34,18 @@ interface RootLayoutProps {
  */
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="tr" suppressHydrationWarning className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html
+      lang="tr"
+      suppressHydrationWarning
+      className={`${inter.variable} ${jetbrainsMono.variable} text-(length:--text-root-val) motion-safe:scroll-smooth`}
+    >
       <head>
         {/* Tasarım tokenları: globals.css'teki her `--*-val` değişkeni DesignSystem enumlarından gelir */}
         <style dangerouslySetInnerHTML={{ __html: DESIGN_TOKENS_CSS }} />
         <script dangerouslySetInnerHTML={{ __html: HTML_LANG_SCRIPT }} />
         <script dangerouslySetInnerHTML={{ __html: GTM_SCRIPT }} />
       </head>
-      <body className="min-h-screen antialiased">
+      <body className="min-h-screen antialiased overflow-x-hidden bg-background bg-(image:--bg-image-gradient) bg-fixed text-on-surface font-sans selection:bg-(--color-selection-val)">
         <noscript>
           <iframe
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

@@ -43,9 +43,10 @@ export const i18nData = {
       en: "CTO @ Garage.ist · Systems Engineer",
       tr: "Garage.ist CTO'su · Sistem Yazılımı Geliştiricisi",
     },
-    title: {
-      en: 'Barış Salih<br /><em class="text-on-surface-variant font-normal not-italic">Babacan</em>',
-      tr: 'Barış Salih<br /><em class="text-on-surface-variant font-normal not-italic">Babacan</em>',
+    // Ad iki satırda çizilir; soyadı ikincil renkte (HeroSection). Dile göre değişmez.
+    name: {
+      first: "Barış Salih",
+      last: "Babacan",
     },
     subtitle: {
       en: "Systems engineer building local-first infrastructure in Rust. Production work spans embedded systems, network protocol reverse engineering, and native mobile apps.",

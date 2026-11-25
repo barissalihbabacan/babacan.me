@@ -8,6 +8,8 @@ import { UI_DICTIONARY } from "@/Data/i18nData";
 import { PROJECT_DATA, type ProjectKey } from "@/Data/projectsData";
 import Icon from "@/Components/Icon";
 import Box from "@/Components/Box";
+import RevealSection from "@/Components/RevealSection";
+import GhostNumber from "@/Components/GhostNumber";
 import Heading from "@/Components/Heading";
 import Text from "@/Components/Text";
 import TextLink from "@/Components/TextLink";
@@ -41,12 +43,11 @@ export default function GithubActivity({ currentLocale }: GithubActivityProps) {
   const totalBytes = langEntries.reduce((acc, [, bytes]) => acc + bytes, 0);
 
   return (
-    <Box
-      as="section"
+    <RevealSection
       id="opensource"
-      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
+      className="relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
-      <Box className="section-ghost-number">02</Box>
+      <GhostNumber>02</GhostNumber>
       <Box className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <Box className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-vh-4">
           <Box className="flex-1">
@@ -94,7 +95,7 @@ export default function GithubActivity({ currentLocale }: GithubActivityProps) {
                         href={url}
                         external
                         aria-label={`${url.replace("https://github.com/", "")} — ${github.viewRepo[currentLocale]}`}
-                        className="inline-flex items-center gap-2 min-h-9 px-3 border border-primary/30 hover:border-primary/60 font-label-mono text-xs text-on-surface hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-2 min-h-9 px-3 border border-primary/30 hover:border-primary/60 font-label-mono text-xs text-on-surface hover:text-primary transition-all duration-(--motion-standard-val) ease-(--ease-out-expo-val) hover:transform-(--transform-card-lift-val) hover:bg-card-hover-bg hover:shadow-(--shadow-card-hover-val)"
                       >
                         <Text as="span" lang="en">{url.replace("https://github.com/", "")}</Text>
                         <Icon name="north_east" className="w-3.5 h-3.5 text-on-surface-variant" />
@@ -182,6 +183,6 @@ export default function GithubActivity({ currentLocale }: GithubActivityProps) {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </RevealSection>
   );
 }

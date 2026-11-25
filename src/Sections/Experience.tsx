@@ -2,6 +2,8 @@ import { type Locale } from "@/I18n";
 import { UI_DICTIONARY } from "@/Data/i18nData";
 import { FontSize, HeadingVariant, TextVariant } from "@/DesignSystem";
 import Box from "@/Components/Box";
+import RevealSection from "@/Components/RevealSection";
+import GhostNumber from "@/Components/GhostNumber";
 import Heading from "@/Components/Heading";
 import Text from "@/Components/Text";
 
@@ -17,12 +19,11 @@ export default function Experience({ currentLocale }: ExperienceProps) {
   const { experience } = UI_DICTIONARY;
 
   return (
-    <Box
-      as="section"
+    <RevealSection
       id="about"
-      className="scroll-reveal relative min-h-[70vh] border-t border-primary/30 py-section-y overflow-hidden"
+      className="relative min-h-[70vh] border-t border-primary/30 py-section-y overflow-hidden"
     >
-      <Box className="section-ghost-number">04</Box>
+      <GhostNumber>04</GhostNumber>
       <Box className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <Box className="flex items-center gap-4 mb-vh-5">
           <Text as="span" variant={TextVariant.Label} className="text-label-xs text-on-surface-variant">
@@ -151,6 +152,6 @@ export default function Experience({ currentLocale }: ExperienceProps) {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </RevealSection>
   );
 }

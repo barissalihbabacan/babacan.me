@@ -3,6 +3,8 @@ import { UI_DICTIONARY } from "@/Data/i18nData";
 import Icon from "@/Components/Icon";
 import ContactIconGlyph from "@/Components/ContactIconGlyph";
 import Box from "@/Components/Box";
+import RevealSection from "@/Components/RevealSection";
+import GhostNumber from "@/Components/GhostNumber";
 import Heading from "@/Components/Heading";
 import Text from "@/Components/Text";
 import TextLink from "@/Components/TextLink";
@@ -47,12 +49,11 @@ export default function Contact({ currentLocale }: ContactProps) {
   ];
 
   return (
-    <Box
-      as="section"
+    <RevealSection
       id="contact"
-      className="scroll-reveal relative border-t border-primary/30 py-16 md:py-20 overflow-hidden"
+      className="relative border-t border-primary/30 py-16 md:py-20 overflow-hidden"
     >
-      <Box className="section-ghost-number">05</Box>
+      <GhostNumber>05</GhostNumber>
       <Box className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <Box className="flex items-center gap-4 mb-6">
           <Text as="span" variant={TextVariant.Label} className="text-label-xs text-on-surface-variant">
@@ -125,6 +126,6 @@ export default function Contact({ currentLocale }: ContactProps) {
           })}
         </Box>
       </Box>
-    </Box>
+    </RevealSection>
   );
 }

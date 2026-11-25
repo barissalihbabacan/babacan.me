@@ -11,6 +11,7 @@ import Button from "@/Components/Button";
 import Box from "@/Components/Box";
 import Heading from "@/Components/Heading";
 import Text from "@/Components/Text";
+import LineBreak from "@/Components/LineBreak";
 import TextLink from "@/Components/TextLink";
 import PlainButton from "@/Components/PlainButton";
 import HeroScrollChevron from "@/Components/HeroScrollChevron";
@@ -78,14 +79,20 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
               variant={HeadingVariant.Display}
               className="leading-compressed mb-3 lg:mb-4 tracking-tight"
               style={{ fontSize: FontSize.HeroNameFluid }}
-              dangerouslySetInnerHTML={{ __html: hero.title[currentLocale] }}
-            />
+            >
+              {hero.name.first}
+              <LineBreak />
+              <Text as="em" className="text-on-surface-variant font-normal not-italic">
+                {hero.name.last}
+              </Text>
+            </Heading>
 
             {/* Editoryal Özet / Tagline */}
             <Text
               className="font-body-lg text-on-surface-variant mb-4 lg:mb-6 max-w-140 lg:max-w-[min(35rem,50vw)]"
-              dangerouslySetInnerHTML={{ __html: hero.subtitle[currentLocale] }}
-            />
+            >
+              {hero.subtitle[currentLocale]}
+            </Text>
 
             {/* Hızlı Eylem Butonları (CTA) */}
             <Box className="flex flex-wrap gap-4 mb-6 lg:mb-0">
@@ -172,7 +179,7 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
                 {hero.scroll[currentLocale]}
               </Text>
               <Box className="w-[18px] h-[28px] rounded-full border border-primary/40 flex justify-center p-1 group-hover:border-primary transition-colors">
-                <Box className="w-1 h-2 rounded-full bg-primary animate-scroll-drop" />
+                <Box className="w-1 h-2 rounded-full bg-primary motion-safe:animate-scroll-drop" />
               </Box>
               <HeroScrollChevron />
             </TextLink>

@@ -65,3 +65,9 @@ export enum DotPattern {
   TileSize = "20px 20px",
   Opacity = "0.04",
 }
+
+/** Bölüm arkasındaki dev numaranın (GhostNumber) kenarlardan taşma payı */
+export enum GhostNumberOffset {
+  Top = "-5%",
+  Right = "-2%",
+}

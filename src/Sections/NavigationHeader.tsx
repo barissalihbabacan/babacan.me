@@ -72,7 +72,7 @@ export default function NavigationHeader({ currentLocale }: NavigationHeaderProp
             <TextLink
               href={switchLocalePath}
               onClick={handleLanguageSwitch}
-              className="nav-link cursor-pointer border border-primary/30 px-2.5 min-h-9 min-w-9 inline-flex items-center justify-center text-label-sm"
+              className="font-label-mono text-label-mono uppercase tracking-(--tracking-wide-mono-val) text-on-surface-variant hover:text-primary [transition:color_var(--motion-standard-val)] cursor-pointer border border-primary/30 px-2.5 min-h-9 min-w-9 inline-flex items-center justify-center text-label-sm"
               aria-label={nav.switchLang[currentLocale]}
             >
               {currentLocale === "tr" ? "EN" : "TR"}

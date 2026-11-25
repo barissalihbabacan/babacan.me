@@ -4,93 +4,43 @@
  * Bu dosyada sabit renk, boşluk, yuvarlaklık veya yazı değeri yoktur.
  * Her `--*-val` değişkenini `src/DesignSystem/DesignTokens.ts` enumlardan üretir
  * ve kök şablon `:root` kuralı olarak sayfaya basar.
+ *
+ * Görünüm bileşenlerin Tailwind sınıflarındadır. Burada yalnızca sınıfla yazılamayan
+ * üç genel kural kalır: odak halkası, hareketi azaltma ve kaydırma çubuğu.
  */
 @theme {
   --bg-image-gradient: var(--bg-image-gradient-val);
   --color-scrollbar-track: var(--color-scrollbar-track-val);
   --color-scrollbar-thumb: var(--color-scrollbar-thumb-val);
   --color-card-hover-bg: var(--color-card-hover-bg-val);
-  --color-card-hover-shadow: var(--color-card-hover-shadow-val);
   --color-glow-primary: var(--color-glow-val);
-  --color-glow-secondary: var(--color-glow-val);
-  --color-glow-tertiary: var(--color-glow-val);
-  --color-ghost-number: var(--color-ghost-number-val);
-  --color-tab-active-bg: var(--color-tab-active-bg-val);
 
   /* ── Primary ── */
   --color-primary: var(--color-primary-val);
-  --color-primary-container: var(--color-primary-container-val);
-  --color-primary-fixed: var(--color-primary-fixed-val);
-  --color-primary-fixed-dim: var(--color-primary-fixed-dim-val);
-  --color-on-primary: var(--color-on-primary-val);
-  --color-on-primary-container: var(--color-on-primary-container-val);
-  --color-on-primary-fixed: var(--color-on-primary-fixed-val);
-  --color-on-primary-fixed-variant: var(--color-on-primary-fixed-variant-val);
-  --color-inverse-primary: var(--color-inverse-primary-val);
-  --color-surface-tint: var(--color-primary-val);
-
-  /* ── Secondary ── */
-  --color-secondary: var(--color-secondary-val);
-  --color-secondary-container: var(--color-secondary-container-val);
-  --color-secondary-fixed: var(--color-secondary-fixed-val);
-  --color-secondary-fixed-dim: var(--color-secondary-fixed-dim-val);
-  --color-on-secondary: var(--color-on-secondary-val);
-  --color-on-secondary-container: var(--color-on-secondary-container-val);
-  --color-on-secondary-fixed: var(--color-on-secondary-fixed-val);
-  --color-on-secondary-fixed-variant: var(--color-on-secondary-fixed-variant-val);
-
-  /* ── Tertiary ── */
-  --color-tertiary: var(--color-tertiary-val);
-  --color-tertiary-container: var(--color-tertiary-container-val);
-  --color-tertiary-fixed: var(--color-tertiary-fixed-val);
-  --color-tertiary-fixed-dim: var(--color-tertiary-fixed-dim-val);
-  --color-on-tertiary: var(--color-on-tertiary-fixed-val);
-  --color-on-tertiary-container: var(--color-on-tertiary-container-val);
-  --color-on-tertiary-fixed: var(--color-on-tertiary-fixed-val);
-  --color-on-tertiary-fixed-variant: var(--color-on-tertiary-fixed-variant-val);
 
   /* ── Surface ── */
   --color-surface: var(--color-surface-val);
-  --color-surface-dim: var(--color-surface-dim-val);
-  --color-surface-bright: var(--color-surface-bright-val);
   --color-surface-container: var(--color-surface-container-val);
-  --color-surface-container-low: var(--color-surface-container-low-val);
-  --color-surface-container-high: var(--color-surface-container-high-val);
   --color-surface-container-highest: var(--color-surface-container-highest-val);
-  --color-surface-container-lowest: var(--color-surface-container-lowest-val);
   --color-surface-variant: var(--color-surface-variant-val);
   --color-background: var(--color-background-val);
 
   /* ── On-Surface ── */
   --color-on-surface: var(--color-on-surface-val);
   --color-on-surface-variant: var(--color-on-surface-variant-val);
-  --color-on-background: var(--color-on-background-val);
-  --color-inverse-surface: var(--color-inverse-surface-val);
-  --color-inverse-on-surface: var(--color-inverse-on-surface-val);
 
   /* ── Outline ── */
-  --color-outline: var(--color-outline-val);
   --color-outline-variant: var(--color-outline-variant-val);
 
-  /* ── Error ── */
-  --color-error: var(--color-error-val);
-  --color-error-container: var(--color-error-container-val);
-  --color-on-error: var(--color-on-error-val);
-  --color-on-error-container: var(--color-on-error-container-val);
-
   /* ── Köşe yuvarlaklığı ── */
-  --radius-DEFAULT: var(--radius-default-val);
   --radius-lg: var(--radius-lg-val);
   --radius-xl: var(--radius-xl-val);
   --radius-full: var(--radius-full-val);
 
   /* ── Boşluk ve yerleşim ── */
-  --spacing-margin-mobile: var(--spacing-margin-mobile-val);
   --spacing-margin-desktop: var(--spacing-margin-desktop-val);
-  --spacing-section-gap: var(--spacing-section-gap-val);
   --spacing-gutter: var(--spacing-gutter-val);
   --spacing-container-max: var(--spacing-container-max-val);
-  --spacing-unit: var(--spacing-unit-val);
   --spacing-section-y: var(--spacing-section-y-val);
   --spacing-vh-2: var(--spacing-vh-2-val);
   --spacing-vh-3: var(--spacing-vh-3-val);
@@ -102,61 +52,63 @@
   /* ── Tipografi ── */
   --font-display-lg: var(--font-sans-val);
   --font-label-mono: var(--font-mono-val);
-  --font-headline-md: var(--font-sans-val);
   --font-body-lg: var(--font-sans-val);
   --font-body-md: var(--font-sans-val);
-  --font-display-lg-mobile: var(--font-sans-val);
   --font-sans: var(--font-sans-val);
   --font-mono: var(--font-mono-val);
 
   --text-display-lg: var(--text-display-lg-val);
   --text-label-mono: var(--text-label-mono-val);
-  --text-headline-md: var(--text-headline-md-val);
   --text-body-lg: var(--text-body-lg-val);
   --text-body-md: var(--text-body-md-val);
-  --text-display-lg-mobile: var(--text-display-lg-mobile-val);
   --text-label-xs: var(--text-label-xs-val);
   --text-label-sm: var(--text-label-sm-val);
   --text-label-2xs: var(--text-label-2xs-val);
   --leading-compressed: var(--leading-compressed-val);
   --leading-display: var(--leading-display-val);
   --tracking-cover: var(--tracking-cover-val);
+
+  /* ── Animasyonlar ── */
+  /* Bölüm belirme (RevealSection); zaman çizelgesi kaydırmaya bağlanır */
+  --animate-reveal: fade-in-up auto linear both;
+  /* Hero'daki kaydırma göstergesi; 4 kez oynar */
+  --animate-scroll-drop: scroll-drop var(--motion-scroll-cycle-val) var(--ease-in-out-cubic-val) 4;
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: var(--transform-reveal-offset-val);
+    }
+    to {
+      opacity: 1;
+      transform: var(--transform-none-val);
+    }
+  }
+
+  @keyframes scroll-drop {
+    0% {
+      transform: translateY(0%);
+      opacity: 0;
+    }
+    30%,
+    70% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(180%);
+      opacity: 0;
+    }
+  }
 }
 
 @layer base {
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
-  html {
-    /* 1280px'e kadar tarayıcının varsayılanı (16px); üstünde 20px'e kadar büyür */
-    font-size: var(--text-root-val);
-  }
-
-  body {
-    background-color: var(--color-background);
-    background-image: var(--bg-image-gradient);
-    background-attachment: fixed;
-    color: var(--color-on-surface);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-  }
-
+  /* Her odaklanabilir öğe için klavye odak halkası */
   :focus-visible {
     outline: 2px solid var(--color-on-surface);
     outline-offset: 3px;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
+  /* Hareketi azaltmak isteyenlerde tüm animasyon ve geçişler anında biter */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -168,10 +120,7 @@
     }
   }
 
-  ::selection {
-    background-color: var(--color-selection-val);
-  }
-
+  /* Sayfadaki tüm kaydırılabilir alanların çubuğu */
   ::-webkit-scrollbar {
     width: var(--scrollbar-width-val);
   }
@@ -183,124 +132,5 @@
   ::-webkit-scrollbar-thumb {
     background: var(--color-scrollbar-thumb);
     border-radius: var(--scrollbar-radius-val);
-  }
-}
-
-@layer components {
-  .section-ghost-number {
-    position: absolute;
-    top: -5%;
-    right: -2%;
-    font-size: var(--text-ghost-number-val);
-    font-family: var(--font-sans);
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: normal;
-    font-variant-numeric: tabular-nums;
-    color: var(--color-ghost-number);
-    pointer-events: none;
-    z-index: 0;
-    user-select: none;
-  }
-
-  @media (max-width: 767px) {
-    .section-ghost-number {
-      top: 0;
-    }
-  }
-
-  .accent-card {
-    position: relative;
-    background: color-mix(in srgb, var(--color-surface) 50%, transparent);
-    backdrop-filter: blur(12px);
-    border: 1px solid color-mix(in srgb, var(--color-primary) 8%, transparent);
-    overflow: hidden;
-    transition:
-      border-color var(--motion-standard-val),
-      transform var(--motion-standard-val),
-      box-shadow var(--motion-standard-val);
-  }
-
-  .accent-card::before {
-    content: "";
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 1px;
-    background: var(--color-primary);
-  }
-
-  .accent-card:hover {
-    transform: var(--transform-card-lift-val);
-  }
-
-  .project-card,
-  div[class*="border-primary/30"][class*="hover:border-"],
-  a[class*="border-primary/30"][class*="hover:border-"] {
-    transition: all var(--motion-standard-val) var(--ease-out-expo-val) !important;
-  }
-
-  .project-card:hover,
-  div[class*="border-primary/30"][class*="hover:border-"]:hover,
-  a[class*="border-primary/30"][class*="hover:border-"]:hover {
-    transform: var(--transform-card-lift-val);
-    background-color: var(--color-card-hover-bg) !important;
-    box-shadow: var(--shadow-card-hover-val) !important;
-  }
-
-  /* Scroll-driven reveal animasyonu */
-  @media (prefers-reduced-motion: no-preference) {
-    @supports ((animation-timeline: view()) and (animation-range: entry)) {
-      @keyframes fade-in-up {
-        from {
-          opacity: 0;
-          transform: var(--transform-reveal-offset-val);
-        }
-        to {
-          opacity: 1;
-          transform: var(--transform-none-val);
-        }
-      }
-
-      .scroll-reveal {
-        animation: fade-in-up auto linear both;
-        animation-timeline: view();
-        animation-range: entry 5% cover 30%;
-      }
-    }
-  }
-}
-
-@utility nav-link {
-  font-family: var(--font-label-mono);
-  font-size: var(--text-label-mono);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide-mono-val);
-  color: var(--color-on-surface-variant);
-  transition: color var(--motion-standard-val);
-  &:hover {
-    color: var(--color-primary);
-  }
-}
-
-@keyframes scrollDrop {
-  0% {
-    transform: translateY(0%);
-    opacity: 0;
-  }
-  30% {
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(180%);
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .animate-scroll-drop {
-    animation: scrollDrop var(--motion-scroll-cycle-val) var(--ease-in-out-cubic-val) 4;
   }
 }

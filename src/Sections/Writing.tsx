@@ -3,6 +3,8 @@ import { UI_DICTIONARY } from "@/Data/i18nData";
 import Button from "@/Components/Button";
 import Tag from "@/Components/Tag";
 import Box from "@/Components/Box";
+import RevealSection from "@/Components/RevealSection";
+import GhostNumber from "@/Components/GhostNumber";
 import Heading from "@/Components/Heading";
 import Text from "@/Components/Text";
 import LineBreak from "@/Components/LineBreak";
@@ -46,12 +48,11 @@ export default function Writing({ currentLocale }: WritingProps) {
   const book = writing.book;
 
   return (
-    <Box
-      as="section"
+    <RevealSection
       id="writing"
-      className="scroll-reveal relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
+      className="relative min-h-screen border-t border-primary/30 py-section-y overflow-hidden"
     >
-      <Box className="section-ghost-number">03</Box>
+      <GhostNumber>03</GhostNumber>
       <Box className="max-w-container-max mx-auto px-margin-desktop relative z-10">
         <Box className="flex items-center gap-4 mb-vh-5">
           <Text as="span" variant={TextVariant.Label} className="text-label-xs text-on-surface-variant">
@@ -195,6 +196,6 @@ export default function Writing({ currentLocale }: WritingProps) {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </RevealSection>
   );
 }
