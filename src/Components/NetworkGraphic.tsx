@@ -63,21 +63,37 @@ const DODECA_VERTICES: [number, number, number][] = DODECA_VERTICES_RAW.map(([x,
   (z / DODECA_NORM) * RADIUS,
 ]);
 
-// 12 besgen yuz (dugum indeksleri saat yonunun tersi, disari dogru normal)
-const DODECA_FACES: number[][] = [
-  [3, 11, 7, 19, 18],
-  [7, 11, 9, 5, 19],
-  [6, 15, 7, 17, 4],
-  [2, 13, 3, 16, 0],
-  [17, 19, 5, 14, 4],
-  [16, 18, 1, 12, 0],
-  [13, 2, 6, 15, 3],
-  [12, 1, 9, 14, 0],
-  [2, 10, 8, 0, 16],
-  [6, 10, 8, 4, 17],
-  [3, 13, 15, 7, 11],
-  [1, 9, 11, 3, 18],
-];
+// 12 besgen yuz, geometriden hesaplanir (elle yazilan liste yanlisti, sekil carpik ciziliyordu).
+// Yuz normalleri (0, ±PHI, ±1)'in dongusel permutasyonlaridir; her yuz, normale en yakin 5 dugumdur.
+// Dugumler disaridan bakildiginda saat yonunun tersine siralanir (arka yuz testi buna dayanir).
+const DODECA_FACES: number[][] = (() => {
+  const dot = (a: readonly number[], b: readonly number[]): number => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a: readonly number[], b: readonly number[]): number[] => [
+    a[1] * b[2] - a[2] * b[1],
+    a[2] * b[0] - a[0] * b[2],
+    a[0] * b[1] - a[1] * b[0],
+  ];
+  const normals: number[][] = [];
+  for (const s1 of [1, -1]) {
+    for (const s2 of [1, -1]) {
+      normals.push([0, s1 * PHI, s2], [s2, 0, s1 * PHI], [s1 * PHI, s2, 0]);
+    }
+  }
+  return normals.map((n) => {
+    const face = DODECA_VERTICES_RAW.map((v, i) => ({ i, d: dot(v, n) }))
+      .sort((a, b) => b.d - a.d)
+      .slice(0, 5)
+      .map(({ i }) => i);
+    // Yuz duzleminde (u, v) tabani; u x v = n oldugu icin aci sirasi disaridan saat yonunun tersidir
+    const v = cross(n, DODECA_VERTICES_RAW[face[0]]);
+    const u = cross(v, n);
+    return face.sort((a, b) => {
+      const pa = DODECA_VERTICES_RAW[a];
+      const pb = DODECA_VERTICES_RAW[b];
+      return Math.atan2(dot(pa, v), dot(pa, u)) - Math.atan2(dot(pb, v), dot(pb, u));
+    });
+  });
+})();
 
 // Dodekahedronun 30 kenari (tekrarsiz indeks ciftleri)
 const DODECA_EDGES: [number, number][] = (() => {
