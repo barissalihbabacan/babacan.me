@@ -178,7 +178,7 @@ export default function HeroSection({ currentLocale }: HeroSectionProps) {
               <Text as="span" className="font-label-mono text-label-xs uppercase tracking-cover text-on-surface-variant group-hover:text-primary transition-colors">
                 {hero.scroll[currentLocale]}
               </Text>
-              <Box className="w-[18px] h-[28px] rounded-full border border-primary/40 flex justify-center p-1 group-hover:border-primary transition-colors">
+              <Box className="w-scroll-mouse-w h-scroll-mouse-h rounded-full border border-primary/40 flex justify-center p-1 group-hover:border-primary transition-colors">
                 <Box className="w-1 h-2 rounded-full bg-primary motion-safe:animate-scroll-drop" />
               </Box>
               <HeroScrollChevron />

@@ -47,6 +47,8 @@
   --spacing-vh-4: var(--spacing-vh-4-val);
   --spacing-vh-5: var(--spacing-vh-5-val);
   --spacing-vh-6: var(--spacing-vh-6-val);
+  --spacing-scroll-mouse-w: var(--spacing-scroll-mouse-w-val);
+  --spacing-scroll-mouse-h: var(--spacing-scroll-mouse-h-val);
   --container-prose: var(--container-prose-val);
 
   /* ── Tipografi ── */
@@ -95,7 +97,7 @@
       opacity: 1;
     }
     100% {
-      transform: translateY(180%);
+      transform: var(--transform-scroll-drop-end-val);
       opacity: 0;
     }
   }

@@ -29,6 +29,9 @@ export enum Spacing {
   ViewportFive = "5vh",
   ViewportSix = "6vh",
   MarginDesktopFluid = "clamp(1rem, 3vw, 2.5rem)",
+  /** Hero kaydırma göstergesinin fare çerçevesi; içindeki noktayla birlikte kök boyutla büyür (16px kökte 18×28px) */
+  ScrollMouseWidth = "1.125rem",
+  ScrollMouseHeight = "1.75rem",
 }
 
 /**

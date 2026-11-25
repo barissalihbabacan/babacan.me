@@ -21,4 +21,6 @@ export enum MotionTransform {
   None = "translateY(0)",
   CardHoverLift = "translateY(-4px)",
   ScrollRevealOffset = "translateY(40px)",
+  /** Hero kaydırma göstergesindeki noktanın düşüşü; nokta görünürken fare çerçevesinin içinde kalır */
+  ScrollDropEnd = "translateY(140%)",
 }

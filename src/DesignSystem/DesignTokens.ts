@@ -45,6 +45,8 @@ const DESIGN_TOKENS: Readonly<Record<string, string>> = {
   "--spacing-vh-4-val": Spacing.ViewportFour,
   "--spacing-vh-5-val": Spacing.ViewportFive,
   "--spacing-vh-6-val": Spacing.ViewportSix,
+  "--spacing-scroll-mouse-w-val": Spacing.ScrollMouseWidth,
+  "--spacing-scroll-mouse-h-val": Spacing.ScrollMouseHeight,
   "--container-prose-val": LayoutWidth.ProseMeasure,
   "--scrollbar-width-val": Spacing.Unit,
   "--scrollbar-radius-val": Spacing.HalfUnit,
@@ -73,6 +75,7 @@ const DESIGN_TOKENS: Readonly<Record<string, string>> = {
   "--ease-in-out-cubic-val": MotionEasing.InOutCubic,
   "--transform-card-lift-val": MotionTransform.CardHoverLift,
   "--transform-reveal-offset-val": MotionTransform.ScrollRevealOffset,
+  "--transform-scroll-drop-end-val": MotionTransform.ScrollDropEnd,
   "--transform-none-val": MotionTransform.None,
   "--shadow-card-hover-val": BoxShadow.CardHoverElevation,
 };
